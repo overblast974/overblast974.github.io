@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Coach APA'R - Votre coach sportif et nutritionnel à Montpellier. Prenez rendez-vous pour un accompagnement personnalisé.">
+    <meta name="keywords" content="contact, coach sportif, nutrition, activité physique adaptée, APA, Montpellier, rendez-vous">
+    <meta name="author" content="Coach APA'R">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.coach-apar.fr/pages/contact.html">
+    <meta property="og:title" content="Contact - Coach APA'R - Coach sportif et nutritionnel à Montpellier">
+    <meta property="og:description" content="Contactez Coach APA'R pour prendre rendez-vous ou obtenir plus d'informations sur mes services d'activité physique adaptée et de nutrition.">
+    <meta property="og:image" content="../images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.coach-apar.fr/pages/contact.html">
+    <meta property="twitter:title" content="Contact - Coach APA'R - Coach sportif et nutritionnel à Montpellier">
+    <meta property="twitter:description" content="Contactez Coach APA'R pour prendre rendez-vous ou obtenir plus d'informations sur mes services d'activité physique adaptée et de nutrition.">
+    <meta property="twitter:image" content="../images/twitter-image.jpg">
+    
+    <title>Contact - Coach APA'R - Activité Physique Adaptée et Nutrition à Montpellier</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="canonical" href="https://www.coach-apar.fr/pages/contact.html">
+    <link rel="icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles pour améliorer la visibilité du texte */
+        .contact-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item p, .contact-item a {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .contact-form label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .contact-form input, 
+        .contact-form select, 
+        .contact-form textarea {
+            font-size: 1.1rem;
+            padding: 12px;
+        }
+        
+        /* Styles spécifiques pour le select de service */
+        .contact-form select {
+            font-size: 1.1rem;
+            padding: 12px;
+            width: 100%;
+            -webkit-appearance: menulist; /* Style de menu déroulant standard pour WebKit */
+            -moz-appearance: menulist; /* Firefox */
+            appearance: menulist; /* Standard */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        /* Styler l'option placeholder */
+        .contact-form select option[disabled] {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .page-hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .page-hero-content p {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        
+        /* Styles pour le formulaire sans labels */
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form input, 
+        .contact-form select, 
+        .contact-form textarea {
+            font-size: 1.1rem;
+            padding: 15px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus, 
+        .contact-form select:focus, 
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
+            background-color: #fff;
+        }
+        
+        .contact-form input::placeholder, 
+        .contact-form textarea::placeholder {
+            color: #777;
+            font-style: italic;
+        }
+        
+        /* Style pour le select */
+        .contact-form select {
+            cursor: pointer;
+            color: #777; /* Pour que l'option par défaut ait la même couleur que les placeholders */
+            appearance: menulist;
+        }
+        
+        .contact-form select option:not([disabled]) {
+            color: #333;
+        }
+        
+        .contact-form .btn {
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        /* Styles pour réduire la taille du footer */
+        .footer {
+            padding: 2rem 0 1rem;
+        }
+        
+        .footer-content {
+            padding-bottom: 1rem;
+        }
+        
+        .footer-logo h2 {
+            font-size: 1.5rem;
+        }
+        
+        .footer-logo p {
+            font-size: 0.9rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.3rem;
+        }
+        
+        .footer-col ul li a {
+            font-size: 0.85rem;
+        }
+        
+        .footer-bottom {
+            padding-top: 0.8rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay de préchargement -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Chargement en cours...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="nav-logo">
+                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                </a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
+                                <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
+                                <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
+                                <li><a href="contact.html?service=cours-pilates" class="dropdown-item">Cours de Pilates</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="../index.html#testimonials" class="nav-link">Témoignages</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Contact</h1>
+                <p>Prenez rendez-vous ou demandez plus d'informations sur mes services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact">
+        <div class="morphing-background">
+            <div class="morphing-shape" style="top: 0; right: 0; width: 40%; height: 50%; background-color: var(--accent-color);"></div>
+            <div class="morphing-shape" style="bottom: 0; left: 0; width: 30%; height: 40%; background-color: var(--primary-color);"></div>
+        </div>
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info slide-in-left">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>Montpellier, France</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p><a href="tel:+33765775104">07 65 77 51 04</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Horaires</h3>
+                            <p>Lundi - Vendredi: 17h30 - 21h30<br>Samedi: 9h - 17h</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form slide-in-right">
+                    <form id="contactForm" action="https://formspree.io/f/xwplpobd" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Téléphone">
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Choisissez un service</option>
+                                <!-- Services de Coaching Sportif -->
+                                <option value="coaching-individuel">Coaching Individuel</option>
+                                <option value="programme-entrainement">Programme d'entraînement personnalisé</option>
+                                <option value="forfaits-seances">Forfaits 10/20 Séances</option>
+                                <option value="preparation-physique">Préparation Physique Spécifique</option>
+                                <option value="bilan-condition-physique">Bilan de condition physique</option>
+                                
+                                <!-- Services de Conseils Nutritionnels -->
+                                <option value="bilan-nutritionnel">Bilan Nutritionnel Initial</option>
+                                <option value="plan-alimentaire">Plan Alimentaire Personnalisé</option>
+                                <option value="suivi-nutritionnel">Suivi Nutritionnel</option>
+                                
+                                <!-- Nouveaux services -->
+                                <option value="activite-physique-adaptee">Activité Physique Adaptée</option>
+                                <option value="cours-pilates">Cours de Pilates</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Coach APA'R</h2>
+                    <p>Activité Physique Adaptée et Nutrition</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="../index.html#hero">Accueil</a></li>
+                            <li><a href="../index.html#about">À propos</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#testimonials">Témoignages</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="coaching-sportif.html">Coaching Sportif</a></li>
+                            <li><a href="conseils-nutritionnels.html">Conseils Nutritionnels</a></li>
+                            <li><a href="coaching-sportif.html">Reconditionnement à l'Effort</a></li>
+                            <li><a href="coaching-sportif.html">Cours Collectifs</a></li>
+                            <li><a href="coaching-sportif.html">Coaching à Distance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Légal</h3>
+                        <ul>
+                            <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                            <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                            <li><a href="cgv.html">CGV</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
+                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="../js/main.js"></script>
+    
+    <!-- Script pour l'envoi d'emails avec Formspree -->
+    <script>
+        const form = document.getElementById('contactForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const xhr = new XMLHttpRequest();
+            
+            xhr.open('POST', 'https://formspree.io/votre-email@example.com');
+            xhr.setRequestHeader('Accept', 'application/json');
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                
+                if (xhr.status === 200) {
+                    form.reset();
+                    document.getElementById('formSuccess').style.display = 'block';
+                } else {
+                    document.getElementById('formError').style.display = 'block';
+                }
+            };
+            
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html> 
