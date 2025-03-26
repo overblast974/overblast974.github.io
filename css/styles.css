@@ -3561,5 +3561,9 @@ header {
   color: var(--text-gray);
   line-height: 1.6;
 }
+  #contactForm textarea#message {
+    resize: none !important;
+    min-height: 150px !important;
+}
 }
 /* Fin du fichier CSS */ 
