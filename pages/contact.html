@@ -369,31 +369,18 @@
     <script src="../js/main.js"></script>
     
     <!-- Script pour l'envoi d'emails avec Formspree -->
-    <script>
-        const form = document.getElementById('contactForm');
+<script>
+    const form = document.getElementById('contactForm');
+    
+    form.addEventListener('submit', function(e) {
+        // Nous ne prévenons pas l'envoi par défaut pour laisser le formulaire s'envoyer naturellement
+        // Cependant, nous pouvons ajouter une animation de chargement
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+        submitBtn.disabled = true;
         
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(form);
-            const xhr = new XMLHttpRequest();
-            
-            xhr.open('POST', 'https://formspree.io/votre-email@example.com');
-            xhr.setRequestHeader('Accept', 'application/json');
-            
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState !== XMLHttpRequest.DONE) return;
-                
-                if (xhr.status === 200) {
-                    form.reset();
-                    document.getElementById('formSuccess').style.display = 'block';
-                } else {
-                    document.getElementById('formError').style.display = 'block';
-                }
-            };
-            
-            xhr.send(formData);
-        });
-    </script>
+        // Le formulaire sera envoyé automatiquement grâce à l'attribut action
+    });
+</script>
 </body>
 </html> 
