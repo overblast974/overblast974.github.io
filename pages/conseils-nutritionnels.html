@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conseils nutritionnels personnalisés avec Coach APA'R à Montpellier. Plans alimentaires adaptés, suivi et coaching pour atteindre vos objectifs de santé et de bien-être.">
+    <meta name="keywords" content="conseils nutritionnels, nutrition, diététique, plan alimentaire, rééquilibrage alimentaire, perte de poids, Montpellier">
+    <meta name="author" content="Coach APA'R">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.coach-apar.fr/pages/conseils-nutritionnels.html">
+    <meta property="og:title" content="Conseils Nutritionnels - Coach APA'R - Montpellier">
+    <meta property="og:description" content="Conseils nutritionnels personnalisés pour atteindre vos objectifs de santé et de bien-être. Plans alimentaires adaptés et suivi régulier.">
+    <meta property="og:image" content="../images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.coach-apar.fr/pages/conseils-nutritionnels.html">
+    <meta property="twitter:title" content="Conseils Nutritionnels - Coach APA'R - Montpellier">
+    <meta property="twitter:description" content="Conseils nutritionnels personnalisés pour atteindre vos objectifs de santé et de bien-être. Plans alimentaires adaptés et suivi régulier.">
+    <meta property="twitter:image" content="../images/twitter-image.jpg">
+    
+    <title>Conseils Nutritionnels - Coach APA'R - Montpellier</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="canonical" href="https://www.coach-apar.fr/pages/conseils-nutritionnels.html">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles pour les cartes de service avec images */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            position: relative;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-icon {
+            position: absolute;
+            top: 160px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .service-content {
+            padding: 30px 20px 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .service-price {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-link {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .service-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Styles pour l'image de la section Nutrition Personnalisée */
+        .section.about .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .section.about .about-image {
+            width: 100%;
+            height: auto;
+            order: -1;
+        }
+        
+        .section.about .about-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section.about .about-text {
+            width: 100%;
+        }
+        
+        @media (min-width: 992px) {
+            .section.about .about-content {
+                flex-direction: row;
+            }
+            
+            .section.about .about-image {
+                width: 40%;
+                order: 0;
+            }
+            
+            .section.about .about-image img {
+                height: 100%;
+                min-height: 500px;
+            }
+            
+            .section.about .about-text {
+                width: 60%;
+            }
+        }
+        
+        .cta-button {
+            color: green; /* ou utilisez une couleur hexadécimale comme #008000 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay de préchargement -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Chargement en cours...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="nav-logo">
+                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                </a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
+                        <li class="nav-item dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
+                                <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
+                                <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
+                                <li><a href="contact.html?service=cours-pilates" class="dropdown-item">Cours de Pilates</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="../index.html#testimonials" class="nav-link">Témoignages</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Conseils Nutritionnels</h1>
+                <p>Une alimentation adaptée à vos objectifs et votre mode de vie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section about">
+        <div class="morphing-background">
+            <div class="morphing-shape" style="top: -20%; left: -10%; width: 40%; height: 60%; background-color: var(--primary-color); opacity: 0.1;"></div>
+            <div class="morphing-shape" style="bottom: -30%; right: -10%; width: 50%; height: 70%; background-color: var(--secondary-color); opacity: 0.1;"></div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="slide-in-left">Nutrition Personnalisée</h2>
+                <p class="fade-in">L'alimentation est un pilier fondamental de votre santé et de votre performance</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image zoom-in">
+                    <img src="../images/nutrition-variee.jpg" alt="Variété de fruits et légumes frais pour une alimentation équilibrée" loading="lazy">
+                </div>
+                <div class="about-text slide-in-right">
+                    <h3>Approche nutritionnelle</h3>
+                    <p>En tant que coach nutritionnel certifié, je vous propose un accompagnement complet pour optimiser votre alimentation en fonction de vos objectifs spécifiques :</p>
+                    <ul class="qualifications-list">
+                        <li><strong>Perte de poids durable et saine</strong> - Sans régimes restrictifs</li>
+                        <li><strong>Gain de masse musculaire</strong> - Pour les sportifs et personnes actives</li>
+                        <li><strong>Amélioration des performances sportives</strong> - Nutrition adaptée à votre discipline</li>
+                        <li><strong>Rééquilibrage alimentaire</strong> - Pour une meilleure santé quotidienne</li>
+                    </ul>
+                    <p>Mon approche ne se base pas sur des régimes restrictifs, mais sur l'adoption progressive d'habitudes alimentaires saines et durables, adaptées à votre mode de vie et vos préférences.</p>
+                    <div class="about-cta">
+                        <a href="../pages/contact.html" class="btn btn-outline">Me contacter</a>
+                        <a href="#prestations-nutritionnelles" class="btn btn-outline">Voir mes prestations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Nutritionnels Section -->
+    <section id="prestations-nutritionnelles" class="section services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="slide-in-right">Mes Prestations Nutritionnelles</h2>
+                <p class="fade-in">Des services adaptés à vos besoins spécifiques</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="../images/Conseils-nutritionnels.webp" alt="Bilan Nutritionnel Initial">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Bilan Nutritionnel Initial</h3>
+                        <p>Analyse complète de vos habitudes alimentaires, de votre mode de vie et de vos objectifs pour établir un point de départ personnalisé.</p>
+                        <div class="service-price">À partir de 60€</div>
+                        <a href="../pages/contact.html" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="../images/plan-nutrition.jpg" alt="Plan Alimentaire Personnalisé avec aliments équilibrés">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Plan Alimentaire Personnalisé</h3>
+                        <p>Élaboration d'un plan alimentaire sur mesure, adapté à vos objectifs spécifiques : perte de poids, prise de masse musculaire ou nutrition sportive. Inclut des recettes, menus types et conseils pratiques pour faciliter votre quotidien.</p>
+                        <div class="service-price">À partir de 100€</div>
+                        <a href="../pages/contact.html" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="../images/suivi-nutritionnel.jpg" alt="Carnet de suivi nutritionnel avec légumes frais">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Suivi Nutritionnel</h3>
+                        <p>Rendez-vous réguliers pour ajuster votre plan alimentaire, répondre à vos questions et vous accompagner dans l'atteinte de vos objectifs.</p>
+                        <div class="service-price">À partir de 45€/séance</div>
+                        <a href="../pages/contact.html" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Méthodologie Section -->
+    <section class="section methodology">
+        <div class="morphing-background">
+            <div class="morphing-shape" style="top: 15%; right: 10%; width: 25%; height: 45%; background-color: var(--secondary-color); opacity: 0.1;"></div>
+            <div class="morphing-shape" style="bottom: 20%; left: 5%; width: 40%; height: 30%; background-color: var(--accent-color); opacity: 0.1;"></div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="slide-in-left">Ma Méthodologie</h2>
+                <p class="fade-in">Une approche scientifique et personnalisée</p>
+            </div>
+            <div class="methodology-steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Évaluation Initiale</h3>
+                        <p>Analyse complète de votre profil, vos habitudes alimentaires actuelles, votre mode de vie et vos objectifs.</p>
+                    </div>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Élaboration du Plan</h3>
+                        <p>Création d'un plan alimentaire personnalisé basé sur vos besoins spécifiques, vos préférences et votre emploi du temps.</p>
+                    </div>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Éducation Nutritionnelle</h3>
+                        <p>Transmission des connaissances essentielles pour comprendre les principes d'une alimentation équilibrée et adaptée à vos besoins.</p>
+                    </div>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Suivi Régulier</h3>
+                        <p>Accompagnement continu avec des ajustements réguliers de votre plan en fonction de vos progrès et de vos retours.</p>
+                    </div>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Autonomisation</h3>
+                        <p>Développement de votre autonomie pour maintenir de bonnes habitudes alimentaires sur le long terme.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq">
+        <div class="morphing-background">
+            <div class="morphing-shape" style="top: 0; right: 0; width: 40%; height: 50%; background-color: var(--accent-color); opacity: 0.1;"></div>
+            <div class="morphing-shape" style="bottom: 0; left: 0; width: 30%; height: 40%; background-color: var(--primary-color); opacity: 0.1;"></div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="slide-in-right">Questions Fréquentes</h2>
+                <p class="fade-in">Réponses aux interrogations les plus courantes</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Faut-il suivre un régime strict pour perdre du poids ?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Non, les régimes restrictifs sont généralement contre-productifs à long terme. Je privilégie une approche d'alimentation équilibrée et durable, avec des changements progressifs adaptés à votre mode de vie. L'objectif est de créer des habitudes alimentaires saines que vous pourrez maintenir sur la durée.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Comment la nutrition peut-elle améliorer mes performances sportives ?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Une alimentation adaptée à votre activité sportive optimise l'apport énergétique, favorise la récupération musculaire et améliore l'endurance. Je vous aide à ajuster votre nutrition avant, pendant et après l'effort pour maximiser vos performances et faciliter la récupération.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Combien de temps faut-il pour voir des résultats ?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les premiers changements peuvent être ressentis dès les premières semaines (niveau d'énergie, qualité du sommeil, digestion). Pour des résultats visibles comme la perte de poids ou le gain musculaire, comptez généralement 4 à 8 semaines de suivi régulier. Chaque personne progresse à son rythme, et je m'adapte à votre évolution.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Proposez-vous des plans pour les régimes spécifiques (végétarien, sans gluten, etc.) ?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Je m'adapte à tous les types d'alimentation et restrictions alimentaires. Que vous soyez végétarien, végétalien, intolérant au gluten ou au lactose, je vous propose des plans nutritionnels équilibrés et adaptés à vos besoins spécifiques.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Comment se déroule le suivi nutritionnel ?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Après le bilan initial, nous établissons ensemble un calendrier de suivi adapté à vos besoins. Les séances peuvent se dérouler en présentiel ou à distance. Entre les rendez-vous, vous pouvez me contacter pour des questions ou ajustements. Nous utilisons également des outils de suivi pour monitorer vos progrès et adapter votre plan si nécessaire.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" style="background-color: var(--primary-color); padding: 3rem 0; margin-top: 2rem;">
+        <div class="container">
+            <div class="cta-content fade-in" style="color: white; text-align: center;">
+                <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 1.5rem;">Prenez rendez-vous pour un bilan nutritionnel personnalisé et commencez votre parcours vers une meilleure santé.</p>
+                <a href="../pages/contact.html" style="display: inline-block !important; background-color: white !important; color: #006400 !important; font-weight: 900 !important; font-size: 1.2rem !important; padding: 12px 30px !important; border: 3px solid #006400 !important; border-radius: 5px !important; text-decoration: none !important; transition: all 0.3s ease !important; box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;">CONTACTEZ-MOI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Coach APA'R</h2>
+                    <p>Activité Physique Adaptée et Nutrition</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="../index.html#hero">Accueil</a></li>
+                            <li><a href="../index.html#about">À propos</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#testimonials">Témoignages</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="coaching-sportif.html">Coaching Sportif</a></li>
+                            <li><a href="conseils-nutritionnels.html">Conseils Nutritionnels</a></li>
+                            <li><a href="activite-physique-adaptee.html">Activité Physique Adaptée</a></li>
+                            <li><a href="contact.html?service=cours-pilates">Cours de Pilates</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Liens Utiles</h3>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">Prendre RDV</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Légal</h3>
+                        <ul>
+                            <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                            <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
+                            <li><a href="cgv.html">CGV</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
+                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les bienfaits de l'activité physique adaptée avec Coach APA'R à Montpellier. Programmes personnalisés pour tous les niveaux et pathologies.">
+    <meta name="keywords" content="activité physique adaptée, APA, coach APA, Montpellier, handicap, maladie chronique, seniors, remise en forme">
+    
+    <meta property="og:title" content="Activité Physique Adaptée - Coach APA'R - Coach APA à Montpellier">
+    <meta property="og:description" content="Découvrez les bienfaits de l'activité physique adaptée avec Coach APA'R à Montpellier. Programmes personnalisés pour tous les niveaux et pathologies.">
+    <meta property="og:image" content="../images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:title" content="Activité Physique Adaptée - Coach APA'R - Coach APA à Montpellier">
+    <meta property="twitter:description" content="Découvrez les bienfaits de l'activité physique adaptée avec Coach APA'R à Montpellier. Programmes personnalisés pour tous les niveaux et pathologies.">
+    <meta property="twitter:image" content="../images/twitter-image.jpg">
+    
+    <title>Activité Physique Adaptée - Coach APA'R - Votre coach APA à Montpellier</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="canonical" href="https://www.coach-apar.fr/pages/activite-physique-adaptee.html">
+    <link rel="icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Styles spécifiques à la page APA */
+        .apa-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            position: relative;
+            background-color: #fff;
+        }
+        
+        .apa-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 2rem;
+            background-color: #fff;
+        }
+        
+        .apa-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            display: block !important;
+        }
+        
+        .apa-intro p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #444 !important;
+            display: block !important;
+        }
+        
+        .diploma-highlight {
+            background: linear-gradient(145deg, #f8f9fe, #f1f1f6);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+            display: block !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .diploma-highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        
+        .diploma-highlight h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: block !important;
+        }
+        
+        .diploma-highlight p {
+            color: #444 !important;
+            display: block !important;
+            margin-bottom: 1.2rem;
+        }
+        
+        .diploma-highlight ul {
+            text-align: left;
+            padding-left: 1.5rem;
+            color: #444 !important;
+            display: block !important;
+        }
+        
+        .diploma-highlight li {
+            margin-bottom: 0.8rem;
+            color: #444 !important;
+            display: block !important;
+            position: relative;
+        }
+        
+        .diploma-highlight li::before {
+            content: "";
+            position: absolute;
+            left: -18px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .target-audience {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            background-color: transparent;
+        }
+        
+        .audience-card {
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            display: block !important;
+        }
+        
+        .audience-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0.8;
+        }
+        
+        .audience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+        
+        .audience-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: block !important;
+            opacity: 0.9;
+        }
+        
+        .audience-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            display: block !important;
+        }
+        
+        .audience-card p {
+            color: #444 !important;
+            line-height: 1.6;
+            display: block !important;
+        }
+        
+        .contact-cta {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 3.5rem;
+            background: linear-gradient(145deg, #f8f9fe, #f0f3fc);
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: block !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .contact-cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(var(--primary-color-rgb), 0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .contact-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: block !important;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-cta p {
+            color: #444 !important;
+            margin-bottom: 1.8rem;
+            display: block !important;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-cta .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            display: inline-block !important;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.2);
+        }
+        
+        .contact-cta .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.3);
+        }
+        
+        /* Séparateurs de section */
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+            margin: 4rem auto;
+            width: 60%;
+            opacity: 0.4;
+            display: block !important;
+            border-radius: 3px;
+        }
+        
+        /* Titre de section avec style amélioré */
+        .section-title {
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 1.2rem;
+            color: var(--primary-color);
+            font-size: 1.9rem;
+            display: block !important;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+            display: block !important;
+        }
+        
+        /* Réinitialiser les animations pour éviter les problèmes */
+        .fade-in, .slide-in-right, .slide-in-left, .stagger-children {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
+            transition: none !important;
+        }
+        
+        /* Assurer que la section entière a un fond et une visibilité correcte */
+        .section {
+            background-color: #fff;
+            position: relative;
+            z-index: 1;
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay de préchargement -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Chargement en cours...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="nav-logo">
+                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                </a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
+                        <li class="nav-item dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
+                                <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
+                                <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
+                                <li><a href="contact.html?service=cours-pilates" class="dropdown-item">Cours de Pilates</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="../index.html#testimonials" class="nav-link">Témoignages</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Activité Physique Adaptée</h1>
+                <p>Une approche personnalisée pour améliorer votre santé et qualité de vie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="apa-container">
+                <div class="apa-intro">
+                    <h2>Qu'est-ce que l'Activité Physique Adaptée ?</h2>
+                    <p>L'Activité Physique Adaptée (APA) est une pratique qui consiste à adapter l'activité physique aux capacités et besoins spécifiques de chaque personne. Elle s'adresse particulièrement aux personnes atteintes de maladies chroniques, en situation de handicap, ou présentant des limitations fonctionnelles.</p>
+                    <p>En tant qu'Enseignant en APA, je conçois et mets en œuvre des programmes d'activités physiques personnalisés, sécurisés et progressifs pour améliorer la santé, l'autonomie et la qualité de vie des personnes dont les capacités sont altérées.</p>
+                    
+                    <div class="diploma-highlight">
+                        <h3>Formation et Expertise</h3>
+                        <p>Je suis titulaire d'un <strong>Master 2 en Activité Physique Adaptée et Santé</strong>, une formation universitaire complète qui m'a permis d'acquérir des compétences approfondies en :</p>
+                        <ul>
+                            <li>Physiologie de l'exercice</li>
+                            <li>Évaluation et suivi des capacités physiques</li>
+                            <li>Adaptation des activités selon les pathologies</li>
+                            <li>Conception de programmes thérapeutiques par l'activité physique</li>
+                            <li>Prévention et réadaptation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <h3 class="section-title">À qui s'adresse l'APA ?</h3>
+                <div class="target-audience">
+                    <div class="audience-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Maladies chroniques</h3>
+                        <p>Personnes atteintes de diabète, maladies cardiovasculaires, obésité, cancers, maladies respiratoires, etc. L'APA contribue à améliorer l'état de santé et à réduire les symptômes.</p>
+                    </div>
+                    <div class="audience-card">
+                        <i class="fas fa-wheelchair"></i>
+                        <h3>Situations de handicap</h3>
+                        <p>Personnes avec handicap moteur, sensoriel, mental ou psychique. L'APA favorise l'inclusion, l'autonomie et le bien-être physique et mental.</p>
+                    </div>
+                    <div class="audience-card">
+                        <i class="fas fa-user-injured"></i>
+                        <h3>Rééducation et réadaptation</h3>
+                        <p>Suite à une blessure, une opération ou une période d'immobilisation. L'APA accompagne la récupération fonctionnelle et le retour à l'activité.</p>
+                    </div>
+                    <div class="audience-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Seniors et perte d'autonomie</h3>
+                        <p>Personnes âgées souhaitant maintenir leurs capacités fonctionnelles et prévenir la dépendance. L'APA contribue au maintien de l'équilibre, de la force et de l'autonomie.</p>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <div class="contact-cta">
+                    <h3>Démarrer votre programme d'Activité Physique Adaptée</h3>
+                    <p>Vous souhaitez améliorer votre condition physique, gérer une maladie chronique ou retrouver de l'autonomie ? Je vous propose un accompagnement personnalisé adapté à vos besoins spécifiques.</p>
+                    <a href="../pages/contact.html?service=activite-physique-adaptee" class="btn btn-primary">Contactez-moi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Coach APA'R</h2>
+                    <p>Activité Physique Adaptée et Réadaptation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="../index.html#hero">Accueil</a></li>
+                            <li><a href="../index.html#about">À propos</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#testimonials">Témoignages</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="coaching-sportif.html">Coaching Sportif</a></li>
+                            <li><a href="conseils-nutritionnels.html">Conseils Nutritionnels</a></li>
+                            <li><a href="activite-physique-adaptee.html">Activité Physique Adaptée</a></li>
+                            <li><a href="contact.html?service=cours-pilates">Cours de Pilates</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Liens Utiles</h3>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#">Prendre RDV</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
+                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 
