@@ -25,6 +25,7 @@
     <title>Coach APA'R - Expert en Activité Physique Adaptée à Montpellier</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styles-optimised.css">
+    <link rel="stylesheet" href="css/transitions.css">
     <link rel="canonical" href="https://www.coach-apar.fr/">
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -39,11 +40,6 @@
             <div class="spinner"></div>
             <p>Chargement en cours...</p>
         </div>
-    </div>
-    
-    <!-- Bannière App en développement -->
-    <div class="app-banner">
-        <p><i class="fas fa-mobile-alt"></i> Application mobile <span class="highlight">bientôt disponible</span> Suivez votre activité physique adaptée facilement !</p>
     </div>
     
     <!-- Header -->
@@ -87,8 +83,18 @@
         </div>
     </section>
 
+    <!-- Bandeau App en développement (repositionné) -->
+    <div class="app-banner">
+        <p>
+            <i class="fas fa-mobile-alt"></i> 
+            Notre application <span class="highlight">APA'R Tracker</span> bientôt disponible !
+            <a href="#contact" class="btn-app">Être notifié <i class="fas fa-bell"></i></a>
+        </p>
+    </div>
+
     <!-- À propos Section - Présentation personnelle et qualifications -->
-    <section id="about" class="section about">
+    <section id="about" class="section about fade-on-scroll">
+        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
         <div class="container">
             <div class="section-header">
                 <h2>À Propos de Moi</h2>
@@ -118,8 +124,11 @@
         </div>
     </section>
 
+    <div class="section-divider fade-on-scroll"></div>
+
     <!-- Témoignages Section - Preuves de légitimité -->
-    <section id="testimonials" class="section testimonials">
+    <section id="testimonials" class="section testimonials fade-on-scroll">
+        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
         <div class="container">
             <div class="section-header">
                 <h2>Témoignages</h2>
@@ -152,83 +161,210 @@
         </div>
     </section>
 
-    <!-- Services Section - Services -->
-    <section id="services" class="section services">
+    <div class="section-divider fade-on-scroll"></div>
+
+    <!-- Services Section - Services avec système de carrousel -->
+    <section id="services" class="section services fade-on-scroll">
+        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
         <div class="container">
             <div class="section-header">
                 <h2>Mes Services</h2>
                 <p>Des programmes adaptés à vos besoins et objectifs</p>
             </div>
-            <div class="services-grid">
-                <!-- Service principal : Activité Physique Adaptée -->
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="images/apa-parasport.jpg" alt="Activité Physique Adaptée">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-heartbeat"></i>
+            
+            <!-- Carrousel des services -->
+            <div class="service-carousel">
+                <button class="carousel-arrow prev" aria-label="Service précédent">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="service-carousel-inner">
+                    <!-- Service 1 : APA -->
+                    <div class="service-slide active" id="service-apa">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="images/apa-parasport.jpg" alt="Activité Physique Adaptée">
+                            </div>
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <h3>Activité Physique Adaptée</h3>
+                                <p>Programmes personnalisés pour personnes avec besoins spécifiques : rééducation, maladies chroniques, seniors. Évaluation complète et exercices adaptés à votre condition.</p>
+                                <div class="service-price">À partir de 55€</div>
+                                <button class="btn-expand" data-service="apa">
+                                    En savoir plus <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="service-details" id="details-apa">
+                                    <h4>Comment se déroule l'APA ?</h4>
+                                    <p>L'Activité Physique Adaptée commence par une évaluation complète de vos capacités et besoins. Cette évaluation permet de créer un programme sur mesure qui évolue avec vos progrès.</p>
+                                    
+                                    <h4>Pour qui ?</h4>
+                                    <ul>
+                                        <li>Personnes en situation de handicap</li>
+                                        <li>Seniors souhaitant maintenir leur autonomie</li>
+                                        <li>Personnes en rééducation post-traumatique ou post-opératoire</li>
+                                        <li>Personnes atteintes de maladies chroniques (diabète, obésité, etc.)</li>
+                                    </ul>
+                                    
+                                    <h4>Les bénéfices</h4>
+                                    <ul>
+                                        <li>Amélioration des capacités fonctionnelles</li>
+                                        <li>Diminution des douleurs chroniques</li>
+                                        <li>Augmentation de l'autonomie</li>
+                                        <li>Renforcement du système immunitaire</li>
+                                    </ul>
+                                    
+                                    <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Activité Physique Adaptée</h3>
-                        <p>Programmes personnalisés pour personnes avec besoins spécifiques : rééducation, maladies chroniques, seniors. Évaluation complète et exercices adaptés à votre condition.</p>
-                        <div class="service-price">À partir de 55€</div>
-                        <a href="#contact" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Service 2 : Coaching Sportif -->
+                    <div class="service-slide" id="service-coaching">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="images/coaching-sportif.jpg" alt="Coaching Sportif">
+                            </div>
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <h3>Coaching Sportif</h3>
+                                <p>Programmes d'entraînement personnalisés adaptés à vos objectifs et à votre condition physique. Séances individuelles ou en petit groupe pour des résultats optimaux.</p>
+                                <div class="service-price">À partir de 50€</div>
+                                <button class="btn-expand" data-service="coaching">
+                                    En savoir plus <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="service-details" id="details-coaching">
+                                    <h4>Mon approche du coaching</h4>
+                                    <p>Je propose un coaching personnalisé qui s'adapte à vos objectifs, qu'il s'agisse de perte de poids, prise de masse musculaire, préparation à une compétition ou simplement amélioration de votre condition physique générale.</p>
+                                    
+                                    <h4>Types de séances</h4>
+                                    <ul>
+                                        <li>Séances individuelles à domicile ou en extérieur</li>
+                                        <li>Coaching en petit groupe (2-4 personnes)</li>
+                                        <li>Programmes à suivre en autonomie avec suivi régulier</li>
+                                    </ul>
+                                    
+                                    <h4>Méthodes d'entraînement</h4>
+                                    <ul>
+                                        <li>Circuit training</li>
+                                        <li>HIIT (High Intensity Interval Training)</li>
+                                        <li>Renforcement musculaire fonctionnel</li>
+                                        <li>Préparation physique spécifique</li>
+                                    </ul>
+                                    
+                                    <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 : Nutrition -->
+                    <div class="service-slide" id="service-nutrition">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="images/Conseils-nutritionnels.webp" alt="Conseils Nutritionnels">
+                            </div>
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <h3>Conseils Nutritionnels</h3>
+                                <p>Recommandations alimentaires personnalisées pour atteindre vos objectifs. Bilan nutritionnel et plans de repas adaptés à votre mode de vie et à vos préférences.</p>
+                                <div class="service-price">À partir de 45€</div>
+                                <button class="btn-expand" data-service="nutrition">
+                                    En savoir plus <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="service-details" id="details-nutrition">
+                                    <h4>Une nutrition adaptée à vos besoins</h4>
+                                    <p>Je vous propose un accompagnement nutritionnel personnalisé qui s'inscrit dans une approche globale de votre santé. L'objectif est de vous aider à adopter de nouvelles habitudes alimentaires saines et durables.</p>
+                                    
+                                    <h4>Le processus</h4>
+                                    <ol>
+                                        <li>Bilan nutritionnel initial (habitudes, préférences, restrictions)</li>
+                                        <li>Définition d'objectifs réalistes</li>
+                                        <li>Création d'un plan alimentaire personnalisé</li>
+                                        <li>Suivi et ajustements réguliers</li>
+                                    </ol>
+                                    
+                                    <h4>Forfaits disponibles</h4>
+                                    <ul>
+                                        <li>Consultation unique avec plan alimentaire</li>
+                                        <li>Pack 3 mois avec suivi bimensuel</li>
+                                        <li>Pack 6 mois avec suivi mensuel et ajustements</li>
+                                    </ul>
+                                    
+                                    <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 : Pilates -->
+                    <div class="service-slide" id="service-pilates">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="images/pilate.jpg" alt="Cours de Pilates">
+                            </div>
+                            <div class="service-content">
+                                <div class="service-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <h3>Cours de Pilates</h3>
+                                <p>Méthode d'entraînement complète qui renforce les muscles profonds et améliore la posture. Idéal pour soulager les douleurs dorsales et améliorer votre conscience corporelle.</p>
+                                <div class="service-price">À partir de 40€</div>
+                                <button class="btn-expand" data-service="pilates">
+                                    En savoir plus <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="service-details" id="details-pilates">
+                                    <h4>Le Pilates, pour qui ?</h4>
+                                    <p>Le Pilates est accessible à tous, quels que soient votre âge ou votre condition physique. Il est particulièrement bénéfique pour les personnes souffrant de douleurs dorsales, les sportifs souhaitant améliorer leurs performances, ou toute personne désireuse d'améliorer sa posture et sa mobilité.</p>
+                                    
+                                    <h4>Les bénéfices du Pilates</h4>
+                                    <ul>
+                                        <li>Renforcement des muscles profonds et de la ceinture abdominale</li>
+                                        <li>Amélioration de la posture et de l'alignement corporel</li>
+                                        <li>Soulagement des douleurs dorsales et articulaires</li>
+                                        <li>Développement de la conscience corporelle</li>
+                                        <li>Amélioration de la souplesse et de la mobilité</li>
+                                    </ul>
+                                    
+                                    <h4>Formats proposés</h4>
+                                    <ul>
+                                        <li>Cours individuels (à domicile ou en cabinet)</li>
+                                        <li>Cours en duo</li>
+                                        <li>Cours en petit groupe (3-5 personnes)</li>
+                                    </ul>
+                                    
+                                    <a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Service secondaire : Coaching Sportif -->
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="images/coaching-sportif.jpg" alt="Coaching Sportif">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-dumbbell"></i>
-                        </div>
-                        <h3>Coaching Sportif</h3>
-                        <p>Programmes d'entraînement personnalisés adaptés à vos objectifs et à votre condition physique. Séances individuelles ou en petit groupe pour des résultats optimaux.</p>
-                        <div class="service-price">À partir de 50€</div>
-                        <a href="#contact" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                <button class="carousel-arrow next" aria-label="Service suivant">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
                 
-                <!-- Service secondaire : Conseils Nutritionnels -->
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="images/Conseils-nutritionnels.webp" alt="Conseils Nutritionnels">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-apple-alt"></i>
-                        </div>
-                        <h3>Conseils Nutritionnels</h3>
-                        <p>Recommandations alimentaires personnalisées pour atteindre vos objectifs. Bilan nutritionnel et plans de repas adaptés à votre mode de vie et à vos préférences.</p>
-                        <div class="service-price">À partir de 45€</div>
-                        <a href="#contact" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Service secondaire : Cours de Pilates -->
-                <div class="service-card fade-in">
-                    <div class="service-image">
-                        <img src="images/pilate.jpg" alt="Cours de Pilates">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <h3>Cours de Pilates</h3>
-                        <p>Méthode d'entraînement complète qui renforce les muscles profonds et améliore la posture. Idéal pour soulager les douleurs dorsales et améliorer votre conscience corporelle.</p>
-                        <div class="service-price">À partir de 40€</div>
-                        <a href="#contact" class="service-link">Prendre rendez-vous <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                <div class="service-carousel-controls">
+                    <button class="carousel-dot active" data-slide="0" aria-label="Service 1"></button>
+                    <button class="carousel-dot" data-slide="1" aria-label="Service 2"></button>
+                    <button class="carousel-dot" data-slide="2" aria-label="Service 3"></button>
+                    <button class="carousel-dot" data-slide="3" aria-label="Service 4"></button>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="section-divider fade-on-scroll"></div>
+
     <!-- Capturer les emails -->
-    <section class="section">
+    <section class="section fade-on-scroll">
+        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
         <div class="container">
             <div class="email-capture">
                 <h3>Recevez mon guide gratuit : "10 exercices adaptés à pratiquer chez soi"</h3>
@@ -241,8 +377,11 @@
         </div>
     </section>
 
+    <div class="section-divider fade-on-scroll"></div>
+
     <!-- Contact Section - Contact/Conversion -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact fade-on-scroll">
+        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
         <div class="container">
             <div class="section-header">
                 <h2>Contactez-moi</h2>
@@ -334,10 +473,10 @@
                     <div class="footer-col">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="#services">Activité Physique Adaptée</a></li>
-                            <li><a href="#services">Coaching Sportif</a></li>
-                            <li><a href="#services">Conseils Nutritionnels</a></li>
-                            <li><a href="#services">Cours de Pilates</a></li>
+                            <li><a href="#services" data-service="0">Activité Physique Adaptée</a></li>
+                            <li><a href="#services" data-service="1">Coaching Sportif</a></li>
+                            <li><a href="#services" data-service="2">Conseils Nutritionnels</a></li>
+                            <li><a href="#services" data-service="3">Cours de Pilates</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -361,5 +500,130 @@
     <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
 
     <script src="js/main.js"></script>
+    <script>
+        // Script pour les nouvelles fonctionnalités
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion des transitions fluides au scroll
+            const fadeElements = document.querySelectorAll('.fade-on-scroll');
+            const dividers = document.querySelectorAll('.section-divider');
+            
+            function checkFadeElements() {
+                fadeElements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+                    
+                    // Vérification si l'élément est visible dans la fenêtre
+                    if(position.top < window.innerHeight * 0.9) {
+                        element.classList.add('visible');
+                    }
+                });
+                
+                dividers.forEach(divider => {
+                    const position = divider.getBoundingClientRect();
+                    
+                    if(position.top < window.innerHeight * 0.9) {
+                        divider.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Vérification initiale et au scroll
+            checkFadeElements();
+            window.addEventListener('scroll', checkFadeElements);
+            
+            // Gestion du carrousel des services
+            const carousel = document.querySelector('.service-carousel-inner');
+            const slides = document.querySelectorAll('.service-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevButton = document.querySelector('.carousel-arrow.prev');
+            const nextButton = document.querySelector('.carousel-arrow.next');
+            let currentSlide = 0;
+            
+            function goToSlide(index) {
+                // Mise à jour de l'index actuel
+                currentSlide = index;
+                
+                // Mise à jour des classes active
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                // Translation du carrousel
+                carousel.style.transform = `translateX(-${index * 100}%)`;
+            }
+            
+            // Événements des boutons de navigation
+            prevButton.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                goToSlide(currentSlide);
+            });
+            
+            nextButton.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                goToSlide(currentSlide);
+            });
+            
+            // Événements des points de navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+            
+            // Navigation vers un service spécifique depuis les liens
+            const serviceLinks = document.querySelectorAll('[data-service]');
+            serviceLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.hasAttribute('data-service')) {
+                        e.preventDefault();
+                        const serviceIndex = parseInt(link.getAttribute('data-service'));
+                        const servicesSection = document.getElementById('services');
+                        
+                        // Scroll jusqu'à la section services
+                        servicesSection.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Changement de slide après un court délai pour laisser le scroll se faire
+                        setTimeout(() => {
+                            goToSlide(serviceIndex);
+                        }, 500);
+                    }
+                });
+            });
+            
+            // Gestion des détails de service (expand/collapse)
+            const expandButtons = document.querySelectorAll('.btn-expand');
+            expandButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const serviceId = button.getAttribute('data-service');
+                    const detailsElement = document.getElementById(`details-${serviceId}`);
+                    
+                    // Toggle de la classe expanded
+                    detailsElement.classList.toggle('expanded');
+                    button.classList.toggle('expanded');
+                });
+            });
+            
+            // Bandeau application (hide on scroll down, show on scroll up)
+            const appBanner = document.querySelector('.app-banner');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Si on défile vers le bas et qu'on a dépassé 200px
+                if (scrollTop > lastScrollTop && scrollTop > 200) {
+                    appBanner.classList.add('hidden');
+                } else {
+                    // Si on défile vers le haut
+                    appBanner.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
 </body>
 </html>
