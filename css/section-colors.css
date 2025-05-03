@@ -1,0 +1,126 @@
+/* Amélioration des couleurs de fond pour mieux distinguer les sections */
+
+/* Variables de couleurs pour les sections */
+:root {
+    --section-color-1: #f7f9fc;  /* Blanc légèrement bleuté */
+    --section-color-2: #f0f7f0;  /* Blanc légèrement verdâtre */
+    --section-color-3: #f7f2ff;  /* Blanc légèrement violacé */
+    --section-divider-height: 8px;
+}
+
+/* Styles de base pour toutes les sections */
+.section {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    z-index: 1;
+    border-top: var(--section-divider-height) solid transparent;
+    border-bottom: var(--section-divider-height) solid transparent;
+}
+
+/* Couleurs alternées pour les sections */
+#about {
+    background-color: var(--section-color-1);
+    border-top-color: rgba(44, 138, 67, 0.1);
+    border-bottom-color: rgba(44, 138, 67, 0.1);
+}
+
+#services {
+    background-color: var(--section-color-2);
+    border-top-color: rgba(44, 138, 67, 0.15);
+    border-bottom-color: rgba(44, 138, 67, 0.15);
+}
+
+#contact {
+    background-color: var(--section-color-3);
+    border-top-color: rgba(44, 138, 67, 0.1);
+    border-bottom-color: rgba(44, 138, 67, 0.1);
+}
+
+/* Séparateurs visuels améliorés entre les sections */
+.section-divider {
+    height: var(--section-divider-height);
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    margin: 0;
+    opacity: 0.4;
+    position: relative;
+    z-index: 5;
+}
+
+/* Indication visuelle du changement de section */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 20px 20px;
+    background-image: radial-gradient(circle, rgba(76, 175, 80, 0.05) 1px, transparent 1px);
+    z-index: -1;
+}
+
+/* Améliorations visuelles des cartes et conteneurs */
+.service-card, .email-capture, .contact-info, .contact-form {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Style pour masquer les sections */
+.section-hidden {
+    display: none !important;
+}
+
+/* Corners arrondis sur les sections */
+.section {
+    position: relative;
+}
+
+.section::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: inherit;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    z-index: 2;
+}
+
+/* Bannière d'application avec couleur plus distincte */
+.app-banner {
+    background: linear-gradient(135deg, #2C8A43, #4CAF50);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ombrages pour créer des effets de profondeur aux sections */
+.section {
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.02), inset 0 -5px 15px rgba(0, 0, 0, 0.02);
+}
+
+/* Indication visuelle "sticky" pour identifier la section courante */
+.section-indicator {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+.section-indicator-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.section-indicator-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.3);
+}
