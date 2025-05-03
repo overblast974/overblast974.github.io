@@ -1,0 +1,46 @@
+/* Effets améliorés pour les boutons */
+
+/* Effet amélioré pour le bouton Retour en haut */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#backToTop:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(44, 138, 67, 0.4);
+}
+
+#backToTop:active {
+    transform: translateY(-3px) scale(0.95);
+}
+
+#backToTop i {
+    transition: transform 0.3s ease;
+}
+
+#backToTop:hover i {
+    transform: translateY(-3px);
+}
