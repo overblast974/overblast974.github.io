@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styles-optimised.css">
     <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/section-colors.css">
     <link rel="canonical" href="https://www.coach-apar.fr/">
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -40,6 +41,14 @@
             <div class="spinner"></div>
             <p>Chargement en cours...</p>
         </div>
+    </div>
+    
+    <!-- Indicateur de section (navigation verticale) -->
+    <div class="section-indicator">
+        <a href="#hero" class="section-indicator-dot active" data-section="hero" aria-label="Accueil"></a>
+        <a href="#about" class="section-indicator-dot" data-section="about" aria-label="À propos"></a>
+        <a href="#services" class="section-indicator-dot" data-section="services" aria-label="Services"></a>
+        <a href="#contact" class="section-indicator-dot" data-section="contact" aria-label="Contact"></a>
     </div>
     
     <!-- Header -->
@@ -59,7 +68,6 @@
                         <li class="nav-item active"><a href="#hero" class="nav-link">Accueil</a></li>
                         <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
                         <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="#testimonials" class="nav-link">Témoignages</a></li>
                         <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
                 </div>
@@ -126,8 +134,8 @@
 
     <div class="section-divider fade-on-scroll"></div>
 
-    <!-- Témoignages Section - Preuves de légitimité -->
-    <section id="testimonials" class="section testimonials fade-on-scroll">
+    <!-- Témoignages Section - MASQUÉE -->
+    <!-- <section id="testimonials" class="section testimonials fade-on-scroll section-hidden">
         <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
         <div class="container">
             <div class="section-header">
@@ -159,9 +167,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="section-divider fade-on-scroll"></div>
+    </section> -->
 
     <!-- Services Section - Services avec système de carrousel -->
     <section id="services" class="section services fade-on-scroll">
@@ -466,7 +472,6 @@
                             <li><a href="#hero">Accueil</a></li>
                             <li><a href="#about">À propos</a></li>
                             <li><a href="#services">Services</a></li>
-                            <li><a href="#testimonials">Témoignages</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
@@ -506,6 +511,27 @@
             // Gestion des transitions fluides au scroll
             const fadeElements = document.querySelectorAll('.fade-on-scroll');
             const dividers = document.querySelectorAll('.section-divider');
+            const sectionDots = document.querySelectorAll('.section-indicator-dot');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Fonction pour vérifier quelle section est visible
+            function checkActiveSection() {
+                const scrollPosition = window.scrollY + window.innerHeight / 3;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        // Mettre à jour l'indicateur de section
+                        sectionDots.forEach(dot => {
+                            const dotSection = dot.getAttribute('data-section');
+                            dot.classList.toggle('active', dotSection === sectionId);
+                        });
+                    }
+                });
+            }
             
             function checkFadeElements() {
                 fadeElements.forEach(element => {
@@ -528,7 +554,11 @@
             
             // Vérification initiale et au scroll
             checkFadeElements();
-            window.addEventListener('scroll', checkFadeElements);
+            checkActiveSection();
+            window.addEventListener('scroll', function() {
+                checkFadeElements();
+                checkActiveSection();
+            });
             
             // Gestion du carrousel des services
             const carousel = document.querySelector('.service-carousel-inner');
