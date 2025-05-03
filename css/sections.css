@@ -1,328 +1,488 @@
-/* Styles pour rendre les sections plus distinctes visuellement */
+/* CSS pour améliorer la distinction entre sections */
 
-/* Reset des styles de sections du fichier transitions.css */
-.section:nth-child(odd),
-.section:nth-child(even) {
-    background-color: transparent;
+/* Styles de base pour toutes les sections */
+.section {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(44, 138, 67, 0.1);
 }
 
-/* Modification des séparateurs entre sections */
-.section-divider {
+/* Alternance des arrière-plans pour mieux distinguer les sections */
+.section:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.section:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* Ajout d'un effet de vague entre les sections */
+.section-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
     height: 50px;
-    position: relative;
-    background: transparent;
-    margin: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%232C8A43"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%232C8A43"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%232C8A43"/></svg>');
+    background-size: cover;
     z-index: 5;
-    overflow: visible;
+    transform: rotate(180deg);
+}
+
+/* Effet d'ombre pour chaque section */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.03), transparent);
+    z-index: 1;
+}
+
+/* Titre de section avec style distinctif */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.section-header h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1.5rem;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.section-header h2::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transform: translateX(-50%);
+}
+
+.section-header p {
+    color: #555;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Badge de section pour une meilleure identification visuelle */
+.section-badge {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    display: inline-block;
+    box-shadow: 0 3px 10px rgba(44, 138, 67, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Séparateur visuel entre les sections */
+.section-divider {
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(44, 138, 67, 0.05), rgba(44, 138, 67, 0.0));
 }
 
 .section-divider::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-    transform: translateY(-50%);
-    width: 0;
-    margin: 0 auto;
-    transition: width 1s ease-in-out;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
-.section-divider.visible::before {
-    width: 60%;
+.section-divider i {
+    position: relative;
+    z-index: 2;
+    color: var(--primary-color);
+    font-size: 1.5rem;
 }
 
-.section-divider::after {
+/* Styles pour les cartes de service agrandies */
+.service-card {
+    height: 100%;
+    min-height: 450px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.service-image {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-image::after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    transition: transform 1s ease;
-}
-
-.section-divider.visible::after {
-    transform: translate(-50%, -50%) rotate(0deg);
-}
-
-/* Style distinctif pour chaque section */
-#about {
-    background-color: #f9f9f9;
-    background-image: 
-        radial-gradient(circle at 10% 10%, rgba(44, 138, 67, 0.05) 0%, transparent 70%),
-        linear-gradient(to bottom right, rgba(44, 138, 67, 0.02) 0%, rgba(139, 195, 74, 0.05) 100%);
-    position: relative;
-    z-index: 1;
-    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05), inset 0 -5px 15px rgba(0, 0, 0, 0.05);
-}
-
-#testimonials {
-    display: none; /* Masquer temporairement la section témoignages */
-}
-
-#services {
-    background-color: #f1f8f2;
-    background-image: 
-        linear-gradient(135deg, rgba(44, 138, 67, 0.03) 0%, rgba(139, 195, 74, 0.07) 100%),
-        url('../images/bg-pattern.png');
-    background-repeat: repeat;
-    position: relative;
-    z-index: 1;
-    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05), inset 0 -5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* Section email capture avec style distinctif */
-.email-section {
-    background-color: #ffffff;
-    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     z-index: 1;
 }
 
-#contact {
-    background-color: #f5f9f5;
-    background-image: 
-        radial-gradient(circle at 90% 90%, rgba(44, 138, 67, 0.05) 0%, transparent 70%),
-        linear-gradient(to bottom left, rgba(44, 138, 67, 0.02) 0%, rgba(139, 195, 74, 0.05) 100%);
-    position: relative;
-    z-index: 1;
-    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* Styles améliorés pour les services */
-.service-carousel {
-    margin: 4rem 0;
-}
-
-.service-carousel-inner {
-    padding: 2rem 0;
-}
-
-.service-slide {
-    padding: 0 2rem;
-    transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
-    filter: blur(2px);
-}
-
-.service-slide.active {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-}
-
-/* Agrandissement des cartes de service */
-.service-card {
-    max-width: 900px;
-    margin: 0 auto;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    overflow: hidden;
-    transform: translateY(0);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.service-slide .service-image {
-    height: 300px;
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
 .service-content {
-    padding: 2.5rem;
+    padding: 1.8rem;
+    position: relative;
+}
+
+.service-badge {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
 .service-icon {
     width: 70px;
     height: 70px;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-}
-
-.service-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-}
-
-.service-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-}
-
-.service-price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    display: inline-block;
     background-color: rgba(44, 138, 67, 0.1);
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-expand {
-    font-size: 1.1rem;
-    padding: 0.8rem 0;
-    margin-top: 1rem;
+.service-card:hover .service-icon {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
 }
 
-/* Amélioration des détails de service */
+.service-carousel-inner .service-slide {
+    padding: 1.5rem;
+}
+
+/* Amélioration des détails des services */
 .service-details {
     background-color: #f9f9f9;
     border-radius: 10px;
-    margin-top: 2rem;
-    border-left: 4px solid var(--primary-color);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, padding 0.6s ease, margin 0.6s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
 }
 
 .service-details.expanded {
-    padding: 2.5rem;
+    max-height: 2000px;
+    padding: 2rem;
+    margin-top: 1.5rem;
 }
 
 .service-details h4 {
     color: var(--primary-color);
-    font-size: 1.4rem;
-    margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
     border-bottom: 1px solid rgba(44, 138, 67, 0.2);
+    padding-bottom: 0.5rem;
 }
 
-.service-details h4:first-child {
-    margin-top: 0;
-}
-
-.service-details p {
-    margin-bottom: 1.5rem;
-}
-
-.service-details ul,
-.service-details ol {
+.service-details ul, .service-details ol {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
 }
 
 .service-details li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     position: relative;
 }
 
 .service-details ul li::before {
     content: '✓';
     color: var(--primary-color);
-    font-weight: bold;
-    margin-right: 0.5rem;
     position: absolute;
-    left: -1.5rem;
+    left: -1.2rem;
+    font-weight: bold;
 }
 
 .service-details .btn {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
-/* Informations sur les tarifs */
-.pricing-table {
-    width: 100%;
-    margin: 1.5rem 0;
-    border-collapse: collapse;
-}
-
-.pricing-table th,
-.pricing-table td {
-    padding: 1rem;
-    text-align: left;
-}
-
-.pricing-table th {
-    background-color: rgba(44, 138, 67, 0.1);
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.pricing-table tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-.pricing-tag {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-/* Amélioration des contrôles du carrousel */
-.carousel-arrow {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-}
-
-.carousel-arrow:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.carousel-dot {
-    width: 15px;
-    height: 15px;
-    margin: 0 8px;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    transform: scale(1.3);
-}
-
-/* Style pour les caractéristiques des services */
-.features-list {
+/* Grille de prix pour les services */
+.pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.feature-item {
+@media (min-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.pricing-card {
     background-color: white;
-    padding: 1.5rem;
     border-radius: 10px;
+    padding: 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(44, 138, 67, 0.1);
 }
 
-.feature-item:hover {
+.pricing-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.feature-icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+.pricing-card.featured {
+    border: 2px solid var(--primary-color);
 }
 
-.feature-title {
+.pricing-card.featured::before {
+    content: 'Populaire';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.pricing-name {
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
 }
 
-.feature-desc {
-    font-size: 0.9rem;
-    color: #777;
+.pricing-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-/* Effet de profondeur pour footer */
-.footer {
-    box-shadow: inset 0 15px 15px -15px rgba(0, 0, 0, 0.1);
+.pricing-features {
+    margin-bottom: 1.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.pricing-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* Effet spécial pour le carrousel */
+.service-carousel {
+    position: relative;
+    margin: 3rem 0;
+    overflow: visible;
+}
+
+.service-carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.service-slide {
+    min-width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    opacity: 0.5;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    filter: grayscale(30%);
+}
+
+.service-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: grayscale(0%);
+}
+
+/* Mise à jour des contrôles de carrousel */
+.carousel-arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.carousel-arrow:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    left: -15px;
+}
+
+.carousel-arrow.next {
+    right: -15px;
+}
+
+/* Mise à jour des points de navigation du carrousel */
+.service-carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carousel-dot::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.carousel-dot.active::before {
+    opacity: 1;
+}
+
+.carousel-dot:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Effet de progression pour le carrousel */
+.carousel-progress {
+    height: 4px;
+    background-color: #eee;
+    border-radius: 2px;
+    margin-top: 1.5rem;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Styles adaptés pour mieux fonctionner avec transitions.css */
+.section {
+    position: relative;
+    transition: background-color 0.8s ease;
+}
+
+/* Effet de superposition en dégradé pour adoucir les transitions */
+.section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+    z-index: 5;
+    pointer-events: none;
 }
