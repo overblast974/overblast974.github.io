@@ -1,0 +1,217 @@
+/* CSS pour les transitions entre sections et fonds dynamiques
+   Ajouté pour améliorer l'expérience utilisateur et l'esthétique du site
+   Date: 3 mai 2025
+*/
+
+/* Séparateurs visuels entre les sections */
+.section-divider {
+    position: relative;
+    height: 100px;
+    margin-top: -50px;
+    margin-bottom: -50px;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.section-divider.wave {
+    background-image: url('../images/wave-divider.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+.section-divider.angle {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    background: var(--primary-color);
+    opacity: 0.1;
+}
+
+.section-divider.angle-inverse {
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    background: var(--accent-color);
+    opacity: 0.1;
+}
+
+/* Transitions fluides lors du défilement */
+.section {
+    position: relative;
+    transition: background-color 0.5s ease;
+    padding: 4rem 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Fonds dynamiques avec motifs et textures */
+.section.primary-bg {
+    background-color: rgba(44, 138, 67, 0.05);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(44, 138, 67, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 20%);
+}
+
+.section.secondary-bg {
+    background-color: rgba(76, 175, 80, 0.05);
+    background-image: 
+        linear-gradient(45deg, rgba(76, 175, 80, 0.03) 25%, transparent 25%, transparent 75%, rgba(76, 175, 80, 0.03) 75%),
+        linear-gradient(-45deg, rgba(76, 175, 80, 0.03) 25%, transparent 25%, transparent 75%, rgba(76, 175, 80, 0.03) 75%);
+    background-size: 60px 60px;
+}
+
+.section.accent-bg {
+    background-color: rgba(139, 195, 74, 0.05);
+    background-image: 
+        linear-gradient(30deg, rgba(139, 195, 74, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(139, 195, 74, 0.05) 87.5%, rgba(139, 195, 74, 0.05)),
+        linear-gradient(150deg, rgba(139, 195, 74, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(139, 195, 74, 0.05) 87.5%, rgba(139, 195, 74, 0.05)),
+        linear-gradient(30deg, rgba(139, 195, 74, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(139, 195, 74, 0.05) 87.5%, rgba(139, 195, 74, 0.05)),
+        linear-gradient(150deg, rgba(139, 195, 74, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(139, 195, 74, 0.05) 87.5%, rgba(139, 195, 74, 0.05));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+}
+
+.section.light-bg {
+    background-color: #fff;
+    background-image: 
+        linear-gradient(rgba(44, 138, 67, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44, 138, 67, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Effet de parallaxe léger */
+.section.parallax {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.parallax-layer.background {
+    transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer.foreground {
+    transform: translateZ(0);
+}
+
+/* Motifs géométriques animés */
+.geometric-pattern {
+    position: absolute;
+    opacity: 0.15;
+    transition: transform 0.5s ease;
+}
+
+.geometric-pattern.circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+}
+
+.geometric-pattern.square {
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--accent-color);
+    transform: rotate(45deg);
+}
+
+.geometric-pattern.triangle {
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 260px solid var(--secondary-color);
+    opacity: 0.08;
+}
+
+/* Animation pour les motifs géométriques */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.15;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+}
+
+.geometric-pattern.floating {
+    animation: float 15s ease-in-out infinite;
+}
+
+.geometric-pattern.pulsing {
+    animation: pulse 10s ease-in-out infinite;
+}
+
+/* Curseur personnalisé sur les sections (effet visuel léger) */
+.section.with-cursor {
+    cursor: url('../images/custom-cursor.png'), auto;
+}
+
+/* Effets de survol pour les transitions de section */
+.section:hover .morphing-shape {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Transitions plus douces pour les morphing shapes existantes */
+.morphing-shape {
+    transition: transform 0.8s ease, opacity 0.5s ease;
+}
+
+/* SVG waves pour séparateurs */
+.wave-separator {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 10;
+}
+
+.wave-separator svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 75px;
+}
+
+.wave-separator .shape-fill {
+    fill: #FFFFFF;
+}
+
+.wave-separator.inverted .shape-fill {
+    fill: var(--primary-color);
+    opacity: 0.05;
+}
+
+/* Pour les sections qui ont besoin d'un padding spécifique avec les nouveaux séparateurs */
+.section.with-separator {
+    padding-bottom: 7rem;
+}
+
+.section.after-separator {
+    padding-top: 7rem;
+}
