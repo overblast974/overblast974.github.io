@@ -1,0 +1,255 @@
+/* Styles pour différencier clairement les sections */
+
+/* Styles de base pour toutes les sections */
+.section {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Différenciation des sections par couleur */
+.section.about {
+    background-color: #f8fcf8; /* Légère teinte verdâtre très pâle */
+    position: relative;
+}
+
+.section.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    opacity: 0.6;
+}
+
+.section.testimonials {
+    display: none; /* Masquer temporairement comme demandé */
+}
+
+.section.services {
+    background-color: #f0f8f0; /* Fond vert très pâle */
+    position: relative;
+}
+
+.section.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+    opacity: 0.6;
+}
+
+.section-email-capture {
+    background-color: white;
+}
+
+.section.contact {
+    background-color: #f5f9f5; /* Fond légèrement verdâtre */
+    position: relative;
+}
+
+.section.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+    opacity: 0.6;
+}
+
+/* Amélioration des dividers entre sections */
+.section-divider {
+    height: 30px;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+}
+
+/* Styles pour les cartes de service agrandies */
+.service-carousel {
+    margin: 4rem 0;
+}
+
+.service-card {
+    margin: 0 auto;
+    max-width: 95%;
+    min-height: 600px; /* Hauteur minimale augmentée */
+    display: flex;
+    flex-direction: column;
+}
+
+.service-image {
+    height: 300px; /* Hauteur augmentée */
+}
+
+.service-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.service-icon {
+    width: 80px; /* Taille augmentée */
+    height: 80px;
+    margin-top: -60px; /* Position négative pour chevaucher l'image */
+    margin-bottom: 1.5rem;
+    border: 5px solid white;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 2rem;
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.service-details {
+    padding: 0 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.service-details.expanded {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.service-details h4 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.3rem;
+}
+
+.service-details h4:first-child {
+    margin-top: 0;
+}
+
+.service-options {
+    margin-top: 2rem;
+    background-color: rgba(44, 138, 67, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.service-options h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.price-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.price-option:last-child {
+    border-bottom: none;
+}
+
+.price-option-title {
+    font-weight: 600;
+}
+
+.price-option-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+}
+
+.price-option-value {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.best-value {
+    position: relative;
+}
+
+.best-value::after {
+    content: 'Meilleure valeur';
+    position: absolute;
+    top: -10px;
+    right: 0;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2px 12px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Améliorations pour la section email capture */
+.email-capture {
+    padding: 3rem;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #f5f9f5, #ffffff);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.email-capture::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(44, 138, 67, 0.05);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.email-capture::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(44, 138, 67, 0.05);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.email-capture h3 {
+    font-size: 1.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.email-capture p {
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.email-form {
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+}
