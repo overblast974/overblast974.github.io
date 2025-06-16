@@ -1,0 +1,42 @@
+# Performance optimizations for GitHub Pages
+
+# Cache static resources
+<filesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot)$">
+  ExpiresActive On
+  ExpiresDefault "access plus 1 year"
+  Header append Cache-Control "public"
+</filesMatch>
+
+# Cache HTML files
+<filesMatch "\.(html|htm)$">
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  Header append Cache-Control "public"
+</filesMatch>
+
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Enable HTTP/2 push
+<IfModule mod_http2.c>
+  H2PushResource /css/styles-optimized.css
+  H2PushResource /js/main-optimized.js
+  H2PushResource /images/logo.png
+</IfModule>
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Preload resources
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Link "</css/styles-optimized.css>; rel=preload; as=style"
+    Header append Link "</js/main-optimized.js>; rel=preload; as=script"
+    Header append Link "</images/logo.png>; rel=preload; as=image"
+  </FilesMatch>
+</IfModule>
