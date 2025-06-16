@@ -23,10 +23,8 @@
     <meta property="twitter:image" content="images/twitter-image.jpg">
     
     <title>Coach APA'R - Expert en Activité Physique Adaptée à Montpellier</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/styles-optimised.css">
-    <link rel="stylesheet" href="css/transitions.css">
-    <link rel="stylesheet" href="css/section-colors.css">
+    <!-- CSS consolidé pour performance optimale -->
+    <link rel="stylesheet" href="css/styles-final.css">
     <link rel="canonical" href="https://www.coach-apar.fr/">
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -77,8 +75,6 @@
 
     <!-- Hero Section - Promesse claire et émotionnelle -->
     <section id="hero" class="hero">
-        <div class="particles-container" id="particles"></div>
-        <img src="images/hero-bg.jpg" alt="Activité physique adaptée" class="hero-image">
         <div class="hero-content">
             <h1>
                 <span class="title-start">COACH APA'R</span>
@@ -91,7 +87,7 @@
         </div>
     </section>
 
-    <!-- Bandeau App en développement (repositionné) -->
+    <!-- Bandeau App en développement -->
     <div class="app-banner">
         <p>
             <i class="fas fa-mobile-alt"></i> 
@@ -100,9 +96,9 @@
         </p>
     </div>
 
-    <!-- À propos Section - Présentation personnelle et qualifications -->
+    <!-- À propos Section -->
     <section id="about" class="section about fade-on-scroll">
-        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
+        <div class="parallax-bg"></div>
         <div class="container">
             <div class="section-header">
                 <h2>À Propos de Moi</h2>
@@ -134,44 +130,9 @@
 
     <div class="section-divider fade-on-scroll"></div>
 
-    <!-- Témoignages Section - MASQUÉE -->
-    <!-- <section id="testimonials" class="section testimonials fade-on-scroll section-hidden">
-        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
-        <div class="container">
-            <div class="section-header">
-                <h2>Témoignages</h2>
-                <p>Découvrez les résultats obtenus par mes clients</p>
-            </div>
-            <div class="testimonial-container">
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="images/testimonial-1.jpg" alt="Témoignage de Marie">
-                    </div>
-                    <div class="testimonial-content">
-                        <p>Après des années de sédentarité et plusieurs échecs dans des salles de sport, j'ai enfin trouvé le bon accompagnement. L'approche adaptée a fait toute la différence. Je me sens plus énergique et confiante.</p>
-                        <div class="testimonial-author">Marie, 42 ans</div>
-                        <div class="testimonial-info">Suivi depuis 6 mois</div>
-                        <div class="testimonial-results">Résultats : -8kg et réduction des douleurs dorsales</div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="images/testimonial-2.jpg" alt="Témoignage de Thomas">
-                    </div>
-                    <div class="testimonial-content">
-                        <p>Suite à mon accident, j'avais perdu confiance dans mes capacités physiques. Grâce au programme d'APA personnalisé, j'ai retrouvé ma mobilité et repris le sport, ce que je pensais impossible.</p>
-                        <div class="testimonial-author">Thomas, 35 ans</div>
-                        <div class="testimonial-info">Réadaptation post-traumatique</div>
-                        <div class="testimonial-results">Résultats : Retour à l'activité sportive après 1 an d'arrêt</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Services Section - Services avec système de carrousel -->
+    <!-- Services Section -->
     <section id="services" class="section services fade-on-scroll">
-        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
+        <div class="parallax-bg"></div>
         <div class="container">
             <div class="section-header">
                 <h2>Mes Services</h2>
@@ -370,7 +331,7 @@
 
     <!-- Capturer les emails -->
     <section class="section fade-on-scroll">
-        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
+        <div class="parallax-bg"></div>
         <div class="container">
             <div class="email-capture">
                 <h3>Recevez mon guide gratuit : "10 exercices adaptés à pratiquer chez soi"</h3>
@@ -385,9 +346,9 @@
 
     <div class="section-divider fade-on-scroll"></div>
 
-    <!-- Contact Section - Contact/Conversion -->
+    <!-- Contact Section -->
     <section id="contact" class="section contact fade-on-scroll">
-        <div class="parallax-bg" style="background-image: url('images/bg-pattern.png');"></div>
+        <div class="parallax-bg"></div>
         <div class="container">
             <div class="section-header">
                 <h2>Contactez-moi</h2>
@@ -504,17 +465,43 @@
     <!-- Bouton retour en haut -->
     <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="js/main.js"></script>
+    <!-- JavaScript optimisé -->
     <script>
-        // Script pour les nouvelles fonctionnalités
         document.addEventListener('DOMContentLoaded', function() {
-            // Gestion des transitions fluides au scroll
+            // Préchargeur
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', function() {
+                preloader.classList.add('loaded');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            });
+
+            // Navigation mobile
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+
+            // Scroll smooth pour les liens ancre
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Animations au scroll
             const fadeElements = document.querySelectorAll('.fade-on-scroll');
             const dividers = document.querySelectorAll('.section-divider');
             const sectionDots = document.querySelectorAll('.section-indicator-dot');
             const sections = document.querySelectorAll('section[id]');
             
-            // Fonction pour vérifier quelle section est visible
             function checkActiveSection() {
                 const scrollPosition = window.scrollY + window.innerHeight / 3;
                 
@@ -524,7 +511,6 @@
                     const sectionId = section.getAttribute('id');
                     
                     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        // Mettre à jour l'indicateur de section
                         sectionDots.forEach(dot => {
                             const dotSection = dot.getAttribute('data-section');
                             dot.classList.toggle('active', dotSection === sectionId);
@@ -537,7 +523,6 @@
                 fadeElements.forEach(element => {
                     const position = element.getBoundingClientRect();
                     
-                    // Vérification si l'élément est visible dans la fenêtre
                     if(position.top < window.innerHeight * 0.9) {
                         element.classList.add('visible');
                     }
@@ -552,7 +537,6 @@
                 });
             }
             
-            // Vérification initiale et au scroll
             checkFadeElements();
             checkActiveSection();
             window.addEventListener('scroll', function() {
@@ -560,7 +544,7 @@
                 checkActiveSection();
             });
             
-            // Gestion du carrousel des services
+            // Carrousel des services
             const carousel = document.querySelector('.service-carousel-inner');
             const slides = document.querySelectorAll('.service-slide');
             const dots = document.querySelectorAll('.carousel-dot');
@@ -569,10 +553,8 @@
             let currentSlide = 0;
             
             function goToSlide(index) {
-                // Mise à jour de l'index actuel
                 currentSlide = index;
                 
-                // Mise à jour des classes active
                 slides.forEach((slide, i) => {
                     slide.classList.toggle('active', i === index);
                 });
@@ -581,11 +563,9 @@
                     dot.classList.toggle('active', i === index);
                 });
                 
-                // Translation du carrousel
                 carousel.style.transform = `translateX(-${index * 100}%)`;
             }
             
-            // Événements des boutons de navigation
             prevButton.addEventListener('click', () => {
                 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
                 goToSlide(currentSlide);
@@ -596,14 +576,13 @@
                 goToSlide(currentSlide);
             });
             
-            // Événements des points de navigation
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     goToSlide(index);
                 });
             });
             
-            // Navigation vers un service spécifique depuis les liens
+            // Navigation vers service spécifique
             const serviceLinks = document.querySelectorAll('[data-service]');
             serviceLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
@@ -612,10 +591,8 @@
                         const serviceIndex = parseInt(link.getAttribute('data-service'));
                         const servicesSection = document.getElementById('services');
                         
-                        // Scroll jusqu'à la section services
                         servicesSection.scrollIntoView({ behavior: 'smooth' });
                         
-                        // Changement de slide après un court délai pour laisser le scroll se faire
                         setTimeout(() => {
                             goToSlide(serviceIndex);
                         }, 500);
@@ -623,35 +600,47 @@
                 });
             });
             
-            // Gestion des détails de service (expand/collapse)
+            // Gestion des détails de service
             const expandButtons = document.querySelectorAll('.btn-expand');
             expandButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const serviceId = button.getAttribute('data-service');
                     const detailsElement = document.getElementById(`details-${serviceId}`);
                     
-                    // Toggle de la classe expanded
                     detailsElement.classList.toggle('expanded');
                     button.classList.toggle('expanded');
                 });
             });
             
-            // Bandeau application (hide on scroll down, show on scroll up)
+            // Bannière application
             const appBanner = document.querySelector('.app-banner');
             let lastScrollTop = 0;
             
             window.addEventListener('scroll', () => {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
-                // Si on défile vers le bas et qu'on a dépassé 200px
                 if (scrollTop > lastScrollTop && scrollTop > 200) {
                     appBanner.classList.add('hidden');
                 } else {
-                    // Si on défile vers le haut
                     appBanner.classList.remove('hidden');
                 }
                 
                 lastScrollTop = scrollTop;
+            });
+
+            // Bouton retour en haut
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     </script>
