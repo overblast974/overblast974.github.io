@@ -1,0 +1,329 @@
+/* ==========================================================================
+   RESPONSIVE FIXES - Phase 3.2 Multi-Device Optimization
+   ========================================================================== */
+
+/* Améliorations spécifiques par device */
+
+/* ==========================================================================
+   MOBILE FIRST APPROACH - iPhone/Android
+   ========================================================================== */
+
+/* Base mobile (320px - 480px) */
+@media (max-width: 480px) {
+    /* Header mobile optimisé */
+    .nav-logo img {
+        height: 140px !important;
+        margin-top: -40px !important;
+        margin-bottom: -40px !important;
+        margin-left: -60px !important;
+    }
+    
+    /* Navigation mobile améliorée */
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 70px);
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-start;
+        padding: 2rem 0;
+        gap: 0;
+    }
+    
+    .nav-item {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .nav-link {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Hero section mobile */
+    .hero {
+        min-height: 90vh;
+        padding-top: 70px;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .hero .title-start {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero .typed-text {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        line-height: 1.5;
+    }
+    
+    /* Services grid mobile */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        margin: 0;
+        border-radius: 8px;
+    }
+    
+    .service-image {
+        height: 180px;
+    }
+    
+    /* Contact form mobile */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Évite le zoom sur iOS */
+        padding: 14px;
+    }
+    
+    /* Footer mobile */
+    .footer-content {
+        text-align: center;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   TABLETTE - iPad/Android (481px - 768px)
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Header tablette */
+    .nav-logo img {
+        height: 160px;
+        margin-top: -50px;
+        margin-bottom: -50px;
+        margin-left: -70px;
+    }
+    
+    /* Navigation tablette */
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+    }
+    
+    /* Hero tablette */
+    .hero .title-start {
+        font-size: 3rem;
+    }
+    
+    .hero .typed-text {
+        font-size: 2.5rem;
+    }
+    
+    /* Services grid tablette */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    /* Contact tablette */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    /* Footer tablette */
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================================================
+   DESKTOP SMALL (769px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .nav-logo img {
+        height: 180px;
+        margin-left: -80px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+/* ==========================================================================
+   DESKTOP MEDIUM (1025px - 1366px)
+   ========================================================================== */
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .nav-logo img {
+        height: 200px;
+        margin-left: -90px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* ==========================================================================
+   DESKTOP LARGE (1367px+)
+   ========================================================================== */
+
+@media (min-width: 1367px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .nav-logo img {
+        height: 220px;
+        margin-left: -100px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3.5rem;
+    }
+    
+    .hero .title-start {
+        font-size: 5rem;
+    }
+    
+    .hero .typed-text {
+        font-size: 4rem;
+    }
+}
+
+/* ==========================================================================
+   FIXES NAVIGATEURS SPÉCIFIQUES
+   ========================================================================== */
+
+/* Safari iOS fixes */
+@supports (-webkit-appearance: none) {
+    .hero {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+    
+    .form-group select {
+        -webkit-appearance: menulist;
+    }
+}
+
+/* Firefox fixes */
+@-moz-document url-prefix() {
+    .service-card {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Edge/IE fixes */
+@supports (-ms-ime-align: auto) {
+    .grid {
+        display: -ms-grid;
+    }
+}
+
+/* ==========================================================================
+   PERFORMANCE MOBILE
+   ========================================================================== */
+
+/* Optimisations pour connexions lentes */
+@media (max-width: 768px) {
+    /* Désactiver animations lourdes sur mobile */
+    .morphing-shape {
+        animation: none !important;
+    }
+    
+    /* Particules désactivées sur mobile */
+    .particles-container {
+        display: none;
+    }
+    
+    /* Réduire les effets de parallaxe */
+    .hero::before {
+        animation: none;
+    }
+}
+
+/* ==========================================================================
+   ACCESSIBILITÉ MOBILE
+   ========================================================================== */
+
+/* Améliorer les zones de touch */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+    
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .service-link {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+/* Mode paysage mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 70vh;
+    }
+    
+    .nav-menu {
+        height: calc(100vh - 60px);
+    }
+}
