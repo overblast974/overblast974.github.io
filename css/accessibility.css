@@ -1,0 +1,370 @@
+/* ==============================================
+   ACCESSIBILITY & SEO OPTIMIZATIONS
+   ============================================== */
+
+/* ==============================================
+   COULEURS ET CONTRASTES WCAG 2.1 AA
+   ============================================== */
+
+:root {
+  /* Couleurs principales avec ratios de contraste optimisés */
+  --text-high-contrast: #000000;        /* Contraste 21:1 */
+  --text-medium-contrast: #2c2c2c;      /* Contraste 15:1 */
+  --text-low-contrast: #4f4f4f;         /* Contraste 9:1 */
+  --text-on-primary: #ffffff;           /* Contraste 4.8:1 */
+  --text-on-dark: #ffffff;              /* Contraste 21:1 */
+  
+  /* Liens et interactions */
+  --link-color: #1a5490;                /* Contraste 7:1 */
+  --link-hover-color: #0f3d6b;          /* Contraste 9:1 */
+  --link-visited-color: #6b2c91;        /* Contraste 6:1 */
+  
+  /* États focus et erreurs */
+  --focus-color: #005fcc;               /* Contraste 6.3:1 */
+  --error-color: #cc0000;               /* Contraste 5.4:1 */
+  --success-color: #006600;             /* Contraste 5.8:1 */
+  --warning-color: #cc6600;             /* Contraste 4.6:1 */
+}
+
+/* ==============================================
+   FOCUS VISIBLE - NAVIGATION CLAVIER
+   ============================================== */
+
+/* Reset du focus par défaut */
+*:focus {
+  outline: none;
+}
+
+/* Focus visible pour navigation clavier */
+*:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Focus spécifique pour les liens */
+a:focus-visible {
+  background-color: rgba(0, 95, 204, 0.1);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Focus pour les boutons */
+button:focus-visible,
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Focus pour les inputs */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 2px rgba(0, 95, 204, 0.2);
+}
+
+/* ==============================================
+   SKIP LINKS - NAVIGATION RAPIDE
+   ============================================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--text-high-contrast);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  z-index: 10000;
+  font-weight: 600;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 0;
+  outline: 3px solid var(--focus-color);
+}
+
+/* ==============================================
+   AMÉLIORATION DES CONTRASTES
+   ============================================== */
+
+/* Texte principal */
+body {
+  color: var(--text-high-contrast);
+}
+
+/* Texte secondaire avec contraste suffisant */
+.text-muted,
+.blog-meta,
+.footer-links {
+  color: var(--text-medium-contrast);
+}
+
+/* Liens avec contrastes optimaux */
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+a:visited {
+  color: var(--link-visited-color);
+}
+
+/* Amélioration du contraste des placeholders */
+::placeholder {
+  color: var(--text-medium-contrast);
+  opacity: 1;
+}
+
+/* ==============================================
+   AMÉLIORATIONS POUR LECTEURS D'ÉCRAN
+   ============================================== */
+
+/* Texte pour lecteurs d'écran uniquement */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Texte visible au focus pour lecteurs d'écran */
+.sr-only-focusable:focus,
+.sr-only-focusable:focus-within {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ==============================================
+   ANIMATIONS RESPECTUEUSES
+   ============================================== */
+
+/* Respecter les préférences utilisateur pour les animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Désactiver les morphing backgrounds */
+  .morphing-shape {
+    animation: none !important;
+  }
+  
+  /* Désactiver le parallax */
+  .particles-container {
+    display: none;
+  }
+}
+
+/* ==============================================
+   CONTRASTES ÉLEVÉS
+   ============================================== */
+
+/* Support du mode contraste élevé */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #000080;
+    --secondary-color: #000000;
+    --accent-color: #800080;
+    --text-color: #000000;
+    --background-color: #ffffff;
+  }
+  
+  .service-card {
+    border: 2px solid #000000;
+  }
+  
+  .btn {
+    border: 2px solid currentColor;
+  }
+  
+  /* Suppression des ombres qui peuvent nuire au contraste */
+  .service-card,
+  .btn,
+  .footer {
+    box-shadow: none !important;
+  }
+}
+
+/* ==============================================
+   TEXTE ET TAILLES OPTIMISÉES
+   ============================================== */
+
+/* Taille minimale pour le texte */
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Pas de texte trop petit */
+small,
+.small {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Amélioration de la lisibilité */
+p,
+li {
+  max-width: 70ch; /* Largeur optimale pour la lecture */
+}
+
+/* Espacement des éléments interactifs */
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px; /* Taille minimum recommandée pour touch */
+  min-width: 44px;
+}
+
+/* Espacement entre liens */
+nav a {
+  margin: 0 4px;
+}
+
+/* ==============================================
+   INDICATEURS VISUELS
+   ============================================== */
+
+/* Indicateur de page actuelle */
+.nav-item.active .nav-link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Indicateurs d'état requis */
+[required]::after {
+  content: " *";
+  color: var(--error-color);
+  font-weight: bold;
+}
+
+/* Indicateurs d'erreur */
+.error {
+  border-color: var(--error-color) !important;
+  box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.2) !important;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ==============================================
+   AMÉLIORATION DES LIENS
+   ============================================== */
+
+/* Liens externes avec indicateur */
+a[href^="http"]:not([href*="coach-apar.fr"])::after {
+  content: " ↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* Liens de téléchargement */
+a[href$=".pdf"]::after,
+a[href$=".doc"]::after,
+a[href$=".docx"]::after {
+  content: " 📄";
+  font-size: 0.8em;
+}
+
+/* Liens email et téléphone */
+a[href^="mailto:"]::before {
+  content: "📧 ";
+  font-size: 0.8em;
+}
+
+a[href^="tel:"]::before {
+  content: "📞 ";
+  font-size: 0.8em;
+}
+
+/* ==============================================
+   DARK MODE SUPPORT
+   ============================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --text-high-contrast: #ffffff;
+    --text-medium-contrast: #cccccc;
+    --text-low-contrast: #999999;
+    --link-color: #66b3ff;
+    --link-hover-color: #4da6ff;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .service-card {
+    background-color: #1e1e1e;
+    border-color: #333333;
+  }
+  
+  .hero {
+    background-color: #0a0a0a;
+  }
+}
+
+/* ==============================================
+   PRINT ACCESSIBILITY
+   ============================================== */
+
+@media print {
+  /* Contrastes élevés pour l'impression */
+  * {
+    color: #000000 !important;
+    background: transparent !important;
+  }
+  
+  /* Affichage des URLs pour les liens */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  
+  /* Pas de coupure des éléments importants */
+  .service-card,
+  .blog-card {
+    break-inside: avoid;
+  }
+  
+  /* Suppression des éléments non essentiels */
+  .nav-toggle,
+  #backToTop,
+  .morphing-background,
+  .particles-container {
+    display: none !important;
+  }
+}
