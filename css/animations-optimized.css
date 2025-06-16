@@ -1,0 +1,293 @@
+/* =================================================================
+   ANIMATIONS OPTIMISÉES - VERSION LIGHT
+   Étape 2.2 : Consolidation UX
+   Taille cible : ~8KB (vs 25KB original)
+   ================================================================= */
+
+/* Variables d'animation optimisées */
+:root {
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --easing-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* =================================================================
+   ANIMATIONS DE BASE (Performance optimisée)
+   ================================================================= */
+
+/* Animation d'apparition avec GPU acceleration */
+.fade-in {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.6s var(--easing-smooth), 
+              transform 0.6s var(--easing-smooth);
+  will-change: transform, opacity;
+}
+
+.fade-in.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Animations de glissement optimisées */
+.slide-in-left {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: opacity 0.6s var(--easing-smooth), 
+              transform 0.6s var(--easing-smooth);
+  will-change: transform, opacity;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translate3d(30px, 0, 0);
+  transition: opacity 0.6s var(--easing-smooth), 
+              transform 0.6s var(--easing-smooth);
+  will-change: transform, opacity;
+}
+
+.slide-in-left.in-view,
+.slide-in-right.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Zoom avec GPU acceleration */
+.zoom-in {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(0.95);
+  transition: opacity 0.6s var(--easing-smooth), 
+              transform 0.6s var(--easing-smooth);
+  will-change: transform, opacity;
+}
+
+.zoom-in.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* =================================================================
+   ANIMATIONS SPÉCIFIQUES OPTIMISÉES
+   ================================================================= */
+
+/* Animation des cartes de service - Version light */
+.service-card {
+  transition: transform 0.3s var(--easing-smooth), 
+              box-shadow 0.3s var(--easing-smooth);
+  will-change: transform;
+}
+
+.service-card:hover {
+  transform: translate3d(0, -8px, 0);
+}
+
+/* Animation des icônes avec optimisation */
+.service-icon {
+  transition: transform 0.3s var(--transition-bounce),
+              background-color 0.3s var(--transition-medium);
+  will-change: transform;
+}
+
+.service-card:hover .service-icon {
+  transform: translate3d(0, -3px, 0) scale(1.05);
+}
+
+/* =================================================================
+   ANIMATIONS DU HEADER (Optimisées)
+   ================================================================= */
+
+/* Header scroll avec smooth transform */
+#header {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s var(--easing-smooth),
+              box-shadow 0.3s var(--easing-smooth);
+  will-change: transform;
+}
+
+#header.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu mobile optimisé */
+.nav-menu {
+  transform: translate3d(0, -100%, 0);
+  transition: transform 0.3s var(--easing-smooth),
+              opacity 0.3s var(--easing-smooth);
+  will-change: transform, opacity;
+}
+
+.nav-menu.active {
+  transform: translate3d(0, 0, 0);
+}
+
+/* =================================================================
+   BOUTON RETOUR EN HAUT - Animation optimisée
+   ================================================================= */
+
+#backToTop {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0) scale(0.8);
+  transition: opacity 0.3s var(--easing-smooth),
+              transform 0.3s var(--transition-bounce);
+  will-change: transform, opacity;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+#backToTop:hover {
+  transform: translate3d(0, -3px, 0) scale(1.05);
+}
+
+/* =================================================================
+   ANIMATIONS HERO - Version optimisée
+   ================================================================= */
+
+/* Animation du titre principal */
+.hero-content h1 {
+  animation: heroTitleEntrance 1.2s var(--easing-smooth) forwards;
+}
+
+.hero-content p {
+  animation: heroTextEntrance 1.2s var(--easing-smooth) 0.3s forwards;
+  opacity: 0;
+}
+
+.hero-cta {
+  animation: heroCtaEntrance 1.2s var(--easing-smooth) 0.6s forwards;
+  opacity: 0;
+}
+
+@keyframes heroTitleEntrance {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroTextEntrance {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroCtaEntrance {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* =================================================================
+   ANIMATIONS DES FORMULAIRES - Version light
+   ================================================================= */
+
+/* Input focus avec animation subtile */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  transform: translate3d(0, -2px, 0);
+  transition: transform 0.2s var(--easing-smooth),
+              box-shadow 0.2s var(--easing-smooth);
+}
+
+/* =================================================================
+   ANIMATIONS RESPONSIVE - Désactivation sur mobile si nécessaire
+   ================================================================= */
+
+/* Réduction des animations sur mobile pour performance */
+@media (max-width: 768px) {
+  .fade-in,
+  .slide-in-left,
+  .slide-in-right,
+  .zoom-in {
+    transition-duration: 0.3s; /* Plus rapide sur mobile */
+  }
+  
+  /* Désactivation des animations complexes sur connexions lentes */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .slide-in-left,
+    .slide-in-right,
+    .zoom-in {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* =================================================================
+   MICRO-INTERACTIONS OPTIMISÉES
+   ================================================================= */
+
+/* Hover effects avec performance */
+.btn {
+  transition: transform 0.2s var(--easing-smooth),
+              box-shadow 0.2s var(--easing-smooth);
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translate3d(0, -2px, 0);
+}
+
+/* Links avec animation subtile */
+.nav-link {
+  position: relative;
+  transition: color 0.2s var(--easing-smooth);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s var(--easing-smooth);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* =================================================================
+   OPTIMISATIONS PERFORMANCE
+   ================================================================= */
+
+/* Optimisation GPU pour les éléments animés */
+.service-card,
+.blog-card,
+.testimonial-card,
+#backToTop,
+.hero-content > * {
+  transform: translate3d(0, 0, 0); /* Force GPU layer */
+}
+
+/* Containment pour améliorer les performances */
+.section {
+  contain: layout style;
+}
+
+/* =================================================================
+   FIN DU FICHIER ANIMATIONS OPTIMISÉES
+   ================================================================= */
