@@ -1,0 +1,508 @@
+/* =================================================================
+   CSS FINAL OPTIMISÉ - CONSOLIDATION COMPLÈTE
+   Phase 3.1 : Version finale avec toutes optimisations
+   ================================================================= */
+
+/* Import optimisé des modules avec preload hints */
+@import url('animations-optimized.css') layer(animations);
+@import url('components-ux.css') layer(components);
+
+/* =================================================================
+   OPTIMISATIONS CRITIQUES SUPPLÉMENTAIRES
+   ================================================================= */
+
+/* Critical CSS inlined - First Paint optimisation */
+:root {
+  /* Couleurs système optimisées */
+  --primary-color: #2C8A43;
+  --primary-color-rgb: 44, 138, 67;
+  --secondary-color: #4CAF50;
+  --accent-color: #8BC34A;
+  --light-color: #f5f5f5;
+  --dark-color: #121212;
+  --text-color: #E0E0E0;
+  
+  /* Performance variables */
+  --gpu-acceleration: translate3d(0, 0, 0);
+  --will-change-auto: auto;
+  --will-change-transform: transform;
+  --will-change-opacity: opacity;
+  
+  /* Timing optimisé pour 60fps */
+  --transition-ultra-fast: 0.1s ease;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --easing-performance: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* =================================================================
+   RESET OPTIMISÉ POUR PERFORMANCE
+   ================================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* HTML et Body optimisés */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+/* =================================================================
+   IMAGES ET MÉDIAS OPTIMISÉS
+   ================================================================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* Lazy loading natif */
+  loading: lazy;
+  /* Optimisation décodage */
+  decoding: async;
+  /* GPU acceleration pour images animées */
+  transform: var(--gpu-acceleration);
+}
+
+/* Images critiques (hero, logo) - eager loading */
+.hero-image,
+.nav-logo img {
+  loading: eager;
+  decoding: sync;
+}
+
+/* Optimisation WebP avec fallback */
+.webp-optimized {
+  background-image: url('image.webp');
+}
+
+.no-webp .webp-optimized {
+  background-image: url('image.jpg');
+}
+
+/* =================================================================
+   CONTAINER SYSTEM OPTIMISÉ
+   ================================================================= */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  /* Containment pour performance */
+  contain: layout style;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 0;
+  }
+}
+
+/* =================================================================
+   SYSTÈME DE GRILLE OPTIMISÉ
+   ================================================================= */
+
+.grid-optimized {
+  display: grid;
+  gap: 1rem;
+  /* Containment pour éviter les recalculs */
+  contain: layout;
+}
+
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* =================================================================
+   ANIMATIONS HAUTE PERFORMANCE
+   ================================================================= */
+
+/* Classe pour activer GPU acceleration */
+.gpu-accelerated {
+  transform: var(--gpu-acceleration);
+  will-change: var(--will-change-transform);
+}
+
+/* Animations optimisées pour mobile */
+@media (max-width: 768px) {
+  .reduce-motion-mobile {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* Respect des préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =================================================================
+   LAZY LOADING OPTIMISÉ
+   ================================================================= */
+
+/* Intersection observer polyfill fallback */
+.lazy-load {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skeleton loading pour contenu en cours de chargement */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* =================================================================
+   OPTIMISATIONS TYPOGRAPHIQUES
+   ================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-weight: 700;
+  /* Optimisation rendu texte */
+  text-rendering: optimizeSpeed;
+  font-display: swap;
+}
+
+p {
+  margin-bottom: 1rem;
+  /* Optimisation ligne de base */
+  font-feature-settings: 'kern' 1;
+}
+
+/* =================================================================
+   COMPOSANTS CRITIQUES OPTIMISÉS
+   ================================================================= */
+
+/* Header optimisé pour First Paint */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  transform: var(--gpu-acceleration);
+  transition: transform var(--transition-medium);
+  contain: layout style;
+  height: 70px;
+}
+
+/* Navigation optimisée */
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Optimisation layout */
+  contain: layout;
+}
+
+/* Hero section optimisée */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Optimisation GPU */
+  transform: var(--gpu-acceleration);
+  /* Containment pour performance */
+  contain: layout style;
+}
+
+/* =================================================================
+   BOUTONS ET INTERACTIONS OPTIMISÉS
+   ================================================================= */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  color: white;
+  background-color: var(--primary-color);
+  
+  /* Optimisations performance */
+  transform: var(--gpu-acceleration);
+  transition: transform var(--transition-fast), 
+              box-shadow var(--transition-fast),
+              background-color var(--transition-fast);
+  will-change: var(--will-change-transform);
+  
+  /* Optimisation interactions tactiles */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.btn:active {
+  transform: translate3d(0, 0, 0);
+  transition-duration: 0.1s;
+}
+
+/* =================================================================
+   FORMULAIRES OPTIMISÉS
+   ================================================================= */
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  contain: layout;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  
+  /* Optimisations performance */
+  transform: var(--gpu-acceleration);
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              transform var(--transition-fast);
+  
+  /* Optimisation mobile */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
+  transform: translate3d(0, -1px, 0);
+}
+
+/* =================================================================
+   FOOTER OPTIMISÉ
+   ================================================================= */
+
+.footer {
+  background-color: var(--dark-color);
+  color: var(--text-color);
+  padding: 3rem 0 1.5rem;
+  position: relative;
+  contain: layout style;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* =================================================================
+   OPTIMISATIONS RESPONSIVE AVANCÉES
+   ================================================================= */
+
+/* Mobile first avec optimisations */
+@media (max-width: 768px) {
+  /* Réduction des animations pour performance mobile */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Optimisation espacement mobile */
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  /* Font size optimisé pour mobile */
+  html {
+    font-size: 14px;
+  }
+  
+  /* Hero mobile optimisé */
+  .hero {
+    min-height: 80vh;
+    padding: 2rem 0;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  /* Parallax effects seulement sur desktop */
+  .parallax-enabled {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+}
+
+/* =================================================================
+   DARK MODE SUPPORT (Future-ready)
+   ================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-color: #1a1a1a;
+    --dark-color: #ffffff;
+    --text-color: #e0e0e0;
+  }
+  
+  body {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+  }
+}
+
+/* =================================================================
+   PRINT STYLES OPTIMISÉS
+   ================================================================= */
+
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  .hero, .footer, #header {
+    display: none !important;
+  }
+  
+  .container {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}
+
+/* =================================================================
+   UTILITIES HAUTE PERFORMANCE
+   ================================================================= */
+
+/* Classe utilitaire pour forcer GPU */
+.force-gpu {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Classe pour désactiver animations temporairement */
+.no-animation * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Classes de visibilité optimisées */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* =================================================================
+   PERFORMANCE MONITORING HOOKS
+   ================================================================= */
+
+/* Classes pour mesurer performance */
+.perf-measure {
+  /* Hook pour mesures de performance */
+}
+
+.critical-content {
+  /* Contenu critique à charger en priorité */
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
+}
+
+/* =================================================================
+   FIN DES OPTIMISATIONS FINALES
+   ================================================================= */
