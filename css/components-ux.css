@@ -1,0 +1,469 @@
+/* =================================================================
+   COMPOSANTS UX MODULAIRES - CONSOLIDATION
+   Étape 2.2 : Nouveaux composants documentés
+   ================================================================= */
+
+/* =================================================================
+   SÉPARATEURS SVG OPTIMISÉS
+   ================================================================= */
+
+.section-separator {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.section-separator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    var(--primary-color) 30%,
+    var(--primary-color) 35%,
+    transparent 35%,
+    transparent 65%,
+    var(--accent-color) 65%,
+    var(--accent-color) 70%,
+    transparent 70%
+  );
+  opacity: 0.1;
+  animation: geometricFlow 20s linear infinite;
+}
+
+@keyframes geometricFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Variant ondulé pour diversité */
+.section-separator.wave::before {
+  background: radial-gradient(
+    ellipse 200% 100% at 50% 0%,
+    transparent 30%,
+    var(--primary-color) 40%,
+    transparent 50%
+  );
+  animation: waveFlow 15s ease-in-out infinite;
+}
+
+@keyframes waveFlow {
+  0%, 100% { transform: translateX(-50%) scaleY(1); }
+  50% { transform: translateX(-30%) scaleY(1.2); }
+}
+
+/* =================================================================
+   CARTES INTERACTIVES AVANCÉES
+   ================================================================= */
+
+.interactive-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.interactive-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(var(--primary-color-rgb, 44, 138, 67), 0.1);
+}
+
+.interactive-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* =================================================================
+   INDICATEURS DE PROGRESSION MODERNE
+   ================================================================= */
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2rem 0;
+}
+
+.progress-step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #6c757d;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.progress-step.active {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(var(--primary-color-rgb, 44, 138, 67), 0.3);
+}
+
+.progress-step.completed {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.progress-line {
+  flex: 1;
+  height: 2px;
+  background: #e9ecef;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-line.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  animation: progressFill 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes progressFill {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* =================================================================
+   NOTIFICATIONS TOAST MODERNES
+   ================================================================= */
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--primary-color);
+  backdrop-filter: blur(10px);
+  pointer-events: all;
+  transform: translateX(400px);
+  opacity: 0;
+  animation: toastSlideIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.toast.success {
+  border-left-color: #28a745;
+}
+
+.toast.error {
+  border-left-color: #dc3545;
+}
+
+.toast.warning {
+  border-left-color: #ffc107;
+}
+
+@keyframes toastSlideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+/* =================================================================
+   MODAL MODERNE AVEC BACKDROP BLUR
+   ================================================================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* =================================================================
+   LOADER MODERNE AVEC ANIMATIONS
+   ================================================================= */
+
+.modern-loader {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.modern-loader::before,
+.modern-loader::after {
+  content: '';
+  position: absolute;
+  border: 3px solid transparent;
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: modernSpin 1s linear infinite;
+}
+
+.modern-loader::before {
+  width: 40px;
+  height: 40px;
+}
+
+.modern-loader::after {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  border-top-color: var(--accent-color);
+  animation-duration: 0.7s;
+  animation-direction: reverse;
+}
+
+@keyframes modernSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* =================================================================
+   BADGES ET ÉTIQUETTES MODERNES
+   ================================================================= */
+
+.modern-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(var(--primary-color-rgb, 44, 138, 67), 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.modern-badge:hover::before {
+  left: 100%;
+}
+
+/* Variants de couleur */
+.modern-badge.success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.modern-badge.warning {
+  background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+}
+
+.modern-badge.error {
+  background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+}
+
+/* =================================================================
+   ACCORDÉON MODERNE
+   ================================================================= */
+
+.modern-accordion {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  position: relative;
+}
+
+.accordion-header:hover {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.accordion-header.active {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+}
+
+.accordion-toggle {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.accordion-header.active .accordion-toggle {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.accordion-content.active {
+  max-height: 1000px; /* Valeur suffisamment grande */
+}
+
+.accordion-inner {
+  padding: 1.5rem;
+}
+
+/* =================================================================
+   RESPONSIVENESS DES COMPOSANTS
+   ================================================================= */
+
+@media (max-width: 768px) {
+  .section-separator {
+    height: 60px;
+  }
+  
+  .interactive-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .toast-container {
+    left: 20px;
+    right: 20px;
+  }
+  
+  .toast {
+    transform: translateY(-100px);
+  }
+  
+  @keyframes toastSlideIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modern-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+}
+
+/* =================================================================
+   UTILITAIRES DE PERFORMANCE
+   ================================================================= */
+
+/* Containment pour améliorer les performances */
+.interactive-card,
+.modal-content,
+.accordion-item {
+  contain: layout style;
+}
+
+/* GPU acceleration pour les éléments animés */
+.progress-step,
+.toast,
+.modern-loader,
+.accordion-toggle {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* =================================================================
+   FIN DES COMPOSANTS UX MODULAIRES
+   ================================================================= */
