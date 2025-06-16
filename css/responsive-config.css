@@ -1,0 +1,278 @@
+/* ==============================================
+   RESPONSIVE BREAKPOINTS CONFIGURATION 
+   ============================================== */
+
+/* Configuration des breakpoints optimisés */
+:root {
+  /* Breakpoints standardisés */
+  --breakpoint-xs: 320px;   /* iPhone SE */
+  --breakpoint-sm: 375px;   /* iPhone 12 */
+  --breakpoint-md: 768px;   /* iPad Portrait */
+  --breakpoint-lg: 1024px;  /* iPad Landscape */
+  --breakpoint-xl: 1200px;  /* Desktop */
+  --breakpoint-xxl: 1440px; /* Large Desktop */
+  
+  /* Optimisations spécifiques devices */
+  --mobile-nav-height: 60px;
+  --tablet-nav-height: 70px;
+  --desktop-nav-height: 80px;
+  
+  /* Typography responsive */
+  --font-size-base-mobile: 14px;
+  --font-size-base-tablet: 16px;
+  --font-size-base-desktop: 16px;
+  
+  /* Spacing responsive */
+  --container-padding-mobile: 1rem;
+  --container-padding-tablet: 2rem;
+  --container-padding-desktop: 0;
+}
+
+/* ==============================================
+   MOBILE FIRST - iPhone SE (320px+)
+   ============================================== */
+@media screen and (min-width: 320px) {
+  .container {
+    padding: 0 var(--container-padding-mobile);
+    max-width: 100%;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  .service-card {
+    margin-bottom: 1rem;
+  }
+  
+  .nav-logo img {
+    height: 50px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+  }
+}
+
+/* ==============================================
+   MOBILE LARGE - iPhone 12/13 (375px+)
+   ============================================== */
+@media screen and (min-width: 375px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+  }
+  
+  .nav-logo img {
+    height: 60px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+  }
+}
+
+/* ==============================================
+   TABLET PORTRAIT - iPad (768px+)
+   ============================================== */
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 var(--container-padding-tablet);
+    max-width: 720px;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  .hero p {
+    font-size: 1.3rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .nav-logo img {
+    height: 80px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+  
+  /* Navigation desktop */
+  .nav-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    box-shadow: none;
+    flex-direction: row;
+    padding: 0;
+  }
+  
+  .nav-list {
+    flex-direction: row;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* ==============================================
+   TABLET LANDSCAPE - iPad Landscape (1024px+)
+   ============================================== */
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+  
+  .about-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .about-image,
+  .about-text {
+    flex: 1;
+  }
+  
+  .course-content {
+    flex-direction: row;
+  }
+  
+  .course-text {
+    flex: 3;
+  }
+  
+  .course-image {
+    flex: 2;
+  }
+}
+
+/* ==============================================
+   DESKTOP - Standard (1200px+)
+   ============================================== */
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    padding: 0;
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+  }
+  
+  .nav-logo img {
+    height: 100px;
+    margin-top: -25px;
+    margin-bottom: -25px;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* ==============================================
+   LARGE DESKTOP - 4K Support (1440px+)
+   ============================================== */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: 5rem 0;
+  }
+}
+
+/* ==============================================
+   BROWSER SPECIFIC FIXES
+   ============================================== */
+
+/* Safari iOS fix pour vh */
+@supports (-webkit-touch-callout: none) {
+  .hero {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Firefox scrollbar */
+@-moz-document url-prefix() {
+  .container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--light-color);
+  }
+}
+
+/* Edge/IE compatibility */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .service-card {
+    display: block;
+  }
+  
+  .services-grid {
+    display: block;
+  }
+}
+
+/* Chrome mobile address bar fix */
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: calc(100vh - 60px);
+    padding-top: 60px;
+  }
+}
+
+/* ==============================================
+   PRINT STYLES
+   ============================================== */
+@media print {
+  .nav-toggle,
+  #backToTop,
+  .hero-cta,
+  .morphing-background {
+    display: none !important;
+  }
+  
+  .hero {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .service-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+}
