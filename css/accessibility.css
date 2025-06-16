@@ -1,370 +1,349 @@
-/* ==============================================
-   ACCESSIBILITY & SEO OPTIMIZATIONS
-   ============================================== */
+/* ==========================================================================
+   ACCESSIBILITY & SEO OPTIMIZATION - Phase 3.3
+   ========================================================================== */
 
-/* ==============================================
-   COULEURS ET CONTRASTES WCAG 2.1 AA
-   ============================================== */
+/* ==========================================================================
+   ARIA LABELS ET ACCESSIBILITÉ
+   ========================================================================== */
 
-:root {
-  /* Couleurs principales avec ratios de contraste optimisés */
-  --text-high-contrast: #000000;        /* Contraste 21:1 */
-  --text-medium-contrast: #2c2c2c;      /* Contraste 15:1 */
-  --text-low-contrast: #4f4f4f;         /* Contraste 9:1 */
-  --text-on-primary: #ffffff;           /* Contraste 4.8:1 */
-  --text-on-dark: #ffffff;              /* Contraste 21:1 */
-  
-  /* Liens et interactions */
-  --link-color: #1a5490;                /* Contraste 7:1 */
-  --link-hover-color: #0f3d6b;          /* Contraste 9:1 */
-  --link-visited-color: #6b2c91;        /* Contraste 6:1 */
-  
-  /* États focus et erreurs */
-  --focus-color: #005fcc;               /* Contraste 6.3:1 */
-  --error-color: #cc0000;               /* Contraste 5.4:1 */
-  --success-color: #006600;             /* Contraste 5.8:1 */
-  --warning-color: #cc6600;             /* Contraste 4.6:1 */
-}
-
-/* ==============================================
-   FOCUS VISIBLE - NAVIGATION CLAVIER
-   ============================================== */
-
-/* Reset du focus par défaut */
+/* Focus visible amélioré pour navigation clavier */
 *:focus {
-  outline: none;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
-/* Focus visible pour navigation clavier */
-*:focus-visible {
-  outline: 3px solid var(--focus-color);
-  outline-offset: 2px;
-  border-radius: 2px;
+/* Focus pour éléments interactifs */
+.btn:focus,
+.nav-link:focus,
+.service-link:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px rgba(44, 138, 67, 0.2);
 }
 
-/* Focus spécifique pour les liens */
-a:focus-visible {
-  background-color: rgba(0, 95, 204, 0.1);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
+/* Skip to content link (pour navigation clavier) */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10000;
+    font-weight: 600;
+    transition: top 0.3s ease;
 }
 
-/* Focus pour les boutons */
-button:focus-visible,
-.btn:focus-visible {
-  box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.3);
-  transform: translateY(-1px);
+.skip-to-content:focus {
+    top: 0;
 }
 
-/* Focus pour les inputs */
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  border-color: var(--focus-color);
-  box-shadow: 0 0 0 2px rgba(0, 95, 204, 0.2);
+/* ==========================================================================
+   CONTRASTE COULEURS - Conformité WCAG AA
+   ========================================================================== */
+
+/* Variables de couleurs améliorées pour contraste */
+:root {
+    --primary-color: #1e5f2b; /* Assombri pour meilleur contraste */
+    --primary-color-rgb: 30, 95, 43;
+    --secondary-color: #2e7d32; /* Amélioré pour contraste */
+    --accent-color: #689f38; /* Optimisé pour lisibilité */
+    --accent-color-rgb: 104, 159, 56;
+    --text-color: #212121; /* Contraste élevé */
+    --text-muted: #424242; /* Contraste suffisant */
+    --border-color: #e0e0e0;
+    --success-color: #2e7d32;
+    --warning-color: #f57c00;
+    --error-color: #d32f2f;
+    --light-gray: #f5f5f5;
 }
 
-/* ==============================================
-   SKIP LINKS - NAVIGATION RAPIDE
-   ============================================== */
-
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--text-high-contrast);
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  border-radius: 0 0 6px 6px;
-  z-index: 10000;
-  font-weight: 600;
-  transition: top 0.3s ease;
-}
-
-.skip-link:focus,
-.skip-link:focus-visible {
-  top: 0;
-  outline: 3px solid var(--focus-color);
-}
-
-/* ==============================================
-   AMÉLIORATION DES CONTRASTES
-   ============================================== */
-
-/* Texte principal */
+/* Texte avec contraste renforcé */
 body {
-  color: var(--text-high-contrast);
+    color: var(--text-color);
 }
 
-/* Texte secondaire avec contraste suffisant */
-.text-muted,
-.blog-meta,
-.footer-links {
-  color: var(--text-medium-contrast);
+.hero h1,
+.hero p {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Ombre plus forte */
 }
 
-/* Liens avec contrastes optimaux */
+/* Liens avec contraste amélioré */
 a {
-  color: var(--link-color);
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s ease;
 }
 
-a:hover {
-  color: var(--link-hover-color);
+a:hover,
+a:focus {
+    text-decoration-color: var(--primary-color);
 }
 
-a:visited {
-  color: var(--link-visited-color);
+/* Boutons avec contraste suffisant */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 600;
 }
 
-/* Amélioration du contraste des placeholders */
-::placeholder {
-  color: var(--text-medium-contrast);
-  opacity: 1;
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #155020;
+    border-color: #155020;
 }
 
-/* ==============================================
-   AMÉLIORATIONS POUR LECTEURS D'ÉCRAN
-   ============================================== */
+/* ==========================================================================
+   NAVIGATION ACCESSIBLE
+   ========================================================================== */
 
-/* Texte pour lecteurs d'écran uniquement */
+/* Menu burger accessible */
+.nav-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.nav-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.nav-toggle[aria-expanded="true"] {
+    background-color: var(--primary-color);
+}
+
+.nav-toggle[aria-expanded="true"] span {
+    background-color: white;
+}
+
+/* Menu dropdown accessible */
+.dropdown-menu {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   FORMULAIRES ACCESSIBLES
+   ========================================================================== */
+
+/* Labels visuellement cachés mais accessibles aux lecteurs d'écran */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
-/* Texte visible au focus pour lecteurs d'écran */
-.sr-only-focusable:focus,
-.sr-only-focusable:focus-within {
-  position: static;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
+/* Messages d'erreur visibles */
+.form-error {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
 }
 
-/* ==============================================
+.form-success {
+    color: var(--success-color);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Champs invalides */
+input:invalid,
+textarea:invalid,
+select:invalid {
+    border-color: var(--error-color);
+}
+
+input:valid,
+textarea:valid,
+select:valid {
+    border-color: var(--success-color);
+}
+
+/* ==========================================================================
    ANIMATIONS RESPECTUEUSES
-   ============================================== */
+   ========================================================================== */
 
-/* Respecter les préférences utilisateur pour les animations */
+/* Respect des préférences utilisateur pour les animations */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  /* Désactiver les morphing backgrounds */
-  .morphing-shape {
-    animation: none !important;
-  }
-  
-  /* Désactiver le parallax */
-  .particles-container {
-    display: none;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .morphing-shape {
+        animation: none !important;
+    }
+    
+    .particles-container {
+        display: none !important;
+    }
+    
+    .fade-in,
+    .slide-in-left,
+    .slide-in-right,
+    .zoom-in {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
-/* ==============================================
-   CONTRASTES ÉLEVÉS
-   ============================================== */
+/* ==========================================================================
+   IMAGES ACCESSIBLES
+   ========================================================================== */
 
-/* Support du mode contraste élevé */
-@media (prefers-contrast: high) {
-  :root {
-    --primary-color: #000080;
-    --secondary-color: #000000;
-    --accent-color: #800080;
-    --text-color: #000000;
-    --background-color: #ffffff;
-  }
-  
-  .service-card {
-    border: 2px solid #000000;
-  }
-  
-  .btn {
-    border: 2px solid currentColor;
-  }
-  
-  /* Suppression des ombres qui peuvent nuire au contraste */
-  .service-card,
-  .btn,
-  .footer {
-    box-shadow: none !important;
-  }
+/* Images décoratives */
+img[alt=""],
+img:not([alt]) {
+    opacity: 1;
 }
 
-/* ==============================================
-   TEXTE ET TAILLES OPTIMISÉES
-   ============================================== */
-
-/* Taille minimale pour le texte */
-body {
-  font-size: 16px;
-  line-height: 1.6;
+/* Images importantes avec alt text obligatoire */
+.hero-image img,
+.service-image img,
+.about-image img {
+    max-width: 100%;
+    height: auto;
 }
 
-/* Pas de texte trop petit */
-small,
-.small {
-  font-size: 14px;
-  line-height: 1.5;
+/* ==========================================================================
+   CONTENT LISIBLE
+   ========================================================================== */
+
+/* Espacement pour la lecture */
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
-/* Amélioration de la lisibilité */
-p,
+/* Titres avec hiérarchie claire */
+h1 { font-size: 2.5rem; line-height: 1.2; }
+h2 { font-size: 2rem; line-height: 1.3; }
+h3 { font-size: 1.5rem; line-height: 1.4; }
+h4 { font-size: 1.25rem; line-height: 1.4; }
+h5 { font-size: 1.1rem; line-height: 1.5; }
+h6 { font-size: 1rem; line-height: 1.5; }
+
+/* Listes accessibles */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
 li {
-  max-width: 70ch; /* Largeur optimale pour la lecture */
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
 }
 
-/* Espacement des éléments interactifs */
-button,
-a,
-input,
-select,
-textarea {
-  min-height: 44px; /* Taille minimum recommandée pour touch */
-  min-width: 44px;
+/* ==========================================================================
+   HIGH CONTRAST MODE
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000000;
+        --secondary-color: #000000;
+        --text-color: #000000;
+        --background-color: #ffffff;
+    }
+    
+    .btn-primary {
+        background-color: #000000;
+        color: #ffffff;
+        border: 2px solid #000000;
+    }
+    
+    .service-card {
+        border: 2px solid #000000;
+    }
 }
 
-/* Espacement entre liens */
-nav a {
-  margin: 0 4px;
-}
-
-/* ==============================================
-   INDICATEURS VISUELS
-   ============================================== */
-
-/* Indicateur de page actuelle */
-.nav-item.active .nav-link {
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-/* Indicateurs d'état requis */
-[required]::after {
-  content: " *";
-  color: var(--error-color);
-  font-weight: bold;
-}
-
-/* Indicateurs d'erreur */
-.error {
-  border-color: var(--error-color) !important;
-  box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.2) !important;
-}
-
-.error-message {
-  color: var(--error-color);
-  font-size: 14px;
-  margin-top: 4px;
-  font-weight: 500;
-}
-
-/* ==============================================
-   AMÉLIORATION DES LIENS
-   ============================================== */
-
-/* Liens externes avec indicateur */
-a[href^="http"]:not([href*="coach-apar.fr"])::after {
-  content: " ↗";
-  font-size: 0.8em;
-  opacity: 0.7;
-}
-
-/* Liens de téléchargement */
-a[href$=".pdf"]::after,
-a[href$=".doc"]::after,
-a[href$=".docx"]::after {
-  content: " 📄";
-  font-size: 0.8em;
-}
-
-/* Liens email et téléphone */
-a[href^="mailto:"]::before {
-  content: "📧 ";
-  font-size: 0.8em;
-}
-
-a[href^="tel:"]::before {
-  content: "📞 ";
-  font-size: 0.8em;
-}
-
-/* ==============================================
+/* ==========================================================================
    DARK MODE SUPPORT
-   ============================================== */
+   ========================================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --text-high-contrast: #ffffff;
-    --text-medium-contrast: #cccccc;
-    --text-low-contrast: #999999;
-    --link-color: #66b3ff;
-    --link-hover-color: #4da6ff;
-  }
-  
-  body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  .service-card {
-    background-color: #1e1e1e;
-    border-color: #333333;
-  }
-  
-  .hero {
-    background-color: #0a0a0a;
-  }
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --text-muted: #b0b0b0;
+        --border-color: #333333;
+    }
+    
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    
+    .service-card,
+    .footer {
+        background-color: #1e1e1e;
+        color: var(--text-color);
+    }
+    
+    input,
+    textarea,
+    select {
+        background-color: #2a2a2a;
+        color: var(--text-color);
+        border-color: var(--border-color);
+    }
 }
 
-/* ==============================================
-   PRINT ACCESSIBILITY
-   ============================================== */
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
 
 @media print {
-  /* Contrastes élevés pour l'impression */
-  * {
-    color: #000000 !important;
-    background: transparent !important;
-  }
-  
-  /* Affichage des URLs pour les liens */
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    font-weight: normal;
-  }
-  
-  /* Pas de coupure des éléments importants */
-  .service-card,
-  .blog-card {
-    break-inside: avoid;
-  }
-  
-  /* Suppression des éléments non essentiels */
-  .nav-toggle,
-  #backToTop,
-  .morphing-background,
-  .particles-container {
-    display: none !important;
-  }
+    .nav-toggle,
+    .nav-menu,
+    .particles-container,
+    .morphing-background,
+    #backToTop {
+        display: none !important;
+    }
+    
+    .hero {
+        min-height: auto;
+        page-break-after: always;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8rem;
+        color: #666;
+    }
 }
