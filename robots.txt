@@ -1,0 +1,41 @@
+User-agent: *
+Allow: /
+
+# Optimisation pour les moteurs de recherche
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /pages/
+Allow: /manifest.json
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Fichiers à ne pas indexer
+Disallow: /css-fix/
+Disallow: /*.txt$
+Disallow: /private/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://www.coach-apar.fr/sitemap.xml
+
+# Délai entre les requêtes (en secondes)
+Crawl-delay: 1
+
+# Spécifique pour les principaux moteurs de recherche
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
