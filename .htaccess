@@ -1,42 +1,118 @@
-# Performance optimizations for GitHub Pages
+# ==========================================================================
+# GITHUB PAGES CONFIGURATION - PRODUCTION READY
+# ==========================================================================
 
-# Cache static resources
-<filesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|eot)$">
-  ExpiresActive On
-  ExpiresDefault "access plus 1 year"
-  Header append Cache-Control "public"
-</filesMatch>
-
-# Cache HTML files
-<filesMatch "\.(html|htm)$">
-  ExpiresActive On
-  ExpiresDefault "access plus 1 week"
-  Header append Cache-Control "public"
-</filesMatch>
-
-# Enable compression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
-</IfModule>
-
-# Enable HTTP/2 push
-<IfModule mod_http2.c>
-  H2PushResource /css/styles-optimized.css
-  H2PushResource /js/main-optimized.js
-  H2PushResource /images/logo.png
-</IfModule>
-
-# Security headers
-Header always set X-Content-Type-Options nosniff
-Header always set X-Frame-Options DENY
-Header always set X-XSS-Protection "1; mode=block"
-Header always set Referrer-Policy "strict-origin-when-cross-origin"
-
-# Preload resources
+# Cache-Control directives for different file types
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html)$">
-    Header set Link "</css/styles-optimized.css>; rel=preload; as=style"
-    Header append Link "</js/main-optimized.js>; rel=preload; as=script"
-    Header append Link "</images/logo.png>; rel=preload; as=image"
-  </FilesMatch>
+    # CSS and JavaScript - 1 year cache
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    
+    # Images - 6 months cache
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp)$">
+        Header set Cache-Control "public, max-age=15552000"
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    
+    # Fonts - 1 year cache
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+    
+    # HTML - 1 hour cache
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+    
+    # Manifest and sitemap - 1 day cache
+    <FilesMatch "\.(xml|json|webmanifest)$">
+        Header set Cache-Control "public, max-age=86400"
+    </FilesMatch>
 </IfModule>
+
+# ==========================================================================
+# COMPRESSION
+# ==========================================================================
+
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML and fonts
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/x-font-otf
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ==========================================================================
+# SECURITY HEADERS
+# ==========================================================================
+
+<IfModule mod_headers.c>
+    # Security headers
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; connect-src 'self' formspree.io"
+</IfModule>
+
+# ==========================================================================
+# REDIRECTS
+# ==========================================================================
+
+# Force HTTPS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ==========================================================================
+# MIME TYPES
+# ==========================================================================
+
+<IfModule mod_mime.c>
+    # Web fonts
+    AddType application/font-woff2 .woff2
+    AddType application/font-woff .woff
+    AddType application/vnd.ms-fontobject .eot
+    AddType font/truetype .ttf
+    AddType font/opentype .otf
+    
+    # Manifest
+    AddType application/manifest+json .webmanifest
+    AddType application/x-web-app-manifest+json .webapp
+    
+    # Media files
+    AddType image/webp .webp
+    AddType image/avif .avif
+</IfModule>
+
+# ==========================================================================
+# ERROR PAGES
+# ==========================================================================
+
+ErrorDocument 404 /pages/404.html
+ErrorDocument 500 /pages/500.html
