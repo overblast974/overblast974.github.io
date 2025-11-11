@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   init3DLogos();
   initFaqAccordion();
   initCoursesSlider();
+  initFloatingCta();
 
   // Système de préchargement
   function initPreloader() {
@@ -712,20 +713,20 @@ document.addEventListener('DOMContentLoaded', function() {
         slide.style.opacity = '0';
         slide.style.visibility = 'hidden';
       });
-      
+
       // Réinitialiser tous les points
       dots.forEach(dot => {
         dot.classList.remove('active');
       });
-      
+
       // Afficher le slide actif
       slides[index].classList.add('active');
       slides[index].style.opacity = '1';
       slides[index].style.visibility = 'visible';
-      
+
       // Mettre en évidence le point actif
       dots[index].classList.add('active');
-      
+
       // Mettre à jour l'index du slide actuel
       currentSlide = index;
     }
@@ -763,5 +764,48 @@ document.addEventListener('DOMContentLoaded', function() {
       showSlide(0);
       startAutoSlide();
     }
+  }
+
+  // Gestion du bouton CTA flottant
+  function initFloatingCta() {
+    const floatingCta = document.getElementById('floatingCta');
+
+    if (!floatingCta) return;
+
+    // Afficher le CTA après un délai
+    setTimeout(() => {
+      floatingCta.style.opacity = '1';
+      floatingCta.style.visibility = 'visible';
+    }, 2000);
+
+    // Animation au scroll pour cacher le CTA si on est sur la section contact
+    let lastScrollY = window.pageYOffset;
+
+    window.addEventListener('scroll', function() {
+      const contactSection = document.querySelector('#contact, .contact-section');
+
+      if (contactSection) {
+        const contactRect = contactSection.getBoundingClientRect();
+
+        // Cacher le CTA si on est dans la section contact
+        if (contactRect.top < window.innerHeight && contactRect.bottom > 0) {
+          floatingCta.style.opacity = '0';
+          floatingCta.style.visibility = 'hidden';
+        } else {
+          floatingCta.style.opacity = '1';
+          floatingCta.style.visibility = 'visible';
+        }
+      }
+
+      lastScrollY = window.pageYOffset;
+    });
+
+    // Animation pulse au hover
+    floatingCta.addEventListener('mouseenter', function() {
+      this.style.animation = 'none';
+      setTimeout(() => {
+        this.style.animation = 'float 3s ease-in-out infinite';
+      }, 10);
+    });
   }
 }); 
