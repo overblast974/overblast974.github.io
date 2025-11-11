@@ -1415,3 +1415,115 @@ html {
     width: 100%;
   }
 }
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+
+.contact-form-modern {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-input-white,
+.form-input-white select,
+.form-input-white textarea {
+  width: 100%;
+  padding: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-dark);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.form-input-white::placeholder {
+  color: var(--color-gray-600);
+}
+
+.form-input-white:focus {
+  outline: none;
+  background: var(--color-white);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+select.form-input-white {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  background-size: 1.2em;
+  padding-right: var(--space-12);
+}
+
+select.form-input-white option {
+  color: var(--color-dark);
+  background: var(--color-white);
+}
+
+/* Fix pour les sections avec contraste */
+.section-stats .stat-label {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: var(--font-semibold);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.section-stats .stat-number {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Meilleur contraste pour les prix */
+.pricing-card {
+  background: var(--color-white) !important;
+}
+
+[data-theme="dark"] .pricing-card {
+  background: var(--color-dark-soft) !important;
+}
+
+.pricing-title,
+.pricing-subtitle,
+.pricing-features li {
+  color: var(--color-dark) !important;
+}
+
+[data-theme="dark"] .pricing-title,
+[data-theme="dark"] .pricing-subtitle,
+[data-theme="dark"] .pricing-features li {
+  color: var(--color-white) !important;
+}
+
+/* Fix pour le gradient des prix - fallback couleur solide */
+.price-value {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Fallback pour navigateurs qui ne supportent pas */
+  color: var(--color-primary);
+}
+
+/* Support pour -webkit-text-fill-color */
+@supports not ((-webkit-background-clip: text) and (-webkit-text-fill-color: transparent)) {
+  .price-value {
+    background: none;
+    color: var(--color-primary);
+  }
+}
