@@ -347,15 +347,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo img {
-  height: 44px;
-  width: auto;
+  height: 48px;
+  width: 48px;
   object-fit: contain;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 4px;
+  /* White drop-shadow so logo pops on dark bg */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
   transition: var(--transition);
 }
 
 .nav-logo img:hover {
-  opacity: 0.85;
-  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.6));
+  transform: scale(1.05);
 }
 
 .nav-links {
@@ -885,16 +891,15 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-body);
 }
 
+/* ::before supprimé — les icônes FA sont directement dans le HTML */
 .credential-item::before {
+  display: none;
   content: '';
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
+  width: 0;
+  height: 0;
+  min-width: 0;
+  background: none;
+  border-radius: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
   background-size: 16px 16px;
   background-repeat: no-repeat;
@@ -914,25 +919,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-usp-icon {
-  font-size: 2rem;
   flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  color: var(--white);
+  font-size: 1.4rem;
 }
 
 .about-usp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-usp-text strong {
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--primary);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .about-usp-text span {
   display: block;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-muted);
   font-size: 0.85rem;
   font-family: var(--font-body);
-  margin-top: 4px;
+  line-height: 1.5;
 }
 
 /* ============================================================
@@ -1107,16 +1127,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pathology-icon {
-  font-size: 2rem;
+  font-size: 1.6rem;
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  background: rgba(255, 107, 53, 0.12);
+  width: 56px;
+  height: 56px;
+  /* Solid enough background so icon reads on dark */
+  background: rgba(255, 107, 53, 0.18);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  border: 1px solid rgba(255, 107, 53, 0.4);
+  /* Explicit orange so FontAwesome icon is visible on dark bg */
+  color: var(--primary);
 }
 
 .pathology-name {
@@ -1161,24 +1184,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--primary);
   box-shadow: var(--shadow-orange);
   position: relative;
-  overflow: hidden;
+  /* Pas de overflow:hidden — ça tronquait le contenu en haut */
+  overflow: visible;
 }
 
+/* Plus de ::before positif absolu qui débordait — le header-cell HTML suffit */
 .comparison-me::before {
-  content: 'Coach APA\'R';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--gradient-primary);
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 6px 20px;
-  border-radius: var(--radius-full);
-  white-space: nowrap;
-  letter-spacing: 0.05em;
+  display: none;
 }
 
 .comparison-classic {
@@ -1526,11 +1538,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .booking-container {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 40px;
-  max-width: 1000px;
+  max-width: 760px;
   margin-inline: auto;
+  width: 100%;
 }
 
 .booking-intro h3 {
@@ -2467,8 +2481,10 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  /* booking-container reste en colonne unique, centré */
   .booking-container {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    align-items: center;
   }
 
   .section-about .container {
@@ -2580,8 +2596,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .booking-container {
-    grid-template-columns: 1fr 2fr;
-    gap: 56px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
 }
 
@@ -3140,6 +3157,9 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(255, 107, 53, 0.12);
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
 }
 
 /* Booking calendar wrapper */
