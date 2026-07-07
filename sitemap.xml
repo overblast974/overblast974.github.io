@@ -7,7 +7,7 @@
   <!-- Page principale -->
   <url>
     <loc>https://coachapar.fr/</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
   <!-- Page publics accompagnés / APA -->
   <url>
     <loc>https://coachapar.fr/publics-accompagnes.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -23,21 +23,29 @@
   <!-- Pages services -->
   <url>
     <loc>https://coachapar.fr/pages/coaching-sportif.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://coachapar.fr/pages/activite-physique-adaptee.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://coachapar.fr/pages/conseils-nutritionnels.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Page contact -->
+  <url>
+    <loc>https://coachapar.fr/pages/contact.html</loc>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,29 +53,37 @@
   <!-- Blog -->
   <url>
     <loc>https://coachapar.fr/pages/blog.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Articles de blog -->
+  <url>
+    <loc>https://coachapar.fr/pages/blog/activite-physique-sante-cardiovasculaire.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Pages légales -->
   <url>
     <loc>https://coachapar.fr/pages/mentions-legales.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://coachapar.fr/pages/politique-confidentialite.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://coachapar.fr/pages/cgv.html</loc>
-    <lastmod>2025-06-02</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
