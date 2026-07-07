@@ -71,8 +71,8 @@
       "name": "Services de coaching sportif",
       "itemListElement": [
         { "@type": "Offer", "name": "Activité Physique Adaptée (APA)", "description": "Coaching APA spécialisé pathologies, handicap et seniors" },
-        { "@type": "Offer", "name": "Coaching Sportif Individuel", "price": "50", "priceCurrency": "EUR" },
-        { "@type": "Offer", "name": "Conseils Nutritionnels", "price": "45", "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Coaching Sportif Individuel", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 50, "priceCurrency": "EUR" } },
+        { "@type": "Offer", "name": "Conseils Nutritionnels", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 45, "priceCurrency": "EUR" } },
         { "@type": "Offer", "name": "Cours de Pilates", "description": "Cours Pilates Matwork Niveau 1, petit groupe" }
       ]
     }
@@ -136,7 +136,7 @@
         "name": "Quel est le tarif d'une séance de coaching sportif à Montpellier ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Une séance de coaching individuel est à 50€. Une consultation nutrition est à 45€. Je propose également un diagnostic gratuit d'une valeur de 45€ pour les nouveaux clients."
+          "text": "Une séance de coaching individuel est à partir de 50€. Une consultation nutrition est à partir de 45€. Le tarif exact dépend de la formule choisie, devis personnalisé sur demande. Je propose également un diagnostic gratuit d'une valeur de 45€ pour les nouveaux clients."
         }
       },
       {
@@ -196,7 +196,6 @@
         <li role="none"><a href="#accueil" class="nav-link active" role="menuitem">Accueil</a></li>
         <li role="none"><a href="#expertise" class="nav-link" role="menuitem">Expertise</a></li>
         <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
-        <li role="none"><a href="#temoignages" class="nav-link" role="menuitem">Résultats</a></li>
         <li role="none"><a href="#tarifs" class="nav-link" role="menuitem">Tarifs</a></li>
         <li role="none"><a href="#reservation" class="nav-link" role="menuitem">Réserver</a></li>
       </ul>
@@ -217,7 +216,6 @@
         <li><a href="#accueil" class="nav-link">Accueil</a></li>
         <li><a href="#expertise" class="nav-link">Expertise</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#temoignages" class="nav-link">Résultats</a></li>
         <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
         <li><a href="#reservation" class="nav-link">Réserver</a></li>
       </ul>
@@ -462,7 +460,7 @@
               <li><i class="fas fa-check"></i> Ajustements réguliers</li>
             </ul>
             <div class="service-price">
-              <span>50€</span> / séance
+              À partir de <span>50€</span> / séance
             </div>
           </div>
 
@@ -482,7 +480,7 @@
               <li><i class="fas fa-check"></i> Suivi et ajustements</li>
             </ul>
             <div class="service-price">
-              <span>45€</span> / consultation
+              À partir de <span>45€</span> / consultation
             </div>
           </div>
 
@@ -737,71 +735,7 @@
     <!-- ================================================================
          TESTIMONIALS
          ================================================================ -->
-    <section class="section section-testimonials" id="temoignages" aria-labelledby="testimonials-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag reveal">Ils témoignent</span>
-          <h2 class="section-title reveal" id="testimonials-title">Leurs <span class="gradient-text">Transformations</span></h2>
-          <p class="section-desc reveal">Plus de 150 clients accompagnés à Montpellier et dans l'Hérault</p>
-        </div>
-
-        <div class="testimonials-grid">
-          <div class="testimonial-card reveal" data-delay="0">
-            <div class="testimonial-quote">
-              "J'ai perdu 15kg en 6 mois grâce à Loïc. Son approche combine parfaitement sport et nutrition. Il a su adapter les exercices à mes capacités tout en me challengeant. Un vrai professionnel à l'écoute !"
-            </div>
-            <div class="testimonial-footer">
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">S</div>
-                <div>
-                  <div class="testimonial-name">Sophie M.</div>
-                  <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonial-result">−15kg en 6 mois</div>
-            </div>
-          </div>
-
-          <div class="testimonial-card reveal" data-delay="100">
-            <div class="testimonial-quote">
-              "Après ma blessure au genou, j'avais peur de ne plus pouvoir faire de sport. Grâce à l'expertise APA de Loïc, j'ai pu reprendre progressivement et en sécurité. Aujourd'hui je suis plus fort qu'avant !"
-            </div>
-            <div class="testimonial-footer">
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">M</div>
-                <div>
-                  <div class="testimonial-name">Marc D.</div>
-                  <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonial-result">Rééducation réussie</div>
-            </div>
-          </div>
-
-          <div class="testimonial-card reveal" data-delay="200">
-            <div class="testimonial-quote">
-              "Les cours de Pilates m'ont littéralement sauvée de mes douleurs dorsales chroniques. Loïc est pédagogue, patient et très compétent. Je recommande les yeux fermés !"
-            </div>
-            <div class="testimonial-footer">
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">C</div>
-                <div>
-                  <div class="testimonial-name">Claire B.</div>
-                  <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonial-result">Douleurs soulagées</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- ================================================================
          BOOKING — CALENDRIER RÉSERVATION
@@ -880,10 +814,10 @@
             </div>
             <h3 class="pricing-title">Transformation</h3>
             <div class="pricing-price">
+              <span class="price-period">à partir de</span>
               <span class="price-value">850€</span>
-              <span class="price-original">1000€</span>
             </div>
-            <p class="pricing-subtitle">20 séances — Économie 150€</p>
+            <p class="pricing-subtitle">Forfait 20 séances</p>
             <ul class="pricing-features">
               <li><i class="fas fa-check"></i> 20 séances coaching</li>
               <li><i class="fas fa-check"></i> Bilan nutrition offert</li>
@@ -902,6 +836,7 @@
             </div>
             <h3 class="pricing-title">Premium</h3>
             <div class="pricing-price">
+              <span class="price-period">à partir de</span>
               <span class="price-value">180€</span>
               <span class="price-period">/mois</span>
             </div>
@@ -1041,7 +976,6 @@
           <li><a href="#accueil">Accueil</a></li>
           <li><a href="#expertise">Expertise APA</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#temoignages">Résultats</a></li>
           <li><a href="#tarifs">Tarifs</a></li>
           <li><a href="#reservation">Réserver</a></li>
         </ul>
