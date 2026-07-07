@@ -28,14 +28,13 @@ const CRITICAL_RESOURCES = [
   '/css/components-ux.css',
   '/js/main-hyper-optimized.js',
   '/images/logo.png',
-  '/images/hero-bg.jpg',
   'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
 ];
 
 // Images à précharger avec lazy loading intelligent
 const PRELOAD_IMAGES = [
-  '/images/coach-portrait.jpg',
+  '/images/loic-photo.png',
   '/images/coaching-sportif.jpg',
   '/images/Conseils-nutritionnels.webp'
 ];
