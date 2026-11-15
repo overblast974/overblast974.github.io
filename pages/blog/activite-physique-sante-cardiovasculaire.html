@@ -25,7 +25,8 @@
     <title>L'activité physique adaptée pour la santé cardiovasculaire - Coach APA'R</title>
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="canonical" href="https://coachapar.fr/pages/blog/activite-physique-sante-cardiovasculaire.html">
-    <link rel="icon" href="../../images/logo.png" type="image/png">
+    <link rel="icon" href="../../images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../../images/logo-192.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,34 +73,28 @@
     </style>
 </head>
 <body>
-    <!-- Overlay de préchargement -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="spinner"></div>
-            <p>Chargement en cours...</p>
-        </div>
-    </div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="../../index.html" class="nav-logo">
-                    <img src="../../images/logo.png" alt="Logo Coach APA'R" />
+                    <img src="../../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
                 </a>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
                 <div class="nav-menu" id="navMenu">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="../../index.html#hero" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../../index.html#accueil" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../../index.html#expertise" class="nav-link">À propos</a></li>
                         <li class="nav-item"><a href="../../index.html#services" class="nav-link">Services</a></li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
-                            <ul class="dropdown-menu">
+                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
+                            <ul class="dropdown-menu" id="menuPrestations">
                                 <li><a href="../coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
                                 <li><a href="../conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
                                 <li><a href="../activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
@@ -113,6 +108,8 @@
             </nav>
         </div>
     </header>
+
+    <main id="contenu" tabindex="-1">
 
     <!-- Article Hero Section -->
     <section class="page-hero">
@@ -137,7 +134,7 @@
         <div class="container">
             <div class="article-main">
                 <div class="article-image">
-                    <img src="../../images/blog-1.jpg" alt="Activité physique et santé cardiovasculaire">
+                    <img src="../../images/blog-1.webp" srcset="../../images/blog-1-800.webp 800w, ../../images/blog-1.webp 1600w" sizes="(min-width: 1000px) 900px, 100vw" alt="Activité physique et santé cardiovasculaire" width="1600" height="1173" fetchpriority="high">
                 </div>
                 
                 <div class="article-text">
@@ -221,15 +218,6 @@
                     </div>
                 </div>
                 
-                <div class="article-share">
-                    <span>Partager cet article :</span>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
             </div>
             
             <div class="article-footer">
@@ -246,6 +234,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -258,8 +248,8 @@
                     <div class="footer-col">
                         <h3>Navigation</h3>
                         <ul>
-                            <li><a href="../../index.html#hero">Accueil</a></li>
-                            <li><a href="../../index.html#about">À propos</a></li>
+                            <li><a href="../../index.html#accueil">Accueil</a></li>
+                            <li><a href="../../index.html#expertise">À propos</a></li>
                             <li><a href="../../index.html#services">Services</a></li>
                             <li><a href="../blog.html">Blog</a></li>
                             <li><a href="../contact.html">Contact</a></li>
@@ -268,8 +258,8 @@
                     <div class="footer-col">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="../../index.html#services">Activité Physique Adaptée</a></li>
-                            <li><a href="../../index.html#services">Conseils Nutritionnels</a></li>
+                            <li><a href="../activite-physique-adaptee.html">Activité Physique Adaptée</a></li>
+                            <li><a href="../conseils-nutritionnels.html">Conseils Nutritionnels</a></li>
                             <li><a href="../../index.html#services">Reconditionnement à l'Effort</a></li>
                             <li><a href="../../index.html#services">Cours Collectifs</a></li>
                             <li><a href="../../index.html#services">Coaching à Distance</a></li>
@@ -287,7 +277,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+                <p>Site réalisé par Loïc Boyer</p>
             </div>
         </div>
     </footer>

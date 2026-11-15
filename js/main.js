@@ -5,14 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
   let ticking = false;
 
   // Initialisation de toutes les fonctionnalités
-  initPreloader();
   initMobileMenu();
   initSmoothScroll();
   initScrollAnimations();
   initHeroEffects();
   initServiceCards();
   initTestimonialSlider();
-  initCounters();
   initContactForm();
   initHeaderAnimation();
   initSocialIcons();
@@ -25,63 +23,82 @@ document.addEventListener('DOMContentLoaded', function() {
   initCoursesSlider();
   initFloatingCta();
 
-  // Système de préchargement
-  function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-    
-    // Suppression immédiate du préchargeur
-    window.addEventListener('load', function() {
-      preloader.style.display = 'none';
-      
-      // Déclencher les animations d'entrée pour la page d'accueil seulement
-      const heroContent = document.querySelector('.hero-content');
-      if (heroContent) {
-        document.querySelectorAll('.hero-content > *').forEach((el, index) => {
-          setTimeout(() => {
-            el.classList.add('in-view');
-          }, 100 * index);
-        });
-      }
-    });
-  }
-
-  // Gestion du menu mobile avec animation
+  // Menu mobile et sous-menu « Prestations » (toucher, clavier, souris)
   function initMobileMenu() {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
-    
+
     if (!navToggle || !navMenu) return;
 
-    navToggle.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navMenu.classList.toggle('active');
-      
-      // Animation des éléments du menu
-      if (navMenu.classList.contains('active')) {
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach((link, index) => {
-          link.style.animationDelay = `${0.1 + index * 0.1}s`;
-          link.classList.add('animated');
-        });
+    const dropdowns = Array.from(navMenu.querySelectorAll('.dropdown'));
+
+    function setDropdown(dropdown, open) {
+      const trigger = dropdown.querySelector('.dropdown-toggle');
+      dropdown.classList.toggle('open', open);
+      if (trigger) trigger.setAttribute('aria-expanded', String(open));
+    }
+
+    function closeDropdowns(except) {
+      dropdowns.forEach(d => { if (d !== except) setDropdown(d, false); });
+    }
+
+    function setMenu(open, returnFocus) {
+      navToggle.classList.toggle('active', open);
+      navMenu.classList.toggle('active', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      if (!open) {
+        closeDropdowns();
+        if (returnFocus) navToggle.focus();
       }
+    }
+
+    navToggle.addEventListener('click', function() {
+      setMenu(!navMenu.classList.contains('active'));
     });
-    
-    // Fermer le menu au clic sur un lien
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function() {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+
+    // Le déclencheur « Prestations » ouvre ou ferme son sous-menu (il ne ferme plus le menu)
+    dropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('.dropdown-toggle');
+      if (!trigger) return;
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = !dropdown.classList.contains('open');
+        closeDropdowns(dropdown);
+        setDropdown(dropdown, open);
+      });
+      // Fermer le sous-menu quand le focus clavier en sort
+      dropdown.addEventListener('focusout', function(e) {
+        if (!dropdown.contains(e.relatedTarget)) setDropdown(dropdown, false);
       });
     });
-    
-    // Fermer le menu en cliquant à l'extérieur
+
+    // Fermer le menu au clic sur un vrai lien (destination)
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        setMenu(false);
+      });
+    });
+
+    // Échap : ferme d'abord le sous-menu, puis le menu mobile
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape') return;
+      const openDropdown = dropdowns.find(d => d.classList.contains('open'));
+      if (openDropdown) {
+        setDropdown(openDropdown, false);
+        const trigger = openDropdown.querySelector('.dropdown-toggle');
+        if (trigger) trigger.focus();
+        return;
+      }
+      if (navMenu.classList.contains('active')) setMenu(false, true);
+    });
+
+    // Fermer en cliquant à l'extérieur
     document.addEventListener('click', function(event) {
-      if (navMenu.classList.contains('active') && 
-          !navMenu.contains(event.target) && 
-          !navToggle.contains(event.target)) {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+      if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+        closeDropdowns();
+        if (navMenu.classList.contains('active')) setMenu(false);
       }
     });
   }
@@ -97,6 +114,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
+          // Amener le focus clavier sur la cible (lien « Aller au contenu », ancres)
+          if (!targetElement.hasAttribute('tabindex')) targetElement.setAttribute('tabindex', '-1');
+          targetElement.focus({ preventScroll: true });
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            targetElement.scrollIntoView();
+            return;
+          }
           const startPosition = window.pageYOffset;
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
           const distance = targetPosition - startPosition;
@@ -339,132 +363,79 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false);
   }
 
-  // Animation améliorée des compteurs
-  function initCounters() {
-    const counterElements = document.querySelectorAll('.counter');
-    
-    if (!counterElements.length) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-    
-    counterElements.forEach(counter => {
-      observer.observe(counter);
-    });
-    
-    function animateCounter(counter) {
-      const target = parseInt(counter.getAttribute('data-count'));
-      const duration = 2000; // ms
-      const frameRate = 1000 / 60; // 60fps
-      const totalFrames = Math.round(duration / frameRate);
-      
-      // Pour les grands nombres, utilisez une courbe logarithmique pour l'animation
-      const isLargeNumber = target > 100;
-      let currentCount = 0;
-      let frame = 0;
-      
-      counter.classList.add('updating');
-      
-      const animate = () => {
-        frame++;
-        
-        // Animation logarithmique pour les grands nombres
-        if (isLargeNumber) {
-          const progress = frame / totalFrames;
-          currentCount = Math.floor(target * (Math.pow(progress, 3)));
-        } else {
-          currentCount = Math.floor(target * (frame / totalFrames));
-        }
-        
-        // Assurer que nous atteignons exactement la valeur cible
-        if (frame === totalFrames) {
-          currentCount = target;
-          counter.classList.remove('updating');
-          counter.classList.add('completed');
-          
-          // Effet de pulse une fois complété
-          setTimeout(() => {
-            counter.classList.remove('completed');
-          }, 1000);
-        }
-        
-        // Formater les grands nombres avec des séparateurs
-        counter.textContent = currentCount.toLocaleString('fr-FR');
-        
-        if (frame < totalFrames) {
-          requestAnimationFrame(animate);
-        }
-      };
-      
-      animate();
-    }
-  }
-
-  // Animation du formulaire de contact
+  // Formulaire de contact : envoi réel vers Formspree, succès seulement si la réponse est OK
   function initContactForm() {
-    const formGroups = document.querySelectorAll('.form-group');
     const contactForm = document.getElementById('contactForm');
-    
-    if (!formGroups.length) return;
-    
-    // Ajout de l'effet de focus
-    formGroups.forEach(group => {
-      const input = group.querySelector('input, textarea, select');
-      const ripple = group.querySelector('.input-ripple');
-      
-      if (input && ripple) {
-        input.addEventListener('focus', () => {
-          group.classList.add('focused');
+    if (!contactForm) return;
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const status = document.getElementById('contactStatus');
+    const originalLabel = submitBtn ? submitBtn.textContent : 'Envoyer';
+    const ERROR_MESSAGE = "Votre message n'a pas pu être envoyé. Votre texte est conservé : " +
+      'réessayez dans un instant, ou écrivez-moi à coachapar@gmail.com, ou appelez le 07 65 77 51 04.';
+    let sending = false;
+
+    // Pré-sélection du service depuis l'adresse (ex. contact.html?service=cours-pilates)
+    const serviceSelect = document.getElementById('service');
+    const wanted = new URLSearchParams(window.location.search).get('service');
+    if (serviceSelect && wanted && serviceSelect.querySelector('option[value="' + CSS.escape(wanted) + '"]')) {
+      serviceSelect.value = wanted;
+    }
+
+    function setStatus(message, type) {
+      if (!status) return;
+      status.className = 'form-status form-status--' + type;
+      status.setAttribute('role', type === 'error' ? 'alert' : 'status');
+      status.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
+      status.textContent = message;
+    }
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (sending) return;
+
+      // Validation du navigateur : le focus va sur le premier champ en erreur
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        const firstInvalid = contactForm.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      sending = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours…';
+      }
+      setStatus('Envoi en cours…', 'pending');
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { Accept: 'application/json' }
         });
-        
-        input.addEventListener('blur', () => {
-          if (!input.value) {
-            group.classList.remove('focused');
-          }
-        });
-        
-        // Si le champ a déjà une valeur
-        if (input.value) {
-          group.classList.add('focused');
+
+        if (response.ok) {
+          contactForm.reset();
+          setStatus('Message envoyé ! Je vous répondrai dans les plus brefs délais.', 'success');
+          if (status) status.focus();
+        } else {
+          setStatus(ERROR_MESSAGE, 'error');
+          if (status) status.focus();
+        }
+      } catch (err) {
+        console.error('Formulaire de contact :', err);
+        setStatus(ERROR_MESSAGE, 'error');
+        if (status) status.focus();
+      } finally {
+        sending = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
         }
       }
     });
-    
-    // Animation de soumission du formulaire
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const submitBtn = this.querySelector('button[type="submit"]');
-        
-        // Effet de pulsation sur le bouton
-        submitBtn.classList.add('pulse');
-        
-        // Simuler l'envoi (à remplacer par l'envoi réel)
-        setTimeout(() => {
-          // Animation de succès
-          submitBtn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
-          submitBtn.classList.add('success');
-          submitBtn.classList.remove('pulse');
-          
-          // Réinitialisation du formulaire après un délai
-          setTimeout(() => {
-            contactForm.reset();
-            formGroups.forEach(group => group.classList.remove('focused'));
-            submitBtn.innerHTML = 'Envoyer';
-            submitBtn.classList.remove('success');
-          }, 3000);
-        }, 1500);
-      });
-    }
   }
 
   // Animation du header lors du défilement

@@ -30,7 +30,8 @@
     <title>Coaching Sportif - Coach APA'R Montpellier</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="canonical" href="https://coachapar.fr/pages/coaching-sportif.html">
-    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/logo-192.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,34 +145,28 @@
 </head>
 
 <body>
-    <!-- Overlay de préchargement -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="spinner"></div>
-            <p>Chargement en cours...</p>
-        </div>
-    </div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="../index.html" class="nav-logo">
-                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                    <img src="../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
                 </a>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
                 <div class="nav-menu" id="navMenu">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#expertise" class="nav-link">À propos</a></li>
                         <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
-                            <ul class="dropdown-menu">
+                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
+                            <ul class="dropdown-menu" id="menuPrestations">
                                 <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
                                 <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils
                                         Nutritionnels</a></li>
@@ -186,6 +181,8 @@
             </nav>
         </div>
     </header>
+
+    <main id="contenu" tabindex="-1">
 
     <!-- Hero Section -->
     <section class="page-hero">
@@ -293,7 +290,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="../images/coaching-sportif.jpg" alt="Coaching Individuel">
+                        <img src="../images/coaching-sportif.webp" alt="Coaching Individuel" width="800" height="800" loading="lazy" decoding="async">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-user"></i>
@@ -310,7 +307,7 @@
 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="../images/programme-entrainement.jpg" alt="Carnet de programme d'entraînement personnalisé avec planning hebdomadaire">
+                        <img src="../images/programme-entrainement.jpg" width="275" height="183" loading="lazy" decoding="async" alt="Carnet de programme d'entraînement personnalisé avec planning hebdomadaire">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-laptop-house"></i>
@@ -327,7 +324,7 @@
 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="../images/coaching-sportif.jpg" alt="Forfaits 10/20 Séances">
+                        <img src="../images/coaching-sportif.webp" alt="Forfaits 10/20 Séances" width="800" height="800" loading="lazy" decoding="async">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-calendar-check"></i>
@@ -344,7 +341,7 @@
 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="../images/preparation-physique.jpg" alt="Préparation physique spécifique avec chronomètre">
+                        <img src="../images/preparation-physique.webp" width="800" height="533" loading="lazy" decoding="async" alt="Préparation physique spécifique avec chronomètre">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-running"></i>
@@ -361,7 +358,7 @@
 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="../images/bilan-condition-physique.jpg" alt="Bilan de condition physique avec un coach sportif">
+                        <img src="../images/bilan-condition-physique.webp" width="1200" height="504" loading="lazy" decoding="async" alt="Bilan de condition physique avec un coach sportif">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-clipboard-check"></i>
@@ -631,6 +628,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -639,26 +638,20 @@
                     <h3>Coach APA'R</h3>
                     <p>Coach sportif et nutritionnel certifié, spécialisé en activité physique adaptée à Montpellier.
                     </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul class="footer-links">
                         <li><a href="coaching-sportif.html">Coaching Sportif</a></li>
                         <li><a href="conseils-nutritionnels.html">Conseils Nutritionnels</a></li>
-                        <li><a href="../index.html#services">Activité Physique Adaptée</a></li>
+                        <li><a href="activite-physique-adaptee.html">Activité Physique Adaptée</a></li>
                         <li><a href="../index.html#services">Cours Collectifs</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Liens Utiles</h3>
                     <ul class="footer-links">
-                        <li><a href="../index.html#about">À Propos</a></li>
+                        <li><a href="../index.html#expertise">À Propos</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -674,7 +667,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+                <p>Site réalisé par Loïc Boyer</p>
             </div>
         </div>
     </footer>

@@ -25,7 +25,8 @@
     <title>Contact - Coach APA'R - Activité Physique Adaptée et Nutrition à Montpellier</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="canonical" href="https://coachapar.fr/pages/contact.html">
-    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/logo-192.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +93,7 @@
             font-weight: 500;
         }
         
-        /* Styles pour le formulaire sans labels */
+        /* Styles du formulaire */
         .contact-form .form-group {
             margin-bottom: 1.5rem;
         }
@@ -178,34 +179,28 @@
     </style>
 </head>
 <body>
-    <!-- Overlay de préchargement -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="spinner"></div>
-            <p>Chargement en cours...</p>
-        </div>
-    </div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="../index.html" class="nav-logo">
-                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                    <img src="../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
                 </a>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
                 <div class="nav-menu" id="navMenu">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#expertise" class="nav-link">À propos</a></li>
                         <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
-                            <ul class="dropdown-menu">
+                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
+                            <ul class="dropdown-menu" id="menuPrestations">
                                 <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
                                 <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
                                 <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
@@ -219,6 +214,8 @@
             </nav>
         </div>
     </header>
+
+    <main id="contenu" tabindex="-1">
 
     <!-- Page Hero Section -->
     <section class="page-hero">
@@ -267,27 +264,26 @@
                             <p>Lundi - Vendredi: 17h30 - 21h30<br>Samedi: 9h - 17h</p>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
                 </div>
                 <div class="contact-form slide-in-right">
-                    <form id="contactForm" action="https://formspree.io/f/xwplpobd" method="POST">
+                    <form id="contactForm" action="https://formspree.io/f/xwplpobd" method="POST" novalidate>
+                        <p class="form-required-note">Les champs marqués d'un astérisque (<span aria-hidden="true">*</span>) sont obligatoires.</p>
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Nom" required>
+                            <label for="name">Nom <span aria-hidden="true">*</span></label>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <label for="email">Email <span aria-hidden="true">*</span></label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Téléphone">
+                            <label for="phone">Téléphone (facultatif)</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel">
                         </div>
                         <div class="form-group">
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Choisissez un service</option>
+                            <label for="service">Service souhaité (facultatif)</label>
+                            <select id="service" name="service">
+                                <option value="" selected>Choisissez un service</option>
                                 <!-- Services de Coaching Sportif -->
                                 <option value="coaching-individuel">Coaching Individuel</option>
                                 <option value="programme-entrainement">Programme d'entraînement personnalisé</option>
@@ -306,14 +302,35 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder="Message" required style="resize: none; min-height: 150px;"></textarea>
+                            <label for="message">Message (facultatif)</label>
+                            <textarea id="message" name="message" rows="5" aria-describedby="message-aide" style="resize: vertical; min-height: 150px;"></textarea>
+                            <p class="form-hint" id="message-aide">Merci de ne pas indiquer d'informations médicales : nous en parlerons de vive voix lors du premier rendez-vous.</p>
+                        </div>
+                        <div class="form-honeypot" aria-hidden="true">
+                            <label for="contact-gotcha">Ne pas remplir ce champ</label>
+                            <input type="text" id="contact-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+                        <p id="contactStatus" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+                        <div class="form-privacy">
+                          <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie. Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
+                        <details class="form-privacy-details">
+                          <summary>En savoir plus</summary>
+                          <p><strong>Qui traite vos données ?</strong> Loïc Boyer, entrepreneur individuel, exerçant sous le nom Coach APA'R. Contact : coachapar@gmail.com.</p>
+                          <p><strong>Pour quoi faire ?</strong> Répondre à votre demande d'information ou de rendez-vous, avant tout engagement de votre part. Vos données ne servent à aucune prospection et ne sont ni vendues ni cédées.</p>
+                          <p><strong>Qui les reçoit ?</strong> Loïc Boyer uniquement. Pour l'acheminement, elles passent par Formspree, service de formulaires dont les serveurs sont aux États-Unis (transfert encadré par des clauses contractuelles types de la Commission européenne), puis par la messagerie Gmail de Google.</p>
+                          <p><strong>Combien de temps ?</strong> 12 mois après notre dernier échange si aucun accompagnement n'est engagé. Si vous devenez client, elles sont conservées le temps de l'accompagnement.</p>
+                          <p><strong>Vos droits.</strong> Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, la limitation de leur traitement ou vous opposer à leur traitement, en écrivant à coachapar@gmail.com. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>
+                          <p><strong>Pourquoi ne pas parler de santé ici ?</strong> Les informations de santé sont des données sensibles. Elles ne doivent pas transiter par ce formulaire : nous en parlerons de vive voix lors du premier échange.</p>
+                        </details>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -327,8 +344,8 @@
                     <div class="footer-col">
                         <h3>Navigation</h3>
                         <ul>
-                            <li><a href="../index.html#hero">Accueil</a></li>
-                            <li><a href="../index.html#about">À propos</a></li>
+                            <li><a href="../index.html#accueil">Accueil</a></li>
+                            <li><a href="../index.html#expertise">À propos</a></li>
                             <li><a href="../index.html#services">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact</a></li>
@@ -356,7 +373,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+                <p>Site réalisé par Loïc Boyer</p>
             </div>
         </div>
     </footer>
@@ -366,32 +383,5 @@
 
     <script src="../js/main.js"></script>
     
-    <!-- Script pour l'envoi d'emails avec Formspree -->
-<script>
-    const form = document.getElementById('contactForm');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(form);
-        const xhr = new XMLHttpRequest();
-        
-        xhr.open('POST', 'https://formspree.io/f/xwplpobd');
-        xhr.setRequestHeader('Accept', 'application/json');
-        
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState !== XMLHttpRequest.DONE) return;
-            
-            if (xhr.status === 200) {
-                form.reset();
-                document.getElementById('formSuccess').style.display = 'block';
-            } else {
-                document.getElementById('formError').style.display = 'block';
-            }
-        };
-        
-        xhr.send(formData);
-    });
-</script>
 </body>
 </html> 

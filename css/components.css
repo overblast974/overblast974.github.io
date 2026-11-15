@@ -805,3 +805,39 @@
     transform: scale(1);
   }
 }
+
+/* ============================================
+   LOT 0 — corrections techniques (accessibilité)
+   ============================================ */
+
+/* Lien d'évitement : invisible jusqu'à la prise de focus */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Menu mobile fermé : retiré de l'ordre de tabulation */
+@media (max-width: 768px) {
+  .navbar-menu {
+    visibility: hidden;
+  }
+  .navbar-menu.open {
+    visibility: visible;
+  }
+}

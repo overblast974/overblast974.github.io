@@ -39,34 +39,37 @@ function initNavbar() {
         }
     });
 
-    // Mobile menu toggle
+    // Menu mobile : ouverture, fermeture, états accessibles
+    function setMenu(open, returnFocus) {
+        if (!navbarToggle || !navbarMenu) return;
+        navbarMenu.classList.toggle('open', open);
+        navbarToggle.setAttribute('aria-expanded', String(open));
+        navbarToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+        const icon = navbarToggle.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars', !open);
+            icon.classList.toggle('fa-times', open);
+        }
+        if (!open && returnFocus) navbarToggle.focus();
+    }
+
     if (navbarToggle && navbarMenu) {
         navbarToggle.addEventListener('click', function() {
-            navbarMenu.classList.toggle('open');
-            const icon = navbarToggle.querySelector('i');
-            if (navbarMenu.classList.contains('open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            setMenu(!navbarMenu.classList.contains('open'));
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navbarMenu.classList.contains('open')) setMenu(false, true);
         });
     }
 
-    // Close mobile menu when clicking a link
-    navbarLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (navbarMenu) {
-                navbarMenu.classList.remove('open');
-            }
-            if (navbarToggle) {
-                const icon = navbarToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+    // Fermer le menu mobile au clic sur un lien
+    if (navbarMenu) {
+        navbarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                setMenu(false);
+            });
         });
-    });
+    }
 
     // Active link on scroll
     const sections = document.querySelectorAll('section[id]');
