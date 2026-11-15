@@ -185,6 +185,12 @@ function initSmoothScroll() {
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+
+                // Déplacer aussi le focus (lien d'évitement, navigation clavier)
+                if (!target.hasAttribute('tabindex')) {
+                    target.setAttribute('tabindex', '-1');
+                }
+                target.focus({ preventScroll: true });
             }
         });
     });
