@@ -44,14 +44,32 @@ function initNavigation() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll(); // état initial
 
-  // --- Menu mobile toggle ---
+  // --- Menu mobile : ouverture, fermeture, états accessibles ---
+  function setMobileMenu(open, { returnFocus = false } = {}) {
+    if (!navToggle || !navMobileMenu) return;
+    navMobileMenu.classList.toggle('active', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    navMobileMenu.setAttribute('aria-hidden', String(!open));
+    if (open) {
+      // Léger délai : les liens héritent la transition de visibilité du menu
+      const firstLink = navMobileMenu.querySelector('a');
+      if (firstLink) setTimeout(() => firstLink.focus(), 60);
+    } else if (returnFocus) {
+      navToggle.focus();
+    }
+  }
+
   if (navToggle && navMobileMenu) {
     navToggle.addEventListener('click', () => {
-      navMobileMenu.classList.toggle('active');
-      navToggle.setAttribute(
-        'aria-expanded',
-        navMobileMenu.classList.contains('active').toString()
-      );
+      setMobileMenu(!navMobileMenu.classList.contains('active'));
+    });
+
+    // Échap ferme le menu et rend le focus au bouton
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMobileMenu.classList.contains('active')) {
+        setMobileMenu(false, { returnFocus: true });
+      }
     });
   }
 
@@ -65,10 +83,12 @@ function initNavigation() {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         // Fermer le menu mobile si ouvert
-        if (navMobileMenu) {
-          navMobileMenu.classList.remove('active');
-          if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+        if (navMobileMenu && navMobileMenu.classList.contains('active')) {
+          setMobileMenu(false);
         }
+        // Amener le focus clavier dans la section atteinte
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
       }
     });
   });
@@ -97,84 +117,10 @@ function initNavigation() {
 
   // --- Resize: fermer menu mobile si > 768px ---
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && navMobileMenu) {
-      navMobileMenu.classList.remove('active');
-      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    if (window.innerWidth >= 900 && navMobileMenu && navMobileMenu.classList.contains('active')) {
+      setMobileMenu(false);
     }
   });
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 2. COMPTEURS ANIMÉS (Stats section)
-// ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Anime un compteur de 0 à target en 2000ms avec easing ease-out.
- * @param {HTMLElement} el - L'élément span.stat-number
- * @param {number} target - La valeur finale
- * @param {string} suffix - Suffixe à afficher ("%", "+", "")
- */
-function animateCounter(el, target, suffix) {
-  const duration = 2000;
-  const start = performance.now();
-
-  function easeOut(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function step(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const value = Math.floor(easeOut(progress) * target);
-    el.textContent = value + suffix;
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      el.textContent = target + suffix;
-    }
-  }
-
-  requestAnimationFrame(step);
-}
-
-/**
- * Détermine le suffixe d'affichage en fonction de la valeur et de l'attribut data-suffix.
- * Règle: si data-suffix présent, l'utiliser ; sinon déduction automatique.
- * @param {HTMLElement} el
- * @param {number} value
- * @returns {string}
- */
-function getCounterSuffix(el, value) {
-  const explicit = el.getAttribute('data-suffix');
-  if (explicit !== null) return explicit;
-  // déduction automatique (fallback)
-  if (value === 98) return '%';
-  return '';
-}
-
-/**
- * Initialise les compteurs animés au scroll via IntersectionObserver.
- */
-function initCounters() {
-  const counters = document.querySelectorAll('.stat-number[data-target]');
-  if (!counters.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.getAttribute('data-target'), 10);
-          const suffix = getCounterSuffix(el, target);
-          animateCounter(el, target, suffix);
-          observer.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  counters.forEach((counter) => observer.observe(counter));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -252,6 +198,8 @@ function initFaqAccordion() {
           const otherAnswer = other.querySelector('.faq-answer');
           const otherIcon = other.querySelector('.faq-icon');
           if (otherAnswer) otherAnswer.style.maxHeight = '0';
+          const otherQuestion = other.querySelector('.faq-question');
+          if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
           if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
         }
       });
@@ -259,10 +207,12 @@ function initFaqAccordion() {
       // Toggle l'item courant
       if (isOpen) {
         item.classList.remove('open');
+        question.setAttribute('aria-expanded', 'false');
         answer.style.maxHeight = '0';
         if (icon) icon.style.transform = 'rotate(0deg)';
       } else {
         item.classList.add('open');
+        question.setAttribute('aria-expanded', 'true');
         answer.style.maxHeight = answer.scrollHeight + 'px';
         if (icon) icon.style.transform = 'rotate(45deg)';
       }
@@ -533,6 +483,7 @@ class BookingCalendar {
       btn.setAttribute('data-time', time);
       btn.setAttribute('type', 'button');
       btn.textContent = time.replace(':', 'h');
+      btn.setAttribute('aria-pressed', String(this.selectedTime === time));
 
       if (this.selectedTime === time) {
         btn.classList.add('selected');
@@ -540,8 +491,12 @@ class BookingCalendar {
 
       btn.addEventListener('click', () => {
         this.selectedTime = time;
-        wrapper.querySelectorAll('.timeslot').forEach((b) => b.classList.remove('selected'));
+        wrapper.querySelectorAll('.timeslot').forEach((b) => {
+          b.classList.remove('selected');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('selected');
+        btn.setAttribute('aria-pressed', 'true');
         this.renderForm(date, time);
       });
 
@@ -600,6 +555,7 @@ class BookingCalendar {
       <form class="booking-form" action="https://formspree.io/f/xwplpobd" method="POST" novalidate>
         <input type="hidden" name="date" value="${dateStr}">
         <input type="hidden" name="heure" value="${time}">
+        <p class="form-required-note"><span aria-hidden="true">*</span> champ obligatoire</p>
         <input type="hidden" name="_subject" value="Demande de rendez-vous — ${displayDate} à ${displayTime}">
 
         <div class="form-group">
@@ -617,8 +573,8 @@ class BookingCalendar {
           <input type="email" id="book-email" name="email" required placeholder="votre@email.fr" autocomplete="email">
         </div>
 
-        <div class="form-group">
-          <label>Contact préféré <span aria-hidden="true">*</span></label>
+        <fieldset class="form-group form-fieldset">
+          <legend>Contact préféré <span aria-hidden="true">*</span></legend>
           <div class="radio-group">
             <label class="radio-label">
               <input type="radio" name="contact_prefere" value="Appel téléphonique" required>
@@ -629,10 +585,10 @@ class BookingCalendar {
               Email
             </label>
           </div>
-        </div>
+        </fieldset>
 
         <div class="form-group">
-          <label for="book-service">Service souhaité</label>
+          <label for="book-service">Service souhaité (facultatif)</label>
           <select id="book-service" name="service">
             <option value="">-- Choisir un service --</option>
             <option value="APA">APA (Activité Physique Adaptée)</option>
@@ -644,13 +600,32 @@ class BookingCalendar {
         </div>
 
         <div class="form-group">
-          <label for="book-message">Message (optionnel)</label>
-          <textarea id="book-message" name="message" rows="3" placeholder="Informations complémentaires, objectifs..."></textarea>
+          <label for="book-message">Message (facultatif)</label>
+          <textarea id="book-message" name="message" rows="3" aria-describedby="book-message-aide"></textarea>
+          <p class="form-hint" id="book-message-aide">Merci de ne pas indiquer d'informations médicales : nous en parlerons de vive voix lors du premier rendez-vous.</p>
+        </div>
+
+        <div class="form-honeypot" aria-hidden="true">
+          <label for="book-gotcha">Ne pas remplir ce champ</label>
+          <input type="text" id="book-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
 
         <button type="submit" class="btn-submit-booking">
           Confirmer ma demande de contact
         </button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+        <div class="form-privacy">
+          <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie. Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="pages/politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
+        <details class="form-privacy-details">
+          <summary>En savoir plus</summary>
+          <p><strong>Qui traite vos données ?</strong> Loïc Boyer, entrepreneur individuel, exerçant sous le nom Coach APA'R. Contact : coachapar@gmail.com.</p>
+          <p><strong>Pour quoi faire ?</strong> Répondre à votre demande d'information ou de rendez-vous, avant tout engagement de votre part. Vos données ne servent à aucune prospection et ne sont ni vendues ni cédées.</p>
+          <p><strong>Qui les reçoit ?</strong> Loïc Boyer uniquement. Pour l'acheminement, elles passent par Formspree, service de formulaires dont les serveurs sont aux États-Unis (transfert encadré par des clauses contractuelles types de la Commission européenne), puis par la messagerie Gmail de Google.</p>
+          <p><strong>Combien de temps ?</strong> 12 mois après notre dernier échange si aucun accompagnement n'est engagé. Si vous devenez client, elles sont conservées le temps de l'accompagnement.</p>
+          <p><strong>Vos droits.</strong> Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, la limitation de leur traitement ou vous opposer à leur traitement, en écrivant à coachapar@gmail.com. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>
+          <p><strong>Pourquoi ne pas parler de santé ici ?</strong> Les informations de santé sont des données sensibles. Elles ne doivent pas transiter par ce formulaire : nous en parlerons de vive voix lors du premier échange.</p>
+        </details>
+        </div>
       </form>
     `;
 
@@ -684,6 +659,7 @@ class BookingCalendar {
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Envoi en cours…';
+    showFormMessage(form, 'Envoi en cours…', 'pending');
 
     try {
       const data = new FormData(form);
@@ -696,16 +672,13 @@ class BookingCalendar {
       if (response.ok) {
         this.showConfirmation();
       } else {
-        const json = await response.json().catch(() => ({}));
-        const msg = (json.errors && json.errors.map((err) => err.message).join(', ')) ||
-          'Une erreur est survenue. Veuillez réessayer.';
-        showFormMessage(form, msg, 'error');
+        showFormMessage(form, FORM_ERROR_MESSAGE, 'error');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Confirmer ma demande de contact';
       }
     } catch (err) {
       console.error('BookingCalendar submit error:', err);
-      showFormMessage(form, 'Erreur réseau. Vérifiez votre connexion et réessayez.', 'error');
+      showFormMessage(form, FORM_ERROR_MESSAGE, 'error');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Confirmer ma demande de contact';
     }
@@ -724,13 +697,15 @@ class BookingCalendar {
 
     const confirmation = document.createElement('div');
     confirmation.className = 'booking-confirmation';
+    confirmation.setAttribute('role', 'status');
     confirmation.innerHTML = `
-      <div class="confirmation-icon">✅</div>
-      <h3>Demande envoyée !</h3>
+      <div class="confirmation-icon" aria-hidden="true">✅</div>
+      <h3 tabindex="-1">Demande envoyée !</h3>
       <p>Votre demande a été envoyée ! Je vous contacterai au plus vite pour confirmer le rendez-vous.</p>
       <button type="button" class="btn-new-booking">Faire une nouvelle demande</button>
     `;
     this.slotsContainer.appendChild(confirmation);
+    confirmation.querySelector('h3').focus();
 
     confirmation.querySelector('.btn-new-booking').addEventListener('click', () => {
       this.slotsContainer.innerHTML = '';
@@ -774,86 +749,33 @@ class BookingCalendar {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. FORMULAIRE CONTACT (bas de page)
+// 6. MESSAGES DE FORMULAIRE (widget de réservation)
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Message affiché quand Formspree ne confirme pas la réception. */
+const FORM_ERROR_MESSAGE =
+  "Votre demande n'a pas pu être envoyée. Vos informations sont conservées : " +
+  'réessayez dans un instant, ou écrivez-moi à coachapar@gmail.com, ' +
+  'ou appelez le 07 65 77 51 04.';
+
 /**
- * Affiche un message de succès ou d'erreur sous un formulaire.
+ * Affiche un message dans la zone de statut du formulaire (.form-status,
+ * annoncée aux lecteurs d'écran). Les erreurs sont annoncées immédiatement.
  * @param {HTMLFormElement} form
  * @param {string} message
- * @param {'success'|'error'} type
+ * @param {'success'|'error'|'pending'} type
  */
 function showFormMessage(form, message, type) {
-  // Supprimer message précédent
-  form.parentNode.querySelectorAll('.form-message').forEach((m) => m.remove());
-
-  const msg = document.createElement('p');
-  msg.className = `form-message form-message--${type}`;
-  msg.setAttribute('role', 'alert');
-  msg.textContent = message;
-  form.parentNode.insertBefore(msg, form.nextSibling);
-}
-
-/**
- * Initialise le formulaire de contact via Formspree (fetch).
- */
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector('[type="submit"]');
-    const originalText = submitBtn ? submitBtn.textContent : '';
-
-    // Validation HTML5 native
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Envoi en cours…';
-    }
-
-    try {
-      const data = new FormData(form);
-      const response = await fetch('https://formspree.io/f/xwplpobd', {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      });
-
-      if (response.ok) {
-        showFormMessage(
-          form,
-          'Message envoyé ! Je vous répondrai dans les plus brefs délais.',
-          'success'
-        );
-        form.reset();
-      } else {
-        const json = await response.json().catch(() => ({}));
-        const msg =
-          (json.errors && json.errors.map((err) => err.message).join(', ')) ||
-          'Une erreur est survenue. Veuillez réessayer ou me contacter directement.';
-        showFormMessage(form, msg, 'error');
-      }
-    } catch (err) {
-      console.error('Contact form error:', err);
-      showFormMessage(
-        form,
-        'Erreur réseau. Vérifiez votre connexion et réessayez.',
-        'error'
-      );
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }
-    }
-  });
+  let status = form.querySelector('.form-status');
+  if (!status) {
+    status = document.createElement('p');
+    status.className = 'form-status';
+    form.appendChild(status);
+  }
+  status.setAttribute('role', type === 'error' ? 'alert' : 'status');
+  status.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
+  status.className = `form-status form-message form-message--${type}`;
+  status.textContent = message;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -867,11 +789,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('initNavigation:', e);
   }
 
-  try {
-    initCounters();
-  } catch (e) {
-    console.error('initCounters:', e);
-  }
 
   try {
     initScrollReveal();
@@ -895,9 +812,4 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('BookingCalendar:', e);
   }
 
-  try {
-    initContactForm();
-  } catch (e) {
-    console.error('initContactForm:', e);
-  }
 });

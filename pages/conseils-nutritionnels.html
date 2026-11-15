@@ -25,7 +25,8 @@
     <title>Conseils Nutritionnels - Coach APA'R - Montpellier</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="canonical" href="https://coachapar.fr/pages/conseils-nutritionnels.html">
-    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/logo-192.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,34 +188,28 @@
     </style>
 </head>
 <body>
-    <!-- Overlay de préchargement -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="spinner"></div>
-            <p>Chargement en cours...</p>
-        </div>
-    </div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="../index.html" class="nav-logo">
-                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                    <img src="../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
                 </a>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
                 <div class="nav-menu" id="navMenu">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#expertise" class="nav-link">À propos</a></li>
                         <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
                         <li class="nav-item dropdown active">
-                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
-                            <ul class="dropdown-menu">
+                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
+                            <ul class="dropdown-menu" id="menuPrestations">
                                 <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
                                 <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
                                 <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
@@ -228,6 +223,8 @@
             </nav>
         </div>
     </header>
+
+    <main id="contenu" tabindex="-1">
 
     <!-- Hero Section -->
     <section class="page-hero">
@@ -252,7 +249,7 @@
             </div>
             <div class="about-content">
                 <div class="about-image zoom-in">
-                    <img src="../images/nutrition-variee.jpg" alt="Variété de fruits et légumes frais pour une alimentation équilibrée" loading="lazy">
+                    <img src="../images/nutrition-variee.webp" alt="Variété de fruits et légumes frais pour une alimentation équilibrée" width="900" height="1350" loading="lazy" decoding="async">
                 </div>
                 <div class="about-text slide-in-right">
                     <h3>Approche nutritionnelle</h3>
@@ -283,7 +280,7 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-image">
-                        <img src="../images/Conseils-nutritionnels.webp" alt="Bilan Nutritionnel Initial">
+                        <img src="../images/Conseils-nutritionnels.webp" width="640" height="440" loading="lazy" decoding="async" alt="Bilan Nutritionnel Initial">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-clipboard-list"></i>
@@ -298,7 +295,7 @@
                 
                 <div class="service-card fade-in">
                     <div class="service-image">
-                        <img src="../images/plan-nutrition.jpg" alt="Plan Alimentaire Personnalisé avec aliments équilibrés">
+                        <img src="../images/plan-nutrition.webp" width="800" height="450" loading="lazy" decoding="async" alt="Plan Alimentaire Personnalisé avec aliments équilibrés">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-utensils"></i>
@@ -313,7 +310,7 @@
                 
                 <div class="service-card fade-in">
                     <div class="service-image">
-                        <img src="../images/suivi-nutritionnel.jpg" alt="Carnet de suivi nutritionnel avec légumes frais">
+                        <img src="../images/suivi-nutritionnel.webp" width="800" height="800" loading="lazy" decoding="async" alt="Carnet de suivi nutritionnel avec légumes frais">
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-sync-alt"></i>
@@ -459,6 +456,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -471,8 +470,8 @@
                     <div class="footer-col">
                         <h3>Navigation</h3>
                         <ul>
-                            <li><a href="../index.html#hero">Accueil</a></li>
-                            <li><a href="../index.html#about">À propos</a></li>
+                            <li><a href="../index.html#accueil">Accueil</a></li>
+                            <li><a href="../index.html#expertise">À propos</a></li>
                             <li><a href="../index.html#services">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact</a></li>
@@ -492,7 +491,7 @@
                         <ul>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact</a></li>
-                            <li><a href="#">Prendre RDV</a></li>
+                            <li><a href="contact.html">Prendre RDV</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -507,7 +506,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+                <p>Site réalisé par Loïc Boyer</p>
             </div>
         </div>
     </footer>

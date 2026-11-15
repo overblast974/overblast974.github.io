@@ -9,7 +9,8 @@
     <meta name="robots" content="noindex, follow">
     
     <!-- Favicon -->
-    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/logo-192.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +24,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     
     <!-- CSS correctif pour les pages légales -->
-    <link rel="stylesheet" href="../css-fix/legal-fix.css">
+    <link rel="stylesheet" href="../css/legal-fix.css">
     
     <style>
         .legal-content {
@@ -103,34 +104,28 @@
     </style>
 </head>
 <body>
-    <!-- Overlay de préchargement -->
-    <div id="preloader" style="display: none;">
-        <div class="loader">
-            <div class="spinner"></div>
-            <p>Chargement en cours...</p>
-        </div>
-    </div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="../index.html" class="nav-logo">
-                    <img src="../images/logo.png" alt="Logo Coach APA'R" />
+                    <img src="../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
                 </a>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
                 <div class="nav-menu" id="navMenu">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#hero" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../index.html#about" class="nav-link">À propos</a></li>
+                        <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="../index.html#expertise" class="nav-link">À propos</a></li>
                         <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle">Prestations</a>
-                            <ul class="dropdown-menu">
+                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
+                            <ul class="dropdown-menu" id="menuPrestations">
                                 <li><a href="coaching-sportif.html" class="dropdown-item">Coaching Sportif</a></li>
                                 <li><a href="conseils-nutritionnels.html" class="dropdown-item">Conseils Nutritionnels</a></li>
                                 <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité Physique Adaptée</a></li>
@@ -156,7 +151,7 @@
     </section>
 
     <!-- Contenu principal -->
-    <main class="legal-content">
+    <main id="contenu" class="legal-content" tabindex="-1">
         <div class="container">
             <p class="legal-date">Date de dernière mise à jour : 20 mars 2025</p>
             
@@ -447,8 +442,8 @@
                     <div class="footer-col">
                         <h3>Navigation</h3>
                         <ul>
-                            <li><a href="../index.html#hero">Accueil</a></li>
-                            <li><a href="../index.html#about">À propos</a></li>
+                            <li><a href="../index.html#accueil">Accueil</a></li>
+                            <li><a href="../index.html#expertise">À propos</a></li>
                             <li><a href="../index.html#services">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact</a></li>
@@ -475,7 +470,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par <a href="#">Loïc Boyer</a></p>
+                <p>Site réalisé par Loïc Boyer</p>
             </div>
         </div>
     </footer>
@@ -511,8 +506,6 @@
             });
         });
         
-        // Exécuter immédiatement aussi
-        document.getElementById('preloader').style.display = 'none';
     </script>
 </body>
 </html> 

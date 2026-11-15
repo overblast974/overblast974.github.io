@@ -3413,3 +3413,199 @@ body > *:not(.hero) span.typed-text {
 }
 
 /* Fin du fichier CSS */
+/* =====================================================
+   LOT 0 — corrections techniques (navigation, accessibilité, formulaires)
+   Valeurs reprises des jetons existants ; à revoir au lot 1 (design).
+   ===================================================== */
+
+/* Lien d'évitement : invisible jusqu'à la prise de focus */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: 0.75rem 1.25rem;
+  background: var(--dark-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Bouton du menu mobile : vrai <button>, apparence inchangée */
+button.nav-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+.nav-toggle:focus-visible,
+.dropdown-toggle:focus-visible,
+.nav-link:focus-visible,
+.dropdown-item:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Déclencheur « Prestations » : vrai <button>, même apparence que les liens */
+button.dropdown-toggle {
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Sous-menu : ouvert par le clic, le toucher ou le clavier (classe .open),
+   et au survol seulement sur les appareils qui ont un vrai survol */
+.dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown.open .dropdown-toggle::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+@media (hover: none) {
+  .dropdown:hover:not(.open) .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (max-width: 768px) {
+  button.dropdown-toggle {
+    width: 100%;
+  }
+  .dropdown.open .dropdown-menu {
+    max-height: 300px;
+  }
+  .dropdown-menu {
+    visibility: hidden;
+  }
+  .dropdown.open .dropdown-menu {
+    visibility: visible;
+  }
+}
+@media (max-width: 768px) and (hover: none) {
+  .dropdown:hover:not(.open) .dropdown-menu {
+    max-height: 0;
+  }
+}
+
+/* Formulaire de contact : libellés visibles, consigne, statut */
+.contact-form .form-group label {
+  position: static;
+  display: block;
+  margin-bottom: 0.4rem;
+  pointer-events: auto;
+}
+.contact-form label span[aria-hidden] {
+  color: var(--primary-color);
+}
+.form-required-note {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+.form-hint {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form-status {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.form-status:empty {
+  margin: 0;
+  padding: 0;
+}
+.form-status--pending {
+  background: var(--light-color);
+  border: 1px solid var(--border-light);
+  color: var(--text-color);
+}
+.form-status--success {
+  background: rgba(44, 138, 67, 0.08);
+  border: 1px solid var(--primary-color);
+  color: #1e6b31;
+}
+.form-status--error {
+  background: #fdecea;
+  border: 1px solid #b3261e;
+  color: #8c1d18;
+}
+
+/* Tableaux d'article : défilement horizontal interne plutôt que débordement de la page (m2) */
+.article-text table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Sous-menu ouvert : visible immédiatement pour que le focus clavier puisse y entrer */
+.dropdown.open .dropdown-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease, visibility 0s;
+}
+.nav-menu.active {
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s;
+}
+
+/* Mention d'information sous le formulaire (texte juriste, lot 0) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.form-privacy {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+.form-privacy p {
+  margin-bottom: 0.75rem;
+}
+.form-privacy a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.form-privacy-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 0.25rem 0;
+}
+.form-privacy-details summary:focus-visible,
+.form-privacy a:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+.form-privacy-details[open] summary {
+  margin-bottom: 0.5rem;
+}

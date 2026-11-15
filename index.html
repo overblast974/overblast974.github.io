@@ -164,11 +164,12 @@
 
   <!-- ===== PWA ===== -->
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/logo-192.png">
   <meta name="theme-color" content="#FF6B35">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <!-- ================================================================
        FLOATING BUTTONS
@@ -188,16 +189,16 @@
   <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation principale">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="Coach APA'R - Accueil">
-        <img src="images/logo.png" alt="Logo Coach APA'R" width="50" height="50">
+        <img src="images/logo.webp" alt="" width="50" height="50">
         <span>Coach APA'R</span>
       </a>
 
-      <ul class="nav-links" id="navLinks" role="menubar">
-        <li role="none"><a href="#accueil" class="nav-link active" role="menuitem">Accueil</a></li>
-        <li role="none"><a href="#expertise" class="nav-link" role="menuitem">Expertise</a></li>
-        <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
-        <li role="none"><a href="#tarifs" class="nav-link" role="menuitem">Tarifs</a></li>
-        <li role="none"><a href="#reservation" class="nav-link" role="menuitem">Réserver</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+        <li><a href="#expertise" class="nav-link">Expertise</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
+        <li><a href="#reservation" class="nav-link">Réserver</a></li>
       </ul>
 
       <a href="#reservation" class="nav-cta btn btn-primary">
@@ -225,7 +226,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="contenu" tabindex="-1">
 
     <!-- ================================================================
          HERO
@@ -244,7 +245,7 @@
         </div>
 
         <div class="hero-logo reveal">
-          <img src="images/logo.png" alt="Coach APA'R - Coaching sportif Montpellier" width="140" height="140">
+          <img src="images/logo.webp" alt="Coach APA'R - Coaching sportif Montpellier" width="140" height="140" fetchpriority="high">
         </div>
 
         <h1 class="hero-title reveal">
@@ -268,24 +269,6 @@
           </a>
         </div>
 
-        <div class="hero-trust reveal">
-          <div class="hero-trust-item">
-            <div class="hero-trust-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <span>98% de satisfaction</span>
-          </div>
-          <div class="hero-trust-sep">·</div>
-          <div class="hero-trust-item">
-            <i class="fas fa-users"></i>
-            <span>150+ clients accompagnés</span>
-          </div>
-          <div class="hero-trust-sep">·</div>
-          <div class="hero-trust-item">
-            <i class="fas fa-award"></i>
-            <span>5 ans d'expérience</span>
-          </div>
-        </div>
       </div>
 
       <div class="hero-scroll-indicator">
@@ -330,7 +313,9 @@
         <div class="about-visual reveal">
           <div class="about-photo-frame">
             <img
-              src="images/loic-photo.png"
+              src="images/loic-photo.webp"
+              width="896" height="1195"
+              decoding="async"
               alt="Loïc — Coach sportif certifié Master 2 APA à Montpellier"
               class="about-photo-img"
               loading="lazy"
@@ -340,14 +325,6 @@
               <i class="fas fa-user-circle"></i>
               <span>Photo à venir</span>
             </div>
-          </div>
-          <div class="about-exp-badge">
-            <span class="about-exp-number">5+</span>
-            <span class="about-exp-label">ans d'expérience</span>
-          </div>
-          <div class="about-clients-badge">
-            <span class="about-exp-number">150+</span>
-            <span class="about-exp-label">clients accompagnés</span>
           </div>
         </div>
 
@@ -578,7 +555,7 @@
         <div class="comparison-grid reveal">
           <div class="comparison-me">
             <div class="comparison-header-cell">
-              <img src="images/logo.png" alt="Coach APA'R" width="60" height="60">
+              <img src="images/logo.webp" alt="Coach APA'R" width="60" height="60" loading="lazy" decoding="async">
               <strong>Coach APA'R</strong>
             </div>
             <div class="comparison-feature">
@@ -644,26 +621,6 @@
     <!-- ================================================================
          STATS — DARK
          ================================================================ -->
-    <section class="section-stats" aria-label="Chiffres clés">
-      <div class="container stats-grid">
-        <div class="stat-item reveal" data-delay="0">
-          <div class="stat-number" data-target="5" data-suffix="+">0</div>
-          <div class="stat-label">Années d'expérience</div>
-        </div>
-        <div class="stat-item reveal" data-delay="100">
-          <div class="stat-number" data-target="150" data-suffix="+">0</div>
-          <div class="stat-label">Clients accompagnés</div>
-        </div>
-        <div class="stat-item reveal" data-delay="200">
-          <div class="stat-number" data-target="98" data-suffix="%">0</div>
-          <div class="stat-label">Taux de satisfaction</div>
-        </div>
-        <div class="stat-item reveal" data-delay="300">
-          <div class="stat-number" data-target="4" data-suffix="">0</div>
-          <div class="stat-label">Certifications pro</div>
-        </div>
-      </div>
-    </section>
 
     <!-- ================================================================
          METHODOLOGY
@@ -966,7 +923,7 @@
     <div class="container footer-grid">
       <div class="footer-col footer-brand">
         <div class="footer-logo">
-          <img src="images/logo.png" alt="Coach APA'R" width="50" height="50">
+          <img src="images/logo.webp" alt="" width="50" height="50" loading="lazy" decoding="async">
           <span>Coach APA'R</span>
         </div>
         <p class="footer-desc">
