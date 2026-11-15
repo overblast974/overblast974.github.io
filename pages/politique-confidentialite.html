@@ -7,393 +7,291 @@
     <link rel="canonical" href="https://coachapar.fr/pages/politique-confidentialite.html">
     <meta name="description" content="Politique de confidentialité du site web Coach APA'R. Découvrez comment nous protégeons vos données personnelles.">
     <meta name="robots" content="noindex, follow">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="../images/logo-192.png">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="../css/styles.css">
-    
-    <!-- CSS correctif pour les pages légales -->
-    <link rel="stylesheet" href="../css/legal-fix.css">
-    
-    <style>
-        .legal-content {
-            padding: 60px 0;
-            visibility: visible !important;
-            opacity: 1 !important;
-            display: block !important;
-        }
-        
-        .legal-content h1 {
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-        
-        .legal-section {
-            margin-bottom: 2.5rem;
-        }
-        
-        .legal-section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.75rem;
-        }
-        
-        .legal-section h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.75rem;
-            font-size: 1.4rem;
-        }
-        
-        .legal-section p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .legal-section ul {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-        
-        .legal-section li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .legal-section a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .legal-section a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-        
-        .legal-update {
-            font-style: italic;
-            color: #777;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            .legal-content {
-                padding: 40px 0;
-            }
-            
-            .legal-section h2 {
-                font-size: 1.5rem;
-            }
-            
-            .legal-section h3 {
-                font-size: 1.25rem;
-            }
-        }
-    </style>
+  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <meta name="theme-color" content="#44631F">
 </head>
 <body>
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <a href="../index.html" class="nav-logo">
-                    <img src="../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
-                </a>
-                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </button>
-                <div class="nav-menu" id="navMenu">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../index.html#expertise" class="nav-link">À propos</a></li>
-                        <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
-                        <li class="nav-item dropdown">
-                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
-                            <ul class="dropdown-menu" id="menuPrestations">
-                                <li><a href="coaching-sportif.html" class="dropdown-item">Coaching sportif</a></li>
-                                <li><a href="conseils-nutritionnels.html" class="dropdown-item">Alimentation et activité physique</a></li>
-                                <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité physique adaptée</a></li>
-                                <li><a href="contact.html?service=cours-pilates" class="dropdown-item">Pilates</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
+  <!-- gabarit:en-tete -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="/">
+        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
+        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#tarifs">Tarifs</a></li>
+          <li><a href="/#faq">Questions</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
+      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
+      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
+    </div>
+    <div class="mobile-menu" id="menu-mobile" hidden>
+      <nav class="container" aria-label="Menu">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+        </ul>
+        <div class="mobile-menu__actions">
+          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">Offert, sans engagement</p>
+          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
         </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section class="page-hero">
-        <div class="container">
-            <div class="page-hero-content">
-                <h1>Politique de Confidentialité</h1>
-                <p>Informations sur la protection de vos données personnelles</p>
-            </div>
-        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- /gabarit:en-tete -->
+
+  <main id="contenu" tabindex="-1">
+    <section class="page-head" aria-labelledby="titre-page">
+      <div class="container--narrow page-head__inner">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="/">Accueil</a></li>
+            <li><span aria-current="page">Politique de confidentialité</span></li>
+          </ol>
+        </nav>
+        <h1 id="titre-page">Politique de Confidentialité</h1>
+        <p class="page-head__lead">Informations sur la protection de vos données personnelles</p>
+      </div>
     </section>
 
-    <!-- Contenu principal -->
-    <main id="contenu" class="legal-content" tabindex="-1">
-        <div class="container">
-            <p class="legal-date">Date de dernière mise à jour : 15 novembre 2026</p>
-            
-            <section class="legal-section">
-                <h2>1. Introduction</h2>
-                <p>Merci de visiter le site web de Coach APA'R. Nous nous engageons à protéger vos données personnelles et votre vie privée. La présente politique de confidentialité vous informe sur la manière dont nous collectons, utilisons, partageons et protégeons vos données personnelles lorsque vous utilisez notre site web (coachapar.fr), lorsque vous nous contactez et lorsque vous devenez client.</p>
-                <p>Nous vous invitons à lire attentivement ce document pour comprendre nos pratiques concernant vos données personnelles.</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>2. Identité du responsable de traitement</h2>
-                <p>Le responsable du traitement des données personnelles collectées sur ce site est :</p>
-                <p><strong>Loïc Boyer, exerçant sous le nom commercial Coach APA'R</strong></p>
-                <ul>
-                    <li>Statut : Entreprise individuelle</li>
-                    <li>SIRET : 95349047100018</li>
-                    <li>Adresse : Montpellier, France</li>
-                    <li>Email : coachapar@gmail.com</li>
-                    <li>Téléphone : 07 65 77 51 04</li>
-                </ul>
-            </section>
-            
-            <section class="legal-section">
-                <h2>3. Données collectées</h2>
-                <p>Nous collectons les données suivantes lorsque vous utilisez notre site ou nous contactez :</p>
-                
-                <h3>3.1 Données que vous nous fournissez directement</h3>
-                <ul>
-                    <li><strong>Données d'identification</strong> : nom, prénom, adresse email, numéro de téléphone</li>
-                    <li><strong>Contenu des messages</strong> : informations que vous nous communiquez via les formulaires du site ou par email. Merci de ne pas y indiquer d'informations sur votre santé.</li>
-                    <li><strong>Si vous devenez client</strong> : les informations utiles à votre accompagnement, dont, le cas échéant et avec votre accord exprès, des informations sur votre santé recueillies lors de l'entretien préalable (par exemple l'avis de votre médecin). Ces informations ne sont jamais demandées par le site.</li>
-                </ul>
-                
-                <h3>3.2 Données collectées automatiquement</h3>
-                <ul>
-                    <li><strong>Données techniques de connexion</strong> : comme pour tout site, votre adresse IP et des informations sur votre navigateur sont transmises aux services qui livrent les pages. L'hébergeur GitHub enregistre l'adresse IP des visiteurs pour des raisons de sécurité. Les polices de caractères sont chargées depuis Google Fonts (Google) et les icônes depuis cdnjs (Cloudflare), qui reçoivent aussi votre adresse IP. Coach APA'R n'utilise aucun outil de mesure d'audience et ne consulte pas ces données.</li>
-                    <li><strong>Cookies</strong> : le site ne dépose aucun cookie (voir la section 11)</li>
-                </ul>
-            </section>
-            
-            <section class="legal-section">
-                <h2>4. Finalités du traitement</h2>
-                <p>Nous traitons vos données personnelles pour les finalités suivantes :</p>
-                <ul>
-                    <li>Vous fournir les prestations de coaching sportif, d'activité physique adaptée et de repères alimentaires que vous avez demandées</li>
-                    <li>Répondre à vos demandes d'information et de contact</li>
-                                                                                <li>Assurer la sécurité de notre site web</li>
-                    <li>Respecter nos obligations légales et réglementaires</li>
-                </ul>
-            </section>
-            
-            <section class="legal-section">
-                <h2>5. Bases juridiques du traitement</h2>
-                <p>Le traitement de vos données personnelles repose sur les bases juridiques suivantes :</p>
-                <ul>
-                    <li><strong>L'exécution d'un contrat</strong> : lorsque nous vous fournissons nos prestations</li>
-                    <li><strong>Les mesures précontractuelles prises à votre demande</strong> (article 6.1.b du RGPD) : lorsque vous nous contactez par un formulaire ou par email pour une demande d'information ou de rendez-vous</li>
-                    <li><strong>Votre consentement explicite</strong> (article 9.2.a du RGPD) : pour les informations sur votre santé utiles à votre accompagnement, si vous devenez client. Vous pouvez le retirer à tout moment.</li>
-                    <li><strong>Notre intérêt légitime</strong> : assurer la sécurité et le fonctionnement du site</li>
-                    <li><strong>Le respect de nos obligations légales</strong> : notamment en matière fiscale et comptable</li>
-                </ul>
-            </section>
-            
-            <section class="legal-section">
-                <h2>6. Destinataires des données</h2>
-                <p>Vos données personnelles sont destinées :</p>
-                <ul>
-                    <li>À Loïc Boyer (Coach APA'R)</li>
-                    <li>À nos sous-traitants qui nous aident à fournir nos services :
-                        <ul>
-                            <li>Hébergeur du site web : GitHub, Inc. (États-Unis)</li>
-                            <li>Service de formulaires : Formspree (États-Unis)</li>
-                            <li>Messagerie : Gmail, Google (États-Unis)</li>
-                            <li>Polices et icônes du site : Google Fonts (Google) et cdnjs (Cloudflare), qui ne reçoivent que des données techniques de connexion</li>
-                        </ul>
-                    </li>
-                </ul>
-                <p>Nous nous assurons que tous nos sous-traitants présentent des garanties suffisantes quant à la protection de vos données personnelles.</p>
-                <p>Nous ne vendons ni ne louons vos données personnelles à des tiers.</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>7. Transferts de données hors UE</h2>
-                <p>Les prestataires cités à la section 6 sont établis aux États-Unis : vos données y sont donc transférées.</p>
-                <p>Ces transferts reposent sur le cadre de protection des données UE–États-Unis (Data Privacy Framework), auquel GitHub, Google et Cloudflare adhèrent, et, pour Formspree, sur les clauses contractuelles types de la Commission européenne.</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>8. Durée de conservation</h2>
-                <p>Nous conservons vos données personnelles uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
-                <ul>
-                    <li>Demandes reçues par les formulaires ou par email : 12 mois après notre dernier échange si aucun accompagnement n'est engagé</li>
-                    <li>Données relatives aux clients : durée de la relation contractuelle + 5 ans à des fins de preuve</li>
-                                        <li>Données relatives à la gestion des commandes et factures : 10 ans (obligation légale)</li>
-                </ul>
-                <p>Après ces périodes, vos données sont soit supprimées, soit anonymisées.</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>9. Sécurité des données</h2>
-                <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour assurer la sécurité de vos données personnelles, notamment contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle.</p>
-                <p>Ces mesures comprennent :</p>
-                <ul>
-                    <li>L'utilisation de connexions chiffrées (HTTPS)</li>
-                </ul>
-            </section>
-            
-            <section class="legal-section">
-                <h2>10. Vos droits</h2>
-                <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :</p>
-                <ul>
-                    <li><strong>Droit d'accès</strong> : vous pouvez obtenir des informations sur le traitement de vos données et une copie de celles-ci</li>
-                    <li><strong>Droit de rectification</strong> : vous pouvez demander la correction des données inexactes ou incomplètes</li>
-                    <li><strong>Droit à l'effacement</strong> ("droit à l'oubli") : vous pouvez demander la suppression de vos données dans certaines circonstances</li>
-                    <li><strong>Droit à la limitation du traitement</strong> : vous pouvez demander que nous limitions le traitement de vos données</li>
-                    <li><strong>Droit à la portabilité</strong> : vous pouvez recevoir vos données dans un format structuré et les transmettre à un autre responsable de traitement</li>
-                    <li><strong>Droit d'opposition</strong> : vous pouvez vous opposer au traitement de vos données à des fins de prospection ou fondé sur notre intérêt légitime</li>
-                    <li><strong>Droit de retirer votre consentement</strong> à tout moment, lorsque le traitement est fondé sur celui-ci</li>
-                    <li><strong>Droit de définir des directives</strong> relatives au sort de vos données après votre décès</li>
-                </ul>
-                <p>Pour exercer ces droits, vous pouvez nous contacter par email à coachapar@gmail.com ou par téléphone au 07 65 77 51 04.</p>
-                <p>Vous disposez également du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL).</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>11. Cookies</h2>
-                
-                <h3>11.1 Qu'est-ce qu'un cookie ?</h3>
-                <p>Un cookie est un petit fichier déposé sur votre appareil (ordinateur, tablette, smartphone) lors de la visite d'un site, par exemple pour mesurer l'audience ou afficher de la publicité.</p>
-                
-                <h3>11.2 Ce que fait ce site</h3>
-                <p>Le site coachapar.fr ne dépose aucun cookie et n'utilise aucun traceur de mesure d'audience, de publicité ou de réseau social. Aucun accord ne vous est donc demandé.</p>
-                <ul>
-                    <li><strong>Seule exception</strong> : sur la page « Publics accompagnés », si vous utilisez le bouton de thème clair ou sombre, votre choix est enregistré dans votre navigateur (stockage local). Il n'est transmis à personne. Ce réglage, que vous demandez vous-même, ne nécessite pas de consentement.</li>
-                </ul>
-                
-                <h3>11.3 Réglages de votre navigateur</h3>
-                <p>Vous pouvez configurer votre navigateur pour qu'il accepte ou refuse les cookies, vous avertisse lorsqu'un cookie est émis, ou supprime périodiquement les cookies stockés.</p>
-                <p>Pour gérer les cookies, consultez la rubrique d'aide de votre navigateur :</p>
-                <ul>
-                    <li><a href="https://support.google.com/chrome/answer/95647">Chrome</a></li>
-                    <li><a href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur">Firefox</a></li>
-                    <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">Safari</a></li>
-                    <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09">Edge</a></li>
-                </ul>
-                <p>Si un outil déposant des cookies est ajouté un jour au site, cette page sera mise à jour et votre accord sera demandé avant tout dépôt, lorsque la loi l'exige.</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>12. Modification de la politique de confidentialité</h2>
-                <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute modification prendra effet immédiatement après sa publication sur notre site web.</p>
-                <p>Nous vous encourageons à consulter régulièrement cette page pour prendre connaissance des éventuelles modifications. La date de dernière mise à jour en haut de cette politique vous permet de savoir quand elle a été révisée pour la dernière fois.</p>
-            </section>
-            
-            <section class="legal-section">
-                <h2>13. Contact</h2>
-                <p>Pour toute question concernant notre politique de confidentialité ou vos données personnelles, vous pouvez nous contacter :</p>
-                <ul>
-                    <li>Par email : coachapar@gmail.com</li>
-                    <li>Par téléphone : 07 65 77 51 04</li>
-                </ul>
-                <p>Nous nous efforcerons de répondre à votre demande dans les meilleurs délais et au plus tard dans un délai d'un mois, qui peut être prolongé de deux mois compte tenu de la complexité et du nombre de demandes.</p>
-            </section>
+    <div class="section section--surface">
+      <div class="container--narrow prose">
+              <p class="legal-date">Date de dernière mise à jour : 15 novembre 2026</p>
+
+              <section>
+                  <h2>1. Introduction</h2>
+                  <p>Merci de visiter le site web de Coach APA'R. Nous nous engageons à protéger vos données personnelles et votre vie privée. La présente politique de confidentialité vous informe sur la manière dont nous collectons, utilisons, partageons et protégeons vos données personnelles lorsque vous utilisez notre site web (coachapar.fr), lorsque vous nous contactez et lorsque vous devenez client.</p>
+                  <p>Nous vous invitons à lire attentivement ce document pour comprendre nos pratiques concernant vos données personnelles.</p>
+              </section>
+
+              <section>
+                  <h2>2. Identité du responsable de traitement</h2>
+                  <p>Le responsable du traitement des données personnelles collectées sur ce site est :</p>
+                  <p><strong>Loïc Boyer, exerçant sous le nom commercial Coach APA'R</strong></p>
+                  <ul>
+                      <li>Statut : Entreprise individuelle</li>
+                      <li>SIRET : 95349047100018</li>
+                      <li>Adresse : Montpellier, France</li>
+                      <li>Email : coachapar@gmail.com</li>
+                      <li>Téléphone : 07 65 77 51 04</li>
+                  </ul>
+              </section>
+
+              <section>
+                  <h2>3. Données collectées</h2>
+                  <p>Nous collectons les données suivantes lorsque vous utilisez notre site ou nous contactez :</p>
+
+                  <h3>3.1 Données que vous nous fournissez directement</h3>
+                  <ul>
+                      <li><strong>Données d'identification</strong> : nom, prénom, adresse email, numéro de téléphone</li>
+                      <li><strong>Contenu des messages</strong> : informations que vous nous communiquez via les formulaires du site ou par email. Merci de ne pas y indiquer d'informations sur votre santé.</li>
+                      <li><strong>Si vous devenez client</strong> : les informations utiles à votre accompagnement, dont, le cas échéant et avec votre accord exprès, des informations sur votre santé recueillies lors de l'entretien préalable (par exemple l'avis de votre médecin). Ces informations ne sont jamais demandées par le site.</li>
+                  </ul>
+
+                  <h3>3.2 Données collectées automatiquement</h3>
+                  <ul>
+                      <li><strong>Données techniques de connexion</strong> : comme pour tout site, votre adresse IP et des informations sur votre navigateur sont transmises aux services qui livrent les pages. L'hébergeur GitHub enregistre l'adresse IP des visiteurs pour des raisons de sécurité. Les polices de caractères et les icônes sont hébergées sur le site lui-même : aucun service tiers ne les fournit. Coach APA'R n'utilise aucun outil de mesure d'audience et ne consulte pas ces données.</li>
+                      <li><strong>Cookies</strong> : le site ne dépose aucun cookie (voir la section 11)</li>
+                  </ul>
+              </section>
+
+              <section>
+                  <h2>4. Finalités du traitement</h2>
+                  <p>Nous traitons vos données personnelles pour les finalités suivantes :</p>
+                  <ul>
+                      <li>Vous fournir les prestations de coaching sportif, d'activité physique adaptée et de repères alimentaires que vous avez demandées</li>
+                      <li>Répondre à vos demandes d'information et de contact</li>
+                                                                                  <li>Assurer la sécurité de notre site web</li>
+                      <li>Respecter nos obligations légales et réglementaires</li>
+                  </ul>
+              </section>
+
+              <section>
+                  <h2>5. Bases juridiques du traitement</h2>
+                  <p>Le traitement de vos données personnelles repose sur les bases juridiques suivantes :</p>
+                  <ul>
+                      <li><strong>L'exécution d'un contrat</strong> : lorsque nous vous fournissons nos prestations</li>
+                      <li><strong>Les mesures précontractuelles prises à votre demande</strong> (article 6.1.b du RGPD) : lorsque vous nous contactez par un formulaire ou par email pour une demande d'information ou de rendez-vous</li>
+                      <li><strong>Votre consentement explicite</strong> (article 9.2.a du RGPD) : pour les informations sur votre santé utiles à votre accompagnement, si vous devenez client. Vous pouvez le retirer à tout moment.</li>
+                      <li><strong>Notre intérêt légitime</strong> : assurer la sécurité et le fonctionnement du site</li>
+                      <li><strong>Le respect de nos obligations légales</strong> : notamment en matière fiscale et comptable</li>
+                  </ul>
+              </section>
+
+              <section>
+                  <h2>6. Destinataires des données</h2>
+                  <p>Vos données personnelles sont destinées :</p>
+                  <ul>
+                      <li>À Loïc Boyer (Coach APA'R)</li>
+                      <li>À nos sous-traitants qui nous aident à fournir nos services :
+                          <ul>
+                              <li>Hébergeur du site web : GitHub, Inc. (États-Unis)</li>
+                              <li>Service de formulaires : Formspree (États-Unis)</li>
+                              <li>Messagerie : Gmail, Google (États-Unis)</li>
+                          </ul>
+                      </li>
+                  </ul>
+                  <p>Nous nous assurons que tous nos sous-traitants présentent des garanties suffisantes quant à la protection de vos données personnelles.</p>
+                  <p>Nous ne vendons ni ne louons vos données personnelles à des tiers.</p>
+              </section>
+
+              <section>
+                  <h2>7. Transferts de données hors UE</h2>
+                  <p>Les prestataires cités à la section 6 sont établis aux États-Unis : vos données y sont donc transférées.</p>
+                  <p>Ces transferts reposent sur le cadre de protection des données UE–États-Unis (Data Privacy Framework), auquel GitHub et Google adhèrent, et, pour Formspree, sur les clauses contractuelles types de la Commission européenne.</p>
+              </section>
+
+              <section>
+                  <h2>8. Durée de conservation</h2>
+                  <p>Nous conservons vos données personnelles uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
+                  <ul>
+                      <li>Demandes reçues par les formulaires ou par email : 12 mois après notre dernier échange si aucun accompagnement n'est engagé</li>
+                      <li>Données relatives aux clients : durée de la relation contractuelle + 5 ans à des fins de preuve</li>
+                                          <li>Données relatives à la gestion des commandes et factures : 10 ans (obligation légale)</li>
+                  </ul>
+                  <p>Après ces périodes, vos données sont soit supprimées, soit anonymisées.</p>
+              </section>
+
+              <section>
+                  <h2>9. Sécurité des données</h2>
+                  <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour assurer la sécurité de vos données personnelles, notamment contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle.</p>
+                  <p>Ces mesures comprennent :</p>
+                  <ul>
+                      <li>L'utilisation de connexions chiffrées (HTTPS)</li>
+                  </ul>
+              </section>
+
+              <section>
+                  <h2>10. Vos droits</h2>
+                  <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :</p>
+                  <ul>
+                      <li><strong>Droit d'accès</strong> : vous pouvez obtenir des informations sur le traitement de vos données et une copie de celles-ci</li>
+                      <li><strong>Droit de rectification</strong> : vous pouvez demander la correction des données inexactes ou incomplètes</li>
+                      <li><strong>Droit à l'effacement</strong> ("droit à l'oubli") : vous pouvez demander la suppression de vos données dans certaines circonstances</li>
+                      <li><strong>Droit à la limitation du traitement</strong> : vous pouvez demander que nous limitions le traitement de vos données</li>
+                      <li><strong>Droit à la portabilité</strong> : vous pouvez recevoir vos données dans un format structuré et les transmettre à un autre responsable de traitement</li>
+                      <li><strong>Droit d'opposition</strong> : vous pouvez vous opposer au traitement de vos données à des fins de prospection ou fondé sur notre intérêt légitime</li>
+                      <li><strong>Droit de retirer votre consentement</strong> à tout moment, lorsque le traitement est fondé sur celui-ci</li>
+                      <li><strong>Droit de définir des directives</strong> relatives au sort de vos données après votre décès</li>
+                  </ul>
+                  <p>Pour exercer ces droits, vous pouvez nous contacter par email à coachapar@gmail.com ou par téléphone au 07 65 77 51 04.</p>
+                  <p>Vous disposez également du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL).</p>
+              </section>
+
+              <section>
+                  <h2>11. Cookies</h2>
+
+                  <h3>11.1 Qu'est-ce qu'un cookie ?</h3>
+                  <p>Un cookie est un petit fichier déposé sur votre appareil (ordinateur, tablette, smartphone) lors de la visite d'un site, par exemple pour mesurer l'audience ou afficher de la publicité.</p>
+
+                  <h3>11.2 Ce que fait ce site</h3>
+                  <p>Le site coachapar.fr ne dépose aucun cookie et n'utilise aucun traceur de mesure d'audience, de publicité ou de réseau social. Aucun accord ne vous est donc demandé.</p>
+                  <ul>
+                      <li><strong>Seule exception</strong> : sur la page « Publics accompagnés », si vous utilisez le bouton de thème clair ou sombre, votre choix est enregistré dans votre navigateur (stockage local). Il n'est transmis à personne. Ce réglage, que vous demandez vous-même, ne nécessite pas de consentement.</li>
+                  </ul>
+
+                  <h3>11.3 Réglages de votre navigateur</h3>
+                  <p>Vous pouvez configurer votre navigateur pour qu'il accepte ou refuse les cookies, vous avertisse lorsqu'un cookie est émis, ou supprime périodiquement les cookies stockés.</p>
+                  <p>Pour gérer les cookies, consultez la rubrique d'aide de votre navigateur :</p>
+                  <ul>
+                      <li><a href="https://support.google.com/chrome/answer/95647">Chrome</a></li>
+                      <li><a href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur">Firefox</a></li>
+                      <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">Safari</a></li>
+                      <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09">Edge</a></li>
+                  </ul>
+                  <p>Si un outil déposant des cookies est ajouté un jour au site, cette page sera mise à jour et votre accord sera demandé avant tout dépôt, lorsque la loi l'exige.</p>
+              </section>
+
+              <section>
+                  <h2>12. Modification de la politique de confidentialité</h2>
+                  <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute modification prendra effet immédiatement après sa publication sur notre site web.</p>
+                  <p>Nous vous encourageons à consulter régulièrement cette page pour prendre connaissance des éventuelles modifications. La date de dernière mise à jour en haut de cette politique vous permet de savoir quand elle a été révisée pour la dernière fois.</p>
+              </section>
+
+              <section>
+                  <h2>13. Contact</h2>
+                  <p>Pour toute question concernant notre politique de confidentialité ou vos données personnelles, vous pouvez nous contacter :</p>
+                  <ul>
+                      <li>Par email : coachapar@gmail.com</li>
+                      <li>Par téléphone : 07 65 77 51 04</li>
+                  </ul>
+                  <p>Nous nous efforcerons de répondre à votre demande dans les meilleurs délais et au plus tard dans un délai d'un mois, qui peut être prolongé de deux mois compte tenu de la complexité et du nombre de demandes.</p>
+              </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- gabarit:pied -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
+          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
+          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Coach APA'R</h2>
-                    <p>Activité physique adaptée à Montpellier</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <h3>Navigation</h3>
-                        <ul>
-                            <li><a href="../index.html#accueil">Accueil</a></li>
-                            <li><a href="../index.html#expertise">À propos</a></li>
-                            <li><a href="../index.html#services">Services</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="coaching-sportif.html">Coaching sportif</a></li>
-                            <li><a href="conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-                            <li><a href="activite-physique-adaptee.html">Activité physique adaptée</a></li>
-                            <li><a href="contact.html?service=cours-pilates">Pilates</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Légal</h3>
-                        <ul>
-                            <li><a href="mentions-legales.html">Mentions légales</a></li>
-                            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-                            <li><a href="cgv.html">CGV</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par Loïc Boyer</p>
-            </div>
+        <nav aria-labelledby="pied-services">
+          <p class="footer__title" id="pied-services">Services</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
+            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
+            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
+            <li><a href="/#services">Pilates</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="pied-infos">
+          <p class="footer__title" id="pied-infos">Informations</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/#tarifs">Tarifs</a></li>
+            <li><a href="/#faq">Questions fréquentes</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="footer__title">Contact</p>
+          <ul class="footer__list list-reset">
+            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
+            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven, 17 h 30 – 20 h 30</span></li>
+          </ul>
         </div>
-    </footer>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
+        <nav aria-label="Informations légales">
+          <ul class="list-reset">
+            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/pages/politique-confidentialite.html" aria-current="page">Confidentialité</a></li>
+            <li><a href="/pages/cgv.html">CGV</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <!-- /gabarit:pied -->
 
-    <!-- Bouton retour en haut -->
-    <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
-
-    <script src="../js/main.js"></script>
-    
-    <!-- Script de correction pour forcer l'affichage du contenu -->
-    <script>
-        // Supprimer immédiatement le préchargeur
-        window.addEventListener('DOMContentLoaded', function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'none';
-            }
-            
-            // S'assurer que le contenu légal est visible
-            const legalContent = document.querySelector('.legal-content');
-            if (legalContent) {
-                legalContent.style.visibility = 'visible';
-                legalContent.style.opacity = '1';
-                legalContent.style.display = 'block';
-            }
-            
-            // S'assurer que toutes les sections légales sont visibles
-            const legalSections = document.querySelectorAll('.legal-section');
-            legalSections.forEach(section => {
-                section.style.visibility = 'visible';
-                section.style.opacity = '1';
-                section.style.display = 'block';
-            });
-        });
-        
-    </script>
+  <script src="/js/app.js" defer></script>
 </body>
-</html> 
+</html>

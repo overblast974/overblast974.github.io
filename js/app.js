@@ -1,596 +1,458 @@
 /**
- * app.js — Coach APA'R Montpellier
- * Site statique GitHub Pages — Vanilla JS ES6+
- * Formulaires: Formspree https://formspree.io/f/xwplpobd
+ * app.js : Coach APA'R (lot 1)
+ * Script unique des 11 pages. Sans dépendance.
+ * - menu téléphone de l'en-tête commun ;
+ * - formulaire de contact (pages/contact.html) ;
+ * - widget de demande de rendez-vous (accueil).
+ * Formulaires : Formspree https://formspree.io/f/xwplpobd
+ * Règle conservée du lot 0 : le succès ne s'affiche que si Formspree répond OK.
  */
 
 'use strict';
 
+const SPRITE = '/images/icons.svg';
+const FORMSPREE_URL = 'https://formspree.io/f/xwplpobd';
+
+/** Petit gabarit d'icône du sprite local (décorative). */
+function icon(name, extra) {
+  return `<svg class="icon${extra ? ' ' + extra : ''}" aria-hidden="true"><use href="${SPRITE}#i-${name}"/></svg>`;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. NAVIGATION
+// 1. MENU TÉLÉPHONE
 // ─────────────────────────────────────────────────────────────────────────────
 
-/**
- * Initialise le comportement de la navbar:
- * - Glassmorphism au scroll (classe "scrolled")
- * - Ombre sticky
- * - Toggle menu mobile
- * - Smooth scroll sur les ancres
- * - Active link via IntersectionObserver
- * - Fermer menu mobile au clic sur un lien
- * - Fermer menu mobile au resize > 768px
- */
-function initNavigation() {
-  const navbar = document.querySelector('.navbar') || document.querySelector('nav');
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMobileMenu = document.querySelector('.nav-mobile-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
+function initMobileMenu() {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu-mobile');
+  if (!toggle || !menu) return;
+  const label = toggle.querySelector('.menu-toggle__label');
+  const use = toggle.querySelector('use');
 
-  // --- Scroll: glassmorphism + shadow ---
-  function onScroll() {
-    if (!navbar) return;
-    if (window.scrollY > 80) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    if (window.scrollY > 0) {
-      navbar.classList.add('shadow');
-    } else {
-      navbar.classList.remove('shadow');
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // état initial
-
-  // --- Menu mobile : ouverture, fermeture, états accessibles ---
-  function setMobileMenu(open, { returnFocus = false } = {}) {
-    if (!navToggle || !navMobileMenu) return;
-    navMobileMenu.classList.toggle('active', open);
-    navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    navMobileMenu.setAttribute('aria-hidden', String(!open));
+  function setMenu(open, { returnFocus = false } = {}) {
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+    if (label) label.textContent = open ? 'Fermer' : 'Menu';
+    if (use) use.setAttribute('href', `${SPRITE}#i-${open ? 'close' : 'menu'}`);
     if (open) {
-      // Léger délai : les liens héritent la transition de visibilité du menu
-      const firstLink = navMobileMenu.querySelector('a');
-      if (firstLink) setTimeout(() => firstLink.focus(), 60);
+      const first = menu.querySelector('a');
+      if (first) first.focus();
     } else if (returnFocus) {
-      navToggle.focus();
+      toggle.focus();
     }
   }
 
-  if (navToggle && navMobileMenu) {
-    navToggle.addEventListener('click', () => {
-      setMobileMenu(!navMobileMenu.classList.contains('active'));
-    });
+  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
 
-    // Échap ferme le menu et rend le focus au bouton
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMobileMenu.classList.contains('active')) {
-        setMobileMenu(false, { returnFocus: true });
-      }
-    });
-  }
-
-  // --- Smooth scroll sur tous les liens href="#..." ---
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const targetId = anchor.getAttribute('href');
-      if (targetId === '#') return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Fermer le menu mobile si ouvert
-        if (navMobileMenu && navMobileMenu.classList.contains('active')) {
-          setMobileMenu(false);
-        }
-        // Amener le focus clavier dans la section atteinte
-        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
-        target.focus({ preventScroll: true });
-      }
-    });
-  });
-
-  // --- Active link via IntersectionObserver ---
-  const sections = document.querySelectorAll('section[id]');
-  if (sections.length > 0 && navLinks.length > 0) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach((link) => {
-              link.classList.toggle(
-                'active',
-                link.getAttribute('href') === `#${id}`
-              );
-            });
-          }
-        });
-      },
-      { threshold: 0.35, rootMargin: '-80px 0px -40% 0px' }
-    );
-    sections.forEach((section) => sectionObserver.observe(section));
-  }
-
-  // --- Resize: fermer menu mobile si > 768px ---
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 900 && navMobileMenu && navMobileMenu.classList.contains('active')) {
-      setMobileMenu(false);
+  // Échap ferme le menu et rend le focus au bouton
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setMenu(false, { returnFocus: true });
     }
   });
-}
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 3. SCROLL REVEAL ANIMATIONS
-// ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Initialise les animations d'apparition au scroll pour les éléments .reveal.
- * Supporte l'attribut data-delay pour les grilles.
- */
-function initScrollReveal() {
-  const revealEls = document.querySelectorAll('.reveal');
-  if (!revealEls.length) return;
-
-  // Style initial appliqué via JS (au cas où le CSS ne le ferait pas)
-  revealEls.forEach((el) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  // Un clic sur un lien du menu le ferme
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setMenu(false);
   });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
-          setTimeout(() => {
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-          }, delay);
-          observer.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  revealEls.forEach((el) => observer.observe(el));
+  // Passage en grand écran : le menu téléphone n'a plus lieu d'être
+  const wide = window.matchMedia('(min-width: 64rem)');
+  wide.addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. FAQ ACCORDION
+// 2. ERREURS DE CHAMP (communes aux deux formulaires)
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Message précis pour un champ invalide. */
+function errorMessageFor(field) {
+  const v = field.validity;
+  if (field.type === 'radio') return 'Choisissez comment vous préférez être contacté.';
+  if (v.typeMismatch && field.type === 'email') return 'Adresse email incomplète, par exemple nom@exemple.fr.';
+  if (v.valueMissing) {
+    switch (field.type) {
+      case 'email': return 'Indiquez votre adresse email, par exemple nom@exemple.fr.';
+      case 'tel': return 'Indiquez votre numéro de téléphone, par exemple 06 12 34 56 78.';
+      default: return 'Indiquez votre nom.';
+    }
+  }
+  return 'Ce champ est à vérifier.';
+}
+
+/** Retire l'erreur affichée sous un champ (ou un groupe de boutons radio). */
+function clearFieldError(form, field) {
+  const key = field.type === 'radio' ? field.name : field.id;
+  const err = form.querySelector(`[data-error-for="${key}"]`);
+  const targets = field.type === 'radio' ? form.querySelectorAll(`input[name="${field.name}"]`) : [field];
+  targets.forEach((t) => {
+    t.removeAttribute('aria-invalid');
+    if (err) {
+      const ids = (t.getAttribute('aria-describedby') || '').split(' ').filter((id) => id && id !== err.id);
+      if (ids.length) t.setAttribute('aria-describedby', ids.join(' '));
+      else t.removeAttribute('aria-describedby');
+    }
+  });
+  if (err) err.remove();
+}
+
+/** Affiche l'erreur sous le champ, reliée par aria-describedby. */
+function showFieldError(form, field) {
+  clearFieldError(form, field);
+  const key = field.type === 'radio' ? field.name : field.id;
+  const err = document.createElement('p');
+  err.className = 'field-error';
+  err.id = `${key}-erreur`;
+  err.dataset.errorFor = key;
+  err.innerHTML = `${icon('alerte')}<span></span>`;
+  err.querySelector('span').textContent = errorMessageFor(field);
+  const targets = field.type === 'radio' ? form.querySelectorAll(`input[name="${field.name}"]`) : [field];
+  targets.forEach((t) => {
+    t.setAttribute('aria-invalid', 'true');
+    const ids = (t.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+    ids.unshift(err.id);
+    t.setAttribute('aria-describedby', ids.join(' '));
+  });
+  const container = field.closest('.field');
+  if (field.type === 'radio') container.appendChild(err);
+  else field.insertAdjacentElement('afterend', err);
+}
+
 /**
- * Initialise le comportement accordion des FAQ.
- * - Ouvre/ferme via max-height
- * - Ferme les autres items
- * - Rotation de l'icône
+ * Vérifie le formulaire. Affiche une erreur sous chaque champ invalide,
+ * place le focus sur le premier. Retourne true si tout est valide.
  */
-function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  if (!faqItems.length) return;
+function validateForm(form) {
+  let first = null;
+  const seenRadio = new Set();
+  form.querySelectorAll('input, select, textarea').forEach((field) => {
+    if (field.type === 'hidden' || field.closest('.honeypot')) return;
+    if (field.type === 'radio') {
+      if (seenRadio.has(field.name)) return;
+      seenRadio.add(field.name);
+    }
+    if (!field.checkValidity()) {
+      showFieldError(form, field);
+      if (!first) first = field;
+    } else {
+      clearFieldError(form, field);
+    }
+  });
+  if (first) first.focus();
+  return !first;
+}
 
-  faqItems.forEach((item) => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-    const icon = item.querySelector('.faq-icon');
+/** Une erreur disparaît dès que le champ redevient valide. */
+function watchFieldErrors(form) {
+  form.addEventListener('input', (e) => {
+    const f = e.target;
+    if (f.getAttribute('aria-invalid') === 'true' && f.checkValidity()) clearFieldError(form, f);
+  });
+  form.addEventListener('change', (e) => {
+    const f = e.target;
+    if (f.type === 'radio' && f.checked) clearFieldError(form, f);
+  });
+}
 
-    if (!question || !answer) return;
+/**
+ * Remplit une zone de statut (.status). Les erreurs sont annoncées tout de suite.
+ * @param {HTMLElement} status
+ * @param {'pending'|'success'|'error'} type
+ * @param {string} title  Titre écrit (jamais de couleur seule)
+ * @param {string} [text] Précision
+ */
+function setStatus(status, type, title, text) {
+  if (!status) return;
+  status.setAttribute('role', type === 'error' ? 'alert' : 'status');
+  status.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
+  status.className = `status status--${type}`;
+  const iconName = { pending: 'chargement', success: 'succes', error: 'alerte' }[type];
+  status.innerHTML = `${icon(iconName, type === 'pending' ? 'spinner' : '')}<p><strong></strong><span></span></p>`;
+  status.querySelector('strong').textContent = title;
+  status.querySelector('span').textContent = text ? ` ${text}` : '';
+}
 
-    // Initialiser max-height à 0
-    answer.style.maxHeight = '0';
-    answer.style.overflow = 'hidden';
-    answer.style.transition = 'max-height 0.35s ease';
+function setButtonLoading(btn, loading, label) {
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.classList.toggle('is-loading', loading);
+  if (loading) {
+    btn.innerHTML = `${icon('chargement', 'spinner')}<span>Envoi en cours…</span>`;
+  } else {
+    btn.textContent = label;
+  }
+}
 
-    question.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. FORMULAIRE DE CONTACT (pages/contact.html)
+// ─────────────────────────────────────────────────────────────────────────────
 
-      // Fermer tous les items
-      faqItems.forEach((other) => {
-        if (other !== item) {
-          other.classList.remove('open');
-          const otherAnswer = other.querySelector('.faq-answer');
-          const otherIcon = other.querySelector('.faq-icon');
-          if (otherAnswer) otherAnswer.style.maxHeight = '0';
-          const otherQuestion = other.querySelector('.faq-question');
-          if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
-          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
-        }
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const status = document.getElementById('contactStatus');
+  const originalLabel = submitBtn ? submitBtn.textContent.trim() : 'Envoyer';
+  let sending = false;
+
+  // Pré-sélection du service depuis l'adresse (ex. contact.html?service=cours-pilates)
+  const serviceSelect = document.getElementById('service');
+  const wanted = new URLSearchParams(window.location.search).get('service');
+  if (serviceSelect && wanted && serviceSelect.querySelector(`option[value="${CSS.escape(wanted)}"]`)) {
+    serviceSelect.value = wanted;
+  }
+
+  watchFieldErrors(form);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    if (!validateForm(form)) return;
+
+    sending = true;
+    setButtonLoading(submitBtn, true);
+    setStatus(status, 'pending', 'Envoi en cours…', 'Merci de patienter quelques secondes.');
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
       });
-
-      // Toggle l'item courant
-      if (isOpen) {
-        item.classList.remove('open');
-        question.setAttribute('aria-expanded', 'false');
-        answer.style.maxHeight = '0';
-        if (icon) icon.style.transform = 'rotate(0deg)';
+      if (response.ok) {
+        form.reset();
+        setStatus(status, 'success', 'Message envoyé !', 'Je vous répondrai dans les plus brefs délais.');
       } else {
-        item.classList.add('open');
-        question.setAttribute('aria-expanded', 'true');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        if (icon) icon.style.transform = 'rotate(45deg)';
+        setStatus(status, 'error', "Votre message n'a pas pu être envoyé.",
+          'Votre texte est conservé : réessayez dans un instant, ou écrivez-moi à coachapar@gmail.com, ou appelez le 07 65 77 51 04.');
       }
-    });
+    } catch (err) {
+      console.error('Formulaire de contact :', err);
+      setStatus(status, 'error', "Votre message n'a pas pu être envoyé.",
+        'Votre texte est conservé : réessayez dans un instant, ou écrivez-moi à coachapar@gmail.com, ou appelez le 07 65 77 51 04.');
+    } finally {
+      sending = false;
+      setButtonLoading(submitBtn, false, originalLabel);
+      if (status) status.focus();
+    }
   });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. BOOKING CALENDAR WIDGET
+// 4. WIDGET DE DEMANDE DE RENDEZ-VOUS (accueil)
 // ─────────────────────────────────────────────────────────────────────────────
 
-/**
- * Widget de réservation calendrier.
- * Monte une interface complète (calendrier → créneaux → formulaire → confirmation)
- * dans l'élément identifié par elementId.
- */
+const MONTHS_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const MONTHS_TITLE = MONTHS_FR.map((m) => m.charAt(0).toUpperCase() + m.slice(1));
+const DAYS_SHORT = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+const DAYS_LONG = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+const BOOKING_SUBMIT_LABEL = 'Confirmer ma demande de contact';
+
 class BookingCalendar {
-  /**
-   * @param {string} elementId - L'id de l'élément conteneur dans le DOM
-   */
-  constructor(elementId) {
-    this.container = document.getElementById(elementId);
-    if (!this.container) return;
-
+  constructor(container) {
+    this.container = container;
     this.TIMESLOTS = ['17:30', '18:30', '19:30', '20:30'];
-    this.FORMSPREE_URL = 'https://formspree.io/f/xwplpobd';
-    this.DAYS_FR = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-    this.MONTHS_FR = [
-      'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre',
-    ];
-
     const now = new Date();
     this.currentYear = now.getFullYear();
-    this.currentMonth = now.getMonth(); // 0-indexed
+    this.currentMonth = now.getMonth();
     this.selectedDate = null;
     this.selectedTime = null;
+    this.sending = false;
 
-    this.render();
-  }
-
-  /**
-   * Rendu principal du widget.
-   */
-  render() {
     this.container.innerHTML = '';
-    this.container.classList.add('booking-widget');
-
-    // Wrapper calendrier
-    const calendarWrapper = document.createElement('div');
-    calendarWrapper.className = 'booking-calendar';
-    this.container.appendChild(calendarWrapper);
-    this.calendarWrapper = calendarWrapper;
-
+    this.calendarEl = document.createElement('div');
+    this.calendarEl.className = 'calendar';
+    this.detailsEl = document.createElement('div');
+    this.detailsEl.className = 'booking';
+    this.container.append(this.calendarEl, this.detailsEl);
     this.renderCalendar();
   }
 
-  /**
-   * Détermine si une date est un week-end.
-   * @param {Date} date
-   * @returns {boolean}
-   */
-  isWeekend(date) {
-    const day = date.getDay(); // 0 = dimanche, 6 = samedi
-    return day === 0 || day === 6;
+  static sameDay(a, b) {
+    return Boolean(a && b) && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
   }
 
-  /**
-   * Détermine si une date est dans le passé (ou aujourd'hui avec contrainte horaire).
-   * @param {Date} date
-   * @returns {boolean}
-   */
+  isWeekend(date) {
+    const d = date.getDay();
+    return d === 0 || d === 6;
+  }
+
+  /** Jour passé, ou aujourd'hui après 17 h (plus de créneau). */
   isPast(date) {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
     if (d < today) return true;
-
-    // Même jour: bloquer si heure actuelle > 17:00 (plus de créneaux dispo)
-    if (d.getTime() === today.getTime()) {
-      const lastSlotHour = 17;
-      if (now.getHours() >= lastSlotHour) return true;
-    }
-
+    if (d.getTime() === today.getTime() && now.getHours() >= 17) return true;
     return false;
   }
 
-  /**
-   * Rendu du calendrier mensuel.
-   */
-  renderCalendar() {
-    this.calendarWrapper.innerHTML = '';
-
+  renderCalendar({ focusDay = false } = {}) {
     const now = new Date();
-    const currentMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-    const viewStart = new Date(this.currentYear, this.currentMonth, 1);
-    const isPrevDisabled = viewStart <= currentMonthStart;
+    const isPrevDisabled = new Date(this.currentYear, this.currentMonth, 1) <= new Date(now.getFullYear(), now.getMonth(), 1);
+    const title = `${MONTHS_TITLE[this.currentMonth]} ${this.currentYear}`;
 
-    // En-tête navigation
-    const header = document.createElement('div');
-    header.className = 'calendar-header';
-    header.innerHTML = `
-      <button class="cal-prev" aria-label="Mois précédent" ${isPrevDisabled ? 'disabled' : ''}>&#8249;</button>
-      <span class="cal-title">${this.MONTHS_FR[this.currentMonth]} ${this.currentYear}</span>
-      <button class="cal-next" aria-label="Mois suivant">&#8250;</button>
-    `;
-    this.calendarWrapper.appendChild(header);
+    let html = `
+      <div class="calendar__head">
+        <button type="button" class="calendar__nav calendar__nav--prev" ${isPrevDisabled ? 'disabled' : ''}>${icon('arrow-right')}<span class="visually-hidden">Mois précédent</span></button>
+        <p class="calendar__title" id="calendar-titre" aria-live="polite">${title}</p>
+        <button type="button" class="calendar__nav calendar__nav--next">${icon('arrow-right')}<span class="visually-hidden">Mois suivant</span></button>
+      </div>
+      <div class="calendar__grid" role="group" aria-labelledby="calendar-titre">`;
+    DAYS_SHORT.forEach((d) => { html += `<span class="calendar__dayname" aria-hidden="true">${d}</span>`; });
 
-    header.querySelector('.cal-prev').addEventListener('click', () => this.prevMonth());
-    header.querySelector('.cal-next').addEventListener('click', () => this.nextMonth());
-
-    // Noms des jours
-    const daysRow = document.createElement('div');
-    daysRow.className = 'calendar-days-header';
-    this.DAYS_FR.forEach((d) => {
-      const cell = document.createElement('span');
-      cell.className = 'cal-day-name';
-      cell.textContent = d;
-      daysRow.appendChild(cell);
-    });
-    this.calendarWrapper.appendChild(daysRow);
-
-    // Grille des jours
-    const grid = document.createElement('div');
-    grid.className = 'calendar-grid';
-
-    const firstDay = new Date(this.currentYear, this.currentMonth, 1);
-    // getDay() retourne 0=dim, 1=lun... on veut 0=lun
-    let startOffset = firstDay.getDay() - 1;
-    if (startOffset < 0) startOffset = 6; // dimanche → offset 6
+    const first = new Date(this.currentYear, this.currentMonth, 1);
+    let offset = first.getDay() - 1;
+    if (offset < 0) offset = 6;
+    for (let i = 0; i < offset; i++) html += '<span class="calendar__day" aria-hidden="true"></span>';
 
     const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-    const today = new Date();
-
-    // Cellules vides avant le 1er
-    for (let i = 0; i < startOffset; i++) {
-      const empty = document.createElement('div');
-      empty.className = 'cal-cell empty';
-      grid.appendChild(empty);
-    }
-
-    // Jours du mois
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(this.currentYear, this.currentMonth, day);
-      const cell = document.createElement('div');
-      cell.className = 'cal-cell';
-
-      const isToday =
-        date.getDate() === today.getDate() &&
-        date.getMonth() === today.getMonth() &&
-        date.getFullYear() === today.getFullYear();
-
-      const disabled = this.isPast(date) || this.isWeekend(date);
-
-      if (isToday) cell.classList.add('today');
-      if (disabled) {
-        cell.classList.add('disabled');
+      const label = `${DAYS_LONG[date.getDay()]} ${day} ${MONTHS_FR[this.currentMonth]}`;
+      const today = BookingCalendar.sameDay(date, now) ? ' is-today' : '';
+      if (this.isPast(date) || this.isWeekend(date)) {
+        html += `<span class="calendar__day${today}"><span aria-hidden="true">${day}</span><span class="visually-hidden">${label} (indisponible)</span></span>`;
       } else {
-        cell.classList.add('available');
-        cell.setAttribute('tabindex', '0');
-        cell.setAttribute('role', 'button');
-        cell.setAttribute('aria-label', `Sélectionner le ${day} ${this.MONTHS_FR[this.currentMonth]}`);
+        const pressed = BookingCalendar.sameDay(date, this.selectedDate);
+        html += `<button type="button" class="calendar__day${today}" data-day="${day}" aria-pressed="${pressed}" aria-label="${label}${today ? ' (aujourd’hui)' : ''}">${day}</button>`;
       }
-
-      // Marquer jour sélectionné
-      if (this.selectedDate) {
-        const sel = this.selectedDate;
-        if (
-          date.getDate() === sel.getDate() &&
-          date.getMonth() === sel.getMonth() &&
-          date.getFullYear() === sel.getFullYear()
-        ) {
-          cell.classList.add('selected');
-        }
-      }
-
-      cell.textContent = day;
-
-      if (!disabled) {
-        cell.addEventListener('click', () => this.selectDate(date, cell));
-        cell.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.selectDate(date, cell);
-          }
-        });
-      }
-
-      grid.appendChild(cell);
     }
+    html += '</div><p class="calendar__legend">Du lundi au vendredi. Choisissez un jour, puis un créneau.</p>';
+    this.calendarEl.innerHTML = html;
 
-    this.calendarWrapper.appendChild(grid);
-
-    // Zone créneaux + formulaire (persistante sous le calendrier)
-    const slotsContainer = document.createElement('div');
-    slotsContainer.id = 'bookingSlots';
-    this.container.querySelector('#bookingSlots')?.remove();
-    this.container.appendChild(slotsContainer);
-    this.slotsContainer = slotsContainer;
-
-    // Ré-afficher créneaux si date déjà sélectionnée
-    if (this.selectedDate) {
-      this.renderTimeSlots(this.selectedDate);
+    this.calendarEl.querySelector('.calendar__nav--prev').addEventListener('click', () => this.changeMonth(-1));
+    this.calendarEl.querySelector('.calendar__nav--next').addEventListener('click', () => this.changeMonth(1));
+    this.calendarEl.querySelectorAll('button[data-day]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.selectDate(new Date(this.currentYear, this.currentMonth, Number(btn.dataset.day)));
+      });
+    });
+    if (focusDay) {
+      const target = this.calendarEl.querySelector('button[data-day]');
+      if (target) target.focus();
     }
   }
 
-  /**
-   * Gestion du clic sur un jour disponible.
-   * @param {Date} date
-   * @param {HTMLElement} cell
-   */
-  selectDate(date, cell) {
+  changeMonth(delta) {
+    const now = new Date();
+    let m = this.currentMonth + delta;
+    let y = this.currentYear;
+    if (m < 0) { m = 11; y--; }
+    if (m > 11) { m = 0; y++; }
+    if (new Date(y, m, 1) < new Date(now.getFullYear(), now.getMonth(), 1)) return;
+    this.currentMonth = m;
+    this.currentYear = y;
+    this.selectedDate = null;
+    this.selectedTime = null;
+    this.detailsEl.innerHTML = '';
+    this.renderCalendar();
+    // garder le focus sur le bouton utilisé
+    const btn = this.calendarEl.querySelector(delta < 0 ? '.calendar__nav--prev' : '.calendar__nav--next');
+    if (btn && !btn.disabled) btn.focus();
+    else this.calendarEl.querySelector('.calendar__nav--next').focus();
+  }
+
+  selectDate(date) {
     this.selectedDate = date;
     this.selectedTime = null;
-
-    // Mettre à jour la classe selected dans la grille
-    this.calendarWrapper.querySelectorAll('.cal-cell.selected').forEach((c) => {
-      c.classList.remove('selected');
+    this.calendarEl.querySelectorAll('button[data-day]').forEach((b) => {
+      b.setAttribute('aria-pressed', String(Number(b.dataset.day) === date.getDate()));
     });
-    cell.classList.add('selected');
-
     this.renderTimeSlots(date);
   }
 
-  /**
-   * Affiche les créneaux horaires disponibles pour une date donnée.
-   * @param {Date} date
-   */
-  renderTimeSlots(date) {
-    this.slotsContainer.innerHTML = '';
-
-    const now = new Date();
-    const isToday =
-      date.getDate() === now.getDate() &&
-      date.getMonth() === now.getMonth() &&
-      date.getFullYear() === now.getFullYear();
-
-    const wrapper = document.createElement('div');
-    wrapper.className = 'timeslots';
-    wrapper.style.opacity = '0';
-    wrapper.style.transform = 'translateY(10px)';
-    wrapper.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-
-    const title = document.createElement('p');
-    title.className = 'timeslots-title';
-    const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    title.textContent = `Créneaux proposés — ${dayNames[date.getDay()]} ${date.getDate()} ${this.MONTHS_FR[date.getMonth()]} ${date.getFullYear()}`;
-    wrapper.appendChild(title);
-
-    const buttonsRow = document.createElement('div');
-    buttonsRow.className = 'timeslots-buttons';
-
-    let hasSlot = false;
-
-    this.TIMESLOTS.forEach((time) => {
-      // Si aujourd'hui, filtrer les créneaux passés
-      if (isToday) {
-        const [h, m] = time.split(':').map(Number);
-        const slotTime = new Date(now);
-        slotTime.setHours(h, m, 0, 0);
-        if (slotTime <= now) return;
-      }
-
-      hasSlot = true;
-      const btn = document.createElement('button');
-      btn.className = 'timeslot';
-      btn.setAttribute('data-time', time);
-      btn.setAttribute('type', 'button');
-      btn.textContent = time.replace(':', 'h');
-      btn.setAttribute('aria-pressed', String(this.selectedTime === time));
-
-      if (this.selectedTime === time) {
-        btn.classList.add('selected');
-      }
-
-      btn.addEventListener('click', () => {
-        this.selectedTime = time;
-        wrapper.querySelectorAll('.timeslot').forEach((b) => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-pressed', 'true');
-        this.renderForm(date, time);
-      });
-
-      buttonsRow.appendChild(btn);
-    });
-
-    if (!hasSlot) {
-      const msg = document.createElement('p');
-      msg.className = 'no-slots';
-      msg.textContent = 'Aucun créneau proposé pour ce jour.';
-      wrapper.appendChild(msg);
-    } else {
-      wrapper.appendChild(buttonsRow);
-    }
-
-    this.slotsContainer.appendChild(wrapper);
-
-    // Slide-down animation
-    requestAnimationFrame(() => {
-      wrapper.style.opacity = '1';
-      wrapper.style.transform = 'translateY(0)';
-    });
-
-    // Ré-afficher formulaire si créneau déjà sélectionné
-    if (this.selectedTime) {
-      this.renderForm(date, this.selectedTime);
-    }
+  displayDate(date) {
+    return `${DAYS_LONG[date.getDay()]} ${date.getDate()} ${MONTHS_FR[date.getMonth()]} ${date.getFullYear()}`;
   }
 
-  /**
-   * Affiche le formulaire de réservation après sélection d'un créneau.
-   * @param {Date} date
-   * @param {string} time - Format "HH:MM"
-   */
-  renderForm(date, time) {
-    // Supprimer formulaire précédent s'il existe
-    this.slotsContainer.querySelector('.booking-form-wrapper')?.remove();
+  renderTimeSlots(date) {
+    const now = new Date();
+    const isToday = BookingCalendar.sameDay(date, now);
+    const slots = this.TIMESLOTS.filter((time) => {
+      if (!isToday) return true;
+      const [h, m] = time.split(':').map(Number);
+      const t = new Date(now);
+      t.setHours(h, m, 0, 0);
+      return t > now;
+    });
 
-    const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    const dayName = dayNames[date.getDay()];
+    const block = document.createElement('div');
+    block.className = 'slots-block';
+    const titleId = 'creneaux-titre';
+    block.innerHTML = `<p class="slots-block__title" id="${titleId}">Créneaux proposés : ${this.displayDate(date)}</p>`;
+    if (!slots.length) {
+      block.insertAdjacentHTML('beforeend', '<p class="muted">Aucun créneau proposé pour ce jour.</p>');
+    } else {
+      const row = document.createElement('div');
+      row.className = 'slots';
+      row.setAttribute('role', 'group');
+      row.setAttribute('aria-labelledby', titleId);
+      slots.forEach((time) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot';
+        btn.dataset.time = time;
+        btn.textContent = time.replace(':', 'h');
+        btn.setAttribute('aria-pressed', String(this.selectedTime === time));
+        btn.addEventListener('click', () => {
+          this.selectedTime = time;
+          row.querySelectorAll('.slot').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+          this.renderForm(date, time);
+        });
+        row.appendChild(btn);
+      });
+      block.appendChild(row);
+    }
+    this.detailsEl.innerHTML = '';
+    this.detailsEl.appendChild(block);
+  }
+
+  renderForm(date, time) {
+    this.detailsEl.querySelector('.booking-form-wrapper')?.remove();
     const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-    const displayDate = `${dayName} ${date.getDate()} ${this.MONTHS_FR[date.getMonth()]} ${date.getFullYear()}`;
+    const displayDate = this.displayDate(date);
     const displayTime = time.replace(':', 'h');
 
     const wrapper = document.createElement('div');
-    wrapper.className = 'booking-form-wrapper';
-    wrapper.style.opacity = '0';
-    wrapper.style.transform = 'translateY(10px)';
-    wrapper.style.transition = 'opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s';
-
+    wrapper.className = 'booking-form-wrapper booking';
     wrapper.innerHTML = `
-      <div class="booking-summary">
-        <span class="summary-icon">📅</span>
-        <span class="summary-text">Votre demande de rendez-vous : <strong>${displayDate}</strong> à <strong>${displayTime}</strong></span>
-      </div>
-      <form class="booking-form" action="https://formspree.io/f/xwplpobd" method="POST" novalidate>
+      <p class="booking-summary">${icon('calendar')}<span>Votre demande de rendez-vous : <strong>${displayDate}</strong> à <strong>${displayTime}</strong></span></p>
+      <form class="form booking-form" action="${FORMSPREE_URL}" method="POST" novalidate>
         <input type="hidden" name="date" value="${dateStr}">
         <input type="hidden" name="heure" value="${time}">
-        <p class="form-required-note"><span aria-hidden="true">*</span> champ obligatoire</p>
         <input type="hidden" name="_subject" value="Demande de rendez-vous — ${displayDate} à ${displayTime}">
+        <p class="form__required">Les champs marqués d'un astérisque (<span class="req" aria-hidden="true">*</span>) sont obligatoires.</p>
 
-        <div class="form-group">
-          <label for="book-nom">Nom complet <span aria-hidden="true">*</span></label>
-          <input type="text" id="book-nom" name="nom" required placeholder="Votre nom et prénom" autocomplete="name">
+        <div class="field">
+          <label for="book-nom">Nom complet <span class="req" aria-hidden="true">*</span></label>
+          <input class="input" type="text" id="book-nom" name="nom" required autocomplete="name">
         </div>
 
-        <div class="form-group">
-          <label for="book-tel">Téléphone <span aria-hidden="true">*</span></label>
-          <input type="tel" id="book-tel" name="telephone" required placeholder="06 XX XX XX XX" autocomplete="tel">
+        <div class="field">
+          <label for="book-tel">Téléphone <span class="req" aria-hidden="true">*</span></label>
+          <input class="input" type="tel" id="book-tel" name="telephone" required autocomplete="tel">
         </div>
 
-        <div class="form-group">
-          <label for="book-email">Email <span aria-hidden="true">*</span></label>
-          <input type="email" id="book-email" name="email" required placeholder="votre@email.fr" autocomplete="email">
+        <div class="field">
+          <label for="book-email">Email <span class="req" aria-hidden="true">*</span></label>
+          <input class="input" type="email" id="book-email" name="email" required autocomplete="email">
         </div>
 
-        <fieldset class="form-group form-fieldset">
-          <legend>Contact préféré <span aria-hidden="true">*</span></legend>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="contact_prefere" value="Appel téléphonique" required>
-              Appel téléphonique
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="contact_prefere" value="Email">
-              Email
-            </label>
+        <fieldset class="field">
+          <legend>Contact préféré <span class="req" aria-hidden="true">*</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="contact_prefere" value="Appel téléphonique" required> Appel téléphonique</label>
+            <label class="choice"><input type="radio" name="contact_prefere" value="Email"> Email</label>
           </div>
         </fieldset>
 
-        <div class="form-group">
+        <div class="field">
           <label for="book-service">Service souhaité (facultatif)</label>
-          <select id="book-service" name="service">
-            <option value="">-- Choisir un service --</option>
+          <select class="select" id="book-service" name="service">
+            <option value="">Choisissez un service</option>
             <option value="Coaching Sportif">Coaching sportif</option>
             <option value="Nutrition">Alimentation</option>
             <option value="Pilates">Pilates</option>
@@ -598,24 +460,22 @@ class BookingCalendar {
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="field">
           <label for="book-message">Message (facultatif)</label>
-          <textarea id="book-message" name="message" rows="3" aria-describedby="book-message-aide"></textarea>
-          <p class="form-hint" id="book-message-aide">Votre demande : objectif, disponibilités, lieu souhaité. Merci de ne pas indiquer d'informations sur votre santé : nous en parlerons de vive voix.</p>
+          <textarea class="textarea" id="book-message" name="message" rows="4" aria-describedby="book-message-aide"></textarea>
+          <p class="hint" id="book-message-aide">Votre demande : objectif, disponibilités, lieu souhaité. Merci de ne pas indiquer d'informations sur votre santé : nous en parlerons de vive voix.</p>
         </div>
 
-        <div class="form-honeypot" aria-hidden="true">
+        <div class="honeypot" aria-hidden="true">
           <label for="book-gotcha">Ne pas remplir ce champ</label>
           <input type="text" id="book-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
 
-        <button type="submit" class="btn-submit-booking">
-          Confirmer ma demande de contact
-        </button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-        <div class="form-privacy">
-          <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie. Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="pages/politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
-        <details class="form-privacy-details">
+        <button type="submit" class="btn btn--primary btn--block">${BOOKING_SUBMIT_LABEL}</button>
+        <div class="status" role="status" aria-live="polite" tabindex="-1"></div>
+        <div class="privacy">
+          <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie. Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="/pages/politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
+        <details>
           <summary>En savoir plus</summary>
           <p><strong>Qui traite vos données ?</strong> Loïc Boyer, entrepreneur individuel, exerçant sous le nom Coach APA'R. Contact : coachapar@gmail.com.</p>
           <p><strong>Pour quoi faire ?</strong> Répondre à votre demande d'information ou de rendez-vous, avant tout engagement de votre part. Vos données ne servent à aucune prospection et ne sont ni vendues ni cédées.</p>
@@ -625,190 +485,82 @@ class BookingCalendar {
           <p><strong>Pourquoi ne pas parler de santé ici ?</strong> Les informations de santé sont des données sensibles. Elles ne doivent pas transiter par ce formulaire : nous en parlerons de vive voix lors du premier échange.</p>
         </details>
         </div>
-      </form>
-    `;
+      </form>`;
+    this.detailsEl.appendChild(wrapper);
 
-    this.slotsContainer.appendChild(wrapper);
-
-    // Animation slide-down
-    requestAnimationFrame(() => {
-      wrapper.style.opacity = '1';
-      wrapper.style.transform = 'translateY(0)';
-    });
-
-    // Gestionnaire submit
-    const form = wrapper.querySelector('.booking-form');
+    const form = wrapper.querySelector('form');
+    watchFieldErrors(form);
     form.addEventListener('submit', (e) => this.handleSubmit(e));
   }
 
-  /**
-   * Gère la soumission du formulaire de réservation via fetch.
-   * @param {Event} e
-   */
   async handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    const submitBtn = form.querySelector('.btn-submit-booking');
+    if (this.sending) return;
+    if (!validateForm(form)) return;
 
-    // Validation HTML5 native
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours…';
-    showFormMessage(form, 'Envoi en cours…', 'pending');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('.status');
+    this.sending = true;
+    setButtonLoading(submitBtn, true);
+    setStatus(status, 'pending', 'Envoi en cours…', 'Merci de patienter quelques secondes.');
 
     try {
-      const data = new FormData(form);
-      const response = await fetch(this.FORMSPREE_URL, {
+      const response = await fetch(FORMSPREE_URL, {
         method: 'POST',
-        body: data,
+        body: new FormData(form),
         headers: { Accept: 'application/json' },
       });
-
       if (response.ok) {
         this.showConfirmation();
-      } else {
-        showFormMessage(form, FORM_ERROR_MESSAGE, 'error');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Confirmer ma demande de contact';
+        return;
       }
+      this.showError(form, status, submitBtn);
     } catch (err) {
       console.error('BookingCalendar submit error:', err);
-      showFormMessage(form, FORM_ERROR_MESSAGE, 'error');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Confirmer ma demande de contact';
+      this.showError(form, status, submitBtn);
+    } finally {
+      this.sending = false;
     }
   }
 
-  /**
-   * Affiche le message de confirmation après envoi réussi.
-   */
+  showError(form, status, submitBtn) {
+    setStatus(status, 'error', "Votre demande n'a pas pu être envoyée.",
+      'Vos informations sont conservées : réessayez dans un instant, ou écrivez-moi à coachapar@gmail.com, ou appelez le 07 65 77 51 04.');
+    setButtonLoading(submitBtn, false, BOOKING_SUBMIT_LABEL);
+    status.focus();
+  }
+
   showConfirmation() {
-    this.slotsContainer.innerHTML = '';
-    this.calendarWrapper.querySelectorAll('.cal-cell.selected').forEach((c) => {
-      c.classList.remove('selected');
-    });
     this.selectedDate = null;
     this.selectedTime = null;
-
-    const confirmation = document.createElement('div');
-    confirmation.className = 'booking-confirmation';
-    confirmation.setAttribute('role', 'status');
-    confirmation.innerHTML = `
-      <div class="confirmation-icon" aria-hidden="true">✅</div>
-      <h3 tabindex="-1">Demande envoyée !</h3>
-      <p>Votre demande a été envoyée ! Je vous contacterai au plus vite pour confirmer le rendez-vous.</p>
-      <button type="button" class="btn-new-booking">Faire une nouvelle demande</button>
-    `;
-    this.slotsContainer.appendChild(confirmation);
-    confirmation.querySelector('h3').focus();
-
-    confirmation.querySelector('.btn-new-booking').addEventListener('click', () => {
-      this.slotsContainer.innerHTML = '';
-      this.renderCalendar();
+    this.calendarEl.querySelectorAll('button[data-day]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    this.detailsEl.innerHTML = `
+      <div class="status status--success" role="status">
+        ${icon('succes')}
+        <div class="status__body">
+          <h3 tabindex="-1">Demande envoyée !</h3>
+          <p>Votre demande a été envoyée ! Je vous contacterai au plus vite pour confirmer le rendez-vous.</p>
+          <button type="button" class="btn btn--secondary">Faire une nouvelle demande</button>
+        </div>
+      </div>`;
+    this.detailsEl.querySelector('h3').focus();
+    this.detailsEl.querySelector('button').addEventListener('click', () => {
+      this.detailsEl.innerHTML = '';
+      this.renderCalendar({ focusDay: true });
     });
-  }
-
-  /**
-   * Passe au mois précédent (si pas dans le passé).
-   */
-  prevMonth() {
-    const now = new Date();
-    if (
-      this.currentYear > now.getFullYear() ||
-      (this.currentYear === now.getFullYear() && this.currentMonth > now.getMonth())
-    ) {
-      this.currentMonth--;
-      if (this.currentMonth < 0) {
-        this.currentMonth = 11;
-        this.currentYear--;
-      }
-      this.selectedDate = null;
-      this.selectedTime = null;
-      this.renderCalendar();
-    }
-  }
-
-  /**
-   * Passe au mois suivant.
-   */
-  nextMonth() {
-    this.currentMonth++;
-    if (this.currentMonth > 11) {
-      this.currentMonth = 0;
-      this.currentYear++;
-    }
-    this.selectedDate = null;
-    this.selectedTime = null;
-    this.renderCalendar();
   }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. MESSAGES DE FORMULAIRE (widget de réservation)
-// ─────────────────────────────────────────────────────────────────────────────
-
-/** Message affiché quand Formspree ne confirme pas la réception. */
-const FORM_ERROR_MESSAGE =
-  "Votre demande n'a pas pu être envoyée. Vos informations sont conservées : " +
-  'réessayez dans un instant, ou écrivez-moi à coachapar@gmail.com, ' +
-  'ou appelez le 07 65 77 51 04.';
-
-/**
- * Affiche un message dans la zone de statut du formulaire (.form-status,
- * annoncée aux lecteurs d'écran). Les erreurs sont annoncées immédiatement.
- * @param {HTMLFormElement} form
- * @param {string} message
- * @param {'success'|'error'|'pending'} type
- */
-function showFormMessage(form, message, type) {
-  let status = form.querySelector('.form-status');
-  if (!status) {
-    status = document.createElement('p');
-    status.className = 'form-status';
-    form.appendChild(status);
-  }
-  status.setAttribute('role', type === 'error' ? 'alert' : 'status');
-  status.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
-  status.className = `form-status form-message form-message--${type}`;
-  status.textContent = message;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// INIT — Point d'entrée
+// INIT
 // ─────────────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
+  try { initMobileMenu(); } catch (e) { console.error('initMobileMenu:', e); }
+  try { initContactForm(); } catch (e) { console.error('initContactForm:', e); }
   try {
-    initNavigation();
-  } catch (e) {
-    console.error('initNavigation:', e);
-  }
-
-
-  try {
-    initScrollReveal();
-  } catch (e) {
-    console.error('initScrollReveal:', e);
-  }
-
-  try {
-    initFaqAccordion();
-  } catch (e) {
-    console.error('initFaqAccordion:', e);
-  }
-
-  try {
-    // Monter le widget calendrier si l'élément existe
     const bookingEl = document.getElementById('bookingWidget');
-    if (bookingEl) {
-      new BookingCalendar('bookingWidget');
-    }
-  } catch (e) {
-    console.error('BookingCalendar:', e);
-  }
-
+    if (bookingEl) new BookingCalendar(bookingEl);
+  } catch (e) { console.error('BookingCalendar:', e); }
 });

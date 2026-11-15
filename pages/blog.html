@@ -6,247 +6,155 @@
     <meta name="description" content="Mes articles sur l'activité physique adaptée et la santé : repères concrets, sources officielles, conseils pour reprendre une activité à Montpellier.">
     <meta name="author" content="Coach APA'R">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://coachapar.fr/pages/blog.html">
     <meta property="og:title" content="Blog activité physique adaptée et santé | Coach APA'R">
     <meta property="og:description" content="Mes articles sur l'activité physique adaptée et la santé.">
     <meta property="og:image" content="https://coachapar.fr/images/blog-1.jpg">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://coachapar.fr/pages/blog.html">
     <meta property="twitter:title" content="Blog activité physique adaptée et santé | Coach APA'R">
     <meta property="twitter:description" content="Mes articles sur l'activité physique adaptée et la santé.">
     <meta property="twitter:image" content="https://coachapar.fr/images/blog-1.jpg">
-    
+
     <title>Blog activité physique adaptée et santé | Coach APA'R</title>
-    <link rel="stylesheet" href="../css/styles.css">
     <link rel="canonical" href="https://coachapar.fr/pages/blog.html">
     <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="../images/logo-192.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Amélioration de la lisibilité du texte */
-        .blog-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .blog-card p {
-            color: #333; /* Texte plus foncé pour meilleure lisibilité */
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .blog-meta span {
-            color: #555;
-        }
-        
-        .page-hero-content p {
-            color: #444;
-        }
-        
-        .blog-content {
-            background-color: #fff;
-            padding: 1.5rem;
-        }
-    </style>
+  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <meta name="theme-color" content="#44631F">
 </head>
 <body>
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <a href="../index.html" class="nav-logo">
-                    <img src="../images/logo.webp" alt="Coach APA'R, retour à l'accueil" width="60" height="60">
-                </a>
-                <button type="button" class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </button>
-                <div class="nav-menu" id="navMenu">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#accueil" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="../index.html#expertise" class="nav-link">À propos</a></li>
-                        <li class="nav-item"><a href="../index.html#services" class="nav-link">Services</a></li>
-                        <li class="nav-item dropdown">
-                            <button type="button" class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="menuPrestations">Prestations</button>
-                            <ul class="dropdown-menu" id="menuPrestations">
-                                <li><a href="coaching-sportif.html" class="dropdown-item">Coaching sportif</a></li>
-                                <li><a href="conseils-nutritionnels.html" class="dropdown-item">Alimentation et activité physique</a></li>
-                                <li><a href="activite-physique-adaptee.html" class="dropdown-item">Activité physique adaptée</a></li>
-                                <li><a href="contact.html?service=cours-pilates" class="dropdown-item">Pilates</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
+  <!-- gabarit:en-tete -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="/">
+        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
+        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#tarifs">Tarifs</a></li>
+          <li><a href="/#faq">Questions</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
+      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
+      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
+    </div>
+    <div class="mobile-menu" id="menu-mobile" hidden>
+      <nav class="container" aria-label="Menu">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+        </ul>
+        <div class="mobile-menu__actions">
+          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">Offert, sans engagement</p>
+          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
         </div>
-    </header>
+      </nav>
+    </div>
+  </header>
+  <!-- /gabarit:en-tete -->
 
-    <main id="contenu" tabindex="-1">
-
-    <!-- Hero Section -->
-    <section class="page-hero">
-        <div class="container">
-            <div class="page-hero-content">
-                <h1>Blog</h1>
-                <p>Mes articles sur l'activité physique adaptée et la santé</p>
-            </div>
-        </div>
+  <main id="contenu" tabindex="-1">
+    <section class="page-head" aria-labelledby="titre-page">
+      <div class="container page-head__inner">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="/">Accueil</a></li>
+            <li><span aria-current="page">Blog</span></li>
+          </ol>
+        </nav>
+        <h1 id="titre-page">Blog</h1>
+        <p class="page-head__lead">Mes articles sur l'activité physique adaptée et la santé</p>
+      </div>
     </section>
 
-    <!-- Blog Section -->
-    <section class="section blog">
-        <div class="morphing-background">
-            <div class="morphing-shape" style="top: 5%; left: 5%; width: 30%; height: 40%; background-color: var(--primary-color);"></div>
-            <div class="morphing-shape" style="bottom: 10%; right: 10%; width: 25%; height: 35%; background-color: var(--secondary-color);"></div>
-        </div>
-        <div class="container">
-            <div class="blog-header">
-                <div class="blog-search">
-                    <input type="text" placeholder="Rechercher un article..." id="blogSearch">
-                    <button type="button"><i class="fas fa-search"></i></button>
-                </div>
-                <div class="blog-categories">
-                    <button class="category-btn active" data-category="all">Tous</button>
-                    <button class="category-btn" data-category="sante">Santé</button>
-                </div>
+    <section class="section section--surface" aria-label="Articles">
+      <div class="container">
+        <div class="cards cards--3">
+          <article class="card post-card">
+            <div class="card__media">
+              <img src="/images/blog-1-800.webp" srcset="/images/blog-1-800.webp 800w, /images/blog-1.webp 1600w" sizes="(min-width: 64rem) 360px, (min-width: 40rem) 50vw, 100vw" alt="Activité physique et santé cardiovasculaire" width="800" height="587">
             </div>
-            
-            <div class="blog-layout">
-                <div class="blog-grid" id="blogGrid">
-                    <!-- Article 1 -->
-                    <article class="blog-card" data-category="sante">
-                        <div class="blog-image">
-                            <img src="../images/blog-1-800.webp" srcset="../images/blog-1-800.webp 800w, ../images/blog-1.webp 1600w" sizes="(min-width: 768px) 400px, 100vw" alt="Activité physique et santé cardiovasculaire" width="800" height="587">
-                            <div class="blog-category">Santé</div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span><i class="fas fa-calendar"></i> 17 mars 2025</span>
-                                <span><i class="fas fa-tag"></i> Santé</span>
-                            </div>
-                            <h3>L'activité physique adaptée pour la santé cardiovasculaire</h3>
-                            <p>Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.</p>
-                            <a href="blog/activite-physique-sante-cardiovasculaire.html" class="blog-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-            </div>
+            <p class="post-meta"><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg><time datetime="2025-03-17">17 mars 2025</time></span><span>Santé</span></p>
+            <h2>L'activité physique adaptée pour la santé cardiovasculaire</h2>
+            <p>Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.</p>
+            <div class="card__foot"><a class="btn--link" href="/pages/blog/activite-physique-sante-cardiovasculaire.html">Lire l'article<span class="visually-hidden"> : L'activité physique adaptée pour la santé cardiovasculaire</span> <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+          </article>
         </div>
+      </div>
     </section>
+  </main>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Coach APA'R</h2>
-                    <p>Coach sportif et enseignant en activité physique adaptée à Montpellier</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <h3>Navigation</h3>
-                        <ul>
-                            <li><a href="../index.html#accueil">Accueil</a></li>
-                            <li><a href="../index.html#expertise">À propos</a></li>
-                            <li><a href="../index.html#services">Services</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="activite-physique-adaptee.html">Activité physique adaptée</a></li>
-                            <li><a href="conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-                            <li><a href="../index.html#services">Reprise d'activité</a></li>
-                            <li><a href="contact.html?service=cours-pilates">Pilates</a></li>
-                            <li><a href="../index.html#services">Coaching à distance</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h3>Légal</h3>
-                        <ul>
-                            <li><a href="mentions-legales.html">Mentions légales</a></li>
-                            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-                            <li><a href="cgv.html">CGV</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Coach APA'R. Tous droits réservés.</p>
-                <p>Site réalisé par Loïc Boyer</p>
-            </div>
+  <!-- gabarit:pied -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
+          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
+          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
-    </footer>
+        <nav aria-labelledby="pied-services">
+          <p class="footer__title" id="pied-services">Services</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
+            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
+            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
+            <li><a href="/#services">Pilates</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="pied-infos">
+          <p class="footer__title" id="pied-infos">Informations</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/#tarifs">Tarifs</a></li>
+            <li><a href="/#faq">Questions fréquentes</a></li>
+            <li><a href="/pages/blog.html" aria-current="page">Blog</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="footer__title">Contact</p>
+          <ul class="footer__list list-reset">
+            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
+            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven, 17 h 30 – 20 h 30</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
+        <nav aria-label="Informations légales">
+          <ul class="list-reset">
+            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/pages/cgv.html">CGV</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <!-- /gabarit:pied -->
 
-    <!-- Bouton retour en haut -->
-    <button id="backToTop" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></button>
-
-    <script src="../js/main.js"></script>
-    <script>
-        // Fonctionnalité de filtrage des articles par catégorie
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const blogCards = document.querySelectorAll('.blog-card');
-            const blogSearch = document.getElementById('blogSearch');
-            
-            // Filtrage par catégorie
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    // Mettre à jour les classes actives des boutons
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filtrer les articles
-                    blogCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Recherche d'articles
-            blogSearch.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                
-                blogCards.forEach(card => {
-                    const title = card.querySelector('h3').textContent.toLowerCase();
-                    const content = card.querySelector('p').textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Réinitialiser les boutons de catégorie
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                document.querySelector('[data-category="all"]').classList.add('active');
-            });
-        });
-    </script>
+  <script src="/js/app.js" defer></script>
 </body>
-</html> 
+</html>

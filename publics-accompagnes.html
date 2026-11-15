@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,420 +7,259 @@
     <title>Publics accompagnés en APA à Montpellier | Coach APA'R</title>
     <link rel="canonical" href="https://coachapar.fr/publics-accompagnes.html">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/design-system.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="apple-touch-icon" href="images/logo-192.png">
+  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <meta name="theme-color" content="#44631F">
 </head>
 <body>
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <!-- ============================================
-         NAVIGATION
-         ============================================ -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <a href="/" class="navbar-logo">
-                <i class="fas fa-heartbeat"></i>
-                <span>Coach APA'R</span>
-            </a>
+  <!-- gabarit:en-tete -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="/">
+        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
+        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#tarifs">Tarifs</a></li>
+          <li><a href="/#faq">Questions</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
+      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
+      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
+    </div>
+    <div class="mobile-menu" id="menu-mobile" hidden>
+      <nav class="container" aria-label="Menu">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+        </ul>
+        <div class="mobile-menu__actions">
+          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">Offert, sans engagement</p>
+          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- /gabarit:en-tete -->
 
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="/#accueil" class="navbar-link">Accueil</a></li>
-                <li><a href="/#expertise" class="navbar-link">Activité physique adaptée</a></li>
-                <li><a href="/#services" class="navbar-link">Services</a></li>
-                <li><a href="publics-accompagnes.html" class="navbar-link active">Publics</a></li>
-                <li><a href="/#tarifs" class="navbar-link">Tarifs</a></li>
-                <li><a href="/#reservation" class="navbar-link">Contact</a></li>
-                <li><a href="/#reservation" class="btn btn-primary btn-sm">Réserver</a></li>
+  <main id="contenu" tabindex="-1">
+    <section class="page-head" aria-labelledby="titre-page">
+      <div class="container page-head__inner">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="/">Accueil</a></li>
+            <li><span aria-current="page">Publics accompagnés</span></li>
+          </ol>
+        </nav>
+        <h1 id="titre-page">Les publics que j'accompagne</h1>
+        <p class="page-head__lead">Mon expertise en activité physique adaptée me permet d'accompagner des personnes aux capacités et aux objectifs très différents.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="titre-intro">
+      <div class="container--narrow prose">
+        <h2 id="titre-intro">Une activité physique pensée pour vous</h2>
+        <p>Titulaire d'un <strong>Master en activité physique adaptée et santé (APAS)</strong>, j'accompagne des personnes qui vivent avec une maladie chronique, un handicap ou les effets de l'âge, en complément de leur suivi médical.</p>
+        <p>Mon approche est <strong>progressive, bienveillante et attentive à votre sécurité</strong>, toujours adaptée à vos capacités et à vos objectifs, en lien avec vos soignants si vous le souhaitez.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-publics">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Tous les profils</p>
+          <h2 id="titre-publics">Qui puis-je accompagner ?</h2>
+        </div>
+        <div class="cards cards--2">
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-coaching"/></svg></span>
+            <h3>Reprendre une activité physique, à votre rythme</h3>
+            <p>Vous n'avez pas fait de sport depuis longtemps ? Vous avez peur de vous blesser ? Vous ne savez pas par où commencer ?</p>
+            <h4 class="card__label">Je vous accompagne pour :</h4>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Évaluer votre condition physique avec des tests adaptés</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Construire une progression adaptée et progressive</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Apprendre les bons gestes et postures</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Reprendre confiance en vos capacités</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Limiter le risque de blessure lié à une reprise trop rapide</li>
             </ul>
+            <div class="card__badges"><span class="badge">Reprise progressive</span><span class="badge">À votre rythme</span></div>
+          </article>
 
-            <button type="button" class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navbarMenu">
-                <i class="fas fa-bars" aria-hidden="true"></i>
-            </button>
-        </div>
-    </nav>
+          <article class="card card--featured">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-apa"/></svg></span>
+            <h3>Maladies chroniques</h3>
+            <p>Diabète, maladies cardiovasculaires, hypertension, obésité, arthrose, fibromyalgie... Vivre avec une maladie chronique demande une activité physique pensée pour vous.</p>
+            <h4 class="card__label">Ce que je vous propose :</h4>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Diabète</strong> : des séances adaptées à votre traitement et à votre surveillance glycémique</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Cardiovasculaire</strong> : une reprise progressive après votre parcours de soins, avec l'accord de votre cardiologue</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Obésité, surpoids</strong> : retrouver le plaisir de bouger et des habitudes qui durent</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Arthrose, douleurs chroniques</strong> : renforcement adapté, sans forcer sur la douleur</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Troubles respiratoires</strong> : des séances adaptées à votre souffle, en lien avec votre médecin</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>En lien avec votre médecin, si vous le souhaitez</li>
+            </ul>
+            <div class="card__badges"><span class="badge">Enseignant en APA</span><span class="badge">Progression adaptée</span><span class="badge">En lien avec vos soignants</span></div>
+          </article>
 
-    <main id="contenu" tabindex="-1">
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-handicap"/></svg></span>
+            <h3>Handicap moteur ou psychique</h3>
+            <p>Ma formation en APA me permet d'accompagner les personnes en situation de handicap, avec une approche adaptée à chaque profil et chaque capacité.</p>
+            <h4 class="card__label">Accompagnement sur mesure :</h4>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Handicap moteur</strong> : programmes adaptés aux capacités motrices</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Handicap psychique</strong> : activité physique bienveillante et encadrée</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Troubles neurologiques</strong> : exercices adaptés, en lien avec l'équipe qui vous suit</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Matériel adapté si nécessaire</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Progression respectueuse de vos capacités</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Maintien ou amélioration de l'autonomie</li>
+            </ul>
+            <div class="card__badges"><span class="badge">Activité physique adaptée</span><span class="badge">Approche inclusive</span></div>
+          </article>
 
-    <!-- ============================================
-         HERO PAGE
-         ============================================ -->
-    <section class="page-hero">
-        <div class="page-hero-background">
-            <div class="hero-gradient"></div>
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-equilibre"/></svg></span>
+            <h3>Adultes et seniors</h3>
+            <p>J'accompagne les adultes et les seniors, avec des méthodes pédagogiques adaptées à chaque âge et à chaque niveau.</p>
+            <h4 class="card__label">À chaque âge :</h4>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Adultes</strong> : remise en forme, condition physique, santé globale</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Seniors</strong> : maintien de l'autonomie, prévention des chutes, vitalité</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Pédagogie adaptée à l'âge et au niveau</li>
+            </ul>
+            <div class="card__badges"><span class="badge">Adultes et seniors</span><span class="badge">Pédagogie adaptée</span></div>
+          </article>
+
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-coaching"/></svg></span>
+            <h3>Insertion vers un club sportif</h3>
+            <p>Vous souhaitez rejoindre un club mais vous ne vous sentez pas prêt(e) ? Je vous prépare physiquement, à votre rythme, pour intégrer sereinement l'activité de votre choix.</p>
+            <h4 class="card__label">Préparation progressive :</h4>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Préparation physique générale en vue du sport choisi</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Développement des capacités requises (endurance, force, coordination)</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Apprentissage des gestes techniques de base</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Renforcement de la confiance en soi</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Conseils pour choisir le bon club adapté à vos objectifs</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Accompagnement jusqu'à vos débuts en club</li>
+            </ul>
+            <div class="card__badges"><span class="badge">Préparation progressive</span><span class="badge">Vers le club de votre choix</span></div>
+          </article>
+
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-tms"/></svg></span>
+            <h3>Reprise d'activité après une opération ou une blessure</h3>
+            <p>Après une opération, une blessure ou un accident, la reprise d'activité physique doit être progressive et encadrée. J'interviens une fois la rééducation terminée, ou en relais de votre kiné et avec son accord.</p>
+            <h4 class="card__label">Ce que je vous propose :</h4>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Un point sur vos capacités, dans les limites fixées par votre chirurgien ou votre kiné</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Renforcement musculaire progressif et ciblé</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Entretien de la mobilité et de la souplesse</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Conseils pour limiter le risque de nouvelle blessure</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>En lien avec votre kiné et votre médecin</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Retour progressif aux activités quotidiennes et sportives</li>
+            </ul>
+            <div class="card__badges"><span class="badge">Reprise progressive</span><span class="badge">En lien avec vos soignants</span></div>
+          </article>
         </div>
-        <div class="container">
-            <div class="page-hero-content">
-                <h1 class="page-hero-title">Les publics que j'accompagne</h1>
-                <p class="page-hero-description">
-                    Mon expertise en activité physique adaptée me permet d'accompagner des personnes
-                    aux capacités et aux objectifs très différents.
-                </p>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- ============================================
-         INTRODUCTION
-         ============================================ -->
-    <section class="section">
-        <div class="container container-narrow">
-            <div class="intro-box">
-                <h2>Une activité physique pensée pour vous</h2>
-                <p>
-                    Titulaire d'un <strong>Master en activité physique adaptée et santé (APAS)</strong>, j'accompagne des personnes
-                    qui vivent avec une maladie chronique, un handicap ou les effets de l'âge, en complément
-                    de leur suivi médical.
-                </p>
-                <p>
-                    Mon approche est <strong>progressive, bienveillante et attentive à votre sécurité</strong>, toujours adaptée
-                    à vos capacités et à vos objectifs, en lien avec vos soignants si vous le souhaitez.
-                </p>
-            </div>
+    <section class="section section--surface" aria-labelledby="titre-pourquoi">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="titre-pourquoi">Pourquoi un enseignant en APA ?</h2>
+          <p>Mon <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong>, obtenu à l'Université de La Réunion (bac+5), m'a formé à la physiologie de l'exercice et à l'adaptation de l'activité physique aux maladies chroniques et au handicap. C'est ce qui me permet d'accompagner des personnes fragilisées, avec méthode et en complément de leur suivi médical.</p>
         </div>
+        <ul class="features list-reset">
+          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-diplome"/></svg></span><div><h3>Formation universitaire bac+5</h3><p>Une approche scientifique de l'activité physique</p></div></li>
+          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg></span><div><h3>Un accompagnement attentif à votre sécurité</h3><p>Des programmes adaptés à votre maladie et à vos limites</p></div></li>
+          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg></span><div><h3>En lien avec vos soignants</h3><p>Échanges possibles avec votre médecin ou votre kiné, avec votre accord</p></div></li>
+          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-cardio"/></svg></span><div><h3>Une approche globale</h3><p>Activité physique, repères alimentaires et bien-être</p></div></li>
+        </ul>
+      </div>
     </section>
 
-    <!-- ============================================
-         PUBLICS ACCOMPAGNÉS
-         ============================================ -->
-    <section class="section section-publics">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Tous les profils</span>
-                <h2 class="section-title">Qui puis-je accompagner ?</h2>
-            </div>
-
-            <div class="publics-grid">
-                <!-- Public 1 : Reprise d'activité -->
-                <div class="public-card">
-                    <div class="public-icon">
-                        <i class="fas fa-walking"></i>
-                    </div>
-                    <h3>Reprendre une activité physique, à votre rythme</h3>
-                    <p class="public-description">
-                        Vous n'avez pas fait de sport depuis longtemps ? Vous avez peur de vous blesser ?
-                        Vous ne savez pas par où commencer ?
-                    </p>
-                    <div class="public-details">
-                        <h4>Je vous accompagne pour :</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Évaluer votre condition physique avec des tests adaptés</li>
-                            <li><i class="fas fa-check"></i> Construire une progression adaptée et progressive</li>
-                            <li><i class="fas fa-check"></i> Apprendre les bons gestes et postures</li>
-                            <li><i class="fas fa-check"></i> Reprendre confiance en vos capacités</li>
-                            <li><i class="fas fa-check"></i> Limiter le risque de blessure lié à une reprise trop rapide</li>
-                        </ul>
-                    </div>
-                    <div class="public-benefices">
-                        <span class="badge badge-success">Reprise progressive</span>
-                        <span class="badge badge-primary">À votre rythme</span>
-                    </div>
-                </div>
-
-                <!-- Public 2 : Pathologies chroniques -->
-                <div class="public-card highlight">
-                    <div class="public-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>Maladies chroniques</h3>
-                    <p class="public-description">
-                        Diabète, maladies cardiovasculaires, hypertension, obésité, arthrose, fibromyalgie...
-                        Vivre avec une maladie chronique demande une activité physique pensée pour vous.
-                    </p>
-                    <div class="public-details">
-                        <h4>Ce que je vous propose :</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> <strong>Diabète</strong> : des séances adaptées à votre traitement et à votre surveillance glycémique</li>
-                            <li><i class="fas fa-check"></i> <strong>Cardiovasculaire</strong> : une reprise progressive après votre parcours de soins, avec l'accord de votre cardiologue</li>
-                            <li><i class="fas fa-check"></i> <strong>Obésité, surpoids</strong> : retrouver le plaisir de bouger et des habitudes qui durent</li>
-                            <li><i class="fas fa-check"></i> <strong>Arthrose, douleurs chroniques</strong> : renforcement adapté, sans forcer sur la douleur</li>
-                            <li><i class="fas fa-check"></i> <strong>Troubles respiratoires</strong> : des séances adaptées à votre souffle, en lien avec votre médecin</li>
-                            <li><i class="fas fa-check"></i> En lien avec votre médecin, si vous le souhaitez</li>
-                        </ul>
-                    </div>
-                    <div class="public-benefices">
-                        <span class="badge badge-accent">Enseignant en APA</span>
-                        <span class="badge badge-success">Progression adaptée</span>
-                        <span class="badge badge-highlight">En lien avec vos soignants</span>
-                    </div>
-                </div>
-
-                <!-- Public 3 : Handicap -->
-                <div class="public-card">
-                    <div class="public-icon">
-                        <i class="fas fa-wheelchair"></i>
-                    </div>
-                    <h3>Handicap moteur ou psychique</h3>
-                    <p class="public-description">
-                        Ma formation en APA me permet d'accompagner les personnes en situation de handicap,
-                        avec une approche adaptée à chaque profil et chaque capacité.
-                    </p>
-                    <div class="public-details">
-                        <h4>Accompagnement sur mesure :</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> <strong>Handicap moteur</strong> : programmes adaptés aux capacités motrices</li>
-                            <li><i class="fas fa-check"></i> <strong>Handicap psychique</strong> : activité physique bienveillante et encadrée</li>
-                            <li><i class="fas fa-check"></i> <strong>Troubles neurologiques</strong> : exercices adaptés, en lien avec l'équipe qui vous suit</li>
-                            <li><i class="fas fa-check"></i> Matériel adapté si nécessaire</li>
-                            <li><i class="fas fa-check"></i> Progression respectueuse de vos capacités</li>
-                            <li><i class="fas fa-check"></i> Maintien ou amélioration de l'autonomie</li>
-                        </ul>
-                    </div>
-                    <div class="public-benefices">
-                        <span class="badge badge-primary">Activité physique adaptée</span>
-                        <span class="badge badge-success">Approche inclusive</span>
-                    </div>
-                </div>
-
-                <!-- Public 4 : Adultes et seniors -->
-                <div class="public-card">
-                    <div class="public-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Adultes et seniors</h3>
-                    <p class="public-description">
-                        J'accompagne les adultes et les seniors, avec des méthodes pédagogiques
-                        adaptées à chaque âge et à chaque niveau.
-                    </p>
-                    <div class="public-details">
-                        <h4>À chaque âge :</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> <strong>Adultes</strong> : remise en forme, condition physique, santé globale</li>
-                            <li><i class="fas fa-check"></i> <strong>Seniors</strong> : maintien de l'autonomie, prévention des chutes, vitalité</li>
-                            <li><i class="fas fa-check"></i> Pédagogie adaptée à l'âge et au niveau</li>
-                        </ul>
-                    </div>
-                    <div class="public-benefices">
-                        <span class="badge badge-success">Adultes et seniors</span>
-                        <span class="badge badge-primary">Pédagogie adaptée</span>
-                    </div>
-                </div>
-
-                <!-- Public 5 : Insertion vers clubs -->
-                <div class="public-card">
-                    <div class="public-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Insertion vers un club sportif</h3>
-                    <p class="public-description">
-                        Vous souhaitez rejoindre un club mais vous ne vous sentez pas prêt(e) ? Je vous prépare
-                        physiquement, à votre rythme, pour intégrer sereinement l'activité de votre choix.
-                    </p>
-                    <div class="public-details">
-                        <h4>Préparation progressive :</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Préparation physique générale en vue du sport choisi</li>
-                            <li><i class="fas fa-check"></i> Développement des capacités requises (endurance, force, coordination)</li>
-                            <li><i class="fas fa-check"></i> Apprentissage des gestes techniques de base</li>
-                            <li><i class="fas fa-check"></i> Renforcement de la confiance en soi</li>
-                            <li><i class="fas fa-check"></i> Conseils pour choisir le bon club adapté à vos objectifs</li>
-                            <li><i class="fas fa-check"></i> Accompagnement jusqu'à vos débuts en club</li>
-                        </ul>
-                    </div>
-                    <div class="public-benefices">
-                        <span class="badge badge-accent">Préparation progressive</span>
-                        <span class="badge badge-success">Vers le club de votre choix</span>
-                    </div>
-                </div>
-
-                <!-- Public 6 : Reprise après une opération ou une blessure -->
-                <div class="public-card">
-                    <div class="public-icon">
-                        <i class="fas fa-procedures"></i>
-                    </div>
-                    <h3>Reprise d'activité après une opération ou une blessure</h3>
-                    <p class="public-description">
-                        Après une opération, une blessure ou un accident, la reprise d'activité physique
-                        doit être progressive et encadrée. J'interviens une fois la rééducation terminée, ou en relais de votre kiné et avec son accord.
-                    </p>
-                    <div class="public-details">
-                        <h4>Ce que je vous propose :</h4>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Un point sur vos capacités, dans les limites fixées par votre chirurgien ou votre kiné</li>
-                            <li><i class="fas fa-check"></i> Renforcement musculaire progressif et ciblé</li>
-                            <li><i class="fas fa-check"></i> Entretien de la mobilité et de la souplesse</li>
-                            <li><i class="fas fa-check"></i> Conseils pour limiter le risque de nouvelle blessure</li>
-                            <li><i class="fas fa-check"></i> En lien avec votre kiné et votre médecin</li>
-                            <li><i class="fas fa-check"></i> Retour progressif aux activités quotidiennes et sportives</li>
-                        </ul>
-                    </div>
-                    <div class="public-benefices">
-                        <span class="badge badge-primary">Reprise progressive</span>
-                        <span class="badge badge-success">En lien avec vos soignants</span>
-                    </div>
-                </div>
-            </div>
+    <section class="section cta-band" aria-labelledby="titre-cta">
+      <div class="container cta-band__inner">
+        <h2 id="titre-cta">Vous vous reconnaissez dans l'un de ces profils ?</h2>
+        <p>Profitez d'un <strong>premier rendez-vous offert</strong> pour faire le point sur votre situation et définir ensemble un programme adapté à vos besoins.</p>
+        <div class="actions actions--center">
+          <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
+          <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- ============================================
-         POURQUOI MOI SECTION
-         ============================================ -->
-    <section class="section section-why">
-        <div class="container">
-            <div class="why-box">
-                <div class="why-content">
-                    <h2>Pourquoi un enseignant en APA ?</h2>
-                    <p>
-                        Mon <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong>, obtenu à l'Université de La Réunion (bac+5), m'a formé à la physiologie de l'exercice
-                        et à l'adaptation de l'activité physique aux maladies chroniques et au handicap. C'est ce qui me permet
-                        d'accompagner des personnes fragilisées, avec méthode et en complément de leur suivi médical.
-                    </p>
-                    <div class="why-features">
-                        <div class="why-feature">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Formation universitaire bac+5</h4>
-                                <p>Une approche scientifique de l'activité physique</p>
-                            </div>
-                        </div>
-                        <div class="why-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <h4>Un accompagnement attentif à votre sécurité</h4>
-                                <p>Des programmes adaptés à votre maladie et à vos limites</p>
-                            </div>
-                        </div>
-                        <div class="why-feature">
-                            <i class="fas fa-user-md"></i>
-                            <div>
-                                <h4>En lien avec vos soignants</h4>
-                                <p>Échanges possibles avec votre médecin ou votre kiné, avec votre accord</p>
-                            </div>
-                        </div>
-                        <div class="why-feature">
-                            <i class="fas fa-heart"></i>
-                            <div>
-                                <h4>Une approche globale</h4>
-                                <p>Activité physique, repères alimentaires et bien-être</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- gabarit:pied -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
+          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
+          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
-    </section>
-
-    <!-- ============================================
-         CTA FINAL
-         ============================================ -->
-    <section class="section section-cta">
-        <div class="container container-narrow">
-            <div class="cta-box">
-                <h2>Vous vous reconnaissez dans l'un de ces profils ?</h2>
-                <p>
-                    Profitez d'un <strong>premier rendez-vous offert</strong> pour faire le point
-                    sur votre situation et définir ensemble un programme adapté à vos besoins.
-                </p>
-                <div class="cta-buttons">
-                    <a href="/#reservation" class="btn btn-primary btn-xl btn-icon">
-                        <i class="fas fa-calendar-check"></i>
-                        Demander mon premier échange
-                    </a>
-                    <a href="tel:+33765775104" class="btn btn-outline btn-xl btn-icon">
-                        <i class="fas fa-phone"></i>
-                        07 65 77 51 04
-                    </a>
-                </div>
-            </div>
+        <nav aria-labelledby="pied-services">
+          <p class="footer__title" id="pied-services">Services</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+            <li><a href="/publics-accompagnes.html" aria-current="page">Publics accompagnés</a></li>
+            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
+            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
+            <li><a href="/#services">Pilates</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="pied-infos">
+          <p class="footer__title" id="pied-infos">Informations</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/#tarifs">Tarifs</a></li>
+            <li><a href="/#faq">Questions fréquentes</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="footer__title">Contact</p>
+          <ul class="footer__list list-reset">
+            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
+            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven, 17 h 30 – 20 h 30</span></li>
+          </ul>
         </div>
-    </section>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
+        <nav aria-label="Informations légales">
+          <ul class="list-reset">
+            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/pages/cgv.html">CGV</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <!-- /gabarit:pied -->
 
-    </main>
-
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <i class="fas fa-heartbeat"></i>
-                        <span>Coach APA'R</span>
-                    </div>
-                    <p class="footer-description">
-                        Coach sportif et enseignant en activité physique adaptée à Montpellier.
-                        L'activité physique adaptée, en complément de votre suivi médical.
-                    </p>
-                    <div class="footer-certifications">
-                        <span class="badge badge-primary">Master APAS</span>
-                        <span class="badge badge-accent">Pilates</span>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="/#expertise">Activité physique adaptée</a></li>
-                        <li><a href="/#services">Services</a></li>
-                        <li><a href="/publics-accompagnes.html">Publics</a></li>
-                        <li><a href="/#tarifs">Tarifs</a></li>
-                        <li><a href="/#reservation">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="/#services">Activité physique adaptée</a></li>
-                        <li><a href="/#services">Coaching sportif</a></li>
-                        <li><a href="/#services">Alimentation et activité physique</a></li>
-                        <li><a href="pages/contact.html?service=cours-pilates">Pilates</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+33765775104">07 65 77 51 04</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Montpellier, France</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 Coach APA'R - Loïc Boyer. Tous droits réservés.</p>
-                <div class="footer-legal">
-                    <a href="/pages/mentions-legales.html">Mentions légales</a>
-                    <span>•</span>
-                    <a href="/pages/politique-confidentialite.html">Confidentialité</a>
-                    <span>•</span>
-                    <a href="/pages/cgv.html">CGV</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/publics.js"></script>
-    <script src="js/animations.js"></script>
+  <script src="/js/app.js" defer></script>
 </body>
 </html>

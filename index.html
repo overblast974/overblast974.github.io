@@ -189,791 +189,465 @@
   }
   </script>
 
-  <!-- ===== FONTS ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- ===== ICONS ===== -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- ===== STYLES ===== -->
-  <link rel="stylesheet" href="css/app.css">
-
   <!-- ===== PWA ===== -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/logo-192.png">
-  <meta name="theme-color" content="#FF6B35">
+  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <meta name="theme-color" content="#44631F">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <!-- ================================================================
-       FLOATING BUTTONS
-       ================================================================ -->
-  <div class="floating-buttons">
-    <a href="https://wa.me/33765775104" target="_blank" rel="noopener" class="floating-btn floating-btn-whatsapp" aria-label="Contacter par WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="tel:+33765775104" class="floating-btn floating-btn-phone" aria-label="Appeler maintenant">
-      <i class="fas fa-phone"></i>
-    </a>
-  </div>
-
-  <!-- ================================================================
-       NAVIGATION
-       ================================================================ -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation principale">
-    <div class="container nav-inner">
-      <a href="/" class="nav-logo" aria-label="Coach APA'R - Accueil">
-        <img src="images/logo.webp" alt="" width="50" height="50">
-        <span>Coach APA'R</span>
+  <!-- gabarit:en-tete -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="/">
+        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
+        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
       </a>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#accueil" class="nav-link active">Accueil</a></li>
-        <li><a href="#expertise" class="nav-link">Expertise</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
-        <li><a href="#reservation" class="nav-link">Réserver</a></li>
-      </ul>
-
-      <a href="#reservation" class="nav-cta btn btn-primary">
-        <i class="fas fa-calendar-check"></i>
-        Premier rendez-vous offert
-      </a>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMobile">
-        <span></span><span></span><span></span>
-      </button>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#tarifs">Tarifs</a></li>
+          <li><a href="/#faq">Questions</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
+      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
+      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
     </div>
-
-    <!-- Mobile menu -->
-    <div class="nav-mobile-menu" id="navMobile" aria-hidden="true">
-      <ul>
-        <li><a href="#accueil" class="nav-link">Accueil</a></li>
-        <li><a href="#expertise" class="nav-link">Expertise</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
-        <li><a href="#reservation" class="nav-link">Réserver</a></li>
-      </ul>
-      <a href="tel:+33765775104" class="mobile-phone-cta">
-        <i class="fas fa-phone"></i> 07 65 77 51 04
-      </a>
+    <div class="mobile-menu" id="menu-mobile" hidden>
+      <nav class="container" aria-label="Menu">
+        <ul class="list-reset">
+          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+        </ul>
+        <div class="mobile-menu__actions">
+          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">Offert, sans engagement</p>
+          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </header>
+  <!-- /gabarit:en-tete -->
 
   <main id="contenu" tabindex="-1">
-
-    <!-- ================================================================
-         HERO
-         ================================================================ -->
-    <section class="hero" id="accueil" aria-label="Introduction">
-      <div class="hero-bg">
-        <div class="hero-shape hero-shape-1"></div>
-        <div class="hero-shape hero-shape-2"></div>
-        <div class="hero-shape hero-shape-3"></div>
-      </div>
-
-      <div class="container hero-inner">
-        <div class="hero-badge reveal">
-          <i class="fas fa-certificate"></i>
-          Master APAS · Montpellier
+    <!-- ===== Premier écran ===== -->
+    <section class="hero" id="accueil" aria-labelledby="titre-accueil">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">Master APAS · Montpellier</p>
+          <h1 id="titre-accueil">Votre coach sportif et enseignant en APA à Montpellier</h1>
+          <p class="hero__lead">Coaching personnalisé, activité physique adaptée et Pilates en individuel. Je vous aide à bouger plus et mieux, à votre rythme. J'accompagne aussi les personnes qui vivent avec <strong>une maladie chronique ou un handicap</strong>, en complément de leur suivi médical.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#reservation">Prendre mon premier rendez-vous</a>
+            <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+          </div>
+          <ul class="reassure list-reset">
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Premier rendez-vous offert</li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Sans engagement</li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Accompagnement sur mesure</li>
+          </ul>
         </div>
-
-        <div class="hero-logo reveal">
-          <img src="images/logo.webp" alt="Coach APA'R - Coaching sportif Montpellier" width="140" height="140" fetchpriority="high">
-        </div>
-
-        <h1 class="hero-title reveal">
-          Votre coach sportif<br>
-          et enseignant en APA à <span class="gradient-text">Montpellier</span>
-        </h1>
-
-        <p class="hero-subtitle reveal">
-          Coaching personnalisé, activité physique adaptée et Pilates en individuel.<br>
-          Je vous aide à bouger plus et mieux, à votre rythme. J'accompagne aussi les personnes qui vivent avec <strong>une maladie chronique ou un handicap</strong>, en complément de leur suivi médical.
-        </p>
-
-        <div class="hero-ctas reveal">
-          <a href="#reservation" class="btn-hero-primary">
-            <i class="fas fa-calendar-check"></i>
-            Demander mon premier échange
-          </a>
-          <a href="tel:+33765775104" class="btn-hero-secondary">
-            <i class="fas fa-phone"></i>
-            07 65 77 51 04
-          </a>
-        </div>
-
-      </div>
-
-      <div class="hero-scroll-indicator">
-        <i class="fas fa-chevron-down"></i>
+        <aside class="proof" aria-labelledby="titre-preuves">
+          <p class="proof__title" id="titre-preuves">Qualifications</p>
+          <ul class="list-reset">
+            <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-diplome"/></svg></span><p><strong>Master STAPS APAS, bac+5</strong><span>Université de La Réunion, 2019</span></p></li>
+            <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-carte-pro"/></svg></span><p><strong>Carte professionnelle d'éducateur sportif</strong><span>n° 03422ED0421</span></p></li>
+            <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-pilates"/></svg></span><p><strong>Pilates, formation niveau I</strong><span>CAP'Formations Sport, 2023</span></p></li>
+            <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg></span><p><strong>Montpellier et alentours</strong><span>À domicile, en salle ou en extérieur</span></p></li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <!-- ================================================================
-         TRUST BAR — CERTIFICATIONS MARQUEE
-         ================================================================ -->
-    <div class="trust-bar" aria-label="Formation et spécialités">
-      <div class="trust-marquee">
-        <div class="trust-marquee-inner">
-          <div class="trust-badge"><i class="fas fa-graduation-cap"></i> Master APAS</div>
-          <div class="trust-badge"><i class="fas fa-dumbbell"></i> Coaching sportif</div>
-          <div class="trust-badge"><i class="fas fa-spa"></i> Pilates</div>
-          <div class="trust-badge"><i class="fas fa-wheelchair"></i> Enseignant en APA</div>
-          <div class="trust-badge"><i class="fas fa-heartbeat"></i> Maladies chroniques</div>
-          <div class="trust-badge"><i class="fas fa-map-marker-alt"></i> Montpellier</div>
-          <div class="trust-badge"><i class="fas fa-shield-alt"></i> Reprise d'activité</div>
-          <!-- Duplicate for seamless loop -->
-          <div class="trust-badge"><i class="fas fa-graduation-cap"></i> Master APAS</div>
-          <div class="trust-badge"><i class="fas fa-dumbbell"></i> Coaching sportif</div>
-          <div class="trust-badge"><i class="fas fa-spa"></i> Pilates</div>
-          <div class="trust-badge"><i class="fas fa-wheelchair"></i> Enseignant en APA</div>
-          <div class="trust-badge"><i class="fas fa-heartbeat"></i> Maladies chroniques</div>
-          <div class="trust-badge"><i class="fas fa-map-marker-alt"></i> Montpellier</div>
-          <div class="trust-badge"><i class="fas fa-shield-alt"></i> Reprise d'activité</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================================================================
-         ABOUT / EXPERTISE
-         ================================================================ -->
-    <section class="section section-about" id="expertise" aria-labelledby="about-title">
-      <div class="container about-grid">
-
-        <!-- ── Colonne photo ── -->
-        <div class="about-visual reveal">
-          <div class="about-photo-frame">
-            <img
-              src="images/loic-photo.webp"
-              width="896" height="1195"
-              decoding="async"
-              alt="Loïc, coach sportif et enseignant en APA, à Montpellier"
-              class="about-photo-img"
-              loading="lazy"
-              onerror="this.closest('.about-photo-frame').classList.add('no-photo')"
-            >
-            <div class="about-photo-fallback" aria-hidden="true">
-              <i class="fas fa-user-circle"></i>
-              <span>Coach APA'R</span>
-            </div>
+    <!-- ===== Expertise (emplacement unique du portrait) ===== -->
+    <section class="section section--surface" id="expertise" aria-labelledby="titre-expertise">
+      <div class="container about">
+        <figure class="portrait">
+          <div class="portrait__frame">
+            <img src="/images/loic-photo.webp" width="896" height="1195" alt="Loïc, coach sportif et enseignant en APA" loading="lazy" decoding="async">
+          </div>
+          <figcaption>Loïc, enseignant en activité physique adaptée</figcaption>
+        </figure>
+        <div class="about__text">
+          <p class="eyebrow">Mon expertise : l'activité physique adaptée</p>
+          <h2 id="titre-expertise">Bouger avec une maladie, ça s'accompagne</h2>
+          <p>Je suis <strong>Loïc</strong>, coach sportif et enseignant en activité physique adaptée à Montpellier, titulaire d'un <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong> de l'Université de La Réunion (bac+5), et titulaire de la carte professionnelle d'éducateur sportif (n° 03422ED0421). Je suis aussi formé à la préparation physique et j'ai suivi une formation sur les bases de l'alimentation.</p>
+          <p>Mon métier : aider les personnes qui vivent avec une maladie chronique, un handicap ou les effets de l'âge à reprendre une activité physique régulière, adaptée et suivie. Je ne suis pas médecin : je travaille en complément de votre suivi médical, en lien avec votre médecin si vous le souhaitez.</p>
+          <p class="note"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-diplome"/></svg></span><span><strong>Formation universitaire bac+5</strong><span>Une formation scientifique pour adapter l'activité physique à la maladie, au handicap et à la reprise après une blessure.</span></span></p>
+          <div class="cta-group">
+            <a class="btn btn--primary" href="#reservation">Prendre mon premier rendez-vous</a>
+            <p class="cta-note">Offert, sans engagement</p>
           </div>
         </div>
-
-        <!-- ── Colonne contenu ── -->
-        <div class="about-content">
-          <span class="section-tag reveal">Mon expertise : l'activité physique adaptée</span>
-          <h2 class="section-title reveal" id="about-title">
-            Bouger avec une maladie,<br>ça <span class="gradient-text">s'accompagne</span>
-          </h2>
-          <p class="about-text reveal">
-            Je suis <strong>Loïc</strong>, coach sportif et enseignant en activité physique adaptée à Montpellier, titulaire d'un <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong> de l'Université de La Réunion (bac+5), et titulaire de la carte professionnelle d'éducateur sportif (n° 03422ED0421). Je suis aussi formé à la préparation physique et j'ai suivi une formation sur les bases de l'alimentation.
-            Mon métier : aider les personnes qui vivent avec une maladie chronique, un handicap ou les effets de l'âge à reprendre une activité physique régulière, adaptée et suivie. Je ne suis pas médecin : je travaille en complément de votre suivi médical, en lien avec votre médecin si vous le souhaitez.
-          </p>
-
-          <div class="about-usp reveal">
-            <div class="about-usp-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="about-usp-text">
-              <strong>Formation universitaire bac+5</strong>
-              <span>Une formation scientifique pour adapter l'activité physique à la maladie, au handicap et à la reprise après une blessure.</span>
-            </div>
-          </div>
-
-          <div class="about-credentials reveal">
-            <div class="credential-item">
-              <i class="fas fa-graduation-cap"></i>
-              <div>
-                <strong>Master APAS</strong>
-                <span>Université de La Réunion, 2019</span>
-              </div>
-            </div>
-            <div class="credential-item">
-              <i class="fas fa-heartbeat"></i>
-              <div>
-                <strong>Enseignant en APA</strong>
-                <span>Maladies chroniques, handicap, seniors</span>
-              </div>
-            </div>
-            <div class="credential-item">
-              <i class="fas fa-spa"></i>
-              <div>
-                <strong>Pilates</strong>
-                <span>Formation niveau 1</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="#reservation" class="btn btn-primary reveal">
-            <i class="fas fa-calendar-check"></i>
-            Réserver un premier contact
-          </a>
-        </div>
-
       </div>
     </section>
 
-    <!-- ================================================================
-         SERVICES
-         ================================================================ -->
-    <section class="section section-services" id="services" aria-labelledby="services-title">
+    <!-- ===== Services ===== -->
+    <section class="section" id="services" aria-labelledby="titre-services">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag reveal">Mes services</span>
-          <h2 class="section-title reveal" id="services-title">Un accompagnement <span class="gradient-text">sur mesure</span></h2>
-          <p class="section-desc reveal">Des programmes adaptés à votre profil, à vos objectifs et aux consignes de votre médecin</p>
+        <div class="section-head">
+          <p class="eyebrow">Mes services</p>
+          <h2 id="titre-services">Un accompagnement sur mesure</h2>
+          <p>Des programmes adaptés à votre profil, à vos objectifs et aux consignes de votre médecin</p>
         </div>
-
-        <div class="services-grid">
-          <!-- APA -->
-          <div class="service-card reveal" data-delay="0">
-            <div class="service-icon">
-              <i class="fas fa-wheelchair"></i>
+        <div class="cards cards--2">
+          <article class="card card--featured">
+            <div class="card__head">
+              <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-apa"/></svg></span>
+              <span class="badge">Cœur de métier</span>
             </div>
-            <h3 class="service-title">Activité physique adaptée</h3>
-            <p class="service-desc">
-              Mon cœur de métier : accompagner par l'activité physique les personnes qui vivent avec une maladie chronique ou un handicap, les seniors, et celles qui reprennent après une opération, à Montpellier.
-            </p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Séances fondées sur les recommandations scientifiques</li>
-              <li><i class="fas fa-check"></i> En lien avec votre médecin et votre kiné</li>
-              <li><i class="fas fa-check"></i> Programmes progressifs et personnalisés</li>
-              <li><i class="fas fa-check"></i> Adaptées à votre état de santé</li>
+            <h3>Activité physique adaptée</h3>
+            <p>Mon cœur de métier : accompagner par l'activité physique les personnes qui vivent avec une maladie chronique ou un handicap, les seniors, et celles qui reprennent après une opération, à Montpellier.</p>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Séances fondées sur les recommandations scientifiques</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>En lien avec votre médecin et votre kiné</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Programmes progressifs et personnalisés</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Adaptées à votre état de santé</li>
             </ul>
-            <a href="#reservation" class="service-cta">
-              Découvrir l'APA <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Coaching Sportif -->
-          <div class="service-card reveal" data-delay="100">
-            <div class="service-icon">
-              <i class="fas fa-dumbbell"></i>
-            </div>
-            <h3 class="service-title">Coaching sportif individuel</h3>
-            <p class="service-desc">
-              Programmes personnalisés pour atteindre vos objectifs : perte de poids, prise de muscle, remise en forme ou reprise du sport, à Montpellier.
-            </p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Séances d'1 h personnalisées</li>
-              <li><i class="fas fa-check"></i> Évaluation de la posture et du mouvement</li>
-              <li><i class="fas fa-check"></i> Échanges entre les séances</li>
-              <li><i class="fas fa-check"></i> Ajustements réguliers</li>
+            <div class="card__foot"><a class="btn--link" href="/pages/activite-physique-adaptee.html">Découvrir l'APA <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+          </article>
+          <article class="card">
+            <div class="card__head"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-coaching"/></svg></span></div>
+            <h3>Coaching sportif individuel</h3>
+            <p>Programmes personnalisés pour atteindre vos objectifs : perte de poids, prise de muscle, remise en forme ou reprise du sport, à Montpellier.</p>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Séances d'1 h personnalisées</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Évaluation de la posture et du mouvement</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Échanges entre les séances</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Ajustements réguliers</li>
             </ul>
-            <div class="service-price">
-              À partir de <span>50€</span> / séance
-            </div>
-          </div>
-
-          <!-- Nutrition -->
-          <div class="service-card reveal" data-delay="200">
-            <div class="service-icon">
-              <i class="fas fa-apple-alt"></i>
-            </div>
-            <h3 class="service-title">Alimentation et activité physique</h3>
-            <p class="service-desc">
-              Des repères alimentaires concrets pour accompagner votre activité physique, adaptés à vos objectifs et à vos goûts. Si vous suivez un traitement ou un régime prescrit, je travaille en complément de votre médecin ou de votre diététicien.
-            </p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Point sur vos habitudes alimentaires</li>
-              <li><i class="fas fa-check"></i> Repères et idées de menus</li>
-              <li><i class="fas fa-check"></i> Recettes adaptées</li>
-              <li><i class="fas fa-check"></i> Suivi et ajustements</li>
+            <div class="card__foot"><span class="price-hint">À partir de 50&nbsp;€ / séance</span><a class="btn--link" href="#tarifs">Voir les tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+          </article>
+          <article class="card">
+            <div class="card__head"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-alimentation"/></svg></span></div>
+            <h3>Alimentation et activité physique</h3>
+            <p>Des repères alimentaires concrets pour accompagner votre activité physique, adaptés à vos objectifs et à vos goûts. Si vous suivez un traitement ou un régime prescrit, je travaille en complément de votre médecin ou de votre diététicien.</p>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Point sur vos habitudes alimentaires</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Repères et idées de menus</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Recettes adaptées</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Suivi et ajustements</li>
             </ul>
-            <a href="pages/conseils-nutritionnels.html" class="service-cta">
-              Détail et tarifs <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Pilates -->
-          <div class="service-card reveal" data-delay="300">
-            <div class="service-icon">
-              <i class="fas fa-spa"></i>
-            </div>
-            <h3 class="service-title">Pilates</h3>
-            <p class="service-desc">
-              Renforcement des muscles profonds et travail de la posture, pour un dos plus solide au quotidien. Le Pilates est possible en séances individuelles, sur demande. Des cours collectifs pourront ouvrir s'il y a assez de personnes intéressées : signalez-vous avec le formulaire.
-            </p>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Formation Pilates niveau I (CAP'Formations Sport, 2023)</li>
-              <li><i class="fas fa-check"></i> Séances individuelles sur demande</li>
-              <li><i class="fas fa-check"></i> Cours collectifs selon les demandes</li>
-              <li><i class="fas fa-check"></i> Travail de la posture</li>
+            <div class="card__foot"><a class="btn--link" href="/pages/conseils-nutritionnels.html">Détail et tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+          </article>
+          <article class="card">
+            <div class="card__head"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-pilates"/></svg></span></div>
+            <h3>Pilates</h3>
+            <p>Renforcement des muscles profonds et travail de la posture, pour un dos plus solide au quotidien. Le Pilates est possible en séances individuelles, sur demande. Des cours collectifs pourront ouvrir s'il y a assez de personnes intéressées : signalez-vous avec le formulaire.</p>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Formation Pilates niveau I (CAP'Formations Sport, 2023)</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Séances individuelles sur demande</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Cours collectifs selon les demandes</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Travail de la posture</li>
             </ul>
-            <a href="#reservation" class="service-cta">
-              Demander une séance <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
+            <div class="card__foot"><a class="btn--link" href="#reservation">Demander une séance <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         PATHOLOGIES — LOCAL SEO BOOST
-         ================================================================ -->
-    <section class="section section-pathologies" aria-labelledby="pathologies-title">
+    <!-- ===== Pathologies ===== -->
+    <section class="section section--surface" id="pathologies" aria-labelledby="titre-pathologies">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag section-tag-light reveal">Publics accompagnés</span>
-          <h2 class="section-title section-title-light reveal" id="pathologies-title">
-            Activité physique et <span class="gradient-text">maladies chroniques</span>
-          </h2>
-          <p class="section-desc section-desc-light reveal">
-            Je construis des séances qui tiennent compte de votre maladie, de votre traitement et de vos limites, en complément de votre suivi médical.
-          </p>
+        <div class="section-head">
+          <p class="eyebrow">Publics accompagnés</p>
+          <h2 id="titre-pathologies">Activité physique et maladies chroniques</h2>
+          <p>Je construis des séances qui tiennent compte de votre maladie, de votre traitement et de vos limites, en complément de votre suivi médical.</p>
         </div>
-
-        <div class="pathologies-grid">
-          <div class="pathology-card reveal" data-delay="0">
-            <div class="pathology-icon"><i class="fas fa-heartbeat"></i></div>
-            <h3 class="pathology-name">Maladies cardiovasculaires</h3>
-            <p class="pathology-desc">Hypertension, insuffisance cardiaque, après un infarctus : une reprise progressive, avec l'accord de votre cardiologue.</p>
-          </div>
-          <div class="pathology-card reveal" data-delay="100">
-            <div class="pathology-icon"><i class="fas fa-procedures"></i></div>
-            <h3 class="pathology-name">Diabète de type 1 et 2</h3>
-            <p class="pathology-desc">Des séances adaptées à votre traitement et à votre surveillance glycémique, en lien avec votre médecin.</p>
-          </div>
-          <div class="pathology-card reveal" data-delay="200">
-            <div class="pathology-icon"><i class="fas fa-bone"></i></div>
-            <h3 class="pathology-name">Troubles musculo-squelettiques</h3>
-            <p class="pathology-desc">Arthrose, mal de dos chronique, tendinites, fibromyalgie : un renforcement adapté, sans forcer sur la douleur, en lien avec votre médecin ou votre kiné.</p>
-          </div>
-          <div class="pathology-card reveal" data-delay="0">
-            <div class="pathology-icon"><i class="fas fa-weight"></i></div>
-            <h3 class="pathology-name">Obésité et surpoids</h3>
-            <p class="pathology-desc">Une reprise progressive et bienveillante, pour retrouver le plaisir de bouger et installer des habitudes qui durent.</p>
-          </div>
-          <div class="pathology-card reveal" data-delay="100">
-            <div class="pathology-icon"><i class="fas fa-wheelchair"></i></div>
-            <h3 class="pathology-name">Handicap moteur</h3>
-            <p class="pathology-desc">Des séances construites autour de vos capacités et de vos objectifs.</p>
-          </div>
-          <div class="pathology-card reveal" data-delay="200">
-            <div class="pathology-icon"><i class="fas fa-user-clock"></i></div>
-            <h3 class="pathology-name">Seniors et prévention des chutes</h3>
-            <p class="pathology-desc">Maintien de l'autonomie, équilibre et renforcement musculaire.</p>
-          </div>
+        <div class="cards cards--3">
+          <article class="card card--compact">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-cardio"/></svg></span>
+            <h3>Maladies cardiovasculaires</h3>
+            <p>Hypertension, insuffisance cardiaque, après un infarctus : une reprise progressive, avec l'accord de votre cardiologue.</p>
+          </article>
+          <article class="card card--compact">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-diabete"/></svg></span>
+            <h3>Diabète de type 1 et 2</h3>
+            <p>Des séances adaptées à votre traitement et à votre surveillance glycémique, en lien avec votre médecin.</p>
+          </article>
+          <article class="card card--compact">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-tms"/></svg></span>
+            <h3>Troubles musculo-squelettiques</h3>
+            <p>Arthrose, mal de dos chronique, tendinites, fibromyalgie : un renforcement adapté, sans forcer sur la douleur, en lien avec votre médecin ou votre kiné.</p>
+          </article>
+          <article class="card card--compact">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-poids"/></svg></span>
+            <h3>Obésité et surpoids</h3>
+            <p>Une reprise progressive et bienveillante, pour retrouver le plaisir de bouger et installer des habitudes qui durent.</p>
+          </article>
+          <article class="card card--compact">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-handicap"/></svg></span>
+            <h3>Handicap moteur</h3>
+            <p>Des séances construites autour de vos capacités et de vos objectifs.</p>
+          </article>
+          <article class="card card--compact">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-equilibre"/></svg></span>
+            <h3>Seniors et prévention des chutes</h3>
+            <p>Maintien de l'autonomie, équilibre et renforcement musculaire.</p>
+          </article>
         </div>
-
-        <div class="section-cta-inline reveal">
-          <a href="#reservation" class="btn btn-primary btn-lg">
-            <i class="fas fa-calendar-check"></i>
-            Prendre un premier contact
-          </a>
+        <div class="section-foot cta-group">
+          <a class="btn btn--primary" href="#reservation">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">Offert, sans engagement</p>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         WHY ME — COMPARISON
-         ================================================================ -->
-    <section class="section section-why" aria-labelledby="why-title">
+    <!-- ===== Pourquoi moi ===== -->
+    <section class="section" id="pourquoi" aria-labelledby="titre-pourquoi">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag reveal">Pourquoi moi ?</span>
-          <h2 class="section-title reveal" id="why-title">Ce que je vous <span class="gradient-text">apporte</span></h2>
-          <p class="section-desc reveal">Mon expertise : faire bouger, en confiance, les personnes que la maladie, le handicap ou l'âge ont éloignées du sport.</p>
+        <div class="section-head">
+          <p class="eyebrow">Pourquoi moi ?</p>
+          <h2 id="titre-pourquoi">Ce que je vous apporte</h2>
+          <p>Mon expertise : faire bouger, en confiance, les personnes que la maladie, le handicap ou l'âge ont éloignées du sport.</p>
         </div>
-
-        <div class="comparison-grid reveal">
-          <div class="comparison-me">
-            <div class="comparison-header-cell">
-              <img src="images/logo.webp" alt="" width="60" height="60" loading="lazy" decoding="async">
-              <strong>Coach APA'R</strong>
-            </div>
-            <div class="comparison-feature">
-              <i class="feature-check fas fa-check-circle"></i>
-              <span>Un <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong>, bac+5</span>
-            </div>
-            <div class="comparison-feature">
-              <i class="feature-check fas fa-check-circle"></i>
-              <span>Une évaluation de départ, puis des progrès mesurés</span>
-            </div>
-            <div class="comparison-feature">
-              <i class="feature-check fas fa-check-circle"></i>
-              <span>Des séances adaptées à votre état de santé et à votre traitement</span>
-            </div>
-            <div class="comparison-feature">
-              <i class="feature-check fas fa-check-circle"></i>
-              <span>Un lien avec votre médecin et votre kiné, si vous le souhaitez</span>
-            </div>
-            <div class="comparison-feature">
-              <i class="feature-check fas fa-check-circle"></i>
-              <span>Une formation de préparateur physique et une formation Pilates niveau I</span>
-            </div>
-            <div class="comparison-feature">
-              <i class="feature-check fas fa-check-circle"></i>
-              <span>Des repères alimentaires pour accompagner l'activité</span>
-            </div>
-          </div>
+        <div class="card why-card">
+          <ul class="checklist list-reset">
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span>Un <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong>, bac+5</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span>Une évaluation de départ, puis des progrès mesurés</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span>Des séances adaptées à votre état de santé et à votre traitement</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span>Un lien avec votre médecin et votre kiné, si vous le souhaitez</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span>Une formation de préparateur physique et une formation Pilates niveau I</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span>Des repères alimentaires pour accompagner l'activité</span></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         STATS — DARK
-         ================================================================ -->
-
-    <!-- ================================================================
-         METHODOLOGY
-         ================================================================ -->
-    <section class="section section-methodology" aria-labelledby="method-title">
-      <div class="container container-narrow">
-        <div class="section-header">
-          <span class="section-tag reveal">Ma méthode</span>
-          <h2 class="section-title reveal" id="method-title">4 étapes pour reprendre <span class="gradient-text">et progresser</span></h2>
-          <p class="section-desc reveal">Une méthode simple, que j'adapte à chaque personne</p>
+    <!-- ===== Méthode ===== -->
+    <section class="section section--surface" id="methode" aria-labelledby="titre-methode">
+      <div class="container--narrow">
+        <div class="section-head">
+          <p class="eyebrow">Ma méthode</p>
+          <h2 id="titre-methode">4 étapes pour reprendre et progresser</h2>
+          <p>Une méthode simple, que j'adapte à chaque personne</p>
         </div>
-
-        <div class="timeline">
-          <div class="timeline-step reveal">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3 class="step-title">Premier rendez-vous</h3>
-              <p class="step-text">Un bilan initial (votre parcours, vos habitudes, les consignes de votre médecin), un bilan de condition physique, la définition de vos objectifs, puis ma proposition d'accompagnement.</p>
-              <ul>
-                <li><i class="fas fa-check"></i> Bilan initial et bilan de condition physique</li>
-                <li><i class="fas fa-check"></i> Définition des objectifs</li>
-                <li><i class="fas fa-check"></i> Proposition d'accompagnement : nombre de séances et contenu</li>
+        <ol class="steps list-reset">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <div class="step__body">
+              <h3>Premier rendez-vous</h3>
+              <p>Un bilan initial (votre parcours, vos habitudes, les consignes de votre médecin), un bilan de condition physique, la définition de vos objectifs, puis ma proposition d'accompagnement.</p>
+              <ul class="checklist list-reset">
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Bilan initial et bilan de condition physique</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Définition des objectifs</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Proposition d'accompagnement : nombre de séances et contenu</li>
               </ul>
             </div>
-          </div>
-
-          <div class="timeline-step reveal">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3 class="step-title">Programme sur mesure</h3>
-              <p class="step-text">Un programme d'activité physique adapté à votre profil, à votre état de santé, à vos objectifs et à votre rythme de vie, avec des repères alimentaires si vous le souhaitez.</p>
-              <ul>
-                <li><i class="fas fa-check"></i> Programmation individualisée</li>
-                <li><i class="fas fa-check"></i> Repères alimentaires</li>
-                <li><i class="fas fa-check"></i> Progression maîtrisée</li>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <div class="step__body">
+              <h3>Programme sur mesure</h3>
+              <p>Un programme d'activité physique adapté à votre profil, à votre état de santé, à vos objectifs et à votre rythme de vie, avec des repères alimentaires si vous le souhaitez.</p>
+              <ul class="checklist list-reset">
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Programmation individualisée</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Repères alimentaires</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Progression maîtrisée</li>
               </ul>
             </div>
-          </div>
-
-          <div class="timeline-step reveal">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3 class="step-title">Accompagnement actif</h3>
-              <p class="step-text">Séances régulières en présentiel avec corrections techniques, et des échanges entre les séances pour garder le cap.</p>
-              <ul>
-                <li><i class="fas fa-check"></i> Séances personnalisées</li>
-                <li><i class="fas fa-check"></i> Corrections posturales</li>
-                <li><i class="fas fa-check"></i> Motivation entretenue</li>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <div class="step__body">
+              <h3>Accompagnement actif</h3>
+              <p>Séances régulières en présentiel avec corrections techniques, et des échanges entre les séances pour garder le cap.</p>
+              <ul class="checklist list-reset">
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Séances personnalisées</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Corrections posturales</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Motivation entretenue</li>
               </ul>
             </div>
-          </div>
-
-          <div class="timeline-step reveal">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3 class="step-title">Suivi et progrès mesurés</h3>
-              <p class="step-text">Des bilans réguliers pour mesurer vos progrès et ajuster votre programme dans la durée.</p>
-              <ul>
-                <li><i class="fas fa-check"></i> Bilans mensuels</li>
-                <li><i class="fas fa-check"></i> Ajustements continus</li>
-                <li><i class="fas fa-check"></i> Progrès mesurés</li>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">4</span>
+            <div class="step__body">
+              <h3>Suivi et progrès mesurés</h3>
+              <p>Des bilans réguliers pour mesurer vos progrès et ajuster votre programme dans la durée.</p>
+              <ul class="checklist list-reset">
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Bilans mensuels</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Ajustements continus</li>
+                <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Progrès mesurés</li>
               </ul>
             </div>
-          </div>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- ================================================================
-         TESTIMONIALS
-         ================================================================ -->
-    
-
-    <!-- ================================================================
-         BOOKING — CALENDRIER RÉSERVATION
-         ================================================================ -->
-    <section class="section section-booking" id="reservation" aria-labelledby="booking-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag reveal">Prendre rendez-vous</span>
-          <h2 class="section-title reveal" id="booking-title">
-            Demandez votre <span class="gradient-text">premier échange</span>
-          </h2>
-          <p class="section-desc reveal">
-            Premier rendez-vous offert et sans engagement : bilan, objectifs et proposition d'accompagnement. Prise de contact par téléphone.<br>
-            <strong><i class="fas fa-clock"></i> Du lundi au vendredi, 17 h 30 – 20 h 30 (dernier créneau à 20 h 30)</strong>
-          </p>
+    <!-- ===== Demande de rendez-vous (widget) ===== -->
+    <section class="section" id="reservation" aria-labelledby="titre-reservation">
+      <div class="container--narrow">
+        <div class="section-head">
+          <p class="eyebrow">Prendre rendez-vous</p>
+          <h2 id="titre-reservation">Demandez votre premier échange</h2>
+          <p>Premier rendez-vous offert et sans engagement : bilan, objectifs et proposition d'accompagnement. Prise de contact par téléphone.</p>
+          <p class="booking-hours"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Du lundi au vendredi, 17 h 30 – 20 h 30 (dernier créneau à 20 h 30)</p>
         </div>
-
-        <div class="booking-container reveal">
+        <div class="booking">
           <!-- Le widget calendrier est rendu ici par app.js -->
-          <div id="bookingWidget" data-widget="calendar" role="application" aria-label="Widget de réservation"></div>
-        </div>
-
-        <div class="booking-alternatives reveal">
-          <p>Vous préférez me contacter directement ?</p>
-          <div class="booking-alt-buttons">
-            <a href="tel:+33765775104" class="btn btn-outline">
-              <i class="fas fa-phone"></i> 07 65 77 51 04
-            </a>
-            <a href="mailto:coachapar@gmail.com" class="btn btn-outline">
-              <i class="fas fa-envelope"></i> coachapar@gmail.com
-            </a>
-            <a href="https://wa.me/33765775104" target="_blank" rel="noopener" class="btn btn-whatsapp">
-              <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
+          <div class="form-card" id="bookingWidget" data-widget="calendar"></div>
+          <div class="booking-alt">
+            <p>Vous préférez me contacter directement ?</p>
+            <div class="contact-ways">
+              <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+              <a class="btn btn--secondary" href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a>
+              <a class="btn btn--secondary" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>WhatsApp</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         PRICING
-         ================================================================ -->
-    <section class="section section-pricing" id="tarifs" aria-labelledby="pricing-title">
+    <!-- ===== Tarifs ===== -->
+    <section class="section section--surface" id="tarifs" aria-labelledby="titre-tarifs">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag reveal">Tarifs</span>
-          <h2 class="section-title reveal" id="pricing-title">Tarifs et <span class="gradient-text">forfaits</span></h2>
-          <p class="section-desc reveal">Des formules adaptées à tous les besoins et budgets</p>
+        <div class="section-head">
+          <p class="eyebrow">Tarifs</p>
+          <h2 id="titre-tarifs">Tarifs et forfaits</h2>
+          <p>Des formules adaptées à tous les besoins et budgets</p>
         </div>
-
-        <div class="pricing-grid">
-          <!-- Premier échange -->
-          <div class="pricing-card reveal" data-delay="0">
-            <div class="pricing-badge pricing-badge-green">
-              <i class="fas fa-gift"></i> Offre Découverte
-            </div>
-            <h3 class="pricing-title">Premier échange</h3>
-            <div class="pricing-price">
-              <span class="price-value">Offert</span>
-            </div>
-            <p class="pricing-subtitle">Par téléphone</p>
-            <ul class="pricing-features">
-              <li><i class="fas fa-check"></i> Vos objectifs et vos disponibilités</li>
-              <li><i class="fas fa-check"></i> Les formules possibles</li>
-              <li><i class="fas fa-check"></i> Sans engagement</li>
+        <div class="pricing">
+          <article class="card">
+            <div class="card__head"><span class="badge">Offre Découverte</span></div>
+            <h3>Premier échange</h3>
+            <div class="price"><span class="price__amount">Offert</span><span class="price__from">Par téléphone</span></div>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Vos objectifs et vos disponibilités</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Les formules possibles</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Sans engagement</li>
             </ul>
-            <a href="#reservation" class="btn btn-outline pricing-cta">Demander mon premier échange</a>
-          </div>
-
-          <!-- Forfait 20 séances — FEATURED -->
-          <div class="pricing-card featured reveal" data-delay="100">
-            <div class="pricing-badge pricing-badge-gradient">
-              <i class="fas fa-crown"></i> Meilleur choix
-            </div>
-            <h3 class="pricing-title">Forfait 20 séances</h3>
-            <div class="pricing-price">
-              <span class="price-period">à partir de</span>
-              <span class="price-value">850€</span>
-            </div>
-            <p class="pricing-subtitle">Coaching sportif</p>
-            <ul class="pricing-features">
-              <li><i class="fas fa-check"></i> 20 séances de coaching</li>
-              <li><i class="fas fa-check"></i> Échanges entre les séances</li>
-              <li><i class="fas fa-check"></i> Objectifs suivis et mesurés</li>
+            <div class="card__foot"><a class="btn btn--secondary btn--block" href="#reservation">Prendre mon premier rendez-vous</a></div>
+          </article>
+          <article class="card card--featured">
+            <div class="card__head"><span class="badge badge--solid">Meilleur choix</span></div>
+            <h3>Forfait 20 séances</h3>
+            <div class="price"><span class="price__from">à partir de</span><span class="price__amount">850&nbsp;€</span><span class="price__from">Coaching sportif</span></div>
+            <ul class="checklist list-reset">
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>20 séances de coaching</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Échanges entre les séances</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Objectifs suivis et mesurés</li>
             </ul>
-            <a href="#reservation" class="btn btn-primary pricing-cta">Demander ce forfait</a>
-          </div>
-
+            <div class="card__foot"><a class="btn btn--primary btn--block" href="#reservation">Demander ce forfait</a></div>
+          </article>
         </div>
-
-        <p class="pricing-note reveal">
-          <i class="fas fa-map-marker-alt"></i> Montpellier & alentours (Hérault 34) &nbsp;·&nbsp;
-          <i class="fas fa-file-invoice"></i> Devis personnalisé sur demande
-        </p>
+        <p class="pricing-note"><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier &amp; alentours (Hérault 34)</span><span>Devis personnalisé sur demande</span></p>
       </div>
     </section>
 
-    <!-- ================================================================
-         FAQ
-         ================================================================ -->
-    <section class="section section-faq" aria-labelledby="faq-title">
-      <div class="container container-narrow">
-        <div class="section-header">
-          <span class="section-tag reveal">Questions fréquentes</span>
-          <h2 class="section-title reveal" id="faq-title">Vos questions, <span class="gradient-text">mes réponses</span></h2>
+    <!-- ===== Questions fréquentes ===== -->
+    <section class="section" id="faq" aria-labelledby="titre-faq">
+      <div class="container--narrow">
+        <div class="section-head">
+          <p class="eyebrow">Questions fréquentes</p>
+          <h2 id="titre-faq">Vos questions, mes réponses</h2>
         </div>
-
-        <div class="faq-list" role="list">
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              <span>Qu'est-ce que l'activité physique adaptée (APA) ?</span>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer" role="region">
-              <p>L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master STAPS Activité physique adaptée et santé (APAS) : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              <span>Qu'est-ce qu'un enseignant en APA apporte de plus ?</span>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer" role="region">
-              <p>Ma formation universitaire (Master APAS, Université de La Réunion) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              <span>Puis-je bénéficier de vos services avec une maladie chronique ou un handicap ?</span>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer" role="region">
-              <p>Oui, c'est le cœur de mon métier. J'accompagne des personnes qui vivent avec un diabète, une maladie cardiovasculaire, une obésité, de l'arthrose ou un handicap moteur. Je ne remplace pas votre médecin : je construis l'activité physique avec ses consignes, et je reste en lien avec lui si vous le souhaitez.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              <span>Quel est le tarif d'une séance de coaching sportif à Montpellier ?</span>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer" role="region">
-              <p>Une séance de coaching individuel est <strong>à partir de 50€</strong>. Le tarif exact dépend de la formule choisie, un devis personnalisé est établi sur demande. Les tarifs de l'accompagnement alimentaire sont détaillés sur la page <a href="pages/conseils-nutritionnels.html">Alimentation et activité physique</a>. Le <strong>premier échange est offert</strong>, sans engagement.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              <span>Quelles sont vos disponibilités à Montpellier ?</span>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer" role="region">
-              <p>Je suis disponible <strong>du lundi au vendredi, 17 h 30 – 20 h 30</strong> (dernier créneau à 20 h 30). Le premier contact se fait par téléphone, au <a href="tel:+33765775104">07 65 77 51 04</a>. Vous pouvez aussi m'écrire à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a> ou proposer un créneau avec le calendrier de demande de rendez-vous : je vous rappelle pour le confirmer.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              <span>Où se déroulent les séances ?</span>
-              <i class="fas fa-chevron-down faq-icon"></i>
-            </button>
-            <div class="faq-answer" role="region">
-              <p>Les séances se déroulent à Montpellier et alentours (Hérault). Je peux me déplacer à votre domicile, en salle de sport, ou en extérieur selon vos préférences et vos besoins. Le lieu est discuté lors du premier contact pour trouver la solution la plus adaptée.</p>
-            </div>
-          </div>
+        <div class="faq">
+          <details open>
+            <summary>Qu'est-ce que l'activité physique adaptée (APA) ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+            <div class="faq__answer"><p>L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master STAPS Activité physique adaptée et santé (APAS) : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical.</p></div>
+          </details>
+          <details>
+            <summary>Qu'est-ce qu'un enseignant en APA apporte de plus ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+            <div class="faq__answer"><p>Ma formation universitaire (Master APAS, Université de La Réunion) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord.</p></div>
+          </details>
+          <details>
+            <summary>Puis-je bénéficier de vos services avec une maladie chronique ou un handicap ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+            <div class="faq__answer"><p>Oui, c'est le cœur de mon métier. J'accompagne des personnes qui vivent avec un diabète, une maladie cardiovasculaire, une obésité, de l'arthrose ou un handicap moteur. Je ne remplace pas votre médecin : je construis l'activité physique avec ses consignes, et je reste en lien avec lui si vous le souhaitez.</p></div>
+          </details>
+          <details>
+            <summary>Quel est le tarif d'une séance de coaching sportif à Montpellier ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+            <div class="faq__answer"><p>Une séance de coaching individuel est <strong>à partir de 50&nbsp;€</strong>. Le tarif exact dépend de la formule choisie, un devis personnalisé est établi sur demande. Les tarifs de l'accompagnement alimentaire sont détaillés sur la page <a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a>. Le <strong>premier échange est offert</strong>, sans engagement.</p></div>
+          </details>
+          <details>
+            <summary>Quelles sont vos disponibilités à Montpellier ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+            <div class="faq__answer"><p>Je suis disponible <strong>du lundi au vendredi, 17 h 30 – 20 h 30</strong> (dernier créneau à 20 h 30). Le premier contact se fait par téléphone, au <a href="tel:+33765775104">07 65 77 51 04</a>. Vous pouvez aussi m'écrire à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a> ou proposer un créneau avec le calendrier de demande de rendez-vous : je vous rappelle pour le confirmer.</p></div>
+          </details>
+          <details>
+            <summary>Où se déroulent les séances ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+            <div class="faq__answer"><p>Les séances se déroulent à Montpellier et alentours (Hérault). Je peux me déplacer à votre domicile, en salle de sport, ou en extérieur selon vos préférences et vos besoins. Le lieu est discuté lors du premier contact pour trouver la solution la plus adaptée.</p></div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         CTA BANNER FINAL
-         ================================================================ -->
-    <section class="section-cta" aria-label="Appel à l'action">
-      <div class="container cta-inner">
-        <div class="cta-content">
-          <span class="section-tag section-tag-light reveal">Prêt à commencer ?</span>
-          <h2 class="cta-title reveal">Faites le premier pas<br>dès <span class="gradient-text">aujourd'hui</span></h2>
-          <p class="cta-subtitle reveal">Premier rendez-vous offert · Sans engagement · Accompagnement sur mesure</p>
-          <div class="cta-buttons reveal">
-            <a href="#reservation" class="btn-hero-primary">
-              <i class="fas fa-calendar-check"></i>
-              Demander mon premier échange
-            </a>
-            <a href="tel:+33765775104" class="btn-hero-secondary">
-              <i class="fas fa-phone"></i>
-              Appeler maintenant
-            </a>
-          </div>
+    <!-- ===== Bandeau d'appel final ===== -->
+    <section class="section section--surface cta-band" aria-labelledby="titre-cta">
+      <div class="container cta-band__inner">
+        <p class="eyebrow">Prêt à commencer ?</p>
+        <h2 id="titre-cta">Faites le premier pas dès aujourd'hui</h2>
+        <p>Premier rendez-vous offert · Sans engagement · Accompagnement sur mesure</p>
+        <div class="actions actions--center">
+          <a class="btn btn--primary" href="#reservation">Prendre mon premier rendez-vous</a>
+          <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>Appeler maintenant</a>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ================================================================
-       FOOTER
-       ================================================================ -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="footer-logo">
-          <img src="images/logo.webp" alt="" width="50" height="50" loading="lazy" decoding="async">
-          <span>Coach APA'R</span>
+  <!-- gabarit:pied -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
+          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
+          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
-        <p class="footer-desc">
-          Coach sportif et enseignant en activité physique adaptée à Montpellier.
-          L'activité physique adaptée, en complément de votre suivi médical.
-        </p>
-        <div class="footer-badges">
-          <span class="badge badge-sm">Master APAS</span>
-          <span class="badge badge-sm">Activité physique adaptée</span>
-          <span class="badge badge-sm">Pilates</span>
+        <nav aria-labelledby="pied-services">
+          <p class="footer__title" id="pied-services">Services</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
+            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
+            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
+            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
+            <li><a href="/#services">Pilates</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="pied-infos">
+          <p class="footer__title" id="pied-infos">Informations</p>
+          <ul class="footer__list list-reset">
+            <li><a href="/#tarifs">Tarifs</a></li>
+            <li><a href="/#faq">Questions fréquentes</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="footer__title">Contact</p>
+          <ul class="footer__list list-reset">
+            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
+            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven, 17 h 30 – 20 h 30</span></li>
+          </ul>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4 class="footer-heading">Navigation</h4>
-        <ul class="footer-links">
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#expertise">Activité physique adaptée</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#tarifs">Tarifs</a></li>
-          <li><a href="#reservation">Réserver</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="pages/coaching-sportif.html">Coaching sportif</a></li>
-          <li><a href="pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-          <li><a href="pages/contact.html?service=cours-pilates">Pilates</a></li>
-          <li><a href="publics-accompagnes.html">Publics accompagnés</a></li>
-          <li><a href="pages/blog.html">Blog</a></li>
-          <li><a href="pages/contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-heading">Contact</h4>
-        <ul class="footer-contact-list">
-          <li>
-            <i class="fas fa-phone"></i>
-            <a href="tel:+33765775104">07 65 77 51 04</a>
-          </li>
-          <li>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>
-          </li>
-          <li>
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Montpellier, Hérault (34)</span>
-          </li>
-          <li>
-            <i class="fas fa-clock"></i>
-            <span>Lun-Ven, 17 h 30 – 20 h 30 (dernier créneau)</span>
-          </li>
-        </ul>
-        <a href="https://wa.me/33765775104" target="_blank" rel="noopener" class="footer-whatsapp">
-          <i class="fab fa-whatsapp"></i> Écrire sur WhatsApp
-        </a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <p>© 2025 Coach APA'R — Loïc. Tous droits réservés.</p>
-        <ul class="footer-legal">
-          <li><a href="pages/mentions-legales.html">Mentions légales</a></li>
-          <li><a href="pages/politique-confidentialite.html">Confidentialité</a></li>
-          <li><a href="pages/cgv.html">CGV</a></li>
-        </ul>
+      <div class="footer__bottom">
+        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
+        <nav aria-label="Informations légales">
+          <ul class="list-reset">
+            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
+            <li><a href="/pages/cgv.html">CGV</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </footer>
+  <!-- /gabarit:pied -->
 
-  <!-- ================================================================
-       SCRIPTS
-       ================================================================ -->
-  <script src="js/app.js"></script>
-
+  <script src="/js/app.js" defer></script>
 </body>
 </html>
