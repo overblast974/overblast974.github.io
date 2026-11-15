@@ -1,0 +1,151 @@
+/* ============================================================
+   tokens.css : jetons de design de Coach APA'R (lot 1)
+   Source de vérité : docs/agence/design-system.md (non publié).
+   Règle : aucune valeur de couleur, de taille, d'espacement, de rayon,
+   d'ombre ou de durée en dur dans les autres feuilles. Tout passe par ici.
+   À charger AVANT app.css sur les 11 pages.
+   ============================================================ */
+
+/* ---------- Polices auto-hébergées (OFL, voir fonts/) ----------
+   Une seule famille, deux graisses, sous-ensemble latin (accents français,
+   œ, guillemets, tirets, euro). 12 Ko par fichier. */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/atkinson-hyperlegible-next-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/atkinson-hyperlegible-next-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* ---------- Couleurs : palette brute (ne pas utiliser directement dans les composants) ---------- */
+  --c-encre:        #161A14; /* noir du logo, légèrement vert */
+  --c-encre-2:      #4A5243; /* texte secondaire */
+  --c-gris-trait:   #6F7867; /* bordure des champs (3:1 minimum) */
+  --c-gris-filet:   #D9DDD0; /* filets décoratifs uniquement */
+  --c-papier:       #F7F7F0; /* fond de page, blanc cassé chaud */
+  --c-blanc:        #FFFFFF;
+  --c-feuille:      #9BB85A; /* vert clair des feuilles du logo : décor ou fond sous texte encre, jamais texte sur clair */
+  --c-feuille-pale: #EEF2E1; /* teinte de surface */
+  --c-feuille-vive: #B5CF7A; /* texte et focus sur fond encre */
+  --c-vert:         #44631F; /* vert profond tiré du logo : actions, liens */
+  --c-vert-fonce:   #2F4615; /* survol et pressé */
+  --c-rouge:        #B42318;
+  --c-rouge-pale:   #FDECEA;
+  --c-ambre:        #7A4B00;
+  --c-ambre-pale:   #FFF4DB;
+
+  /* ---------- Couleurs : rôles (à utiliser dans les composants) ---------- */
+  --color-bg:              var(--c-papier);
+  --color-surface:         var(--c-blanc);
+  --color-surface-tint:    var(--c-feuille-pale);
+  --color-text:            var(--c-encre);
+  --color-text-muted:      var(--c-encre-2);
+  --color-border:          var(--c-gris-filet);
+  --color-border-strong:   var(--c-gris-trait);
+  --color-accent:          var(--c-vert);
+  --color-accent-hover:    var(--c-vert-fonce);
+  --color-on-accent:       var(--c-blanc);
+  --color-decor:           var(--c-feuille);
+  --color-link:            var(--c-vert);
+  --color-link-hover:      var(--c-vert-fonce);
+  --color-focus:           var(--c-encre);
+  --color-error:           var(--c-rouge);
+  --color-error-bg:        var(--c-rouge-pale);
+  --color-success:         var(--c-vert);
+  --color-success-bg:      var(--c-feuille-pale);
+  --color-warning:         var(--c-ambre);
+  --color-warning-bg:      var(--c-ambre-pale);
+  /* Zones sombres (pied de page) */
+  --color-dark-bg:         var(--c-encre);
+  --color-dark-text:       #F3F5EE;
+  --color-dark-text-muted: #BFC6B5;
+  --color-dark-link:       var(--c-feuille-vive);
+  --color-dark-focus:      var(--c-feuille-vive);
+
+  /* ---------- Typographie ---------- */
+  --font-sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  /* Échelle : 6 niveaux. Le plus petit texte du site est 16 px. */
+  --text-sm:   1rem;                                       /* 16 px : légendes, mentions, badges */
+  --text-base: 1.125rem;                                   /* 18 px : texte courant */
+  --text-lg:   1.25rem;                                    /* 20 px : chapeau, titres de carte sur mobile */
+  --text-xl:   1.5rem;                                     /* 24 px : h3, prix */
+  --text-2xl:  clamp(1.75rem, 1.45rem + 1.3vw, 2.375rem);  /* 28 -> 38 px : h2 */
+  --text-3xl:  clamp(2.125rem, 1.6rem + 2.4vw, 3.5rem);    /* 34 -> 56 px : h1 */
+
+  --leading-tight: 1.15;  /* h1, h2 */
+  --leading-snug:  1.3;   /* h3, boutons */
+  --leading-body:  1.6;   /* texte courant */
+  --tracking-title: -0.015em;
+  --tracking-label: 0.04em; /* surtitres en capitales */
+  --measure: 66ch;          /* longueur de ligne maximale du texte courant */
+
+  /* ---------- Espacement : base 4 px ---------- */
+  --space-1: 0.25rem;  /*  4 */
+  --space-2: 0.5rem;   /*  8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+
+  --section-y: clamp(var(--space-8), 6vw + 1rem, var(--space-9)); /* 64 -> 96 px */
+  --gutter:    clamp(var(--space-4), 4vw, var(--space-6));        /* marge latérale 16 -> 32 px */
+  --container: 72rem;      /* 1152 px */
+  --container-narrow: 46rem; /* FAQ, formulaire, pages légales */
+
+  /* ---------- Formes ---------- */
+  --radius-sm:   6px;            /* cases, petits éléments */
+  --radius-md:   12px;           /* boutons, champs, cartes */
+  --radius-leaf: 4px 28px;       /* signature « feuille » : carte mise en avant, preuve, portrait */
+  --radius-full: 999px;          /* badges, pastilles */
+  --border-width: 1px;
+  --border-width-strong: 2px;
+
+  /* Ombres : deux niveaux, teinte encre, jamais colorées */
+  --shadow-1: 0 1px 2px rgb(22 26 20 / 0.06), 0 1px 3px rgb(22 26 20 / 0.08);
+  --shadow-2: 0 10px 28px -8px rgb(22 26 20 / 0.18);
+
+  /* Focus clavier : visible partout, jamais supprimé */
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* Zones tactiles */
+  --tap-min: 48px;
+
+  /* ---------- Mouvement ---------- */
+  --duration-fast: 150ms;  /* couleur, bordure, ombre */
+  --duration-base: 250ms;  /* ouverture FAQ, menu, messages */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* ---------- Mise en page ---------- */
+  --header-h: 64px;        /* 72 px à partir de 64rem, voir plus bas */
+  --z-header: 50;
+  --z-menu: 60;
+}
+
+@media (min-width: 64rem) {
+  :root { --header-h: 72px; }
+}
+
+/* Préférence « réduire les animations » : toutes les durées tombent à zéro. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}
