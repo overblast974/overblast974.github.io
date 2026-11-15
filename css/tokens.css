@@ -71,6 +71,7 @@
   --color-dark-text-muted: #BFC6B5;
   --color-dark-link:       var(--c-feuille-vive);
   --color-dark-focus:      var(--c-feuille-vive);
+  --color-dark-line:       rgb(255 255 255 / 0.18); /* filet du pied de page (repris de la maquette, ajouté par l'intégration) */
 
   /* ---------- Typographie ---------- */
   --font-sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -119,6 +120,9 @@
   /* Ombres : deux niveaux, teinte encre, jamais colorées */
   --shadow-1: 0 1px 2px rgb(22 26 20 / 0.06), 0 1px 3px rgb(22 26 20 / 0.08);
   --shadow-2: 0 10px 28px -8px rgb(22 26 20 / 0.18);
+  /* Ajoutés par l'intégration (lot 1) : valeurs reprises telles quelles de la maquette,
+     sorties d'app.css pour tenir le critère 1. À valider par le designer. */
+  --shadow-inset: inset 0 2px 0 rgb(0 0 0 / 0.2);   /* bouton pressé */
 
   /* Focus clavier : visible partout, jamais supprimé */
   --focus-ring-width: 3px;
