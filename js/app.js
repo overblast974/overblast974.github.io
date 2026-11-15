@@ -602,7 +602,7 @@ class BookingCalendar {
         <div class="form-group">
           <label for="book-message">Message (facultatif)</label>
           <textarea id="book-message" name="message" rows="3" aria-describedby="book-message-aide"></textarea>
-          <p class="form-hint" id="book-message-aide">Merci de ne pas indiquer d'informations médicales : nous en parlerons de vive voix lors du premier rendez-vous.</p>
+          <p class="form-hint" id="book-message-aide">Votre demande : objectif, disponibilités, lieu souhaité. Merci de ne pas indiquer d'informations sur votre santé : nous en parlerons de vive voix.</p>
         </div>
 
         <div class="form-honeypot" aria-hidden="true">

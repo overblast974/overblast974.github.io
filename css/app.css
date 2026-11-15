@@ -2637,7 +2637,7 @@ h1, h2, h3, h4, h5, h6 {
   /* section-about layout géré par .about-grid dans le CSS principal */
 
   .comparison-grid {
-    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px; /* une seule carte depuis le retrait du comparatif */
   }
 }
 
