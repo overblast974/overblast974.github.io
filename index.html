@@ -6,7 +6,7 @@
 
   <!-- ===== SEO PRIMARY ===== -->
   <title>Coach sportif et APA à Montpellier | Coach APA'R</title>
-  <meta name="description" content="Loïc, coach sportif et enseignant en activité physique adaptée à Montpellier (Master APA). Coaching à domicile, APA pour les maladies chroniques, Pilates. Premier échange offert.">
+  <meta name="description" content="Loïc, coach sportif et enseignant en activité physique adaptée à Montpellier (Master APAS). Coaching à domicile, APA pour les maladies chroniques, Pilates en individuel. Premier échange offert.">
   <meta name="author" content="Coach APA'R - Loïc">
   <meta name="robots" content="index, follow">
   <meta name="language" content="French">
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coachapar.fr/">
   <meta property="og:title" content="Coach sportif et enseignant en APA à Montpellier | Coach APA'R">
-  <meta property="og:description" content="Loïc, coach sportif et enseignant en APA à Montpellier. Coaching, activité physique adaptée aux maladies chroniques et au handicap, Pilates. Premier échange offert.">
+  <meta property="og:description" content="Loïc, coach sportif et enseignant en APA à Montpellier. Coaching, activité physique adaptée aux maladies chroniques et au handicap, Pilates en individuel. Premier échange offert.">
   <meta property="og:image" content="https://coachapar.fr/images/logo.png">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Coach APA'R">
@@ -34,7 +34,7 @@
     "@type": "LocalBusiness",
     "@id": "https://coachapar.fr",
     "name": "Coach APA'R",
-    "description": "Coach sportif et enseignant en activité physique adaptée à Montpellier, titulaire d'un Master en APA. Coaching individuel, activité physique adaptée pour les personnes vivant avec une maladie chronique ou un handicap, en complément du suivi médical, et Pilates.",
+    "description": "Coach sportif et enseignant en activité physique adaptée à Montpellier, titulaire d'un Master STAPS Activité physique adaptée et santé (APAS) de l'Université de La Réunion. Coaching individuel, activité physique adaptée pour les personnes vivant avec une maladie chronique ou un handicap, en complément du suivi médical, et Pilates en séances individuelles.",
     "url": "https://coachapar.fr",
     "telephone": "+33765775104",
     "email": "coachapar@gmail.com",
@@ -57,6 +57,14 @@
       { "@type": "AdministrativeArea", "name": "Hérault" }
     ],
     "priceRange": "€€",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "17:30",
+        "closes": "21:30"
+      }
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Services de coaching sportif",
@@ -64,7 +72,7 @@
         { "@type": "Offer", "name": "Activité physique adaptée (APA)", "description": "Activité physique adaptée pour les personnes vivant avec une maladie chronique, un handicap, et les seniors" },
         { "@type": "Offer", "name": "Coaching sportif individuel", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 50, "priceCurrency": "EUR" } },
         { "@type": "Offer", "name": "Repères alimentaires pour sportifs", "url": "https://coachapar.fr/pages/conseils-nutritionnels.html" },
-        { "@type": "Offer", "name": "Cours de Pilates", "description": "Cours de Pilates Matwork en petit groupe, tous niveaux" }
+        { "@type": "Offer", "name": "Pilates en séance individuelle", "description": "Séances individuelles de Pilates Matwork, sur demande" }
       ]
     }
   }
@@ -88,9 +96,34 @@
       "addressLocality": "Montpellier",
       "addressCountry": "FR"
     },
-    "knowsAbout": ["Activité physique adaptée", "Coaching sportif", "Alimentation du sportif", "Pilates", "Reprise d'activité physique", "Activité physique et maladies chroniques"],
+    "knowsAbout": ["Activité physique adaptée", "Coaching sportif", "Préparation physique", "Alimentation du sportif", "Pilates", "Reprise d'activité physique", "Activité physique et maladies chroniques"],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Université de La Réunion"
+    },
     "hasCredential": [
-      { "@type": "EducationalOccupationalCredential", "name": "Master en activité physique adaptée", "educationalLevel": "Bac+5" },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Master STAPS Activité physique adaptée et santé (APAS)",
+        "credentialCategory": "Diplôme national de master",
+        "educationalLevel": "Master (bac+5)",
+        "dateCreated": "2019",
+        "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Université de La Réunion" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Formation Aliments et nutrition – bases scientifiques de la diététique",
+        "credentialCategory": "Attestation de formation",
+        "dateCreated": "2023",
+        "recognizedBy": { "@type": "Organization", "name": "L'École Française" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Formation de préparateur physique",
+        "credentialCategory": "Diplôme d'école privée (formation en ligne)",
+        "dateCreated": "2023",
+        "recognizedBy": { "@type": "Organization", "name": "SSCS Training" }
+      },
       { "@type": "EducationalOccupationalCredential", "name": "Formation Pilates Matwork niveau 1" }
     ],
     "telephone": "+33765775104",
@@ -109,7 +142,7 @@
         "name": "Qu'est-ce que l'activité physique adaptée (APA) ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master en activité physique adaptée : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical."
+          "text": "L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master STAPS Activité physique adaptée et santé (APAS) : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical."
         }
       },
       {
@@ -117,7 +150,7 @@
         "name": "Qu'est-ce qu'un enseignant en APA apporte de plus ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ma formation universitaire (Master en activité physique adaptée) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord."
+          "text": "Ma formation universitaire (Master APAS, Université de La Réunion) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord."
         }
       },
       {
@@ -141,7 +174,7 @@
         "name": "Quelles sont vos disponibilités à Montpellier ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Je suis disponible du lundi au vendredi à partir de 17h30. Le premier contact se fait par téléphone au 07 65 77 51 04 ou par email à coachapar@gmail.com. Vous pouvez aussi proposer un créneau avec le calendrier de demande de rendez-vous : je vous recontacte pour le confirmer."
+          "text": "Je suis disponible du lundi au vendredi, 17 h 30 – 20 h 30 (dernier créneau à 20 h 30). Le premier contact se fait par téléphone, au 07 65 77 51 04. Vous pouvez aussi m'écrire à coachapar@gmail.com ou proposer un créneau avec le calendrier de demande de rendez-vous : je vous rappelle pour le confirmer."
         }
       },
       {
@@ -246,7 +279,7 @@
       <div class="container hero-inner">
         <div class="hero-badge reveal">
           <i class="fas fa-certificate"></i>
-          Master en activité physique adaptée · Montpellier
+          Master APAS · Montpellier
         </div>
 
         <div class="hero-logo reveal">
@@ -259,7 +292,7 @@
         </h1>
 
         <p class="hero-subtitle reveal">
-          Coaching personnalisé, activité physique adaptée et Pilates.<br>
+          Coaching personnalisé, activité physique adaptée et Pilates en individuel.<br>
           Je vous aide à bouger plus et mieux, à votre rythme. J'accompagne aussi les personnes qui vivent avec <strong>une maladie chronique ou un handicap</strong>, en complément de leur suivi médical.
         </p>
 
@@ -287,7 +320,7 @@
     <div class="trust-bar" aria-label="Formation et spécialités">
       <div class="trust-marquee">
         <div class="trust-marquee-inner">
-          <div class="trust-badge"><i class="fas fa-graduation-cap"></i> Master APA</div>
+          <div class="trust-badge"><i class="fas fa-graduation-cap"></i> Master APAS</div>
           <div class="trust-badge"><i class="fas fa-dumbbell"></i> Coaching sportif</div>
           <div class="trust-badge"><i class="fas fa-spa"></i> Pilates Matwork</div>
           <div class="trust-badge"><i class="fas fa-wheelchair"></i> Enseignant en APA</div>
@@ -295,7 +328,7 @@
           <div class="trust-badge"><i class="fas fa-map-marker-alt"></i> Montpellier</div>
           <div class="trust-badge"><i class="fas fa-shield-alt"></i> Reprise d'activité</div>
           <!-- Duplicate for seamless loop -->
-          <div class="trust-badge"><i class="fas fa-graduation-cap"></i> Master APA</div>
+          <div class="trust-badge"><i class="fas fa-graduation-cap"></i> Master APAS</div>
           <div class="trust-badge"><i class="fas fa-dumbbell"></i> Coaching sportif</div>
           <div class="trust-badge"><i class="fas fa-spa"></i> Pilates Matwork</div>
           <div class="trust-badge"><i class="fas fa-wheelchair"></i> Enseignant en APA</div>
@@ -338,7 +371,7 @@
             Bouger avec une maladie,<br>ça <span class="gradient-text">s'accompagne</span>
           </h2>
           <p class="about-text reveal">
-            Je suis <strong>Loïc</strong>, coach sportif et enseignant en activité physique adaptée à Montpellier, titulaire d'un <strong>Master en APA</strong> (bac+5).
+            Je suis <strong>Loïc</strong>, coach sportif et enseignant en activité physique adaptée à Montpellier, titulaire d'un <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong> de l'Université de La Réunion (bac+5). Je suis aussi formé à la préparation physique et j'ai suivi une formation sur les bases de l'alimentation.
             Mon métier : aider les personnes qui vivent avec une maladie chronique, un handicap ou les effets de l'âge à reprendre une activité physique régulière, adaptée et suivie. Je ne suis pas médecin : je travaille en complément de votre suivi médical, en lien avec votre médecin si vous le souhaitez.
           </p>
 
@@ -356,8 +389,8 @@
             <div class="credential-item">
               <i class="fas fa-graduation-cap"></i>
               <div>
-                <strong>Master APA</strong>
-                <span>Bac+5 universitaire</span>
+                <strong>Master APAS</strong>
+                <span>Université de La Réunion, 2019</span>
               </div>
             </div>
             <div class="credential-item">
@@ -462,18 +495,18 @@
             <div class="service-icon">
               <i class="fas fa-spa"></i>
             </div>
-            <h3 class="service-title">Cours de Pilates</h3>
+            <h3 class="service-title">Pilates</h3>
             <p class="service-desc">
-              Renforcement des muscles profonds et travail de la posture, pour un dos plus solide au quotidien. Cours en petit groupe (6 personnes au plus).
+              Renforcement des muscles profonds et travail de la posture, pour un dos plus solide au quotidien. Le Pilates est possible en séances individuelles, sur demande. Des cours collectifs pourront ouvrir s'il y a assez de personnes intéressées : signalez-vous avec le formulaire.
             </p>
             <ul class="service-features">
               <li><i class="fas fa-check"></i> Formation Pilates Matwork niveau 1</li>
-              <li><i class="fas fa-check"></i> 6 personnes au plus</li>
-              <li><i class="fas fa-check"></i> Tous niveaux acceptés</li>
+              <li><i class="fas fa-check"></i> Séances individuelles sur demande</li>
+              <li><i class="fas fa-check"></i> Cours collectifs selon les demandes</li>
               <li><i class="fas fa-check"></i> Travail de la posture</li>
             </ul>
             <a href="#reservation" class="service-cta">
-              Réserver un cours <i class="fas fa-arrow-right"></i>
+              Demander une séance <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
@@ -556,7 +589,7 @@
             </div>
             <div class="comparison-feature">
               <i class="feature-check fas fa-check-circle"></i>
-              <span>Un <strong>Master en activité physique adaptée</strong> (bac+5)</span>
+              <span>Un <strong>Master STAPS Activité physique adaptée et santé (APAS)</strong>, bac+5</span>
             </div>
             <div class="comparison-feature">
               <i class="feature-check fas fa-check-circle"></i>
@@ -572,7 +605,7 @@
             </div>
             <div class="comparison-feature">
               <i class="feature-check fas fa-check-circle"></i>
-              <span>Une formation Pilates Matwork</span>
+              <span>Une formation de préparateur physique et une formation Pilates Matwork</span>
             </div>
             <div class="comparison-feature">
               <i class="feature-check fas fa-check-circle"></i>
@@ -602,12 +635,12 @@
           <div class="timeline-step reveal">
             <div class="step-number">1</div>
             <div class="step-content">
-              <h3 class="step-title">Bilan de départ</h3>
-              <p class="step-text">Évaluation de votre condition physique, analyse posturale, tests fonctionnels, échange sur vos objectifs et sur les consignes de votre médecin.</p>
+              <h3 class="step-title">Premier rendez-vous</h3>
+              <p class="step-text">Un bilan initial (votre parcours, vos habitudes, les consignes de votre médecin), un bilan de condition physique, la définition de vos objectifs, puis ma proposition d'accompagnement.</p>
               <ul>
-                <li><i class="fas fa-check"></i> Entretien sur votre parcours et vos habitudes</li>
-                <li><i class="fas fa-check"></i> Tests de capacités</li>
+                <li><i class="fas fa-check"></i> Bilan initial et bilan de condition physique</li>
                 <li><i class="fas fa-check"></i> Définition des objectifs</li>
+                <li><i class="fas fa-check"></i> Proposition d'accompagnement : nombre de séances et contenu</li>
               </ul>
             </div>
           </div>
@@ -670,8 +703,8 @@
             Demandez votre <span class="gradient-text">premier échange</span>
           </h2>
           <p class="section-desc reveal">
-            Premier échange offert et sans engagement, par téléphone ou par email<br>
-            <strong><i class="fas fa-clock"></i> Disponible à partir de 17h30, du lundi au vendredi</strong>
+            Premier échange offert et sans engagement, par téléphone<br>
+            <strong><i class="fas fa-clock"></i> Du lundi au vendredi, 17 h 30 – 20 h 30 (dernier créneau à 20 h 30)</strong>
           </p>
         </div>
 
@@ -718,7 +751,7 @@
             <div class="pricing-price">
               <span class="price-value">Offert</span>
             </div>
-            <p class="pricing-subtitle">Par téléphone ou par email</p>
+            <p class="pricing-subtitle">Par téléphone</p>
             <ul class="pricing-features">
               <li><i class="fas fa-check"></i> Vos objectifs et vos disponibilités</li>
               <li><i class="fas fa-check"></i> Les formules possibles</li>
@@ -748,26 +781,6 @@
             <a href="#reservation" class="btn btn-primary pricing-cta">Demander ce forfait</a>
           </div>
 
-          <!-- Premium -->
-          <div class="pricing-card reveal" data-delay="200">
-            <div class="pricing-badge pricing-badge-orange">
-              <i class="fas fa-infinity"></i> Suivi continu
-            </div>
-            <h3 class="pricing-title">Premium</h3>
-            <div class="pricing-price">
-              <span class="price-period">à partir de</span>
-              <span class="price-value">180€</span>
-              <span class="price-period">/mois</span>
-            </div>
-            <p class="pricing-subtitle">Abonnement mensuel</p>
-            <ul class="pricing-features">
-              <li><i class="fas fa-check"></i> 4 séances / mois</li>
-              <li><i class="fas fa-check"></i> Repères alimentaires inclus</li>
-              <li><i class="fas fa-check"></i> Accès prioritaire</li>
-              <li><i class="fas fa-check"></i> Réponses à vos questions entre les séances</li>
-            </ul>
-            <a href="#reservation" class="btn btn-outline pricing-cta">Demander cette formule</a>
-          </div>
         </div>
 
         <p class="pricing-note reveal">
@@ -794,7 +807,7 @@
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer" role="region">
-              <p>L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master en activité physique adaptée : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical.</p>
+              <p>L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master STAPS Activité physique adaptée et santé (APAS) : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical.</p>
             </div>
           </div>
 
@@ -804,7 +817,7 @@
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer" role="region">
-              <p>Ma formation universitaire (Master en activité physique adaptée) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord.</p>
+              <p>Ma formation universitaire (Master APAS, Université de La Réunion) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord.</p>
             </div>
           </div>
 
@@ -834,7 +847,7 @@
               <i class="fas fa-chevron-down faq-icon"></i>
             </button>
             <div class="faq-answer" role="region">
-              <p>Je suis disponible <strong>du lundi au vendredi à partir de 17h30</strong>. Le premier contact se fait par téléphone au <a href="tel:+33765775104">07 65 77 51 04</a> ou par email à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. Vous pouvez aussi proposer un créneau avec le calendrier de demande de rendez-vous : je vous recontacte pour le confirmer.</p>
+              <p>Je suis disponible <strong>du lundi au vendredi, 17 h 30 – 20 h 30</strong> (dernier créneau à 20 h 30). Le premier contact se fait par téléphone, au <a href="tel:+33765775104">07 65 77 51 04</a>. Vous pouvez aussi m'écrire à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a> ou proposer un créneau avec le calendrier de demande de rendez-vous : je vous rappelle pour le confirmer.</p>
             </div>
           </div>
 
@@ -891,7 +904,7 @@
           L'activité physique adaptée, en complément de votre suivi médical.
         </p>
         <div class="footer-badges">
-          <span class="badge badge-sm">Master APA</span>
+          <span class="badge badge-sm">Master APAS</span>
           <span class="badge badge-sm">Activité physique adaptée</span>
           <span class="badge badge-sm">Pilates</span>
         </div>
@@ -914,7 +927,7 @@
           <li><a href="pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
           <li><a href="pages/coaching-sportif.html">Coaching sportif</a></li>
           <li><a href="pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-          <li><a href="#services">Cours de Pilates</a></li>
+          <li><a href="pages/contact.html?service=cours-pilates">Pilates</a></li>
           <li><a href="publics-accompagnes.html">Publics accompagnés</a></li>
           <li><a href="pages/blog.html">Blog</a></li>
           <li><a href="pages/contact.html">Contact</a></li>
@@ -938,7 +951,7 @@
           </li>
           <li>
             <i class="fas fa-clock"></i>
-            <span>Lun-Ven, à partir de 17h30</span>
+            <span>Lun-Ven, 17 h 30 – 20 h 30 (dernier créneau)</span>
           </li>
         </ul>
         <a href="https://wa.me/33765775104" target="_blank" rel="noopener" class="footer-whatsapp">

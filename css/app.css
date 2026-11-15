@@ -2679,7 +2679,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 760px;
+    margin-inline: auto;
     align-items: start;
   }
 
