@@ -460,7 +460,7 @@ class BookingCalendar {
     const title = document.createElement('p');
     title.className = 'timeslots-title';
     const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    title.textContent = `Créneaux disponibles — ${dayNames[date.getDay()]} ${date.getDate()} ${this.MONTHS_FR[date.getMonth()]} ${date.getFullYear()}`;
+    title.textContent = `Créneaux proposés — ${dayNames[date.getDay()]} ${date.getDate()} ${this.MONTHS_FR[date.getMonth()]} ${date.getFullYear()}`;
     wrapper.appendChild(title);
 
     const buttonsRow = document.createElement('div');
@@ -506,7 +506,7 @@ class BookingCalendar {
     if (!hasSlot) {
       const msg = document.createElement('p');
       msg.className = 'no-slots';
-      msg.textContent = 'Aucun créneau disponible pour ce jour.';
+      msg.textContent = 'Aucun créneau proposé pour ce jour.';
       wrapper.appendChild(msg);
     } else {
       wrapper.appendChild(buttonsRow);
@@ -550,7 +550,7 @@ class BookingCalendar {
     wrapper.innerHTML = `
       <div class="booking-summary">
         <span class="summary-icon">📅</span>
-        <span class="summary-text">Votre rendez-vous : <strong>${displayDate}</strong> à <strong>${displayTime}</strong></span>
+        <span class="summary-text">Votre demande de rendez-vous : <strong>${displayDate}</strong> à <strong>${displayTime}</strong></span>
       </div>
       <form class="booking-form" action="https://formspree.io/f/xwplpobd" method="POST" novalidate>
         <input type="hidden" name="date" value="${dateStr}">
@@ -591,9 +591,8 @@ class BookingCalendar {
           <label for="book-service">Service souhaité (facultatif)</label>
           <select id="book-service" name="service">
             <option value="">-- Choisir un service --</option>
-            <option value="APA">APA (Activité Physique Adaptée)</option>
-            <option value="Coaching Sportif">Coaching Sportif</option>
-            <option value="Nutrition">Nutrition</option>
+            <option value="Coaching Sportif">Coaching sportif</option>
+            <option value="Nutrition">Alimentation</option>
             <option value="Pilates">Pilates</option>
             <option value="Autre">Autre</option>
           </select>
@@ -602,7 +601,7 @@ class BookingCalendar {
         <div class="form-group">
           <label for="book-message">Message (facultatif)</label>
           <textarea id="book-message" name="message" rows="3" aria-describedby="book-message-aide"></textarea>
-          <p class="form-hint" id="book-message-aide">Merci de ne pas indiquer d'informations médicales : nous en parlerons de vive voix lors du premier rendez-vous.</p>
+          <p class="form-hint" id="book-message-aide">Votre demande : objectif, disponibilités, lieu souhaité. Merci de ne pas indiquer d'informations sur votre santé : nous en parlerons de vive voix.</p>
         </div>
 
         <div class="form-honeypot" aria-hidden="true">

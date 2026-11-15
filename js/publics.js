@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all modules
     initNavbar();
     initAccordion();
-    initStatsCounter();
     initScrollReveal();
     initSmoothScroll();
     initThemeToggle();
@@ -130,58 +129,6 @@ function initAccordion() {
 }
 
 // ============================================
-// STATS COUNTER ANIMATION
-// ============================================
-
-function initStatsCounter() {
-    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-    let hasAnimated = false;
-
-    const animateCounter = (element) => {
-        const target = parseInt(element.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        let current = 0;
-
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                element.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                element.textContent = target;
-                // Add suffixes
-                const targetValue = element.getAttribute('data-target');
-                if (targetValue === '98') {
-                    element.textContent += '%';
-                } else if (targetValue === '5' || targetValue === '150') {
-                    element.textContent += '+';
-                }
-            }
-        };
-
-        updateCounter();
-    };
-
-    // Intersection Observer to trigger animation when visible
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !hasAnimated) {
-                hasAnimated = true;
-                statNumbers.forEach(stat => {
-                    animateCounter(stat);
-                });
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.querySelector('.section-stats');
-    if (statsSection) {
-        observer.observe(statsSection);
-    }
-}
-
-// ============================================
 // SCROLL REVEAL
 // ============================================
 
@@ -238,6 +185,12 @@ function initSmoothScroll() {
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+
+                // Déplacer aussi le focus (lien d'évitement, navigation clavier)
+                if (!target.hasAttribute('tabindex')) {
+                    target.setAttribute('tabindex', '-1');
+                }
+                target.focus({ preventScroll: true });
             }
         });
     });

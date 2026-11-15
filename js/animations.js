@@ -98,18 +98,6 @@ if (typeof gsap !== 'undefined') {
             duration: 0.6
         });
 
-        // Stats cards
-        gsap.from('.stat-card', {
-            scrollTrigger: {
-                trigger: '.section-stats',
-                start: 'top 70%'
-            },
-            scale: 0.8,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 0.6
-        });
-
         // Service cards with 3D effect
         gsap.from('.service-card', {
             scrollTrigger: {
