@@ -133,7 +133,7 @@ def pied(page):
             <li><a href="tel:+33765775104">{i("phone")}07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com">{i("mail")}coachapar@gmail.com</a></li>
             <li><span>{i("map-pin")}Montpellier, Hérault (34)</span></li>
-            <li><span>{i("clock")}Lun-ven 17 h 30 – 20 h 30, sam 8 h – 16 h</span></li>
+            <li><span>{i("clock")}Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
           </ul>
         </div>
       </div>

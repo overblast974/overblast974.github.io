@@ -180,7 +180,7 @@
         "name": "Quelles sont vos disponibilités à Montpellier ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Je suis disponible du lundi au vendredi de 17 h 30 à 20 h 30 (dernier créneau à 20 h 30), et le samedi de 8 h à 16 h. Le premier contact se fait par téléphone, au 07 65 77 51 04. Vous pouvez aussi m'écrire à coachapar@gmail.com ou proposer un créneau avec le calendrier de demande de rendez-vous : je vous rappelle pour le confirmer."
+          "text": "Je suis disponible du lundi au vendredi de 17 h 30 à 21 h 30, et le samedi de 8 h à 16 h. Vous pouvez réserver en ligne un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Vous pouvez aussi m'appeler au 07 65 77 51 04 ou m'écrire à coachapar@gmail.com."
         }
       },
       {
@@ -498,15 +498,26 @@
         <div class="section-head">
           <p class="eyebrow">Prendre rendez-vous</p>
           <h2 id="titre-reservation">Demandez votre premier rendez-vous</h2>
-          <p>Premier rendez-vous offert et sans engagement : bilan, objectifs et proposition d'accompagnement. Prise de contact par téléphone.</p>
-          <p class="booking-hours"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Du lundi au vendredi, 17 h 30 – 20 h 30 · le samedi, 8 h – 16 h</p>
+          <p>Premier rendez-vous offert et sans engagement. Choisissez un appel pour faire connaissance, ou directement un premier rendez-vous à domicile.</p>
+          <p class="booking-hours"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Du lundi au vendredi, 17 h 30 – 21 h 30 · le samedi, 8 h – 16 h</p>
         </div>
         <div class="callout" role="note">
-          <p><strong>Premiers rendez-vous à partir du 11 janvier 2027.</strong> Je suis absent d'ici là : vous pouvez déjà choisir un créneau en janvier, je vous confirmerai le rendez-vous à mon retour.</p>
+          <p><strong>Premiers rendez-vous à partir du 11 janvier 2027.</strong> Je suis absent d'ici là : vous pouvez déjà réserver un créneau à partir de cette date.</p>
         </div>
         <div class="booking">
-          <!-- Le widget calendrier est rendu ici par app.js -->
-          <div class="form-card" id="bookingWidget" data-widget="calendar"></div>
+          <div class="pricing">
+            <article class="card">
+              <h3>Premier échange par téléphone</h3>
+              <p>20 minutes pour faire connaissance, parler de vos objectifs et répondre à vos questions. Je vous appelle à l'heure choisie.</p>
+              <div class="card__foot"><a class="btn btn--secondary btn--block" href="https://cal.com/coachapar/20min" rel="noopener">Choisir un créneau d'appel <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            </article>
+            <article class="card card--featured">
+              <h3>Premier rendez-vous à domicile</h3>
+              <p>1 h 30 chez vous, à Montpellier et alentours : bilan initial, bilan de condition physique, objectifs et proposition d'accompagnement.</p>
+              <div class="card__foot"><a class="btn btn--primary btn--block" href="https://cal.com/coachapar/90min" rel="noopener">Choisir un créneau à domicile <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            </article>
+          </div>
+          <p class="pricing-note"><span>La réservation se fait sur Cal.com, un service de prise de rendez-vous en ligne. Chaque demande est confirmée par mes soins, au moins 48 h avant le rendez-vous. Merci de ne pas indiquer d'informations sur votre santé.</span></p>
           <div class="booking-alt">
             <p>Vous préférez me contacter directement ?</p>
             <div class="contact-ways">
@@ -602,7 +613,7 @@
           </details>
           <details>
             <summary>Quelles sont vos disponibilités à Montpellier ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Je suis disponible <strong>du lundi au vendredi de 17 h 30 à 20 h 30</strong> (dernier créneau à 20 h 30) <strong>et le samedi de 8 h à 16 h</strong>. Le premier contact se fait par téléphone, au <a href="tel:+33765775104">07 65 77 51 04</a>. Vous pouvez aussi m'écrire à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a> ou proposer un créneau avec le calendrier de demande de rendez-vous : je vous rappelle pour le confirmer.</p></div>
+            <div class="faq__answer"><p>Je suis disponible <strong>du lundi au vendredi de 17 h 30 à 21 h 30 et le samedi de 8 h à 16 h</strong>. Vous pouvez <a href="#reservation">réserver en ligne</a> un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Vous pouvez aussi m'appeler au <a href="tel:+33765775104">07 65 77 51 04</a> ou m'écrire à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>.</p></div>
           </details>
           <details>
             <summary>Où se déroulent les séances ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
@@ -660,7 +671,7 @@
             <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17 h 30 – 20 h 30, sam 8 h – 16 h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
           </ul>
         </div>
       </div>
