@@ -250,13 +250,16 @@ const DAYS_SHORT = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 const DAYS_LONG = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 const BOOKING_SUBMIT_LABEL = 'Confirmer ma demande de contact';
 
+/** Première date réservable (absence de Loïc jusque-là). Mettre null pour la désactiver. */
+const BOOKING_FIRST_DAY = new Date(2027, 0, 4);
+
 class BookingCalendar {
   constructor(container) {
     this.container = container;
     this.TIMESLOTS = ['17:30', '18:30', '19:30', '20:30'];
-    const now = new Date();
-    this.currentYear = now.getFullYear();
-    this.currentMonth = now.getMonth();
+    const start = this.firstMonth();
+    this.currentYear = start.getFullYear();
+    this.currentMonth = start.getMonth();
     this.selectedDate = null;
     this.selectedTime = null;
     this.sending = false;
@@ -279,19 +282,27 @@ class BookingCalendar {
     return d === 0 || d === 6;
   }
 
-  /** Jour passé, ou aujourd'hui après 17 h (plus de créneau). */
+  /** Mois où commence le calendrier : le mois courant, ou celui de la première date réservable. */
+  firstMonth() {
+    const now = new Date();
+    const first = BOOKING_FIRST_DAY && BOOKING_FIRST_DAY > now ? BOOKING_FIRST_DAY : now;
+    return new Date(first.getFullYear(), first.getMonth(), 1);
+  }
+
+  /** Jour passé, avant la première date réservable, ou aujourd'hui après 17 h (plus de créneau). */
   isPast(date) {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     if (d < today) return true;
+    if (BOOKING_FIRST_DAY && d < BOOKING_FIRST_DAY) return true;
     if (d.getTime() === today.getTime() && now.getHours() >= 17) return true;
     return false;
   }
 
   renderCalendar({ focusDay = false } = {}) {
     const now = new Date();
-    const isPrevDisabled = new Date(this.currentYear, this.currentMonth, 1) <= new Date(now.getFullYear(), now.getMonth(), 1);
+    const isPrevDisabled = new Date(this.currentYear, this.currentMonth, 1) <= this.firstMonth();
     const title = `${MONTHS_TITLE[this.currentMonth]} ${this.currentYear}`;
 
     let html = `
