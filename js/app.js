@@ -250,13 +250,17 @@ const DAYS_SHORT = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 const DAYS_LONG = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 const BOOKING_SUBMIT_LABEL = 'Confirmer ma demande de contact';
 
+/** Première date réservable (absence de Loïc jusque-là). Mettre null pour la désactiver. */
+const BOOKING_FIRST_DAY = new Date(2027, 0, 11);
+
 class BookingCalendar {
   constructor(container) {
     this.container = container;
     this.TIMESLOTS = ['17:30', '18:30', '19:30', '20:30'];
-    const now = new Date();
-    this.currentYear = now.getFullYear();
-    this.currentMonth = now.getMonth();
+    this.SATURDAY_SLOTS = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
+    const start = this.firstMonth();
+    this.currentYear = start.getFullYear();
+    this.currentMonth = start.getMonth();
     this.selectedDate = null;
     this.selectedTime = null;
     this.sending = false;
@@ -274,24 +278,37 @@ class BookingCalendar {
     return Boolean(a && b) && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
   }
 
+  /** Dimanche : pas de rendez-vous. */
   isWeekend(date) {
-    const d = date.getDay();
-    return d === 0 || d === 6;
+    return date.getDay() === 0;
   }
 
-  /** Jour passé, ou aujourd'hui après 17 h (plus de créneau). */
+  /** Créneaux du jour : soirée en semaine, journée le samedi. */
+  slotsFor(date) {
+    return date.getDay() === 6 ? this.SATURDAY_SLOTS : this.TIMESLOTS;
+  }
+
+  /** Mois où commence le calendrier : le mois courant, ou celui de la première date réservable. */
+  firstMonth() {
+    const now = new Date();
+    const first = BOOKING_FIRST_DAY && BOOKING_FIRST_DAY > now ? BOOKING_FIRST_DAY : now;
+    return new Date(first.getFullYear(), first.getMonth(), 1);
+  }
+
+  /** Jour passé, avant la première date réservable, ou aujourd'hui après 17 h (plus de créneau). */
   isPast(date) {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     if (d < today) return true;
-    if (d.getTime() === today.getTime() && now.getHours() >= 17) return true;
+    if (BOOKING_FIRST_DAY && d < BOOKING_FIRST_DAY) return true;
+    if (d.getTime() === today.getTime() && now.getHours() >= (d.getDay() === 6 ? 15 : 20)) return true;
     return false;
   }
 
   renderCalendar({ focusDay = false } = {}) {
     const now = new Date();
-    const isPrevDisabled = new Date(this.currentYear, this.currentMonth, 1) <= new Date(now.getFullYear(), now.getMonth(), 1);
+    const isPrevDisabled = new Date(this.currentYear, this.currentMonth, 1) <= this.firstMonth();
     const title = `${MONTHS_TITLE[this.currentMonth]} ${this.currentYear}`;
 
     let html = `
@@ -320,7 +337,7 @@ class BookingCalendar {
         html += `<button type="button" class="calendar__day${today}" data-day="${day}" aria-pressed="${pressed}" aria-label="${label}${today ? ' (aujourd’hui)' : ''}">${day}</button>`;
       }
     }
-    html += '</div><p class="calendar__legend">Du lundi au vendredi. Choisissez un jour, puis un créneau.</p>';
+    html += '</div><p class="calendar__legend">Du lundi au samedi. Choisissez un jour, puis un créneau.</p>';
     this.calendarEl.innerHTML = html;
 
     this.calendarEl.querySelector('.calendar__nav--prev').addEventListener('click', () => this.changeMonth(-1));
@@ -371,7 +388,7 @@ class BookingCalendar {
   renderTimeSlots(date) {
     const now = new Date();
     const isToday = BookingCalendar.sameDay(date, now);
-    const slots = this.TIMESLOTS.filter((time) => {
+    const slots = this.slotsFor(date).filter((time) => {
       if (!isToday) return true;
       const [h, m] = time.split(':').map(Number);
       const t = new Date(now);

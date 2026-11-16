@@ -2,3 +2,4 @@
 # Les documents de travail internes ne doivent pas être publiés sur le site.
 exclude:
   - docs
+  - _outils
