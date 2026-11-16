@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Gabarit commun de coachapar.fr (option B : copie contrôlée).
 
-En-tête et pied de page sont copiés à l'identique dans les 11 pages,
+En-tête et pied de page sont copiés à l'identique dans les 12 pages,
 entre des marqueurs :
     <!-- gabarit:en-tete -->  ...  <!-- /gabarit:en-tete -->
     <!-- gabarit:pied -->     ...  <!-- /gabarit:pied -->
@@ -27,6 +27,7 @@ PAGES = {
     'pages/coaching-sportif.html': 'coaching',
     'pages/conseils-nutritionnels.html': 'nutrition',
     'pages/contact.html': 'contact',
+    'pages/a-propos.html': 'apropos',
     'pages/blog.html': 'blog',
     'pages/cgv.html': 'cgv',
     'pages/mentions-legales.html': 'mentions',
@@ -95,6 +96,7 @@ def pied(page):
         (None, '/#services', 'Pilates'),
     ]
     infos = [
+        ('apropos', '/pages/a-propos.html', 'À propos'),
         (None, '/#tarifs', 'Tarifs'),
         (None, '/#faq', 'Questions fréquentes'),
         ('blog', '/pages/blog.html', 'Blog'),
