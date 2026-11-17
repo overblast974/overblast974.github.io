@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Gabarit commun de coachapar.fr (option B : copie contrôlée).
 
-En-tête et pied de page sont copiés à l'identique dans les 12 pages,
+En-tête et pied de page sont copiés à l'identique dans les 12 pages et la page 404,
 entre des marqueurs :
     <!-- gabarit:en-tete -->  ...  <!-- /gabarit:en-tete -->
     <!-- gabarit:pied -->     ...  <!-- /gabarit:pied -->
@@ -33,6 +33,7 @@ PAGES = {
     'pages/mentions-legales.html': 'mentions',
     'pages/politique-confidentialite.html': 'confidentialite',
     'pages/blog/activite-physique-sante-cardiovasculaire.html': 'article',
+    '404.html': 'erreur',
 }
 
 CTA = 'Prendre mon premier rendez-vous'
