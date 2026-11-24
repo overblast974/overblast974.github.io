@@ -1,6 +1,6 @@
 {
   "name": "Coach APA'R",
-  "short_name": "CoachAPA",
+  "short_name": "Coach APA'R",
   "description": "Coach sportif et enseignant en activité physique adaptée à Montpellier",
   "start_url": "/",
   "display": "standalone",
@@ -11,16 +11,22 @@
   "lang": "fr-FR",
   "icons": [
     {
-      "src": "images/logo-192.png",
+      "src": "/images/logo-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "images/logo.png",
+      "src": "/images/logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/images/icone-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": [
