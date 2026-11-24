@@ -169,6 +169,7 @@ main:focus { outline: none; } /* cible du lien d'évitement : tabindex=-1, jamai
   min-height: var(--tap-min); padding: 0;
   font-weight: var(--weight-bold); color: var(--color-link);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em;
+  text-wrap: balance;
 }
 .btn--link .icon { transition: transform var(--duration-fast) var(--ease-out); }
 .btn--link:hover .icon { transform: translateX(3px); }
@@ -615,6 +616,7 @@ fieldset.field { margin: 0; padding: 0; border: 0; }
   font-size: var(--text-sm); color: var(--color-text-muted);
 }
 .pricing-note span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.booking > .pricing-note, .booking > .pricing-note span { display: block; }
 
 /* ---------- 14. FAQ (details natif, fonctionne sans JS) ---------- */
 .faq { display: grid; gap: var(--space-3); }
@@ -741,6 +743,7 @@ fieldset.field { margin: 0; padding: 0; border: 0; }
 .footer__list li a, .footer__list li > span {
   display: inline-flex; align-items: center; gap: var(--space-2);
   min-height: 44px;
+  padding-block: var(--space-2);
 }
 .footer__list li > span { color: var(--color-dark-text-muted); }
 .footer__list a { overflow-wrap: anywhere; }
