@@ -5,9 +5,8 @@ En-tête et pied de page sont copiés à l'identique dans les 12 pages et la pag
 entre des marqueurs :
     <!-- gabarit:en-tete -->  ...  <!-- /gabarit:en-tete -->
     <!-- gabarit:pied -->     ...  <!-- /gabarit:pied -->
-Seules différences admises : aria-current="page" sur le lien de la page,
-et, sur la page Contact, les deux boutons principaux qui pointent vers
-#contactForm au lieu de /#reservation.
+Seule différence admise : aria-current="page" sur le lien de la page.
+Le bouton « Prendre mon premier rendez-vous » mène partout à /#reservation.
 
 Usage :
     python3 gabarit.py verifier  [racine]   -> échoue (code 1) au moindre écart
@@ -45,7 +44,7 @@ def cur(page, cle):
     return ' aria-current="page"' if page == cle else ''
 
 def en_tete(page):
-    cible = '#contactForm' if page == 'contact' else '/#reservation'
+    cible = '/#reservation'
     nav = [
         ('apa', '/pages/activite-physique-adaptee.html', 'Activité physique adaptée'),
         (None, '/#services', 'Services'),
