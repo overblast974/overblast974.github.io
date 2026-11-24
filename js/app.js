@@ -57,7 +57,7 @@ function initMobileMenu() {
   });
 
   // Passage en grand écran : le menu téléphone n'a plus lieu d'être
-  const wide = window.matchMedia('(min-width: 64rem)');
+  const wide = window.matchMedia('(min-width: 75rem)');
   wide.addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 }
 
