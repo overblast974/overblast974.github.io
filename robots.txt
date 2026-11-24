@@ -1,27 +1,4 @@
 User-agent: *
 Allow: /
 
-# Assets
-Allow: /css/
-Allow: /js/
-Allow: /images/
-Allow: /pages/
-
-# Sitemap
 Sitemap: https://coachapar.fr/sitemap.xml
-
-# Exclure fichiers de backup et dev
-Disallow: /backup/
-Disallow: /docs/
-Disallow: /css-fix/
-Disallow: /index.original.html
-Disallow: /index-optimized.html
-
-# Bots principaux
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
