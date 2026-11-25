@@ -436,9 +436,15 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
   background: var(--color-bar-fill); border-radius: var(--radius-leaf-sm);
   transform-origin: left center;
 }
-.forfait--5 .forfait__remplissage  { width: 25%; }   /* 2 mois sur 8 */
-.forfait--10 .forfait__remplissage { width: 50%; }   /* 4 mois sur 8 */
-.forfait--20 .forfait__remplissage { width: 100%; }  /* 8 mois sur 8 */
+/* Remplissage = durée conseillée sur l'échelle de 8 mois (une graduation par mois). Les données refusent plus de 8. */
+.forfait--mois-1 .forfait__remplissage { width: 12.5%; }
+.forfait--mois-2 .forfait__remplissage { width: 25%; }
+.forfait--mois-3 .forfait__remplissage { width: 37.5%; }
+.forfait--mois-4 .forfait__remplissage { width: 50%; }
+.forfait--mois-5 .forfait__remplissage { width: 62.5%; }
+.forfait--mois-6 .forfait__remplissage { width: 75%; }
+.forfait--mois-7 .forfait__remplissage { width: 87.5%; }
+.forfait--mois-8 .forfait__remplissage { width: 100%; }
 .forfait__duree { grid-area: duree; font-size: var(--text-sm); color: var(--color-text-muted); }
 .prix__notes { font-size: var(--text-sm); color: var(--color-text-muted); }
 @media (min-width: 40rem) {

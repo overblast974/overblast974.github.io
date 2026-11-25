@@ -17,7 +17,11 @@ function corriger(texte) {
 
 export function typographie(html) {
   let dans = null; // script | style | pre
+  let apresBalise = false; // le morceau précédent ferme une balise de texte (</strong>, </a>…)
   return html.split(/(<[^>]+>)/).map((morceau) => {
+    const suite = apresBalise; apresBalise = /^<\/(strong|em|b|i|a|span|abbr|cite|q)>$/i.test(morceau);
+    // « <strong>Contenu</strong> : » : l'espace avant le deux-points suit une balise (recette CO-1).
+    if (suite && !dans) morceau = morceau.replace(/^ ([?!:;»])/, `${NB}$1`);
     if (morceau.startsWith("<")) {
       const m = morceau.match(/^<(\/?)(script|style|pre|textarea)\b/i);
       if (m) dans = m[1] ? null : m[2].toLowerCase();

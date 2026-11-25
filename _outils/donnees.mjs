@@ -82,6 +82,8 @@ export function erreursEntreprise(d) {
     if (!Number.isInteger(f.seances) || f.seances <= 0) e.push(`${ici}.seances : nombre entier de séances attendu`);
     prix(`offre.forfaits.${i}.prix`, { libelle: `${ici}.prix` });
     if (!Number.isInteger(f.de_preference_sous_mois) || f.de_preference_sous_mois <= 0) e.push(`${ici}.de_preference_sous_mois : nombre entier de mois attendu`);
+    // Les barres des forfaits ont une échelle de 8 mois (une graduation par mois) : au-delà, la barre mentirait.
+    else if (f.de_preference_sous_mois > 8) e.push(`${ici}.de_preference_sous_mois : 8 mois au plus (échelle des barres des forfaits) ; pour une durée plus longue, demandez à l'agence d'allonger l'échelle`);
     if (Number.isInteger(seance) && Number.isInteger(f.prix) && Number.isInteger(f.seances) && remise(f, seance) <= 0)
       e.push(`${ici} : le forfait (${f.prix} €) n'est pas moins cher que ${f.seances} séances à l'unité (${f.seances * seance} €)`);
   });
