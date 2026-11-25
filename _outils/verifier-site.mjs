@@ -72,9 +72,10 @@ for (const p of pages) {
   ok(!/en salle|espace partenaire/i.test(t), `${p} : « en salle » ou « espace partenaire »`);
   ok(!/objectifs suivis et mesurés/i.test(t), `${p} : « objectifs suivis et mesurés »`);
   ok(!/<form|<textarea|<input/i.test(h), `${p} : formulaire ou champ`);
-  // Le formulaire est supprimé (CDC 2.2, recette 4.8 : 0 « formspree »). Les pages légales reprises telles
-  // quelles le décrivent encore : à adapter par le juriste (OBLIGATIONS 2.1) avant toute mise en ligne.
-  ok(!/formspree|formulaire de contact/i.test(t), `${p} : décrit encore le formulaire de contact supprimé (texte à adapter par le juriste, OBLIGATIONS 2.1 ; bloque la mise en ligne)`);
+  // Le formulaire est supprimé (CDC 2.2, recette 4.8 : 0 « formspree »). Motifs de PAGES-LEGALES-refonte.md
+  // section 6. Le mot « formulaire » seul reste permis (« formulaire de rétractation », « aucun formulaire »…).
+  for (const motif of ["formspree", "formulaire de contact", "formulaire du site", "messages du formulaire", "par le formulaire", "envois du formulaire", "formules gratuites de"])
+    ok(!t.toLowerCase().includes(motif), `${p} : « ${motif} » (le formulaire de contact est supprimé)`);
   ok(!/Aucune donnée de santé/.test(t), `${p} : ancien titre « Aucune donnée de santé »`);
   ok(!/whatsapp/i.test(h), `${p} : WhatsApp`);
   // « réadaptation » : jamais dans un titre, une description, les données structurées (juriste, a).
@@ -94,6 +95,14 @@ for (const p of pages) {
 {
   const t = texte(lire("pages/tarifs.html"));
   for (const mot of ["à partir de ", "devis personnalisé", "gratuit", "commander", "réserver ce forfait", "Meilleur choix"]) ok(!t.includes(mot), `pages/tarifs.html : « ${mot} »`);
+}
+
+// 5 bis. Pages légales : textes du juriste qui ne doivent pas régresser (PAGES-LEGALES-refonte.md section 6).
+{
+  const pol = texte(lire("pages/politique-confidentialite.html")), ml = texte(lire("pages/mentions-legales.html"));
+  for (const mot of ["SMS", "forfait 20 séances", "6 mois après sa dernière séance"]) ok(pol.includes(mot), `politique de confidentialité : « ${mot} » absent`);
+  for (const mot of ["4.3 Crédits", "retouchée"]) ok(ml.includes(mot), `mentions légales : « ${mot} » absent`);
+  for (const p of pages) ok(!/\[À (COMPLÉTER|TRANCHER)/.test(lire(p)), `${p} : marque « [À COMPLÉTER » ou « [À TRANCHER » publiée`);
 }
 
 // 6. Plan du site : pages indexables seulement, toutes existantes.
