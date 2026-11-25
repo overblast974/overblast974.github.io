@@ -70,3 +70,61 @@ export function listeDe(elements) {
 }
 
 export { JOURS };
+
+// ---------------------------------------------------------------------------
+// Ajouts du lot F (intégration de la refonte, 25/11/2026).
+// ---------------------------------------------------------------------------
+
+/** Format court de la refonte : "Lun.–ven. 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30 · sam. 8&nbsp;h – 16&nbsp;h". */
+export function horairesCourts(plages) {
+  const jours = (j) => (j.length === 1 ? `${ABREGE[j[0]]}.` : `${ABREGE[j[0]]}.–${ABREGE[j.at(-1)]}.`);
+  const txt = plages.map((p) => `${jours(p.jours)} ${heure(p.de)} – ${heure(p.a)}`).join(" · ");
+  return txt.charAt(0).toUpperCase() + txt.slice(1);
+}
+
+/** "Montpellier, Lattes, Castelnau-le-Lez, Mauguio et la métropole" (zone.communes + zone.suite). */
+export function zonePhrase(zone) {
+  const c = zone.communes;
+  return zone.suite ? `${c.join(", ")} et ${zone.suite}` : c.length === 1 ? c[0] : `${c.slice(0, -1).join(", ")} et ${c.at(-1)}`;
+}
+
+/** 60 -> "une heure" ; 90 -> "1 h 30" ; 45 -> "45 minutes". */
+export function dureeTexte(minutes) {
+  if (minutes === 60) return "une heure";
+  if (minutes % 60 === 0) return `${minutes / 60}${NBSP}heures`;
+  if (minutes > 60) return `${Math.floor(minutes / 60)}${NBSP}h${NBSP}${String(minutes % 60).padStart(2, "0")}`;
+  return `${minutes}${NBSP}minutes`;
+}
+
+/** Première lettre en capitale (après d'éventuelles balises). */
+export const capitale = (s) => String(s).replace(/^(<[^>]+>)*(\S)/, (m, b = "", c) => (b ?? "") + c.toUpperCase());
+
+/**
+ * Remplace les renvois {zone}, {communes}, {zone_suite}, {horaires}, {horaires_courts}, {telephone}, {email}, {seance},
+ * {duree_seance} et {absence} d'un texte des données (réponses de FAQ) par leur valeur.
+ * {absence} devient une chaîne vide après la date de reprise : la phrase disparaît du texte visible
+ * comme de sa copie FAQPage, sans retoucher la réponse.
+ */
+export function remplir(texte, d, aujourdhui = new Date()) {
+  const tel = d.contact.telephone;
+  const valeurs = {
+    zone: zonePhrase(d.zone),
+    communes: d.zone.communes.join(", "),
+    zone_suite: d.zone.suite ?? "",
+    horaires: horairesPhrase(d.horaires.plages, { sep: NBSP, liaison: ", " }),
+    horaires_courts: horairesCourts(d.horaires.plages),
+    telephone: `<a href="tel:${tel.international}">${tel.affiche.replace(/ /g, NBSP)}</a>`,
+    email: `<a href="mailto:${d.contact.email}">${d.contact.email}</a>`,
+    seance: euros(d.offre.seance.prix),
+    duree_seance: dureeTexte(d.offre.seance.duree_minutes),
+    absence: absenceActive(d.absence, aujourdhui) ? d.absence.phrase : "",
+  };
+  return String(texte)
+    .replace(/\{([a-z_]+)\}/g, (m, cle, pos, tout) => {
+      if (!(cle in valeurs)) return m;
+      // En début de phrase, la valeur prend une capitale (« {horaires}. » -> « Du lundi… »).
+      const avant = tout.slice(0, pos);
+      return /(^|<p>|[.!?]\s)$/.test(avant) ? capitale(valeurs[cle]) : valeurs[cle];
+    })
+    .replace(/ +(<\/p>)/g, "$1").replace(/ {2,}/g, " ");
+}

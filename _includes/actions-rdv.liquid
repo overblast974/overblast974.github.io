@@ -1,0 +1,8 @@
+{%- comment -%} Bouton de rendez-vous, sa note, et le bouton d'appel (règle des libellés du lot 1). {%- endcomment -%}
+          <div class="ouverture__actions">
+            <div class="cta-group">
+              <a class="btn btn--primary" href="{{ reservation | default: "/#reservation" }}">Prendre mon premier rendez-vous</a>
+              <p class="cta-note">{{ entreprise.offre.premier_rendez_vous.libelle }}</p>
+            </div>
+            <a class="btn btn--secondary" href="tel:{{ entreprise.contact.telephone.international }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>{{ entreprise.contact.telephone.affiche }}</a>
+          </div>

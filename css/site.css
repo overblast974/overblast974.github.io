@@ -1,0 +1,774 @@
+/* ============================================================
+   site.css : feuille unique de coachapar.fr, refonte piste A « Questions franches ».
+   Sections 1 à 14 : reprises de la maquette v2 de l'accueil validée par le client
+   (docs/agence/maquettes/accueil/maquette.css), sans changement de valeur.
+   Sections 15 à 22 : pages intérieures, déclinées de DESIGN.md (sections 6 et 8) à l'intégration.
+   Toutes les valeurs viennent de tokens.css. Exceptions admises (comme au lot 1) :
+   0, 1px, 100 %, fractions de grille, tailles d'icônes, repères du dessin du logo.
+   Sommaire
+    1. Base           5. Bloc question-réponse      9. Combien ? et barres (S2)
+    2. Mise en page   6. Portes                     10. Questions repliables
+    3. Boutons, liens 7. Qui êtes-vous ?            11. Pied de page
+    4. En-tête        8. Aplat vert, réservation    12. Ouverture et S1
+                                                    13. Impression
+   14. Mouvement : entrée, logo, apparitions, appui, menu
+   15. Tête des pages intérieures (fil d'Ariane, titre, actions)
+   16. Texte dans une réponse : prose, listes à filets, étapes, encadrés
+   17. Fin de page
+   18. Tarifs : grille, forfaits en version longue
+   19. À propos : portrait, parcours daté
+   20. Publics : sommaire
+   21. Textes longs : pages légales, repères
+   22. Impression des pages intérieures (CGV imprimables)
+   ============================================================ */
+
+/* ---------- 1. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + var(--space-4));
+  -webkit-tap-highlight-color: transparent; /* [v2] pas d'éclair gris au toucher : chaque élément cliquable a son propre état :active */
+}
+/* [v2] Toucher : clic immédiat (pas d'attente du double appui), pas de sélection du libellé à l'appui long sur une commande. */
+a, button, summary { touch-action: manipulation; }
+.btn, .icon-btn, summary { -webkit-user-select: none; user-select: none; }
+/* Pas de défilement lissé : le bouton principal doit arriver sur la réservation sans délai (G19). */
+body {
+  margin: 0;
+  font-family: var(--font-sans); font-size: var(--text-base); line-height: var(--leading-body);
+  color: var(--color-text); background: var(--color-bg);
+}
+h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; }
+img, svg { max-width: 100%; }
+img { height: auto; display: block; }
+h1, h2, h3 { font-weight: var(--weight-bold); letter-spacing: var(--tracking-title); text-wrap: balance; }
+p { max-width: var(--measure); text-wrap: pretty; }
+a { color: var(--color-link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+strong { font-weight: var(--weight-bold); }
+main:focus { outline: none; }
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+.icon { width: 1.25em; height: 1.25em; flex: none; vertical-align: -0.25em; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.list-reset { list-style: none; padding: 0; }
+.skip-link {
+  position: absolute; left: var(--space-4); top: var(--space-2); z-index: var(--z-menu);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface); color: var(--color-text); font-weight: var(--weight-bold);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-2);
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+
+/* ---------- 2. Mise en page ---------- */
+/* [v2] Marges latérales : au moins la gouttière, au moins la zone sûre (encoche en paysage, viewport-fit=cover). */
+.container {
+  width: min(100% - max(var(--gutter), env(safe-area-inset-left, 0px)) - max(var(--gutter), env(safe-area-inset-right, 0px)), var(--container));
+  margin-inline: auto;
+}
+@media (min-width: 64rem) {
+  .bloc__grille, .ouverture__grille {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap);
+  }
+}
+
+/* ---------- 3. Boutons et liens ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: var(--tap-min); padding: var(--space-3) var(--space-5);
+  font: inherit; font-weight: var(--weight-bold); line-height: var(--leading-snug);
+  text-align: center; text-decoration: none;
+  border: var(--border-width-strong) solid transparent; border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-release) var(--ease-out-strong);
+}
+.btn .icon { width: 20px; height: 20px; }
+.btn--primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn--secondary { background: var(--color-surface); color: var(--color-text); border-color: var(--color-text); }
+.btn--inverse { background: var(--color-band-text); color: var(--color-text); }
+.btn--contour-clair { background: transparent; color: var(--color-band-text); border-color: var(--color-band-text); }
+/* [v2] Appui : le bouton cède de 3 %, en 100 ms ; il revient en 200 ms. Remplace l'ombre intérieure de la v1. */
+.btn:active { transform: scale(var(--scale-press)); transition-duration: var(--duration-press); }
+.btn--block { width: 100%; }
+@media (hover: hover) and (pointer: fine) {
+  a:hover { color: var(--color-link-hover); text-decoration-thickness: 2px; }
+  .btn--primary:hover { background: var(--color-accent-hover); color: var(--color-on-accent); }
+  .btn--secondary:hover { background: var(--color-surface-tint); color: var(--color-text); }
+  .btn--inverse:hover { background: var(--color-surface-tint); color: var(--color-text); }
+  .btn--contour-clair:hover { background: var(--color-band-btn-hover); color: var(--color-band-text); }
+}
+.cta-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
+.cta-note { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* Lien de suite : souligné, gras, sans flèche collée */
+.lien-suite {
+  display: inline-flex; align-items: center; min-height: var(--tap-min);
+  font-weight: var(--weight-bold); text-underline-offset: 0.22em;
+}
+
+/* ---------- 4. En-tête (lot 1, cinq nouvelles entrées) ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: var(--z-header);
+  background: var(--color-surface); border-bottom: var(--border-width) solid var(--color-border);
+}
+.site-header__bar { display: flex; align-items: center; gap: var(--space-2); min-height: var(--header-h); }
+.brand {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: var(--tap-min); margin-right: auto; color: var(--color-text); text-decoration: none;
+}
+.brand .logo { width: 40px; height: 44px; flex: none; overflow: visible; }
+.logo__feuilles { transform-box: view-box; transform-origin: 137px 103px; /* base de la tige, dans le dessin (238 × 262) */ }
+.brand__name { display: block; font-size: var(--text-base); font-weight: var(--weight-bold); line-height: 1; white-space: nowrap; }
+.brand__sub {
+  display: none; margin-top: var(--space-1);
+  font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-snug);
+}
+.nav, .header-cta { display: none; }
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-width: var(--tap-min); min-height: var(--tap-min); padding: 0 var(--space-3);
+  font: inherit; font-weight: var(--weight-bold); color: var(--color-text);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-md);
+  text-decoration: none; cursor: pointer;
+}
+.icon-btn[aria-expanded="true"] { background: var(--color-text); color: var(--color-surface); border-color: var(--color-text); }
+.icon-btn:active { background: var(--color-surface-tint); }
+.icon-btn[aria-expanded="true"]:active { background: var(--color-text); }
+.call-btn { display: none; }
+.mobile-menu {
+  max-height: calc(100dvh - var(--header-h)); overflow-y: auto;
+  padding-block: var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  background: var(--color-surface); border-top: var(--border-width) solid var(--color-border);
+  overscroll-behavior: contain; /* [v2] le défilement du menu ne fait pas défiler la page derrière */
+}
+.mobile-menu[hidden] { display: none; }
+.mobile-menu ul { display: grid; }
+.mobile-menu li + li { border-top: var(--border-width) solid var(--color-border); }
+.mobile-menu a:not(.btn) {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  min-height: var(--tap-row);
+  font-size: var(--text-lg); font-weight: var(--weight-bold); color: var(--color-text); text-decoration: none;
+}
+.mobile-menu a:not(.btn):active { color: var(--color-link-hover); }
+.mobile-menu__actions { display: grid; gap: var(--space-3); margin-top: var(--space-5); }
+.mobile-menu__actions .cta-note { text-align: center; max-width: none; }
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn:hover { background: var(--color-surface-tint); color: var(--color-text); }
+  .icon-btn[aria-expanded="true"]:hover { background: var(--color-text); color: var(--color-surface); }
+}
+@media (min-width: 22rem) { .call-btn { display: inline-flex; } }
+@media (min-width: 30rem) {
+  .brand__sub { display: block; }
+  .brand__name { font-size: var(--text-lg); }
+}
+@media (min-width: 64rem) {
+  .header-cta { display: inline-flex; min-height: 44px; padding-inline: var(--space-4); font-size: var(--text-sm); white-space: nowrap; }
+  .mobile-menu__actions > .btn--primary, .mobile-menu__actions > .cta-note { display: none; }
+}
+@media (min-width: 75rem) {
+  .site-header__bar { gap: var(--space-4); }
+  .menu-toggle, .call-btn { display: none; }
+  .mobile-menu, .mobile-menu[hidden] { display: none; }
+  .brand__sub { display: none; }
+  .nav { display: block; }
+  .nav ul { display: flex; gap: var(--space-1); }
+  .nav a {
+    position: relative; display: inline-flex; align-items: center;
+    min-height: var(--tap-min); padding-inline: var(--space-3);
+    font-size: var(--text-sm); font-weight: var(--weight-bold);
+    color: var(--color-text); text-decoration: none; white-space: nowrap;
+    border-radius: var(--radius-md);
+  }
+  /* [v2] Survol : un trait se tire de gauche à droite sous l'entrée (transformation seule). */
+  .nav a::before {
+    content: ""; position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-2);
+    height: var(--border-width-strong); background: currentColor;
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform var(--duration-base) var(--ease-out-strong);
+  }
+  .nav a[aria-current="page"]::after {
+    content: ""; position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-1);
+    height: 3px; background: var(--color-accent); border-radius: var(--radius-full);
+  }
+}
+@media (min-width: 75rem) and (hover: hover) and (pointer: fine) {
+  .nav a:hover { color: var(--color-text); }
+  .nav a:hover::before { transform: scaleX(1); }
+}
+/* [v2] De 1200 à 1279 px, la navigation se resserre : la v1 ne laissait que 36 px entre la marque et le menu. */
+@media (min-width: 75rem) and (max-width: 79.99rem) {
+  .site-header__bar { gap: var(--space-3); }
+  .nav ul { gap: 0; }
+  .nav a { padding-inline: var(--space-2); }
+  .nav a::before { left: var(--space-2); right: var(--space-2); }
+}
+
+/* ---------- 5. Bloc question-réponse ---------- */
+.bloc { padding-block: var(--bloc-y); border-top: var(--border-width) solid var(--color-border); }
+.bloc--apres-bande { border-top: 0; }
+/* [v2] Un seul bloc sur vert pâle : les deux portes. Il ouvre la page après le premier écran et casse la bande de texte. */
+.bloc--teinte { background: var(--color-soft-bg); border-top: 0; }
+.bloc--teinte + .bloc { border-top: 0; }
+.question {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-2xl); font-weight: var(--weight-heavy); line-height: var(--leading-tight);
+}
+.reponse { display: grid; gap: var(--space-4); align-content: start; min-width: 0; }
+.reponse__chapeau, .qui__chapeau, .prix__legende, .rdv__intro, .rdv__autre { font-size: var(--text-base); }
+@media (min-width: 40rem) {
+  .reponse__chapeau, .qui__chapeau, .prix__legende, .rdv__intro, .rdv__autre { font-size: var(--text-lg); }
+}
+.liens { display: grid; }
+.sous-titre { font-size: var(--text-lg); line-height: var(--leading-snug); }
+@media (min-width: 64rem) {
+  .question { grid-column: 1 / span 4; margin-bottom: 0; padding-right: var(--space-5); }
+  .reponse { grid-column: 5 / -1; }
+}
+
+/* ---------- 6. Portes (deux réponses inégales) ---------- */
+.portes { display: grid; gap: var(--space-5); margin-top: var(--space-2); }
+.porte { display: grid; gap: var(--space-3); align-content: start; }
+.porte__titre { font-size: var(--text-lg); line-height: var(--leading-snug); }
+.porte p { color: var(--color-text-muted); }
+.porte--apa { padding: var(--space-5); background: var(--color-surface-tint); border-radius: var(--radius-leaf); }
+.bloc--teinte .porte--apa { background: var(--color-soft-panel); }
+.porte--apa p { color: var(--color-text); }
+@media (min-width: 48rem) {
+  .portes { grid-template-columns: minmax(0, 5fr) minmax(0, 3fr); align-items: start; }
+  .porte--apa { padding: var(--space-6); }
+  .porte--coaching { padding-top: var(--space-6); }
+}
+
+/* ---------- 7. Qui êtes-vous ? [v2] ----------
+   Téléphone : la question et le portrait côte à côte (le visage répond à la question), puis une fiche de faits
+   en lignes séparées par des filets, la phrase du nom marquée d'un filet vert, la liste des limites. */
+.qui__entete {
+  display: grid; grid-template-columns: minmax(0, 1fr) var(--portrait-qui-sm);
+  column-gap: var(--space-4); align-items: end; margin-bottom: var(--space-5);
+}
+.qui__entete .question { margin-bottom: 0; }
+.qui__portrait { margin: 0; }
+.feuille-cadre {
+  display: block; overflow: hidden; aspect-ratio: 4 / 5;
+  background: var(--color-surface-tint); border-radius: var(--radius-leaf);
+  transform-origin: 100% 100%; /* l'angle vif, comme la feuille de la signature */
+}
+.feuille-cadre img { width: 100%; height: 100%; object-fit: cover; }
+.qui { gap: var(--space-5); }
+.fiche { display: grid; border-top: var(--border-width) solid var(--color-border); }
+.fiche li { padding-block: var(--space-2); border-bottom: var(--border-width) solid var(--color-border); color: var(--color-text-muted); }
+.fiche .fiche__nom { font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug); color: var(--color-text); }
+.qui__nom { padding-left: var(--space-4); border-left: var(--border-width-accent) solid var(--color-accent); }
+.qui__limites { display: grid; gap: var(--space-3); }
+.limites { display: grid; gap: var(--space-2); }
+.limites li { display: grid; grid-template-columns: var(--space-4) 1fr; gap: var(--space-3); }
+.limites li::before { /* petite feuille du logo, décor seul : le texte dit tout */
+  content: ""; width: var(--space-3); height: var(--space-3); margin-top: 0.55em;
+  background: var(--color-accent); border-radius: var(--radius-leaf-sm);
+}
+@media (max-width: 22.49rem) {
+  .qui__entete { grid-template-columns: minmax(0, 1fr) var(--portrait-qui-xs); }
+}
+@media (min-width: 40rem) {
+  .qui__entete { grid-template-columns: minmax(0, 1fr) var(--portrait-bloc); }
+}
+@media (min-width: 64rem) {
+  .qui__entete { display: contents; }
+  .bloc--qui .question { grid-column: 1 / span 4; grid-row: 1; align-self: start; }
+  .bloc--qui .qui__portrait { grid-column: 10 / -1; grid-row: 1 / span 2; }
+  .bloc--qui .reponse.qui { grid-column: 5 / span 5; grid-row: 1 / span 2; }
+}
+
+/* Est-ce pour moi ? [v2] : les situations en grand, 24 px en 800 ; c'est la phrase du visiteur. */
+.situations { gap: 0; margin-top: var(--space-1); }
+.situations li { position: relative; isolation: isolate; border-bottom: var(--border-width) solid var(--color-border); }
+.situations li:first-child { border-top: var(--border-width) solid var(--color-border); }
+.situations a {
+  display: flex; align-items: center; min-height: var(--tap-row); padding-block: var(--space-4);
+  font-size: var(--text-situation); font-weight: var(--weight-heavy); line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-title); text-decoration-thickness: var(--border-width-strong); text-underline-offset: 0.2em;
+  text-wrap: balance;
+}
+/* Fond vert pâle derrière la ligne : au survol (pointeur fin), en fondu ; à l'appui, tout de suite. Opacité seule. */
+.situations a::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 calc(-1 * var(--space-3));
+  background: var(--color-surface-tint); border-radius: var(--radius-leaf-sm);
+  opacity: 0; transition: opacity var(--duration-fast) var(--ease-out);
+}
+.situations a:active::before { opacity: 1; transition-duration: 0ms; }
+@media (hover: hover) and (pointer: fine) {
+  .situations a:hover { color: var(--color-link-hover); }
+  .situations a:hover::before { opacity: 1; }
+}
+
+/* ---------- 8. Aplat vert : « Comment on commence ? » ---------- */
+.bande {
+  padding-block: var(--bloc-y);
+  color: var(--color-band-text); background: var(--color-band-bg);
+}
+.bande a:not(.btn) { color: var(--color-band-link); }
+.bande :focus-visible { outline-color: var(--color-band-focus); }
+.rdv { gap: var(--space-4); }
+
+.rdv__options { display: grid; gap: var(--space-5); }
+.rdv__option {
+  display: grid; gap: var(--space-2); align-content: start;
+  padding-top: var(--space-4); border-top: var(--border-width) solid var(--color-band-line);
+}
+.rdv__titre { font-size: var(--text-lg); line-height: var(--leading-snug); }
+.rdv__texte { color: var(--color-band-text-muted); }
+.rdv__option .btn { margin-top: var(--space-2); }
+@media (max-width: 39.99rem) {
+  .rdv__option { padding-top: var(--space-3); }
+  .rdv__option .chiffre { font-size: var(--text-figure-pair); }
+}
+@media (min-width: 22.5rem) and (max-width: 39.99rem) {
+  /* téléphone : chiffre et titre côte à côte, pour que les deux accès aux créneaux tiennent dans l'écran (G7).
+     Sous 360 px, le titre n'aurait plus la place : les deux s'empilent. */
+  .rdv__option { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-4); align-items: center; }
+  .rdv__option > :not(.chiffre):not(.rdv__titre) { grid-column: 1 / -1; }
+}
+.note-sante { font-size: var(--text-sm); color: var(--color-band-text-muted); }
+.note-sante strong { color: var(--color-band-text); }
+.rdv__confirmation { color: var(--color-band-text-muted); }
+.rdv__pratique { display: grid; gap: var(--space-3); }
+.sans-coupure { white-space: nowrap; }
+
+.bande a.tel-fort { display: inline-flex; align-items: center; min-height: var(--tap-min); font-weight: var(--weight-bold); color: var(--color-band-text); white-space: nowrap; }
+.absence {
+  display: grid; grid-template-columns: var(--space-5) 1fr; gap: var(--space-3);
+  padding: var(--space-4);
+  font-size: var(--text-sm); color: var(--color-band-text-muted);
+  border: var(--border-width) solid var(--color-band-line); border-radius: var(--radius-leaf);
+}
+.absence strong { color: var(--color-band-text); }
+.absence--clair { color: var(--color-text); background: var(--color-surface-tint); border-color: var(--color-surface-tint); }
+.absence .icon { margin-top: var(--space-1); }
+@media (hover: hover) and (pointer: fine) {
+  .bande a:not(.btn):hover { color: var(--color-band-text); }
+}
+@media (min-width: 40rem) {
+  .rdv__options { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--grid-gap); }
+}
+
+/* Grand chiffre */
+.chiffre {
+  font-size: var(--text-figure); font-weight: var(--weight-heavy);
+  line-height: var(--leading-figure); letter-spacing: var(--tracking-figure);
+  word-spacing: var(--word-spacing-figure);
+  color: var(--color-figure); font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.chiffre--clair { color: var(--color-band-text); }
+
+/* ---------- 9. Combien ? et barres des forfaits ---------- */
+.prix { gap: var(--space-5); }
+.prix__seance { display: grid; gap: var(--space-3); }
+.prix__legende { max-width: 36ch; }
+.forfaits { margin-top: var(--space-3); }
+.forfaits { display: grid; gap: var(--space-4); }
+.forfait {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "nom unite prix" "piste piste piste" "duree duree duree";
+  column-gap: var(--space-3); row-gap: var(--space-2);
+}
+.forfait__nom { grid-area: nom; font-size: var(--text-lg); font-weight: var(--weight-bold); }
+.forfait__prix {
+  grid-area: prix; justify-self: end; text-align: right;
+  font-size: var(--text-lg); font-weight: var(--weight-bold); font-variant-numeric: tabular-nums;
+}
+.forfait__unite { grid-area: unite; justify-self: end; text-align: right; font-size: var(--text-sm); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.forfait__piste {
+  grid-area: piste; align-self: center;
+  height: var(--bar-h); overflow: hidden; border-radius: var(--radius-leaf-sm);
+  /* une graduation par mois, sur une échelle de 8 mois */
+  background: repeating-linear-gradient(to right,
+    var(--color-bar-track) 0 calc(12.5% - 1px),
+    var(--color-bar-tick) calc(12.5% - 1px) 12.5%);
+}
+.forfait__remplissage {
+  display: block; height: 100%;
+  background: var(--color-bar-fill); border-radius: var(--radius-leaf-sm);
+  transform-origin: left center;
+}
+.forfait--5 .forfait__remplissage  { width: 25%; }   /* 2 mois sur 8 */
+.forfait--10 .forfait__remplissage { width: 50%; }   /* 4 mois sur 8 */
+.forfait--20 .forfait__remplissage { width: 100%; }  /* 8 mois sur 8 */
+.forfait__duree { grid-area: duree; font-size: var(--text-sm); color: var(--color-text-muted); }
+.prix__notes { font-size: var(--text-sm); color: var(--color-text-muted); }
+@media (min-width: 40rem) {
+  .prix__seance { grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-6); }
+  .prix__legende { padding-bottom: var(--space-2); }
+}
+@media (min-width: 64rem) {
+  .forfait {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 5fr) minmax(0, 3fr);
+    grid-template-areas: "nom piste prix" ". duree unite";
+    column-gap: var(--space-5); row-gap: var(--space-1);
+  }
+}
+
+/* Signature S2 : le forfait se remplit. L'état vide n'existe que si le script l'a posé. */
+@media (prefers-reduced-motion: no-preference) {
+  .forfaits--a-remplir .forfait__remplissage { transform: scaleX(0); }
+  .forfaits--rempli .forfait__remplissage {
+    transform: none;
+    transition: transform var(--duration-sig-2) var(--ease-out-strong);
+  }
+  .forfaits--rempli .forfait:nth-child(2) .forfait__remplissage { transition-delay: var(--delay-sig-2-b); }
+  .forfaits--rempli .forfait:nth-child(3) .forfait__remplissage { transition-delay: var(--delay-sig-2-c); }
+}
+
+/* ---------- 10. Questions repliables ---------- */
+.faq { gap: 0; }
+.faq details { border-bottom: var(--border-width) solid var(--color-border); }
+.faq details:first-child { border-top: var(--border-width) solid var(--color-border); }
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  min-height: var(--tap-row); padding-block: var(--space-4);
+  font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug);
+  list-style: none; cursor: pointer;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .icon { width: 24px; height: 24px; color: var(--color-accent); transition: transform var(--duration-base) var(--ease-out-strong); }
+.faq details[open] summary .icon { transform: rotate(45deg); }
+.faq__reponse { padding-bottom: var(--space-5); color: var(--color-text-muted); }
+@media (hover: hover) and (pointer: fine) {
+  .faq summary:hover { color: var(--color-link-hover); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .faq details[open] .faq__reponse { animation: apparait var(--duration-base) var(--ease-out-strong); }
+}
+@keyframes apparait { from { opacity: 0; transform: translateY(calc(-1 * var(--space-1))); } }
+
+/* ---------- 11. Pied de page (lot 1, titres sans capitales espacées) ---------- */
+.site-footer {
+  padding-block: var(--space-7) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  color: var(--color-dark-text); background: var(--color-dark-bg);
+}
+.site-footer a { color: var(--color-dark-link); }
+.site-footer :focus-visible { outline-color: var(--color-dark-focus); }
+.footer__grid { display: grid; gap: var(--space-6); }
+@media (min-width: 48rem) { .site-footer { padding-top: var(--space-8); } }
+@media (min-width: 48rem) { .footer__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-7) var(--space-6); } }
+@media (min-width: 64rem) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; } }
+.footer__liens { display: grid; gap: var(--space-6); }
+@media (min-width: 20rem) { .footer__liens { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-5); } }
+@media (min-width: 48rem) and (max-width: 63.99rem) { .footer__liens { grid-column: 1 / -1; } }
+@media (min-width: 64rem) { .footer__liens { grid-column: span 2; column-gap: var(--space-6); } }
+.footer__brand { display: grid; gap: var(--space-4); align-content: start; }
+.site-footer .footer__logo {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-lg); font-weight: var(--weight-bold); color: var(--color-dark-text); text-decoration: none;
+}
+/* [v2] Logo vectoriel sur sa pastille blanche (le noir du dessin ne se lit pas sur l'encre). */
+.footer__pastille {
+  display: inline-grid; place-items: center; width: 56px; height: 56px; flex: none;
+  background: var(--color-surface); border-radius: var(--radius-full);
+}
+.footer__pastille .logo { width: 36px; height: 40px; }
+.footer__brand p { color: var(--color-dark-text-muted); }
+.footer__title { margin-bottom: var(--space-2); font-weight: var(--weight-bold); color: var(--color-dark-text); }
+.footer__list li a, .footer__list li > span {
+  display: inline-flex; align-items: flex-start; gap: var(--space-2);
+  min-height: 44px; padding-block: var(--space-2);
+}
+/* [v2] Pied de page sur téléphone : texte à 16 px et interligne serré dans les listes (cibles de 44 px gardées). */
+@media (max-width: 47.99rem) {
+  .footer__list { font-size: var(--text-sm); line-height: var(--leading-snug); }
+  .footer__list li a, .footer__list li > span { align-items: center; padding-block: var(--space-2); }
+  .footer__grid { gap: var(--space-6); }
+  .footer__bottom { margin-top: var(--space-6); }
+  /* Arbitrage de la régie (25/11/2026) : sur téléphone, la phrase de marque redit le titre et la signature. Retirée sous 768 px. */
+  .footer__brand p { display: none; }
+}
+.footer__list .icon { margin-top: var(--space-1); }
+.footer__list li > span { color: var(--color-dark-text-muted); }
+.footer__list a { overflow-wrap: anywhere; }
+.footer__bottom {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-3) var(--space-5); margin-top: var(--space-7); padding-top: var(--space-5);
+  font-size: var(--text-sm); color: var(--color-dark-text-muted);
+  border-top: var(--border-width) solid var(--color-dark-line);
+}
+.footer__bottom ul { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); }
+.footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (hover: hover) and (pointer: fine) {
+  .site-footer a:hover { color: var(--color-dark-text); }
+}
+
+/* ---------- 12. Ouverture (bloc 1) et signature S1 ---------- */
+.ouverture { padding-block: var(--space-5) var(--space-6); }
+.ouverture__grille { display: grid; gap: var(--space-5); }
+.ouverture__tete { display: grid; gap: var(--space-3); }
+.ouverture__titre {
+  font-size: var(--text-3xl); font-weight: var(--weight-heavy); line-height: var(--leading-tight);
+  max-width: 30ch;
+}
+.ouverture__cote { display: grid; gap: var(--space-4); align-content: start; }
+.ouverture__texte { display: grid; gap: var(--space-5); }
+.ouverture__chapeau { color: var(--color-text-muted); }
+@media (min-width: 40rem) { .ouverture__chapeau { font-size: var(--text-lg); } }
+.ouverture__actions { display: grid; gap: var(--space-3); }
+.ouverture__actions .cta-group .btn { flex: 1 1 100%; }
+.signature {
+  display: flex; align-items: center; gap: var(--space-4);
+  max-width: none; padding-top: var(--space-5); border-top: var(--border-width) solid var(--color-border);
+}
+.signature__feuille {
+  flex: none; width: var(--portrait-signature); height: var(--portrait-signature);
+  overflow: hidden; background: var(--color-surface-tint); border-radius: var(--radius-leaf-sm);
+  transform-origin: 100% 100%; /* l'angle vif, la « tige » de la feuille */
+}
+.signature__feuille img { width: 100%; height: 100%; object-fit: cover; }
+.signature__texte { display: grid; color: var(--color-text-muted); line-height: var(--leading-snug); }
+.signature__texte strong { color: var(--color-text); }
+@media (min-width: 40rem) {
+  .ouverture__actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-3) var(--space-4); }
+  .ouverture__actions .cta-group { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+  .ouverture__actions .cta-group .btn { flex: none; }
+}
+@media (min-width: 64rem) {
+  .ouverture { padding-block: var(--space-8) var(--space-9); }
+  .ouverture__grille { row-gap: var(--space-6); }
+  .ouverture__tete { grid-column: 1 / -1; }
+  .ouverture__texte { grid-column: 1 / span 7; }
+  .ouverture__cote {
+    grid-column: 9 / -1; align-self: start;
+    padding-left: var(--space-5); border-left: var(--border-width) solid var(--color-border);
+  }
+  .ouverture__cote .signature { padding-top: 0; border-top: 0; }
+  .signature__feuille { width: var(--portrait-signature-lg); height: var(--portrait-signature-lg); }
+}
+/* S1 : la feuille se pose. Animation CSS seule : sans script elle joue quand même et finit visible. */
+@media (prefers-reduced-motion: no-preference) {
+  .signature__feuille { animation: feuille-se-pose var(--duration-sig-1) var(--ease-out-strong) var(--delay-sig-1) backwards; }
+}
+@keyframes feuille-se-pose { from { opacity: 0; transform: scale(var(--scale-feuille-depart)); } }
+
+/* ---------- 13. Impression ---------- */
+@media print {
+  .site-header, .mobile-menu, .skip-link { display: none; }
+  .bande { color: var(--color-text); background: none; }
+  .forfait__remplissage { transform: none; }
+  .site-footer { color: var(--color-text); background: none; }
+}
+
+/* ---------- 14. [v2] Mouvement ----------
+   Personnalité : posé, une seule fois, jamais pendant la lecture. Rien ne bouge dans la zone de réservation.
+   Toutes les entrées sont dans « no-preference » : en mouvement réduit, la page est immobile et complète.
+   fill-mode « backwards » : l'état de départ tient pendant le délai, puis l'élément rend la main
+   (les transformations d'appui et de survol restent libres). */
+@media (prefers-reduced-motion: no-preference) {
+  /* E1 — Entrée du premier écran : titre (principal), puis phrase, puis boutons, en vague courte. */
+  .ouverture__titre   { animation: entre var(--duration-entree) var(--ease-out-strong) backwards; }
+  .ouverture__chapeau { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-2) backwards; }
+  .ouverture__actions { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-3) backwards; }
+
+  /* E2 — Le logo pousse : les feuilles seules sortent de la tige, une fois, sur l'accueil seulement. */
+  .page-accueil .site-header .logo__feuilles {
+    animation: pousse var(--duration-logo) var(--ease-out-strong) var(--delay-logo) backwards;
+  }
+  .brand .logo__feuilles { transition: transform var(--duration-base) var(--ease-out-strong); }
+
+  /* E4 — Apparitions au défilement : posées par accueil.js, seulement sous le pli au chargement. */
+  .apparait--attente { opacity: 0; transform: translateY(var(--distance-suite)); }
+  .apparait--attente.feuille-cadre { transform: scale(var(--scale-feuille-depart)); }
+  .apparait--attente.feuille-cadre img { transform: scale(var(--scale-photo-depart)); }
+  .apparait--vu {
+    opacity: 1; transform: none;
+    transition: opacity var(--duration-apparition) var(--ease-out-strong), transform var(--duration-apparition) var(--ease-out-strong);
+  }
+  .apparait--vu.feuille-cadre img { transform: none; transition: transform var(--duration-apparition) var(--ease-out-strong); }
+  .porte--coaching.apparait--vu { transition-delay: var(--delay-apparition-2); }
+
+  /* Menu du téléphone : il descend de 8 px sous la barre en s'affichant (200 ms) ; il se ferme sans animation. */
+  .mobile-menu { transition: opacity var(--duration-menu) var(--ease-out-strong), transform var(--duration-menu) var(--ease-out-strong); }
+  @starting-style { .mobile-menu { opacity: 0; transform: translateY(var(--distance-menu)); } }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  /* Survol du lien d'accueil : les feuilles s'inclinent de 6°, depuis la tige. */
+  .brand:hover .logo__feuilles { transform: rotate(var(--angle-logo-survol)); }
+}
+@keyframes entre       { from { opacity: 0; transform: translateY(var(--distance-entree)); } }
+@keyframes entre-suite { from { opacity: 0; transform: translateY(var(--distance-suite)); } }
+@keyframes pousse      { from { opacity: 0; transform: rotate(var(--angle-logo-depart)) scale(var(--scale-logo-depart)); } }
+
+
+/* ---------- 15. Tête des pages intérieures ----------
+   DESIGN.md 8 : fil d'Ariane, h1 en 800 à --text-3xl, un chapeau, le bouton de rendez-vous et le téléphone
+   visibles sans défiler. Pas de surtitre. Même grille que l'ouverture de l'accueil. */
+.tete { padding-block: var(--space-4) var(--bloc-y); }
+.tete__grille { display: grid; gap: var(--space-5); }
+.fil ol { display: flex; flex-wrap: wrap; gap: 0 var(--space-2); margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); color: var(--color-text-muted); }
+.fil li { display: inline-flex; align-items: center; gap: var(--space-2); }
+.fil li + li::before { content: "›"; color: var(--color-border-strong); }
+.fil a { display: inline-flex; align-items: center; min-height: var(--tap-min); color: var(--color-text-muted); }
+.fil [aria-current="page"] { display: inline-flex; align-items: center; min-height: var(--tap-min); }
+.tete__titre {
+  margin-top: var(--space-2);
+  font-size: var(--text-3xl); font-weight: var(--weight-heavy); line-height: var(--leading-tight);
+  max-width: 24ch;
+}
+.tete__texte { display: grid; gap: var(--space-5); align-content: start; }
+.tete__chapeau { color: var(--color-text-muted); }
+@media (min-width: 40rem) { .tete__chapeau { font-size: var(--text-lg); } }
+.tete__renvoi { padding-left: var(--space-4); border-left: var(--border-width-accent) solid var(--color-accent); }
+.tete__date { font-size: var(--text-sm); color: var(--color-text-muted); }
+@media (min-width: 64rem) {
+  .tete { padding-top: var(--space-5); }
+  .tete__grille { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap); row-gap: var(--space-6); }
+  .tete__haut { grid-column: 1 / -1; }
+  .tete__texte { grid-column: 1 / span 7; }
+  .tete__cote { grid-column: 9 / -1; align-self: start; }
+}
+/* La tête et le premier bloc se suivent sans double filet. */
+.tete + .bloc { border-top: var(--border-width) solid var(--color-border); }
+
+/* ---------- 16. Texte dans une réponse ---------- */
+.prose { display: grid; gap: var(--space-4); align-content: start; min-width: 0; }
+.prose h3 { margin-top: var(--space-3); font-size: var(--text-lg); line-height: var(--leading-snug); }
+.prose ul:not(.list-reset), .prose ol:not(.list-reset) { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.prose ul:not(.list-reset) > li { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); gap: var(--space-3); max-width: calc(var(--measure) + var(--space-7)); }
+.prose ul:not(.list-reset) > li::before { /* petite feuille du logo, décor seul (comme « Ce que je ne fais pas ») */
+  content: ""; width: var(--space-3); height: var(--space-3); margin-top: 0.55em;
+  background: var(--color-accent); border-radius: var(--radius-leaf-sm);
+}
+.prose ul:not(.list-reset) > li > * { grid-column: 2; }
+.prose .muet, .muet { color: var(--color-text-muted); }
+.note { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* Liste à filets : une ligne par fait, le début en gras (« Pour quoi faire ? », « Avec quels exercices ? »). */
+.filets { display: grid; border-top: var(--border-width) solid var(--color-border); }
+.filets li { padding-block: var(--space-3); border-bottom: var(--border-width) solid var(--color-border); color: var(--color-text-muted); max-width: calc(var(--measure) + var(--space-7)); }
+.filets strong { color: var(--color-text); }
+
+/* Étapes numérotées : le numéro est un repère, pas un grand chiffre (ceux-ci sont réservés aux montants et aux durées). */
+.etapes { display: grid; gap: var(--space-5); counter-reset: etape; }
+.etapes > li { counter-increment: etape; display: grid; grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-3); }
+.etapes > li::before {
+  content: counter(etape); grid-row: 1 / span 3;
+  font-size: var(--text-xl); font-weight: var(--weight-heavy); line-height: var(--leading-tight);
+  color: var(--color-figure); font-variant-numeric: tabular-nums;
+}
+.etapes > li > * { grid-column: 2; }
+.etapes h3 { font-size: var(--text-lg); line-height: var(--leading-snug); }
+.etapes p { color: var(--color-text-muted); }
+.etapes strong { color: var(--color-text); }
+
+/* Encadré en feuille vert pâle (forme de la porte APA) : limites du métier, mention santé. */
+.feuille-pale {
+  display: grid; gap: var(--space-3); padding: var(--space-5);
+  background: var(--color-surface-tint); border-radius: var(--radius-leaf);
+}
+.feuille-pale > p { max-width: calc(var(--measure) + var(--space-6)); }
+@media (min-width: 48rem) { .feuille-pale { padding: var(--space-6); } }
+
+/* Combien ? (une fois par page de service) : le grand chiffre et sa légende. */
+.combien { display: grid; gap: var(--space-3); }
+@media (min-width: 40rem) {
+  .combien { grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-6); }
+}
+
+/* Moyens de contact : une ligne d'au moins 56 px, numéro et adresse en clair, sélectionnables. */
+.moyen { display: grid; gap: var(--space-3); justify-items: start; }
+.moyen__lien {
+  display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--tap-row);
+  font-size: var(--text-xl); font-weight: var(--weight-heavy); overflow-wrap: anywhere;
+  -webkit-user-select: text; user-select: text;
+}
+.moyen__lien .icon { width: 24px; height: 24px; }
+
+/* Encadré d'absence sur papier (Contact) : la variante claire de la maquette. */
+.absence.absence--clair { color: var(--color-text); }
+
+/* ---------- 17. Fin de page ---------- */
+.fin-page { padding-block: var(--bloc-y); border-top: var(--border-width) solid var(--color-border); }
+.fin-page__grille { display: grid; gap: var(--space-5); }
+.fin-page__phrase { font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug); }
+@media (min-width: 64rem) {
+  .fin-page__grille { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap); }
+  .fin-page__phrase { grid-column: 1 / span 5; }
+  .fin-page .ouverture__actions { grid-column: 6 / -1; }
+}
+
+/* ---------- 18. Tarifs ---------- */
+.grille { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.grille caption { text-align: left; }
+.grille th, .grille td { padding: var(--space-3) var(--space-2); border-bottom: var(--border-width) solid var(--color-border); text-align: left; vertical-align: top; }
+.grille th:first-child, .grille td:first-child { padding-left: 0; }
+.grille th:last-child, .grille td:last-child { padding-right: 0; }
+.grille thead th { font-size: var(--text-sm); color: var(--color-text-muted); border-bottom-color: var(--color-border-strong); }
+.grille tbody th { font-weight: var(--weight-regular); }
+.grille .grille__prix { font-weight: var(--weight-bold); }
+.grille .grille__prix span { font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--color-text-muted); }
+.grille .grille__remise { white-space: nowrap; color: var(--color-text-muted); }
+.grille__note { font-size: var(--text-sm); color: var(--color-text-muted); }
+.grille__note strong { color: var(--color-text); }
+.forfait__avantage { grid-column: 1 / -1; font-size: var(--text-sm); color: var(--color-text); }
+@media (min-width: 64rem) { .forfait__avantage { grid-column: 2 / -1; } }
+
+/* ---------- 19. À propos ---------- */
+.portrait-page { margin: 0; max-width: var(--portrait-page); }
+.portrait-page .feuille-cadre { transform-origin: 100% 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  /* S1, la feuille se pose : le portrait arrive posé dans la forme du logo (premier écran, CSS seul). */
+  .portrait-page .feuille-cadre { animation: feuille-se-pose var(--duration-sig-1) var(--ease-out-strong) var(--delay-sig-1) backwards; }
+}
+.parcours { display: grid; border-top: var(--border-width) solid var(--color-border); }
+.parcours > li {
+  display: grid; grid-template-columns: var(--colonne-annee) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2);
+  padding-block: var(--space-5); border-bottom: var(--border-width) solid var(--color-border);
+}
+.parcours__annee {
+  grid-row: 1 / span 3; font-size: var(--text-lg); font-weight: var(--weight-heavy); line-height: var(--leading-snug);
+  color: var(--color-figure); font-variant-numeric: tabular-nums;
+}
+.parcours > li > :not(.parcours__annee) { grid-column: 2; }
+.parcours h3 { font-size: var(--text-lg); line-height: var(--leading-snug); }
+.parcours__source { font-weight: var(--weight-bold); }
+.parcours__nature { font-size: var(--text-sm); color: var(--color-text-muted); }
+.parcours p:not(.parcours__source):not(.parcours__nature) { color: var(--color-text-muted); }
+
+/* ---------- 20. Publics : sommaire en situations ---------- */
+.sommaire { margin-top: var(--space-2); }
+
+/* ---------- 21. Textes longs : pages légales, repères ---------- */
+.texte-long { padding-block: var(--bloc-y); border-top: var(--border-width) solid var(--color-border); }
+.texte-long__corps { display: grid; gap: var(--space-4); max-width: calc(var(--measure) + var(--space-7)); }
+.texte-long__corps section { display: grid; gap: var(--space-4); }
+.texte-long__corps h2 { margin-top: var(--space-6); font-size: var(--text-xl); font-weight: var(--weight-heavy); line-height: var(--leading-tight); }
+.texte-long__corps h3 { margin-top: var(--space-3); font-size: var(--text-lg); line-height: var(--leading-snug); }
+.texte-long__corps ul, .texte-long__corps ol { display: grid; gap: var(--space-2); margin: 0; padding-left: var(--space-5); }
+.texte-long__corps li { max-width: var(--measure); }
+.texte-long__corps table { width: 100%; border-collapse: collapse; }
+.texte-long__corps th, .texte-long__corps td { padding: var(--space-2); border-bottom: var(--border-width) solid var(--color-border); text-align: left; vertical-align: top; }
+.texte-long__corps a { overflow-wrap: anywhere; }
+.encadre { padding: var(--space-5); border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-leaf); }
+.date-maj { font-size: var(--text-sm); font-weight: var(--weight-bold); color: var(--color-text-muted); }
+@media (min-width: 64rem) {
+  .texte-long .container { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap); }
+  .texte-long__corps { grid-column: 1 / span 9; }
+}
+
+/* ---------- 22. Impression des pages intérieures ---------- */
+@media print {
+  .fil, .tete .ouverture__actions, .fin-page, .site-footer .footer__liens, .call-btn, .menu-toggle, .header-cta { display: none; }
+  body { background: none; color: var(--c-encre); }
+  .texte-long, .bloc { padding-block: var(--space-5); }
+  .texte-long__corps { max-width: none; }
+  .texte-long__corps a::after { content: " (" attr(href) ")"; font-size: var(--text-sm); }
+  h2, h3 { break-after: avoid; }
+  .grille tr, .forfait, .parcours > li { break-inside: avoid; }
+}

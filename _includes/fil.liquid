@@ -1,0 +1,7 @@
+          <nav class="fil" aria-label="Fil d'Ariane">
+            <ol>
+{%- for etape in fil %}
+              <li>{% if forloop.last %}<span aria-current="page">{{ etape.nom }}</span>{% else %}<a href="{{ etape.url | replace: '/index.html', '/' }}">{{ etape.nom }}</a>{% endif %}</li>
+{%- endfor %}
+            </ol>
+          </nav>

@@ -1,0 +1,10 @@
+{%- comment -%} Questions repliables d'une page, depuis entreprise.faq[cle]. Toutes fermées au chargement ; texte présent dans le HTML. {%- endcomment -%}
+{%- assign questions = entreprise.faq[cle] -%}
+          <div class="reponse faq">
+{%- for q in questions %}
+            <details>
+              <summary>{{ q.question }}<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
+              <div class="faq__reponse">{% if q.complement %}{{ q.reponse | remplir | replace: "</p>", "" }} {{ q.complement }}</p>{% else %}{{ q.reponse | remplir }}{% endif %}</div>
+            </details>
+{%- endfor %}
+          </div>
