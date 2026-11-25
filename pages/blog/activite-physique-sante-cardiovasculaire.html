@@ -1,204 +1,68 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.">
-    <meta name="author" content="Loïc Boyer">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://coachapar.fr/pages/blog/activite-physique-sante-cardiovasculaire.html">
-    <meta property="og:title" content="Activité physique adaptée et santé cardiovasculaire | Coach APA'R">
-    <meta property="og:description" content="Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.">
-    <meta property="og:image" content="https://coachapar.fr/images/blog-1.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://coachapar.fr/pages/blog/activite-physique-sante-cardiovasculaire.html">
-    <meta property="twitter:title" content="Activité physique adaptée et santé cardiovasculaire | Coach APA'R">
-    <meta property="twitter:description" content="Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.">
-    <meta property="twitter:image" content="https://coachapar.fr/images/blog-1.jpg">
-
-    <title>Activité physique adaptée et santé cardiovasculaire | Coach APA'R</title>
-    <link rel="canonical" href="https://coachapar.fr/pages/blog/activite-physique-sante-cardiovasculaire.html">
-    <link rel="icon" href="/favicon.ico" sizes="48x48">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
-  <meta name="theme-color" content="#44631F">
-</head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <!-- gabarit:en-tete -->
-  <header class="site-header">
-    <div class="container site-header__bar">
-      <a class="brand" href="/">
-        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
-        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#tarifs">Tarifs</a></li>
-          <li><a href="/#faq">Questions</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
-      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
-    </div>
-    <div class="mobile-menu" id="menu-mobile" hidden>
-      <nav class="container" aria-label="Menu">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-        </ul>
-        <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
-          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+---
+layout: base.liquid
+titre: "Activité physique adaptée et santé cardiovasculaire | Coach APA'R"
+description: "Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin."
+partage_image: repere-cardiovasculaire
+partage_alt: "repères sur l'activité physique et la santé cardiovasculaire"
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Activité physique adaptée", url: "/pages/activite-physique-adaptee.html" }
+  - { nom: "Repères : santé cardiovasculaire", url: "/pages/blog/activite-physique-sante-cardiovasculaire.html" }
+schema: [article]
+# À reporter le jour de la mise en ligne de la refonte (CONTENU.md section 10, ✎) : date de mise à jour réelle.
+article:
+  titre: "L'activité physique adaptée pour la santé cardiovasculaire"
+  publie_le: "2025-03-17"
+  mis_a_jour_le: "2026-11-25"
+---
+{%- comment -%} Texte : CONTENU.md section 10 (à relire mot pour mot dans un navigateur et par le juriste avant la mise en ligne). {%- endcomment -%}
+{%- assign e = entreprise -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">{{ article.titre }}</h1>
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- /gabarit:en-tete -->
-
-  <main id="contenu" tabindex="-1">
-    <article aria-labelledby="titre-page">
-      <div class="page-head">
-        <div class="container--narrow page-head__inner">
-          <nav class="breadcrumb" aria-label="Fil d'Ariane">
-            <ol>
-              <li><a href="/">Accueil</a></li>
-              <li><a href="/pages/blog.html">Blog</a></li>
-              <li><span aria-current="page">Santé cardiovasculaire</span></li>
-            </ol>
-          </nav>
-          <p class="post-meta"><span>Par Loïc Boyer, enseignant en APA</span><span>Publié le 17 mars 2025</span><span>Mis à jour le 15 novembre 2026</span><span>Santé</span></p>
-          <h1 id="titre-page">L'activité physique adaptée pour la santé cardiovasculaire</h1>
-          <p class="page-head__lead">Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.</p>
+        <div class="tete__texte">
+          <p class="tete__chapeau">Ce que l'activité physique apporte au cœur, et comment la reprendre progressivement, avec l'accord de votre médecin.</p>
+          <p class="tete__date">Par <a href="/pages/a-propos.html">{{ e.identite.responsable }}</a>, enseignant en activité physique adaptée · Publié le <time datetime="{{ article.publie_le }}">{{ article.publie_le | date_longue }}</time> · Mis à jour le <time datetime="{{ article.mis_a_jour_le }}">{{ article.mis_a_jour_le | date_longue }}</time></p>
         </div>
       </div>
+    </section>
 
-      <div class="section section--surface">
-        <div class="container--narrow">
-          <figure class="article-figure">
-            <img src="/images/blog-1.webp" srcset="/images/blog-1-800.webp 800w, /images/blog-1.webp 1600w" sizes="(min-width: 46rem) 736px, 100vw" alt="Activité physique et santé cardiovasculaire" width="1600" height="1173" fetchpriority="high">
-          </figure>
-          <div class="prose">
-            <h2>Pourquoi l'activité physique est cruciale pour la santé cardiaque</h2>
+    <article class="texte-long" aria-labelledby="titre-page">
+      <div class="container">
+        <div class="texte-long__corps">
+          <h2>Pourquoi l'activité physique compte pour le cœur</h2>
+          <p>En France, les maladies cardiovasculaires sont la deuxième cause de mortalité, après les cancers (Santé publique France). La sédentarité et l'inactivité physique font partie de leurs facteurs de risque, et ces facteurs-là peuvent changer.</p>
+          <p>Chez l'adulte, l'Organisation mondiale de la santé indique que l'activité physique réduit le risque de mourir d'une maladie cardiovasculaire, ainsi que le risque de développer une hypertension ou un diabète de type 2. Ses recommandations valent aussi pour les personnes qui vivent avec une maladie chronique ou un handicap.</p>
 
-            <p>En France, les maladies cardiovasculaires sont la deuxième cause de mortalité, après les cancers (<a href="https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-cardiovasculaires-et-accident-vasculaire-cerebral" target="_blank" rel="noopener">Santé publique France, page mise à jour le 7 juillet 2025</a>). L'activité physique est un pilier de leur prévention, et elle a toute sa place dans la vie des personnes qui vivent avec une maladie cardiaque, avec l'accord de leur cardiologue.</p>
+          <h2>Combien, et comment reprendre&nbsp;?</h2>
+          <p>L'OMS recommande aux adultes au moins 150 minutes d'activité physique d'intensité modérée par semaine, soit 2&nbsp;h&nbsp;30, et rappelle que le renforcement musculaire est bénéfique pour toutes et tous.</p>
+          <p>Ces repères s'adaptent à l'âge, à l'état de santé et à la maladie. Si vous vivez avec une maladie cardiaque, ou si vous sortez d'un programme de réadaptation cardiaque à l'hôpital, la reprise se fait avec l'accord de votre cardiologue.</p>
 
-            <p>L'APA se distingue de l'exercice physique traditionnel par sa dimension personnalisée. Elle est conçue pour s'adapter aux capacités et aux besoins spécifiques de chaque individu, notamment ceux présentant des facteurs de risque cardiovasculaire ou souffrant déjà d'une pathologie cardiaque.</p>
+          <h2>Ce que je fais, et ce que je ne fais pas</h2>
+          <p>Je suis enseignant en activité physique adaptée (APA), pas médecin. Avec l'accord de votre cardiologue&nbsp;:</p>
+          <ul>
+            <li>je fais le point sur vos capacités et sur ses consignes&nbsp;;</li>
+            <li>je construis une progression qui part de votre niveau du jour&nbsp;;</li>
+            <li>j'ajuste chaque séance selon vos sensations, et nous arrêtons en cas de douleur inhabituelle ou de malaise.</li>
+          </ul>
+          <p>Je ne touche pas à votre traitement et je ne donne pas d'avis médical. Le cadre complet est sur la page <a href="/pages/activite-physique-adaptee.html">activité physique adaptée à Montpellier</a>&nbsp;; ce que je propose selon votre situation, sur la page <a href="/publics-accompagnes.html#maladie-chronique">Pour qui</a>.</p>
 
-            <h3>Ce que l'activité physique apporte au cœur</h3>
-
-            <p>Les études sur l'activité physique régulière décrivent plusieurs effets favorables pour le cœur et les vaisseaux :</p>
-
-            <ul>
-              <li><strong>Pression artérielle</strong> : une pratique régulière aide à faire baisser la pression artérielle.</li>
-              <li><strong>Profil lipidique</strong> : l'activité physique contribue à augmenter le "bon" cholestérol (HDL) et à réduire les triglycérides.</li>
-              <li><strong>Glycémie</strong> : l'exercice physique améliore la sensibilité à l'insuline et aide à maintenir un taux de glucose sanguin équilibré.</li>
-              <li><strong>Inflammation</strong> : une activité physique régulière est associée à une inflammation plus faible, favorable au système cardiovasculaire.</li>
-              <li><strong>Vaisseaux sanguins</strong> : l'exercice régulier favorise la santé des vaisseaux sanguins en stimulant la production d'oxyde nitrique.</li>
-            </ul>
-
-            <h3>Comment intégrer l'APA dans un programme de santé cardiovasculaire</h3>
-
-            <p>L'Organisation mondiale de la santé recommande aux adultes au moins 2 h 30 d'activité physique d'intensité modérée par semaine, et rappelle que le renforcement musculaire est bénéfique pour toutes et tous (<a href="https://www.who.int/fr/news-room/fact-sheets/detail/physical-activity" target="_blank" rel="noopener">OMS, aide-mémoire « Activité physique », mis à jour le 4 novembre 2026</a>).</p>
-
-            <p>Ces repères doivent être adaptés en fonction de l'âge, de l'état de santé général et des éventuelles pathologies existantes. C'est pourquoi l'accompagnement par un professionnel de l'APA est précieux, particulièrement pour les personnes à risque cardiovasculaire ou qui ont terminé un programme de réadaptation cardiaque, avec l'accord de leur cardiologue.</p>
-
-            <h3>Mon approche d'enseignant en APA</h3>
-
-            <p>En tant qu'enseignant en activité physique adaptée, mon approche est fondée sur trois principes essentiels :</p>
-
-            <ol>
-              <li><strong>Évaluation personnalisée</strong> : Je fais le point avec vous sur vos capacités, votre condition physique et les consignes de votre médecin, pour identifier vos besoins.</li>
-              <li><strong>Progressivité</strong> : Je conçois un programme qui débute à votre niveau actuel et évolue graduellement pour limiter les risques et progresser durablement.</li>
-              <li><strong>Suivi rigoureux</strong> : Je vous accompagne pas à pas, en ajustant régulièrement votre programme selon vos progrès et vos ressentis.</li>
-            </ol>
-
-            <p>Cette méthode vous aide à progresser durablement, avec une attention constante à votre sécurité, particulièrement importante dans le cadre de la santé cardiovasculaire. Pour en savoir plus, découvrez mon accompagnement en <a href="/pages/activite-physique-adaptee.html">activité physique adaptée à Montpellier</a>.</p>
-
-            <div class="callout">
-              <p>Vous souhaitez reprendre une activité physique adaptée à votre cœur ?</p>
-              <div class="cta-group">
-                <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
-                <p class="cta-note">Offert, sans engagement</p>
-              </div>
-            </div>
-          </div>
+          <h2>Sources</h2>
+          <ul>
+            <li>Santé publique France, «&nbsp;Maladies cardiovasculaires et accident vasculaire cérébral&nbsp;», page mise à jour le 7 juillet 2025&nbsp;: <a href="https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-cardiovasculaires-et-accident-vasculaire-cerebral" rel="noopener">santepubliquefrance.fr</a></li>
+            <li>Organisation mondiale de la santé, aide-mémoire «&nbsp;Activité physique&nbsp;», page datée du 4 novembre 2026&nbsp;: <a href="https://www.who.int/fr/news-room/fact-sheets/detail/physical-activity" rel="noopener">who.int</a></li>
+          </ul>
+          <p class="note">Sources consultées le 25 novembre 2026. Cette page informe&nbsp;; elle ne remplace pas l'avis de votre médecin.</p>
         </div>
       </div>
     </article>
-  </main>
 
-  <!-- gabarit:pied -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
-          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-        </div>
-        <nav aria-labelledby="pied-services">
-          <p class="footer__title" id="pied-services">Services</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
-            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
-            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-            <li><a href="/#services">Pilates</a></li>
-          </ul>
-        </nav>
-        <nav aria-labelledby="pied-infos">
-          <p class="footer__title" id="pied-infos">Informations</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/#tarifs">Tarifs</a></li>
-            <li><a href="/#faq">Questions fréquentes</a></li>
-            <li><a href="/pages/blog.html">Blog</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p class="footer__title">Contact</p>
-          <ul class="footer__list list-reset">
-            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
-            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
-          </ul>
-        </div>
+    <section class="fin-page" aria-label="Premier rendez-vous">
+      <div class="container fin-page__grille">
+        <p class="fin-page__phrase">Vous souhaitez reprendre une activité physique adaptée à votre cœur&nbsp;?</p>
+{% include "actions-rdv.liquid" %}
       </div>
-      <div class="footer__bottom">
-        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
-        <nav aria-label="Informations légales">
-          <ul class="list-reset">
-            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/pages/cgv.html">CGV</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <!-- /gabarit:pied -->
-
-  <script src="/js/app.js" defer></script>
-</body>
-</html>
+    </section>
