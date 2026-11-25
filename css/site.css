@@ -594,7 +594,8 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
 }
 @media (min-width: 64rem) {
   .ouverture { padding-block: var(--space-8) var(--space-9); }
-  .ouverture__grille { row-gap: var(--space-6); }
+  /* Les 12 colonnes sont reposées ici : la règle à une colonne ci-dessus, écrite plus bas que la grille commune, l'annulait sur grand écran. */
+  .ouverture__grille { grid-template-columns: repeat(12, minmax(0, 1fr)); row-gap: var(--space-6); }
   .ouverture__tete { grid-column: 1 / -1; }
   .ouverture__texte { grid-column: 1 / span 7; }
   .ouverture__cote {
