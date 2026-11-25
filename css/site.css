@@ -619,7 +619,9 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
    (les transformations d'appui et de survol restent libres). */
 @media (prefers-reduced-motion: no-preference) {
   /* E1 — Entrée du premier écran : titre (principal), puis phrase, puis boutons, en vague courte. Accueil seulement. */
-  .page-accueil .ouverture__titre   { animation: entre var(--duration-entree) var(--ease-out-strong) backwards; }
+  /* Le titre glisse sans fondu (recette MA-5, décision de la régie) : parti d'une opacité 0, il retardait
+     de 0,7 s l'affichage principal de l'accueil (seuil 2,0 s). La phrase et les boutons gardent le fondu. */
+  .page-accueil .ouverture__titre   { animation: entre-titre var(--duration-entree) var(--ease-out-strong) backwards; }
   .page-accueil .ouverture__chapeau { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-2) backwards; }
   .page-accueil .ouverture__actions { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-3) backwards; }
 
@@ -648,7 +650,7 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
   /* Survol du lien d'accueil : les feuilles s'inclinent de 6°, depuis la tige. */
   .brand:hover .logo__feuilles { transform: rotate(var(--angle-logo-survol)); }
 }
-@keyframes entre       { from { opacity: 0; transform: translateY(var(--distance-entree)); } }
+@keyframes entre-titre { from { transform: translateY(var(--distance-entree)); } }
 @keyframes entre-suite { from { opacity: 0; transform: translateY(var(--distance-suite)); } }
 @keyframes pousse      { from { opacity: 0; transform: rotate(var(--angle-logo-depart)) scale(var(--scale-logo-depart)); } }
 
