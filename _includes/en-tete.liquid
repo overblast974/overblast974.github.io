@@ -1,0 +1,32 @@
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="/"{% if accueil %} aria-current="page"{% endif %}>
+        <svg class="logo" viewBox="0 0 238 262" width="40" height="44" aria-hidden="true" focusable="false"><use href="/images/logo-apar.svg#pomme"/><use class="logo__feuilles" href="/images/logo-apar.svg#feuilles"/></svg>
+        <span><span class="brand__name">{{ e.identite.nom }}</span><span class="brand__sub">{{ e.identite.sous_titre_en_tete }}</span></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="list-reset">
+{%- for l in navigation.menu %}
+          <li><a href="{{ l.url }}"{% if menu == l.cle %} aria-current="page"{% endif %}>{{ l.nom }}</a></li>
+{%- endfor %}
+        </ul>
+      </nav>
+      <a class="btn btn--primary header-cta" href="{{ reservation }}">Prendre mon premier rendez-vous</a>
+      <a class="icon-btn call-btn" href="tel:{{ tel.international }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le {{ tel.affiche }}</span></a>
+      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
+    </div>
+    <div class="mobile-menu" id="menu-mobile" hidden>
+      <nav class="container" aria-label="Menu">
+        <ul class="list-reset">
+{%- for l in navigation.menu %}
+          <li><a href="{{ l.url }}"{% if menu == l.cle %} aria-current="page"{% endif %}>{{ l.nom }} <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
+{%- endfor %}
+        </ul>
+        <div class="mobile-menu__actions">
+          <a class="btn btn--primary btn--block" href="{{ reservation }}">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">{{ e.offre.premier_rendez_vous.libelle }}</p>
+          <a class="btn btn--secondary btn--block" href="tel:{{ tel.international }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>{{ tel.affiche }}</a>
+        </div>
+      </nav>
+    </div>
+  </header>

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Signature S2 « le forfait se remplit ». Barre = durée conseillée / durée du plus long forfait (8 mois),
+  calculée depuis les données ; aucune largeur écrite dans le balisage (classe forfait--mois-{durée}, de 1 à 8 ;
+  _outils/donnees.mjs refuse une durée au-delà de 8 mois, recette MI-3).
+  « long » : version de la page Tarifs, avec la remise et la ligne propre au forfait 20.
+{%- endcomment -%}
+{%- assign o = entreprise.offre -%}
+          <ol class="forfaits list-reset" aria-label="Les {{ o.forfaits.size }} forfaits">
+{%- for f in o.forfaits %}
+            <li class="forfait forfait--mois-{{ f.de_preference_sous_mois }}">
+              <p class="forfait__nom">{{ f.seances }} séances</p>
+              <p class="forfait__prix">{{ f.prix | euros }}</p>
+              <div class="forfait__piste" aria-hidden="true"><span class="forfait__remplissage"></span></div>
+              <p class="forfait__duree">À utiliser de préférence sous {{ f.de_preference_sous_mois }}&nbsp;mois</p>
+              <p class="forfait__unite">soit {{ f | prix_par_seance | euros }} la&nbsp;séance{% if long %}, −{{ f | remise: o.seance.prix }}&nbsp;%{% endif %}</p>
+{%- if long and f.avantage %}
+              <p class="forfait__avantage">{{ f.avantage }}</p>
+{%- endif %}
+            </li>
+{%- endfor %}
+          </ol>

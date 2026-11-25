@@ -1,0 +1,29 @@
+{%- comment -%}
+  La grille des prix, depuis une seule liste calculée (_outils/schema.mjs, lignesTarifs) :
+  forme "tableau" pour la page Tarifs, forme "liste" pour l'article 3.1 des CGV (mot pour mot,
+  OBLIGATIONS 1.10). Le catalogue de données structurées sort de la même liste.
+{%- endcomment -%}
+{%- assign lignes = "" | lignes_tarifs -%}
+{%- if forme == "liste" %}
+                  <ul>
+{%- for l in lignes %}
+                      <li>{{ l.nom }} : {% if l.prix == 0 %}offert{% else %}{{ l.prix | euros_cgv }}{% if l.parSeance %}, soit {{ l.parSeance | euros_cgv }} la séance{% endif %}{% if l.unite %} {{ l.unite }}{% endif %}{% endif %}</li>
+{%- endfor %}
+                  </ul>
+{%- else %}
+            <table class="grille" role="table">
+              <caption class="visually-hidden">Tous les prix, en euros</caption>
+              <thead role="rowgroup">
+                <tr role="row"><th scope="col" role="columnheader">Prestation</th><th scope="col" role="columnheader">Prix</th><th scope="col" role="columnheader">Par rapport au prix à l'unité</th></tr>
+              </thead>
+              <tbody role="rowgroup">
+{%- for l in lignes %}
+                <tr role="row">
+                  <th scope="row" role="rowheader">{{ l.nom }}</th>
+                  <td class="grille__prix" role="cell">{% if l.prix == 0 %}offert{% else %}{{ l.prix | euros }}{% if l.unite %} {{ l.unite }}{% endif %}{% if l.parSeance %}<span>, soit {{ l.parSeance | euros }} la&nbsp;séance</span>{% endif %}{% endif %}</td>
+                  <td class="grille__remise" role="cell">{% if l.remise %}<span class="grille__libelle" aria-hidden="true">Par rapport au prix à l'unité&nbsp;: </span>−{{ l.remise }}&nbsp;%{% endif %}</td>
+                </tr>
+{%- endfor %}
+              </tbody>
+            </table>
+{%- endif %}

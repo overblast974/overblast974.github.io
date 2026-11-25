@@ -1,223 +1,97 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contactez Coach APA'R, votre coach sportif et enseignant en APA à Montpellier. Premier rendez-vous offert, par téléphone.">
-    <meta name="author" content="Coach APA'R">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://coachapar.fr/pages/contact.html">
-    <meta property="og:title" content="Contact et rendez-vous à Montpellier | Coach APA'R">
-    <meta property="og:description" content="Contactez Coach APA'R pour prendre rendez-vous ou en savoir plus sur le coaching sportif et l'activité physique adaptée à Montpellier.">
-    <meta property="og:image" content="https://coachapar.fr/images/partage.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Coach APA'R, coach sportif et enseignant en activité physique adaptée à Montpellier">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://coachapar.fr/pages/contact.html">
-    <meta property="twitter:title" content="Contact et rendez-vous à Montpellier | Coach APA'R">
-    <meta property="twitter:description" content="Contactez Coach APA'R pour prendre rendez-vous ou en savoir plus sur le coaching sportif et l'activité physique adaptée à Montpellier.">
-    <meta property="twitter:image" content="https://coachapar.fr/images/partage.jpg">
-
-    <title>Contact et rendez-vous à Montpellier | Coach APA'R</title>
-    <link rel="canonical" href="https://coachapar.fr/pages/contact.html">
-    <link rel="icon" href="/favicon.ico" sizes="48x48">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
-  <meta name="theme-color" content="#44631F">
-</head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <!-- gabarit:en-tete -->
-  <header class="site-header">
-    <div class="container site-header__bar">
-      <a class="brand" href="/">
-        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
-        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#tarifs">Tarifs</a></li>
-          <li><a href="/#faq">Questions</a></li>
-          <li><a href="/pages/contact.html" aria-current="page">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
-      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
-    </div>
-    <div class="mobile-menu" id="menu-mobile" hidden>
-      <nav class="container" aria-label="Menu">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/pages/contact.html" aria-current="page">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-        </ul>
-        <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
-          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+---
+layout: base.liquid
+menu: contact
+titre: "Contact et rendez-vous à Montpellier | Coach APA'R"
+description: "Joindre Coach APA'R à Montpellier : réserver un appel de {duree_appel}, téléphoner au {telephone} ou écrire. Horaires et communes desservies."
+partage_image: contact
+partage_alt: "contact et rendez-vous à Montpellier"
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Contact", url: "/pages/contact.html" }
+---
+{%- comment -%}
+  Textes : CONTENU.md section 5. Formulaire supprimé (CDC 2.2) : aucun <form>, aucun champ.
+  Adresse postale : pages légales seulement. Mise en garde santé sous chaque moyen écrit (E-05).
+{%- endcomment -%}
+{%- assign e = entreprise -%}{%- assign tel = e.contact.telephone -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">Contact et rendez-vous</h1>
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- /gabarit:en-tete -->
-
-  <main id="contenu" tabindex="-1">
-    <section class="page-head" aria-labelledby="titre-page">
-      <div class="container page-head__inner">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
-          <ol>
-            <li><a href="/">Accueil</a></li>
-            <li><span aria-current="page">Contact</span></li>
-          </ol>
-        </nav>
-        <h1 id="titre-page">Contact et rendez-vous</h1>
-        <p class="page-head__lead">Pour un premier rendez-vous, choisissez un créneau en ligne. Pour toute autre question, appelez-moi ou écrivez-moi ci-dessous.</p>
-        <div class="cta-group">
-          <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
+        <div class="tete__texte">
+          <p class="tete__chapeau">Trois façons de me joindre. Pour un premier rendez-vous, le plus simple est de choisir un créneau en ligne.</p>
         </div>
       </div>
     </section>
 
-    <section class="section section--surface" aria-label="Coordonnées et formulaire de contact">
-      <div class="container split">
-        <ul class="contact-list list-reset">
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg></span><div><h2>Adresse de l'entreprise</h2><p>56 rue Albert Schweitzer, 34090 Montpellier. Je ne reçois pas à cette adresse : les séances ont lieu chez vous, en extérieur ou en salle.</p></div></li>
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg></span><div><h2>Téléphone</h2><p><a href="tel:+33765775104">07 65 77 51 04</a></p></div></li>
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg></span><div><h2>Email</h2><p><a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a></p></div></li>
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg></span><div><h2>Horaires</h2><p>Du lundi au vendredi, 17 h 30 – 21 h 30.<br>Le samedi, 8 h – 16 h.<br>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</p></div></li>
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-diplome"/></svg></span><div><h2>Avant de m'écrire</h2><p><a href="/pages/a-propos.html">Qui je suis et mes qualifications</a><br><a href="/pages/activite-physique-adaptee.html">L'activité physique adaptée et le sport sur ordonnance</a></p></div></li>
-        </ul>
-        <div class="form-card">
-          <form class="form" id="contactForm" action="https://formspree.io/f/xwplpobd" method="POST" novalidate>
-            <p class="form__required">Les champs marqués d'un astérisque (<span class="req" aria-hidden="true">*</span>) sont obligatoires.</p>
-            <div class="field">
-              <label for="name">Nom <span class="req" aria-hidden="true">*</span></label>
-              <input class="input" type="text" id="name" name="name" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input class="input" type="email" id="email" name="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="phone">Téléphone (facultatif)</label>
-              <input class="input" type="tel" id="phone" name="phone" autocomplete="tel">
-            </div>
-            <div class="field">
-              <label for="service">Service souhaité (facultatif)</label>
-              <select class="select" id="service" name="service">
-                <option value="" selected>Choisissez un service</option>
-                <!-- Services de Coaching Sportif -->
-                <option value="coaching-individuel">Coaching individuel</option>
-                <option value="forfaits-seances">Forfaits 5, 10 ou 20 séances</option>
-                <option value="preparation-physique">Préparation physique</option>
-                <option value="bilan-condition-physique">Bilan de condition physique</option>
-                <!-- Alimentation -->
-                <option value="bilan-nutritionnel">Premier point alimentation</option>
-                <option value="plan-alimentaire">Repères et menus types</option>
-                <option value="suivi-nutritionnel">Suivi alimentation</option>
-                <!-- Nouveaux services -->
-                <option value="cours-pilates">Pilates (séance individuelle ou intérêt pour un cours collectif)</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="message">Message (facultatif)</label>
-              <textarea class="textarea" id="message" name="message" rows="5" aria-describedby="message-aide"></textarea>
-              <p class="hint" id="message-aide">Votre demande : objectif, disponibilités, lieu souhaité. Merci de ne pas indiquer d'informations sur votre santé : nous en parlerons de vive voix.</p>
-            </div>
-            <div class="honeypot" aria-hidden="true">
-              <label for="contact-gotcha">Ne pas remplir ce champ</label>
-              <input type="text" id="contact-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-            </div>
-            <button type="submit" class="btn btn--primary btn--block">Envoyer</button>
-            <div id="contactStatus" class="status" role="status" aria-live="polite" tabindex="-1"></div>
-            <div class="privacy">
-              <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie Gmail (Google, États-Unis). Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="/pages/politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
-              <details>
-                <summary>En savoir plus</summary>
-                <p><strong>Qui traite vos données ?</strong> Loïc Boyer, entrepreneur individuel, exerçant sous le nom Coach APA'R. Contact : coachapar@gmail.com.</p>
-                <p><strong>Pour quoi faire ?</strong> Répondre à votre demande d'information ou de rendez-vous, avant tout engagement de votre part. Vos données ne servent à aucune prospection et ne sont ni vendues ni cédées.</p>
-                <p><strong>Qui les reçoit ?</strong> Je suis le seul à les utiliser. Pour me parvenir, elles passent par Formspree, service de formulaires établi aux États-Unis, puis arrivent dans ma messagerie Gmail (Google, États-Unis). Ces deux services encadrent ces transferts selon leurs propres conditions, détaillées dans la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</p>
-                <p><strong>Combien de temps ?</strong> 12 mois après notre dernier échange si aucun accompagnement n'est engagé. Si vous devenez client, les durées sont celles indiquées dans la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</p>
-                <p><strong>Vos droits.</strong> Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, la limitation de leur traitement ou vous opposer à leur traitement, en écrivant à coachapar@gmail.com. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>
-                <p><strong>Pourquoi ne pas parler de santé ici ?</strong> Les informations de santé sont des données sensibles. Elles ne doivent pas transiter par ce formulaire : nous en parlerons de vive voix lors du premier échange.</p>
-              </details>
-            </div>
-          </form>
+    <section class="bloc" id="reserver" aria-labelledby="q-reserver">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-reserver">Réserver un appel de {{ e.contact.reservation.appel.duree }}</h2>
+        <div class="reponse moyen">
+          <p>Je vous appelle à l'heure choisie, pour faire connaissance et répondre à vos questions. Vous pouvez aussi choisir directement un premier rendez-vous d'{{ e.contact.reservation.domicile.duree_lettres }} chez vous.</p>
+          <div class="cta-group">
+            <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
+            <p class="cta-note">{{ e.offre.premier_rendez_vous.libelle }}</p>
+          </div>
+          <p class="note">La réservation ne vous demande rien sur votre santé&nbsp;: merci de ne rien y indiquer. Voir la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</p>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- gabarit:pied -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
-          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
+    <section class="bloc" id="telephoner" aria-labelledby="q-telephoner">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-telephoner">Téléphoner</h2>
+        <div class="reponse moyen">
+          <a class="moyen__lien" href="tel:{{ tel.international }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>{{ tel.affiche }}</a>
+          <p>{{ e.horaires.plages | horaires_phrase | capitale }}.</p>
         </div>
-        <nav aria-labelledby="pied-services">
-          <p class="footer__title" id="pied-services">Services</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
-            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
-            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-            <li><a href="/#services">Pilates</a></li>
-          </ul>
-        </nav>
-        <nav aria-labelledby="pied-infos">
-          <p class="footer__title" id="pied-infos">Informations</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/#tarifs">Tarifs</a></li>
-            <li><a href="/#faq">Questions fréquentes</a></li>
-            <li><a href="/pages/blog.html">Blog</a></li>
-            <li><a href="/pages/contact.html" aria-current="page">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p class="footer__title">Contact</p>
-          <ul class="footer__list list-reset">
-            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
-            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
+      </div>
+    </section>
+
+    <section class="bloc" id="ecrire" aria-labelledby="q-ecrire">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-ecrire">Écrire un e-mail</h2>
+        <div class="reponse moyen">
+          <a class="moyen__lien" href="mailto:{{ e.contact.email }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>{{ e.contact.email }}</a>
+          <p class="note">Dites-moi votre objectif, vos disponibilités et votre commune. Merci de ne rien écrire sur votre santé&nbsp;: nous en parlerons de vive voix. Ce que deviennent vos messages est expliqué dans la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="horaires" aria-labelledby="q-horaires">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-horaires">Horaires</h2>
+        <div class="reponse">
+          <p>{{ e.horaires.plages | horaires_phrase | capitale }}.</p>
+{%- if absence_affichee %}
+          <p class="absence absence--clair" role="note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg><span>{{ e.absence.phrase }}</span></p>
+{%- endif %}
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="zone" aria-labelledby="q-zone">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-zone">Où je me déplace</h2>
+        <div class="reponse">
+          <p class="reponse__chapeau"><strong>{{ e.zone | zone_phrase }}.</strong></p>
+          <p>Je ne reçois pas&nbsp;: les séances ont lieu chez vous ou en extérieur. Votre commune n'est pas dans la liste&nbsp;? Dites-le-moi&nbsp;: je vous réponds avant tout engagement si je peux me déplacer, et à quel prix.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="avant" aria-labelledby="q-avant">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-avant">Avant de m'écrire</h2>
+        <div class="reponse">
+          <ul class="situations situations--petites list-reset">
+            <li><a href="/pages/a-propos.html">Qui je suis et mes qualifications</a></li>
+            <li><a href="/pages/activite-physique-adaptee.html">L'activité physique adaptée et le sport sur ordonnance</a></li>
+            <li><a href="/pages/tarifs.html">Tous les tarifs</a></li>
+            <li><a href="/pages/activite-physique-adaptee.html#medecins">Vous êtes médecin&nbsp;? Comment orienter un patient</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer__bottom">
-        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
-        <nav aria-label="Informations légales">
-          <ul class="list-reset">
-            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/pages/cgv.html">CGV</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <!-- /gabarit:pied -->
-
-  <script src="/js/app.js" defer></script>
-</body>
-</html>
+    </section>

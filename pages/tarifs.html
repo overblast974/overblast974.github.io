@@ -1,0 +1,121 @@
+---
+layout: base.liquid
+menu: tarifs
+titre: "Tarifs : coach sportif et APA à Montpellier | Coach APA'R"
+description: "Tous les prix de Coach APA'R : séance d'une heure à {seance}, forfaits de {forfaits_seances} séances, alimentation, bilan. Premier rendez-vous offert. Montpellier."
+partage_image: tarifs
+partage_alt: "tarifs du coaching sportif et de l'activité physique adaptée"
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Tarifs", url: "/pages/tarifs.html" }
+schema: [catalogue]
+---
+{%- comment -%}
+  Textes : CONTENU.md section 4, avec la relecture du juriste (legal/RELECTURE-contenu-refonte.md b2, b3, b4, b6, b7).
+  La grille sort de la même liste que l'article 3.1 des CGV et que le catalogue de données structurées.
+{%- endcomment -%}
+{%- assign e = entreprise -%}{%- assign o = e.offre -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">Tarifs</h1>
+        </div>
+        <div class="tete__texte">
+          <p class="tete__chapeau">Des prix fixes. Le premier rendez-vous est offert&nbsp;; ensuite, vous payez à la séance ou en forfait, par Wero ou en espèces. Une séance dure {{ o.seance.duree_minutes | duree }}.</p>
+{% include "actions-rdv.liquid" %}
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="grille" aria-labelledby="q-grille">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-grille">La grille</h2>
+        <div class="reponse">
+{%- assign forme = "tableau" %}
+{% include "grille-tarifs.liquid" %}
+          <p class="grille__note"><strong>Une séance dure {{ o.seance.duree_minutes | duree }}</strong>, qu'il s'agisse d'une séance individuelle ou d'une séance de suivi alimentation. {{ o.mention_prix }}. Ces prix comprennent les programmes ou repères remis et le déplacement {{ e.zone.deplacement_compris_cgv }}. Conditions complètes&nbsp;: <a href="/pages/cgv.html">conditions générales de vente, article&nbsp;3</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="premier-rendez-vous" aria-labelledby="q-premier">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-premier">Le premier rendez-vous, offert</h2>
+        <div class="reponse">
+          <div class="rdv__options">
+            <div class="combien">
+              <p class="chiffre">20<span aria-hidden="true">&nbsp;min</span><span class="visually-hidden"> minutes</span></p>
+              <p class="prix__legende">Un appel pour faire connaissance.</p>
+            </div>
+            <div class="combien">
+              <p class="chiffre">1<span aria-hidden="true">&nbsp;h&nbsp;30</span><span class="visually-hidden"> heure 30</span></p>
+              <p class="prix__legende">Un premier rendez-vous chez vous.</p>
+            </div>
+          </div>
+          <p>Deux formes, au choix&nbsp;: un appel de {{ e.contact.reservation.appel.duree }} pour faire connaissance, ou un rendez-vous de {{ e.contact.reservation.domicile.duree }} chez vous, avec un bilan initial, un bilan de condition physique, vos objectifs et ma proposition. Il vaut aussi pour une demande sur l'alimentation. Il n'engage à rien.</p>
+{% include "actions-rdv.liquid" %}
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="forfaits" aria-labelledby="q-forfaits">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-forfaits">Les forfaits</h2>
+        <div class="reponse prix">
+{%- assign long = true %}
+{% include "forfaits.liquid" %}
+{%- assign long = false %}
+          <div class="prose">
+            <p>Un forfait est prévu pour être utilisé en {% for f in o.forfaits %}{% if forloop.last %} ou {% elsif forloop.index > 1 %}, {% endif %}{{ f.de_preference_sous_mois }}&nbsp;mois ({{ f.seances }} séances){% endfor %}. Cette durée commence à la première séance.</p>
+            <p>Les séances payées et non prises à la fin de cette durée ne sont pas perdues. À votre choix, elles sont reportées à des dates convenues ensemble, ou elles vous sont remboursées au prix de la séance dans le forfait.</p>
+            <p>Vous pouvez mettre fin à votre forfait à tout moment, par écrit, sans vous justifier&nbsp;: les séances payées et non réalisées vous sont remboursées dans les quatorze jours, sans aucune retenue.</p>
+            <p>Un forfait ne se renouvelle jamais automatiquement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="alimentation" aria-labelledby="q-alimentation">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-alimentation">L'accompa&shy;gnement alimentaire</h2>
+        <div class="reponse">
+          <p>Pour les personnes en bonne santé et les sportifs, en complément de l'activité physique. Je ne suis pas diététicien.</p>
+          <ul class="filets list-reset">
+            <li><strong>Premier point alimentation</strong>&nbsp;: vos habitudes, votre mode de vie, vos objectifs.</li>
+            <li><strong>Repères et menus types personnalisés</strong>&nbsp;: avec des recettes et des conseils pratiques.</li>
+            <li><strong>Suivi alimentation</strong>&nbsp;: des rendez-vous d'{{ o.seance.duree_minutes | duree }}, en personne, pour ajuster les repères.</li>
+          </ul>
+          <a class="lien-suite" href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="bilan" aria-labelledby="q-bilan">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-bilan">Le bilan de condition physique</h2>
+        <div class="reponse">
+          <p>Il fait partie du premier rendez-vous à domicile, qui est offert. Vous pouvez aussi le demander seul, en dehors de ce rendez-vous&nbsp;: il coûte alors {{ o.bilan_seul.prix | euros }}. Ce sont des tests d'endurance, de force et de souplesse, adaptés à vos capacités.</p>
+          <a class="lien-suite" href="/pages/contact.html">Me contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="conditions" aria-labelledby="q-conditions">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-conditions">Déplacement, paiement, engagement</h2>
+        <div class="reponse">
+          <dl class="filets conditions">
+            <div><dt>Le déplacement</dt><dd>Il est compris {{ e.zone.deplacement_compris_cgv }}. Au-delà, je vous dis avant tout engagement si je peux me déplacer et à quel prix&nbsp;; ce prix est écrit dans le devis-contrat.</dd></div>
+            <div><dt>Le paiement</dt><dd>Par Wero (paiement instantané de compte à compte) ou en espèces. Rien ne se paie sur ce site. Aucun acompte n'est demandé pour réserver un rendez-vous. Vous recevez une facture pour chaque prestation réalisée.</dd></div>
+            <div><dt>Comment on s'engage</dt><dd>Le forfait se choisit après le premier rendez-vous, qui est offert. Vous recevez un devis écrit et vous avez quatorze jours pour changer d'avis. <a href="/pages/cgv.html">Lire les conditions générales de vente</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="fin-page" aria-label="Premier rendez-vous">
+      <div class="container fin-page__grille">
+{% include "actions-rdv.liquid" %}
+      </div>
+    </section>

@@ -1,0 +1,169 @@
+# =====================================================================
+#  Coach APA'R : la source unique des informations du site
+# =====================================================================
+#  C'est le seul fichier à modifier pour changer un prix, un horaire,
+#  le téléphone ou la phrase d'absence. Mode d'emploi : LISEZ-MOI.md.
+#
+#  Règles de saisie :
+#   - un prix est un nombre entier d'euros, sans « € » (exemple : 450) ;
+#   - une date s'écrit "AAAA-MM-JJ" entre guillemets (exemple : "2027-01-11") ;
+#   - une heure s'écrit "HH:MM" entre guillemets (exemple : "17:30") ;
+#   - l'indentation (les espaces en début de ligne) compte : ne pas la changer.
+#  Une erreur de saisie arrête la fabrication : rien n'est publié, le site
+#  en ligne reste tel qu'il était.
+#
+#  État au 25/11/2026 (lot F, branche refonte/site) : les pages de la refonte
+#  lisent ce fichier. Rien de ce qui est ici n'est recopié à la main dans une
+#  page : prix, remises, horaires, zone, téléphone, e-mail, phrase d'absence,
+#  questions fréquentes et données pour Google en sortent tous.
+# =====================================================================
+
+identite:
+  nom: "Coach APA'R"
+  responsable: "Loïc Boyer"
+  metier: "Coach sportif et enseignant en activité physique adaptée"
+  sous_titre_en_tete: "Coach sportif et APA, Montpellier"
+
+contact:
+  telephone:
+    affiche: "07 65 77 51 04"       # tel qu'il s'affiche
+    international: "+33765775104"   # pour les liens « appeler » et les données structurées
+  email: "coachapar@gmail.com"
+  reservation:                      # Cal.com, chaque demande est validée à la main
+    appel:
+      duree: "20 minutes"
+      lien: "https://cal.com/coachapar/20min"
+    domicile:
+      duree: "1 h 30"
+      duree_lettres: "une heure trente"   # forme des CGV 3.1 et de la grille Tarifs (juriste, C4-a)
+      lien: "https://cal.com/coachapar/90min"
+    confirmation_au_plus_tard: "48 h avant le rendez-vous"
+  # Le formulaire de contact est supprimé (décision du 25/11/2026) : téléphone, e-mail et Cal.com.
+
+zone:
+  libelle_court: "Montpellier, Hérault (34)"
+  communes: ["Montpellier", "Lattes", "Castelnau-le-Lez", "Mauguio"]
+  suite: "la métropole"   # affiché : « Montpellier, Lattes, Castelnau-le-Lez, Mauguio et la métropole »
+  deplacement_compris: "dans la métropole de Montpellier et à Mauguio"
+  deplacement_compris_cgv: "dans les communes de Montpellier Méditerranée Métropole et à Mauguio"
+
+horaires:
+  plages:
+    - jours: ["lundi", "mardi", "mercredi", "jeudi", "vendredi"]
+      de: "17:30"
+      a: "21:30"
+    - jours: ["samedi"]
+      de: "08:00"
+      a: "16:00"
+
+# Phrase d'absence : affichée tant que la date du jour est avant « reprise_le ».
+# Pour une nouvelle absence plus tard : remettre une date et une phrase.
+absence:
+  reprise_le: "2027-01-11"
+  phrase: "Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone."
+  # Ajoutée à la phrase, sur l'accueil seulement, près des boutons de réservation. Disparaît avec elle.
+  complement_reservation: "Vous pouvez déjà choisir en ligne un créneau dès cette date."
+
+# Offre et prix. Les remises (−4 %, −10 %, −15 %) et les prix par séance
+# (48 €, 45 €, 42,50 €) sont CALCULÉS à partir de ces montants : ne jamais
+# les écrire. Ces prix sont aussi ceux de l'article 3.1 des CGV.
+offre:
+  premier_rendez_vous:
+    prix: 0
+    libelle: "Offert, sans engagement"
+  seance:
+    prix: 50
+    duree_minutes: 60      # dit par le client le 25/11/2026 ; vaut aussi pour une séance de suivi alimentation
+    pour: ["coaching sportif", "activité physique adaptée", "Pilates", "préparation physique"]
+  forfaits:
+    - seances: 5
+      prix: 240
+      de_preference_sous_mois: 2
+    - seances: 10
+      prix: 450
+      de_preference_sous_mois: 4
+    - seances: 20
+      prix: 850
+      de_preference_sous_mois: 8
+      # Client, 25/11/2026 : « Objectifs suivis et mesurés » retiré ; échanges par SMS ou par e-mail.
+      # Formulation du juriste (CGV-refonte.md C6, article 4.4 des CGV).
+      avantage: "Le forfait 20 séances comprend aussi des échanges entre les séances, par SMS ou par e-mail. Je vous réponds dès que je le peux, et au plus tard à la séance suivante. Ce n'est pas un service d'urgence."
+  bilan_seul:
+    nom: "Bilan de condition physique commandé seul"
+    prix: 50
+  alimentation:
+    - nom: "Premier point alimentation"
+      prix: 60
+    - nom: "Repères et menus types personnalisés"
+      prix: 100
+    - nom: "Suivi alimentation"
+      prix: 45
+      unite: "la séance"
+  mention_prix: "Prix nets, TVA non applicable (art. 293 B du CGI)"
+  arrondi_remise: "unite"   # validé au cahier des charges : −4 %, −10 %, −15 %
+
+# Mentions publiées dans les pages légales (déjà en ligne aujourd'hui).
+mentions:
+  forme: "entreprise individuelle (micro-entrepreneur)"
+  siret: "95349047100018"
+  carte_professionnelle: "03422ED0421"
+  carte_delivree_par: "préfet de l'Hérault"
+  tva: "non applicable, franchise en base (article 293 B du Code général des impôts)"
+  adresse_registre:         # pages légales seulement ; jamais dans les données structurées
+    rue: "56 rue Albert Schweitzer"
+    code_postal: "34090"
+    ville: "Montpellier"
+  directeur_publication: "Loïc Boyer"
+  mise_a_jour_pages_legales: "2026-11-25"
+  mediateur: null           # adhésion en janvier 2027 ; vide = texte d'attente actuel
+  assurance: null           # nouvelle police en janvier 2027
+
+# ---------------------------------------------------------------------
+# Questions fréquentes, page par page (textes de docs/agence/CONTENU.md).
+# Les réponses sont du HTML court. Elles ne recopient aucune valeur : elles
+# y renvoient entre accolades, et le site met la valeur à la place :
+#   {zone}  {communes}  {zone_suite}  {horaires}  {horaires_courts}  {telephone}  {email}
+#   {seance} (prix d'une séance)  {duree_seance}  {absence}
+# {absence} disparaît de lui-même à la date de reprise.
+# La copie pour Google (FAQPage) est faite à partir du même texte.
+# ---------------------------------------------------------------------
+faq:
+  accueil:            # index.html, bloc 7 (aucune phrase d'absence : rien de daté pour Google). Réponse 2 : relecture du juriste (c1).
+    - question: "Faut-il une ordonnance pour commencer ?"
+      reponse: "<p>Non. Vous pouvez me contacter avec ou sans ordonnance. Si vous vivez avec une maladie chronique ou si vous reprenez après un long arrêt, parlez-en d'abord à votre médecin. S'il vous prescrit de l'activité physique adaptée, je m'appuie sur ses indications pour construire vos séances.</p>"
+    - question: "Est-ce remboursé ?"
+      reponse: "<p>Pas par l'Assurance maladie, même avec une ordonnance : elle ne rembourse pas l'activité physique adaptée à la personne qui pratique. Certaines mutuelles en prennent une partie en charge, souvent sur présentation d'une ordonnance, et certaines communes proposent des aides. Interrogez votre complémentaire santé et le centre communal d'action sociale (CCAS) de votre commune : je ne peux pas savoir à l'avance ce qui vous sera remboursé.</p>"
+      complement: "<a href=\"/pages/activite-physique-adaptee.html#cout\">Le détail, avec les sources</a>"   # affiché à la suite, absent de la copie FAQPage
+    - question: "Où et quand ont lieu les séances ?"
+      reponse: "<p>Chez vous ou en extérieur, à {zone}. {horaires}. Une séance dure {duree_seance}. Nous choisissons le lieu au premier rendez-vous.</p>"
+  apa:            # pages/activite-physique-adaptee.html (texte du lot 1, retouche n° 6 de CONTENU.md)
+    - question: "Faut-il une ordonnance pour commencer ?"
+      reponse: "<p>Non. Vous pouvez me contacter directement, avec ou sans ordonnance. Si vous vivez avec une maladie chronique ou si vous reprenez après un long arrêt, je vous conseille d'en parler d'abord à votre médecin. S'il vous remet une prescription d'activité physique adaptée, je m'appuie sur ses indications pour construire vos séances.</p>"
+    - question: "Quel médecin peut prescrire de l'activité physique adaptée ?"
+      reponse: "<p>Tout médecin qui vous suit, généraliste ou spécialiste. Il rédige la prescription sur un formulaire prévu pour cela, avec votre accord, pour une durée de trois à six mois, renouvelable.</p>"
+    - question: "Le sport sur ordonnance est-il remboursé ?"
+      reponse: "<p>L'Assurance maladie ne rembourse pas le sport sur ordonnance à la personne qui pratique. Certaines mutuelles remboursent l'activité physique adaptée sur présentation de l'ordonnance, et certaines collectivités proposent des aides : posez la question à votre complémentaire santé et au centre communal d'action sociale (CCAS) de votre commune.</p>"
+    - question: "Quelle différence avec des séances de kinésithérapie ?"
+      reponse: "<p>Le kinésithérapeute est un professionnel de santé : la rééducation, c'est lui. Je suis enseignant en activité physique adaptée : je vous aide à bouger régulièrement, avec des exercices adaptés à vos capacités. J'interviens en complément, ou une fois la rééducation terminée, jamais à sa place.</p>"
+    - question: "Mon médecin est-il tenu au courant ?"
+      reponse: "<p>Seulement si vous le souhaitez. Lorsqu'il y a une prescription, le code de la santé publique prévoit un bilan au début, des comptes rendus périodiques et un bilan à la fin du programme. Ils vous sont destinés, et ne sont transmis au médecin qui a rédigé la prescription et à votre médecin traitant qu'avec votre accord.</p>"
+    - question: "Où et quand ont lieu les séances ?"
+      reponse: "<p>À {communes} et dans {zone_suite} : chez vous ou en extérieur. Une séance dure {duree_seance}. Les séances ont lieu {horaires}. {absence}</p>"
+  coaching:            # pages/coaching-sportif.html
+    - question: "Je n'ai jamais fait de sport : est-ce pour moi ?"
+      reponse: "<p>Oui. Nous partons de votre niveau du jour, avec des exercices simples, et nous avançons pas à pas. Si vous vivez avec une maladie chronique ou un handicap, voyez plutôt l'<a href=\"/pages/activite-physique-adaptee.html\">activité physique adaptée</a>.</p>"
+    - question: "Combien de séances par semaine ?"
+      reponse: "<p>Nous en décidons ensemble au premier rendez-vous, selon vos objectifs, votre niveau et votre temps. Je vous propose un rythme, et des exercices à faire seul entre les séances si vous le souhaitez.</p>"
+    - question: "Où ont lieu les séances ?"
+      reponse: "<p>Chez vous ou en extérieur (parc, bord de mer), à {zone}. J'apporte le matériel.</p>"
+    - question: "Le coaching comprend-il des conseils sur l'alimentation ?"
+      reponse: "<p>Des repères de base, oui, pendant les séances. Pour aller plus loin, l'accompagnement alimentaire est une prestation à part : voir <a href=\"/pages/conseils-nutritionnels.html\">Alimentation et activité physique</a>.</p>"
+  alimentation:            # pages/conseils-nutritionnels.html
+    - question: "Faut-il suivre un régime strict ?"
+      reponse: "<p>Non. Je ne propose pas de régime restrictif, mais des changements progressifs, adaptés à votre mode de vie.</p>"
+    - question: "Vous adaptez-vous aux choix alimentaires particuliers ?"
+      reponse: "<p>Oui : végétarien, végétalien, sans porc… Je pars de ce que vous mangez.</p>"
+    - question: "Et si j'ai une maladie, une allergie ou une intolérance ?"
+      reponse: "<p>Votre alimentation relève alors de votre médecin ou d'un diététicien. Je travaille en complément, en suivant leurs consignes.</p>"
+    - question: "Comment se passe le suivi ?"
+      reponse: "<p>Après le premier point, nous fixons ensemble un calendrier. Les rendez-vous durent {duree_seance} et ont lieu en personne, chez vous.</p>"

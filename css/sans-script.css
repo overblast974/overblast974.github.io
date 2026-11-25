@@ -1,0 +1,7 @@
+/* Sans JavaScript (chargée par <noscript>, aucun style en ligne, CONFORMITE E-52) : le bouton Menu ne peut rien ouvrir,
+   la navigation reste dépliée sous la barre et l'en-tête ne colle plus. Repris du lot 1. */
+@media (max-width: 74.99rem) {
+  .site-header { position: relative; }
+  .menu-toggle { display: none; }
+  .mobile-menu[hidden] { display: block; max-height: none; }
+}

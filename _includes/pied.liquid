@@ -1,0 +1,51 @@
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="/"><span class="footer__pastille"><svg class="logo" viewBox="0 0 238 262" width="36" height="40" aria-hidden="true" focusable="false"><use href="/images/logo-apar.svg#pomme"/><use href="/images/logo-apar.svg#feuilles"/></svg></span>{{ e.identite.nom }}</a>
+          <p>{{ e.identite.nom }} — {{ e.identite.responsable }}, enseignant en activité physique adaptée et coach sportif à {{ e.zone.communes[0] }}. En complément de votre suivi médical.</p>
+        </div>
+        <div class="footer__liens">
+          <nav aria-labelledby="pied-services">
+            <p class="footer__title" id="pied-services">Services</p>
+            <ul class="footer__list list-reset">
+{%- for l in navigation.pied_services %}
+              <li><a href="{{ l.url }}">{{ l.nom }}</a></li>
+{%- endfor %}
+            </ul>
+          </nav>
+          <nav aria-labelledby="pied-infos">
+            <p class="footer__title" id="pied-infos">Informations</p>
+            <ul class="footer__list list-reset">
+{%- for l in navigation.pied_informations %}
+              <li><a href="{{ l.url }}">{{ l.nom }}</a></li>
+{%- endfor %}
+            </ul>
+          </nav>
+        </div>
+        <div class="footer__contact">
+          <p class="footer__title">Contact</p>
+          <ul class="footer__list list-reset">
+            <li><a href="tel:{{ tel.international }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>{{ tel.affiche }}</a></li>
+            <li><a href="mailto:{{ e.contact.email }}" aria-describedby="pied-sante"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>{{ e.contact.email }}</a>
+              <p class="footer__sante" id="pied-sante">Merci de ne rien écrire sur votre santé dans un premier message.</p></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>{{ e.zone | zone_phrase }}</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>{{ e.horaires.plages | horaires_courts }}</span></li>
+{%- if absence_affichee %}
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>{{ e.absence.phrase }}</span></li>
+{%- endif %}
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 {{ e.identite.nom }} — {{ e.identite.responsable }} EI. Site réalisé par {{ e.identite.responsable }}.</p>
+        <nav aria-label="Informations légales">
+          <ul class="list-reset">
+{%- for l in navigation.pied_legal %}
+            <li><a href="{{ l.url }}"{% if page.url == l.url %} aria-current="page"{% endif %}>{{ l.nom }}</a></li>
+{%- endfor %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>

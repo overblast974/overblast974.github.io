@@ -1,0 +1,23 @@
+# Menu principal (cinq entrées, CONTENU.md et SEO.md 2.2) et colonnes du pied de page.
+# « cle » sert à marquer la page en cours (champ « menu » en tête de chaque page).
+menu:
+  - { cle: apa, nom: "Activité physique adaptée", url: "/pages/activite-physique-adaptee.html" }
+  - { cle: coaching, nom: "Coaching sportif", url: "/pages/coaching-sportif.html" }
+  - { cle: tarifs, nom: "Tarifs", url: "/pages/tarifs.html" }
+  - { cle: a-propos, nom: "À propos", url: "/pages/a-propos.html" }
+  - { cle: contact, nom: "Contact", url: "/pages/contact.html" }
+pied_services:
+  - { nom: "Activité physique adaptée", url: "/pages/activite-physique-adaptee.html" }
+  - { nom: "Publics accompagnés", url: "/publics-accompagnes.html" }
+  - { nom: "Coaching sportif", url: "/pages/coaching-sportif.html" }
+  - { nom: "Pilates", url: "/pages/coaching-sportif.html#pilates" }
+  - { nom: "Alimentation et activité physique", url: "/pages/conseils-nutritionnels.html" }
+pied_informations:
+  - { nom: "Tarifs", url: "/pages/tarifs.html" }
+  - { nom: "À propos", url: "/pages/a-propos.html" }
+  - { nom: "Questions fréquentes", url: "/#faq" }
+  - { nom: "Contact", url: "/pages/contact.html" }
+pied_legal:
+  - { nom: "Mentions légales", url: "/pages/mentions-legales.html" }
+  - { nom: "CGV", url: "/pages/cgv.html" }
+  - { nom: "Confidentialité", url: "/pages/politique-confidentialite.html" }

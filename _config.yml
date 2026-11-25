@@ -1,5 +1,13 @@
-# Configuration GitHub Pages (Jekyll)
-# Les documents de travail internes ne doivent pas être publiés sur le site.
+# Configuration GitHub Pages (Jekyll), utilisée tant que la source de publication
+# est « Deploy from a branch ». Après la bascule sur « GitHub Actions » (lot E),
+# Jekyll n'est plus utilisé et ce fichier sera retiré.
+# Les documents de travail internes et les fichiers de fabrication ne doivent pas
+# être publiés sur le site.
 exclude:
   - docs
   - _outils
+  - package.json
+  - package-lock.json
+  - eleventy.config.js
+  - LISEZ-MOI.md
+  - node_modules

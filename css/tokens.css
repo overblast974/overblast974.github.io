@@ -1,20 +1,20 @@
 /* ============================================================
-   tokens.css : jetons de design de Coach APA'R (lot 1)
-   Source de vérité : docs/agence/design-system.md (non publié).
-   Règle : aucune valeur de couleur, de taille, d'espacement, de rayon,
-   d'ombre ou de durée en dur dans les autres feuilles. Tout passe par ici.
-   À charger AVANT app.css sur les 11 pages.
+   tokens.css : jetons de design de coachapar.fr, refonte piste A « Questions franches ».
+   Repris de docs/agence/maquettes/accueil/tokens.css (maquette v2 validée par le client le 25/11/2026,
+   11 h 39), sans changer une valeur. Lignes [refonte] et [v2] : ajouts du designer ;
+   lignes [lot F] : ajouts de l'intégration (pages intérieures), à relire par le designer.
+   Source de vérité : docs/agence/DESIGN.md, section 4. Aucune valeur en dur ailleurs (G4).
    ============================================================ */
 
-/* ---------- Polices auto-hébergées (OFL, voir fonts/) ----------
-   Une seule famille, deux graisses, sous-ensemble latin (accents français,
-   œ, guillemets, tirets, euro). 12 Ko par fichier. */
+/* ---------- Polices : Atkinson Hyperlegible Next, hébergée avec le site (SIL OFL 1.1) ----------
+   400 et 700 : fichiers du lot 1. [lot F] 800 : paquet @fontsource/atkinson-hyperlegible-next 5.3.0,
+   12 644 octets, MD5 33e4223792731ba399c42acc7b3b916f (même sous-ensemble que les deux autres). */
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/atkinson-hyperlegible-next-latin-400-normal.woff2") format("woff2");
+  src: url("/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -22,31 +22,41 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/atkinson-hyperlegible-next-latin-700-normal.woff2") format("woff2");
+  src: url("/fonts/atkinson-hyperlegible-next-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/atkinson-hyperlegible-next-latin-800-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
-  /* ---------- Couleurs : palette brute (ne pas utiliser directement dans les composants) ---------- */
-  --c-encre:        #161A14; /* noir du logo, légèrement vert */
-  --c-encre-2:      #4A5243; /* texte secondaire */
-  --c-gris-trait:   #6F7867; /* bordure des champs (3:1 minimum) */
-  --c-gris-filet:   #D9DDD0; /* filets décoratifs uniquement */
-  --c-papier:       #F7F7F0; /* fond de page, blanc cassé chaud */
+  /* ---------- Couleurs : palette brute ---------- */
+  --c-encre:        #161A14;
+  --c-encre-2:      #4A5243;
+  --c-gris-trait:   #6F7867;
+  --c-gris-filet:   #D9DDD0;
+  --c-papier:       #F7F7F0;
   --c-blanc:        #FFFFFF;
-  --c-feuille:      #9BB85A; /* vert clair des feuilles du logo : décor ou fond sous texte encre, jamais texte sur clair */
-  --c-feuille-pale: #EEF2E1; /* teinte de surface */
-  --c-feuille-vive: #B5CF7A; /* texte et focus sur fond encre */
-  --c-vert:         #44631F; /* vert profond tiré du logo : actions, liens */
-  --c-vert-fonce:   #2F4615; /* survol et pressé */
+  --c-feuille:      #9BB85A;
+  --c-feuille-pale: #EEF2E1;
+  --c-feuille-vive: #B5CF7A;
+  --c-vert:         #44631F;
+  --c-vert-fonce:   #2F4615;
+  --c-lichen:       #D3DBC6; /* [refonte] texte secondaire sur le fond vert foncé : 7,33:1 */
   --c-rouge:        #B42318;
   --c-rouge-pale:   #FDECEA;
   --c-ambre:        #7A4B00;
   --c-ambre-pale:   #FFF4DB;
 
-  /* ---------- Couleurs : rôles (à utiliser dans les composants) ---------- */
+  /* ---------- Couleurs : rôles ---------- */
   --color-bg:              var(--c-papier);
-  --color-surface:         var(--c-blanc);
+  --color-surface:         var(--c-blanc);       /* en-tête, champs ; plus de cartes blanches sur le papier */
   --color-surface-tint:    var(--c-feuille-pale);
   --color-text:            var(--c-encre);
   --color-text-muted:      var(--c-encre-2);
@@ -59,85 +69,149 @@
   --color-link:            var(--c-vert);
   --color-link-hover:      var(--c-vert-fonce);
   --color-focus:           var(--c-encre);
+  --color-figure:          var(--c-vert);        /* [refonte] grands chiffres : 6,40:1 sur le papier */
   --color-error:           var(--c-rouge);
   --color-error-bg:        var(--c-rouge-pale);
   --color-success:         var(--c-vert);
   --color-success-bg:      var(--c-feuille-pale);
   --color-warning:         var(--c-ambre);
   --color-warning-bg:      var(--c-ambre-pale);
-  /* Zones sombres (pied de page) */
+  /* [refonte] Le seul aplat vert de l'accueil (bloc « Comment on commence ? ») */
+  --color-band-bg:         var(--c-vert-fonce);
+  --color-band-text:       var(--c-papier);      /* 9,72:1 */
+  --color-band-text-muted: var(--c-lichen);      /* 7,33:1 */
+  --color-band-link:       var(--c-feuille-vive);/* 6,06:1 */
+  --color-band-focus:      var(--c-feuille-vive);
+  --color-band-line:       rgb(247 247 240 / 0.32);
+  --color-band-btn-hover:  rgb(247 247 240 / 0.12);
+  /* [v2] Le seul bloc sur fond vert pâle de l'accueil (« Pour ma santé, ou pour mon sport ? ») */
+  --color-soft-bg:         var(--c-feuille-pale);
+  --color-soft-panel:      var(--c-papier);      /* la porte APA posée sur ce fond : papier, pas blanc */
+  /* Pied de page (encre) */
   --color-dark-bg:         var(--c-encre);
   --color-dark-text:       #F3F5EE;
   --color-dark-text-muted: #BFC6B5;
   --color-dark-link:       var(--c-feuille-vive);
   --color-dark-focus:      var(--c-feuille-vive);
-  --color-dark-line:       rgb(255 255 255 / 0.18); /* filet du pied de page (repris de la maquette, ajouté par l'intégration) */
+  --color-dark-line:       rgb(255 255 255 / 0.18);
+  /* [refonte] Barres des forfaits */
+  --color-bar-track:       var(--c-gris-filet);
+  --color-bar-tick:        var(--c-gris-trait);  /* 4,28:1 sur le papier */
+  --color-bar-fill:        var(--c-vert);        /* 4,98:1 sur la piste */
 
   /* ---------- Typographie ---------- */
   --font-sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --weight-regular: 400;
   --weight-bold: 700;
+  --weight-heavy: 800;     /* [refonte] titre principal, questions, chiffres */
 
-  /* Échelle : 6 niveaux. Le plus petit texte du site est 16 px. */
-  --text-sm:   1rem;                                       /* 16 px : légendes, mentions, badges */
-  --text-base: 1.125rem;                                   /* 18 px : texte courant */
-  --text-lg:   1.25rem;                                    /* 20 px : chapeau, titres de carte sur mobile */
-  --text-xl:   1.5rem;                                     /* 24 px : h3, prix */
-  --text-2xl:  clamp(1.75rem, 1.45rem + 1.3vw, 2.375rem);  /* 28 -> 38 px : h2 */
-  --text-3xl:  clamp(2.125rem, 1.6rem + 2.4vw, 3.5rem);    /* 34 -> 56 px : h1 */
+  --text-sm:   1rem;
+  --text-base: 1.125rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  clamp(1.75rem, 1.45rem + 1.3vw, 2.375rem);  /* 28 -> 38 : questions (h2) */
+  --text-3xl:  clamp(2.125rem, 1.6rem + 2.4vw, 3.5rem);    /* 34 -> 56 : titre principal */
+  /* [refonte] Niveau « chiffre » : montants et durées seulement, jamais un titre, deux par écran au plus */
+  --text-figure: clamp(4.5rem, 2.6rem + 5.2vw, 7rem);      /* 72 -> 112 */
+  --text-situation: var(--text-xl); /* [v2] les trois situations du bloc « Est-ce pour moi ? » : 24 px, graisse 800 */
+  --text-figure-pair: 3.5rem; /* [refonte] 56 : deux chiffres empilés dans un même écran de téléphone (aplat, sous 640 px) */
 
-  --leading-tight: 1.15;  /* h1, h2 */
-  --leading-snug:  1.3;   /* h3, boutons */
-  --leading-body:  1.6;   /* texte courant */
+  --leading-tight: 1.15;
+  --leading-snug:  1.3;
+  --leading-body:  1.6;
+  --leading-figure: 0.95;  /* [refonte] */
   --tracking-title: -0.015em;
-  --tracking-label: 0.04em; /* surtitres en capitales */
-  --measure: 66ch;          /* longueur de ligne maximale du texte courant */
+  --tracking-figure: -0.03em; /* [refonte] */
+  --word-spacing-figure: -0.12em; /* [refonte] la police n'a pas d'espace fine (U+202F) : on resserre l'espace insécable */
+  --measure: 48ch;        /* [refonte] mesuré : 66ch donnait 85 à 90 caractères avec Atkinson (zéro large) ; 48ch donne 70 à 75 */
+  /* [refonte] --tracking-label (surtitres en capitales) est retiré : plus aucun surtitre. */
 
-  /* ---------- Espacement : base 4 px ---------- */
-  --space-1: 0.25rem;  /*  4 */
-  --space-2: 0.5rem;   /*  8 */
-  --space-3: 0.75rem;  /* 12 */
-  --space-4: 1rem;     /* 16 */
-  --space-5: 1.5rem;   /* 24 */
-  --space-6: 2rem;     /* 32 */
-  --space-7: 3rem;     /* 48 */
-  --space-8: 4rem;     /* 64 */
-  --space-9: 6rem;     /* 96 */
+  /* ---------- Espacement ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
 
-  --section-y: clamp(var(--space-8), 6vw + 1rem, var(--space-9)); /* 64 -> 96 px */
-  --gutter:    clamp(var(--space-4), 4vw, var(--space-6));        /* marge latérale 16 -> 32 px */
-  --container: 72rem;      /* 1152 px */
-  --container-narrow: 46rem; /* FAQ, formulaire, pages légales */
+  --section-y: clamp(var(--space-8), 6vw + 1rem, var(--space-9));
+  --bloc-y:    clamp(2.25rem, 4.6vw + 1.25rem, var(--space-9)); /* [refonte] [v2] 36 -> 96 : blocs question-réponse (v1 : 40 -> 96) */
+  --gutter:    clamp(var(--space-4), 4vw, var(--space-6));
+  --container: 72rem;
+  --container-narrow: 46rem;
+  --grid-gap:  clamp(var(--space-4), 2.4vw, var(--space-6)); /* [refonte] gouttière de la grille de 12 colonnes */
 
   /* ---------- Formes ---------- */
-  --radius-sm:   6px;            /* cases, petits éléments */
-  --radius-md:   12px;           /* boutons, champs, cartes */
-  --radius-leaf: 4px 28px;       /* signature « feuille » : carte mise en avant, preuve, portrait */
-  --radius-full: 999px;          /* badges, pastilles */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-leaf: 4px 28px;
+  --radius-leaf-sm: 2px 10px;  /* [refonte] la feuille à l'échelle d'une barre ou d'un petit portrait */
+  --radius-full: 999px;
   --border-width: 1px;
   --border-width-strong: 2px;
+  --border-width-accent: 3px;  /* [v2] filet vert de la phrase du nom (bloc 3) */
 
-  /* Ombres : deux niveaux, teinte encre, jamais colorées */
   --shadow-1: 0 1px 2px rgb(22 26 20 / 0.06), 0 1px 3px rgb(22 26 20 / 0.08);
   --shadow-2: 0 10px 28px -8px rgb(22 26 20 / 0.18);
-  /* Ajoutés par l'intégration (lot 1) : valeurs reprises telles quelles de la maquette,
-     sorties d'app.css pour tenir le critère 1. À valider par le designer. */
-  --shadow-inset: inset 0 2px 0 rgb(0 0 0 / 0.2);   /* bouton pressé */
+  --shadow-inset: inset 0 2px 0 rgb(0 0 0 / 0.2);
 
-  /* Focus clavier : visible partout, jamais supprimé */
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
 
-  /* Zones tactiles */
   --tap-min: 48px;
+  --tap-row: 56px;           /* [refonte] lignes de liste cliquables (situations, questions) */
+
+  /* ---------- Médias ---------- */
+  --portrait-signature: 72px;  /* [refonte] */
+  --portrait-signature-lg: 96px; /* [v2] à partir de 1024 px */
+  --portrait-qui-xs: 7rem;     /* [v2] sous 360 px : la question « Qui êtes-vous ? » garde sa place */
+  --portrait-qui-sm: 8.5rem;   /* [v2] portrait du bloc 3 sous 1024 px, à côté de la question : 136 px */
+  --portrait-bloc: 15rem;      /* [refonte] portrait du bloc « Qui êtes-vous ? », 240 px */
+  --bar-h: 14px;               /* [refonte] épaisseur des barres de forfait */
+  --portrait-page: 20rem;      /* [lot F] portrait de la page À propos, 320 px, dans la feuille */
+  --colonne-annee: 4.5rem;     /* [lot F] colonne des années du parcours (À propos) : « 2019 » à 20 px en 800 */
 
   /* ---------- Mouvement ---------- */
-  --duration-fast: 150ms;  /* couleur, bordure, ombre */
-  --duration-base: 250ms;  /* ouverture FAQ, menu, messages */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* [refonte] Signatures. Courbe de sortie forte, commune aux deux. */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-sig-1: 480ms;   /* S1 la feuille se pose */
+  --delay-sig-1:    120ms;
+  --duration-sig-2: 600ms;   /* S2 le forfait se remplit */
+  --delay-sig-2-b:  60ms;    /* décalage non uniforme, 30 à 80 ms entre barres */
+  --delay-sig-2-c:  130ms;
+  /* [v2] Entrée du premier écran (une fois par chargement, CSS seul). Distances courtes : public sujet aux vertiges. */
+  --duration-entree:      560ms;  /* titre, l'élément principal */
+  --duration-entree-suite: 460ms; /* phrase, boutons */
+  --delay-entree-2:        70ms;  /* phrase */
+  --delay-entree-3:       120ms;  /* boutons (décalages non uniformes : 70 puis 50 ms) */
+  --distance-entree:       12px;  /* titre */
+  --distance-suite:         6px;  /* phrase, boutons, apparitions */
+  /* [v2] Le logo pousse : feuilles seules, depuis la base de la tige, après le titre */
+  --duration-logo:        640ms;
+  --delay-logo:           260ms;
+  --angle-logo-depart:   -14deg;
+  --scale-logo-depart:     0.55;
+  --angle-logo-survol:    -6deg;  /* survol du lien d'accueil, pointeur fin */
+  /* [v2] Apparitions au défilement (portes du bloc 2, portrait du bloc 3) */
+  --duration-apparition:  520ms;
+  --delay-apparition-2:    70ms;
+  --scale-feuille-depart:  0.96;
+  --scale-photo-depart:    1.06;  /* la photo se resserre dans sa feuille */
+  /* [v2] Appui et menu */
+  --duration-press:       100ms;  /* appui : réponse immédiate */
+  --duration-release:     200ms;  /* relâché : retour plus lent */
+  --scale-press:           0.97;
+  --duration-menu:        200ms;
+  --distance-menu:         -8px;
 
   /* ---------- Mise en page ---------- */
-  --header-h: 64px;        /* 72 px à partir de 64rem, voir plus bas */
+  --header-h: 64px;
   --z-header: 50;
   --z-menu: 60;
 }
@@ -146,10 +220,24 @@
   :root { --header-h: 72px; }
 }
 
-/* Préférence « réduire les animations » : toutes les durées tombent à zéro. */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0ms;
     --duration-base: 0ms;
+    --duration-sig-1: 0ms;
+    --duration-sig-2: 0ms;
+    --duration-entree: 0ms;
+    --duration-entree-suite: 0ms;
+    --duration-logo: 0ms;
+    --duration-apparition: 0ms;
+    --duration-press: 0ms;
+    --duration-release: 0ms;
+    --duration-menu: 0ms;
+    --delay-sig-1: 0ms;
+    --delay-entree-2: 0ms;
+    --delay-entree-3: 0ms;
+    --delay-logo: 0ms;
+    --delay-apparition-2: 0ms;
+    --scale-press: 1;
   }
 }

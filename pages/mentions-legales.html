@@ -1,237 +1,140 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales | Coach APA'R</title>
-    <link rel="canonical" href="https://coachapar.fr/pages/mentions-legales.html">
-    <meta name="description" content="Mentions légales du site web Coach APA'R, coach sportif et enseignant en activité physique adaptée à Montpellier.">
-
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" sizes="48x48">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
-  <meta name="theme-color" content="#44631F">
-</head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <!-- gabarit:en-tete -->
-  <header class="site-header">
-    <div class="container site-header__bar">
-      <a class="brand" href="/">
-        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
-        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#tarifs">Tarifs</a></li>
-          <li><a href="/#faq">Questions</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
-      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
-    </div>
-    <div class="mobile-menu" id="menu-mobile" hidden>
-      <nav class="container" aria-label="Menu">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-        </ul>
-        <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
-          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+---
+layout: base.liquid
+robots: "noindex, follow"
+titre: "Mentions Légales | Coach APA'R"
+description: "Mentions légales du site web Coach APA'R, coach sportif et enseignant en activité physique adaptée à Montpellier."
+partage_image: accueil
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Mentions légales", url: "/pages/mentions-legales.html" }
+---
+{%- comment -%} Texte du dépôt repris tel quel (lot 1), dans le gabarit de la refonte. Seules les valeurs
+  (téléphone, e-mail, SIRET, carte, adresse du registre, date) viennent de _data/entreprise.yaml. {%- endcomment -%}
+{%- assign e = entreprise -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">Mentions Légales</h1>
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- /gabarit:en-tete -->
-
-  <main id="contenu" tabindex="-1">
-    <section class="page-head" aria-labelledby="titre-page">
-      <div class="container--narrow page-head__inner">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
-          <ol>
-            <li><a href="/">Accueil</a></li>
-            <li><span aria-current="page">Mentions légales</span></li>
-          </ol>
-        </nav>
-        <h1 id="titre-page">Mentions Légales</h1>
-        <p class="page-head__lead">Informations légales concernant ce site</p>
+        <div class="tete__texte">
+          <p class="tete__chapeau">Informations légales concernant ce site</p>
+        </div>
       </div>
     </section>
 
-    <div class="section section--surface">
-      <div class="container--narrow prose">
-              <p class="legal-date">Date de dernière mise à jour : 25 novembre 2026</p>
+    <div class="texte-long">
+      <div class="container">
+        <div class="texte-long__corps">
+                <p class="date-maj">Date de dernière mise à jour : {{ e.mentions.mise_a_jour_pages_legales | date_longue }}</p>
 
-              <p>Vous trouverez ci-dessous les informations légales relatives au site coachapar.fr.</p>
+                <p>Vous trouverez ci-dessous les informations légales relatives au site coachapar.fr.</p>
 
-              <section>
-                  <h2>1. Informations légales</h2>
+                <section>
+                    <h2>1. Informations légales</h2>
 
-                  <h3>1.1 Éditeur du site</h3>
-                  <p>Le site coachapar.fr est édité par :</p>
-                  <p><strong>Coach APA'R</strong></p>
-                  <ul>
-                      <li>Responsable : Loïc Boyer EI</li>
-                      <li>Statut juridique : entreprise individuelle (micro-entrepreneur)</li>
-                      <li>Immatriculation : Registre national des entreprises (RNE), SIRET 95349047100018</li>
-                      <li>Carte professionnelle d'éducateur sportif n° 03422ED0421, délivrée par le préfet de l'Hérault (Préfecture de l'Hérault, place des Martyrs-de-la-Résistance, 34062 Montpellier Cedex 2)</li>
-                      <li>TVA : non applicable, franchise en base (article 293 B du Code général des impôts)</li>
-                      <li>Adresse de l'entreprise : 56 rue Albert Schweitzer, 34090 Montpellier</li>
-                      <li>Téléphone : 07 65 77 51 04</li>
-                      <li>Email : coachapar@gmail.com</li>
-                  </ul>
-                  <p><strong>Directeur de la publication</strong> : Loïc Boyer</p>
+                    <h3>1.1 Éditeur du site</h3>
+                    <p>Le site coachapar.fr est édité par :</p>
+                    <p><strong>Coach APA'R</strong></p>
+                    <ul>
+                        <li>Responsable : Loïc Boyer EI</li>
+                        <li>Statut juridique : entreprise individuelle (micro-entrepreneur)</li>
+                        <li>Immatriculation : Registre national des entreprises (RNE), SIRET {{ e.mentions.siret }}</li>
+                        <li>Carte professionnelle d'éducateur sportif n° {{ e.mentions.carte_professionnelle }}, délivrée par le préfet de l'Hérault (Préfecture de l'Hérault, place des Martyrs-de-la-Résistance, 34062 Montpellier Cedex 2)</li>
+                        <li>TVA : non applicable, franchise en base (article 293 B du Code général des impôts)</li>
+                        <li>Adresse de l'entreprise : {{ e.mentions.adresse_registre.rue }}, {{ e.mentions.adresse_registre.code_postal }} {{ e.mentions.adresse_registre.ville }}</li>
+                        <li>Téléphone : {{ e.contact.telephone.affiche }}</li>
+                        <li>Email : {{ e.contact.email }}</li>
+                    </ul>
+                    <p><strong>Directeur de la publication</strong> : Loïc Boyer</p>
 
-                  <h3>1.2 Hébergeur du site</h3>
-                  <p>Le site coachapar.fr est hébergé par :</p>
-                  <ul>
-                      <li>Hébergeur : GitHub Pages, service de GitHub, Inc.</li>
-                      <li>Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</li>
-                      <li>Téléphone : GitHub ne publie pas de numéro de téléphone et n'offre pas d'assistance téléphonique. Contact : https://github.com/contact</li>
-                      <li>Site web : https://github.com</li>
-                  </ul>
+                    <h3>1.2 Hébergeur du site</h3>
+                    <p>Le site coachapar.fr est hébergé par :</p>
+                    <ul>
+                        <li>Hébergeur : GitHub Pages, service de GitHub, Inc.</li>
+                        <li>Adresse : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</li>
+                        <li>Téléphone : GitHub ne publie pas de numéro de téléphone et n'offre pas d'assistance téléphonique. Contact : https://github.com/contact</li>
+                        <li>Site web : https://github.com</li>
+                    </ul>
 
-                  <h3>1.3 Conception et réalisation du site</h3>
-                  <ul>
-                      <li>Conception et développement : Loïc Boyer</li>
-                      <li>Design graphique : Loïc Boyer</li>
-                  </ul>
+                    <h3>1.3 Conception et réalisation du site</h3>
+                    <ul>
+                        <li>Conception et développement : Loïc Boyer</li>
+                        <li>Design graphique : Loïc Boyer</li>
+                    </ul>
 
-                  <h3>1.4 Médiation de la consommation</h3>
-                  <p>Mon adhésion à un service de médiation de la consommation est en cours. Le nom, l'adresse postale et le site internet du médiateur seront publiés ici et dans les conditions générales de vente avant la reprise des prestations, le 11 janvier 2027. Aucune prestation n'est vendue d'ici là. En attendant, toute réclamation peut m'être adressée à coachapar@gmail.com.</p>
-              </section>
+                    <h3>1.4 Médiation de la consommation</h3>
+                    <p>Mon adhésion à un service de médiation de la consommation est en cours. Le nom, l'adresse postale et le site internet du médiateur seront publiés ici et dans les conditions générales de vente avant la reprise des prestations, le 11 janvier 2027. Aucune prestation n'est vendue d'ici là. En attendant, toute réclamation peut m'être adressée à {{ e.contact.email }}.</p>
+                </section>
 
-              <section>
-                  <h2>2. Présentation et principe</h2>
+                <section>
+                    <h2>2. Présentation et principe</h2>
 
-                  <h3>2.1 Présentation</h3>
-                  <p>Le site coachapar.fr a pour objet de fournir des informations concernant l'ensemble des activités de coaching sportif, d'activité physique adaptée et de conseils alimentaires proposées par Coach APA'R.</p>
-                  <p>Coach APA'R veille à fournir sur le site coachapar.fr des informations exactes et à jour. Si vous constatez une erreur, merci de la signaler à coachapar@gmail.com.</p>
-                  <p>Les informations du site peuvent évoluer. Les conditions applicables à une prestation (contenu, prix, modalités) sont celles du devis-contrat accepté par le client et des conditions générales de vente qui lui ont été remises.</p>
+                    <h3>2.1 Présentation</h3>
+                    <p>Le site coachapar.fr a pour objet de présenter les prestations de coaching sportif, d'activité physique adaptée et d'accompagnement alimentaire lié à l'activité physique proposées par Coach APA'R, leurs prix et la façon de prendre rendez-vous.</p>
+                    <p>Coach APA'R veille à fournir sur le site coachapar.fr des informations exactes et à jour. Si vous constatez une erreur, merci de la signaler à {{ e.contact.email }}.</p>
+                    <p>Les informations du site peuvent évoluer. Les conditions applicables à une prestation (contenu, prix, modalités) sont celles du devis-contrat accepté par le client et des conditions générales de vente qui lui ont été remises.</p>
 
-              </section>
+                </section>
 
-              <section>
-                  <h2>3. Disponibilité du site</h2>
-                  <p>Le site coachapar.fr est en principe accessible en permanence, sauf interruption pour maintenance, panne de l'hébergeur ou cas de force majeure.</p>
-              </section>
+                <section>
+                    <h2>3. Disponibilité du site</h2>
+                    <p>Le site coachapar.fr est en principe accessible en permanence, sauf interruption pour maintenance, panne de l'hébergeur ou cas de force majeure.</p>
+                </section>
 
-              <section>
-                  <h2>4. Propriété intellectuelle</h2>
+                <section>
+                    <h2>4. Propriété intellectuelle</h2>
 
-                  <h3>4.1 Droits d'auteur et copyright</h3>
-                  <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
-                  <p>La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
+                    <h3>4.1 Droits d'auteur et copyright</h3>
+                    <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les représentations iconographiques et photographiques, sauf pour les éléments diffusés sous licence libre cités à la section 4.3, qui restent soumis à leur propre licence.</p>
+                    <p>La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
 
-                  <h3>4.2 Marques</h3>
-                  <p>Les marques, logos, dénominations sociales, sigles, noms commerciaux, enseignes et noms de domaine mentionnés sur ce site constituent des signes distinctifs insusceptibles d'usage sans l'autorisation préalable et écrite de leur titulaire.</p>
-                  <p>Toute représentation et/ou reproduction et/ou exploitation partielle ou totale de ces signes distinctifs est donc interdite sans autorisation de leur titulaire.</p>
-              </section>
+                    <h3>4.2 Marques</h3>
+                    <p>Les marques, logos, dénominations sociales, sigles, noms commerciaux, enseignes et noms de domaine mentionnés sur ce site constituent des signes distinctifs insusceptibles d'usage sans l'autorisation préalable et écrite de leur titulaire.</p>
+                    <p>Toute représentation et/ou reproduction et/ou exploitation partielle ou totale de ces signes distinctifs est donc interdite sans autorisation de leur titulaire.</p>
 
-              <section>
-                  <h2>5. Liens hypertextes</h2>
-                  <p>Le site coachapar.fr peut contenir des liens hypertextes vers d'autres sites présents sur le réseau Internet. Les liens vers ces autres sites vous font quitter le site coachapar.fr.</p>
-                  <p>Coach APA'R ne maîtrise pas ces sites et ne peut être tenu pour responsable de leur contenu ni des liens qu'ils contiennent.</p>
-              </section>
+                    <h3>4.3 Crédits</h3>
+                    <ul>
+                        <li>Portrait : photographie de Loïc Boyer, retouchée avec un outil d'intelligence artificielle. Seule retouche : le logo Coach APA'R a été ajouté sur le tee-shirt, qui était uni.</li>
+                        <li>Logo et images de partage : Coach APA'R.</li>
+                        <li>Police de caractères : Atkinson Hyperlegible Next, The Atkinson Hyperlegible Next Project Authors, licence SIL Open Font License 1.1.</li>
+                        <li>Icônes : Lucide (lucide.dev), licence ISC.</li>
+                    </ul>
+                </section>
 
-              <section>
-                  <h2>6. Responsabilité</h2>
+                <section>
+                    <h2>5. Liens hypertextes</h2>
+                    <p>Le site coachapar.fr peut contenir des liens hypertextes vers d'autres sites présents sur le réseau Internet. Les liens vers ces autres sites vous font quitter le site coachapar.fr.</p>
+                    <p>Coach APA'R ne maîtrise pas ces sites et ne peut être tenu pour responsable de leur contenu ni des liens qu'ils contiennent.</p>
+                </section>
 
-                  <h3>6.1 Limitation de responsabilité</h3>
-                  <p>Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement mis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes. Si vous constatez une erreur ou ce qui peut être un dysfonctionnement, merci de me le signaler par email en décrivant le problème aussi précisément que possible.</p>
-                  <p>Coach APA'R ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site coachapar.fr, et résultant soit de l'utilisation d'un matériel ne répondant pas aux spécifications techniques requises, soit de l'apparition d'un bug ou d'une incompatibilité.</p>
+                <section>
+                    <h2>6. Responsabilité</h2>
 
-                  <h3>6.2 Formulaire de contact et cookies</h3>
-                  <p>Les informations envoyées par le formulaire de contact servent uniquement à répondre à votre demande. Le site ne dépose aucun cookie.</p>
-                  <p>Pour savoir comment vos données personnelles sont traitées, consultez la <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
-              </section>
+                    <h3>6.1 Limitation de responsabilité</h3>
+                    <p>Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement mis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes. Si vous constatez une erreur ou ce qui peut être un dysfonctionnement, merci de me le signaler par email en décrivant le problème aussi précisément que possible.</p>
+                    <p>Coach APA'R ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site coachapar.fr, et résultant soit de l'utilisation d'un matériel ne répondant pas aux spécifications techniques requises, soit de l'apparition d'un bug ou d'une incompatibilité.</p>
 
-              <section>
-                  <h2>7. Droit applicable et juridiction compétente</h2>
-                  <p>Les présentes mentions légales sont soumises au droit français. En cas de litige relatif à l'interprétation ou à l'exécution des présentes mentions légales, les tribunaux compétents sont déterminés selon les règles du droit commun.</p>
-              </section>
+                    <h3>6.2 Données personnelles et cookies</h3>
+                    <p>Le site ne comporte aucun formulaire et ne dépose aucun cookie. Les informations que vous me donnez par téléphone, par SMS, par e-mail ou en réservant un rendez-vous servent uniquement à vous répondre et à vous accompagner.</p>
+                    <p>Pour savoir comment vos données personnelles sont traitées, consultez la <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
+                </section>
 
-              <section>
-                  <h2>8. Contact</h2>
-                  <p>Pour toute question concernant les présentes mentions légales, vous pouvez me contacter :</p>
-                  <ul>
-                      <li>Par email : coachapar@gmail.com</li>
-                      <li>Par téléphone : 07 65 77 51 04</li>
-                  </ul>
-              </section>
+                <section>
+                    <h2>7. Droit applicable et juridiction compétente</h2>
+                    <p>Les présentes mentions légales sont soumises au droit français. En cas de litige relatif à l'interprétation ou à l'exécution des présentes mentions légales, les tribunaux compétents sont déterminés selon les règles du droit commun.</p>
+                </section>
 
-      </div>
-    </div>
-  </main>
+                <section>
+                    <h2>8. Contact</h2>
+                    <p>Pour toute question concernant les présentes mentions légales, vous pouvez me contacter :</p>
+                    <ul>
+                        <li>Par email : {{ e.contact.email }}</li>
+                        <li>Par téléphone : {{ e.contact.telephone.affiche }}</li>
+                    </ul>
+                </section>
 
-  <!-- gabarit:pied -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
-          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-        </div>
-        <nav aria-labelledby="pied-services">
-          <p class="footer__title" id="pied-services">Services</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
-            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
-            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-            <li><a href="/#services">Pilates</a></li>
-          </ul>
-        </nav>
-        <nav aria-labelledby="pied-infos">
-          <p class="footer__title" id="pied-infos">Informations</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/#tarifs">Tarifs</a></li>
-            <li><a href="/#faq">Questions fréquentes</a></li>
-            <li><a href="/pages/blog.html">Blog</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p class="footer__title">Contact</p>
-          <ul class="footer__list list-reset">
-            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
-            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
-          </ul>
+
         </div>
       </div>
-      <div class="footer__bottom">
-        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
-        <nav aria-label="Informations légales">
-          <ul class="list-reset">
-            <li><a href="/pages/mentions-legales.html" aria-current="page">Mentions légales</a></li>
-            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/pages/cgv.html">CGV</a></li>
-          </ul>
-        </nav>
-      </div>
     </div>
-  </footer>
-  <!-- /gabarit:pied -->
-
-  <script src="/js/app.js" defer></script>
-</body>
-</html>
