@@ -32,6 +32,7 @@
   <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/app.css">
+  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
   <meta name="theme-color" content="#44631F">
 </head>
 <body>
@@ -115,39 +116,33 @@
           <h2 id="titre-formules">Mes formules de coaching</h2>
           <p>Des options adaptées à vos besoins et à votre emploi du temps</p>
         </div>
-        <div class="cards cards--3">
+        <div class="cards cards--2">
           <article class="card">
             <div class="card__media"><img src="/images/coaching-sportif.webp" alt="Coaching sportif individuel" width="800" height="800" loading="lazy" decoding="async"></div>
             <h3>Coaching individuel</h3>
             <p>Séances personnalisées en face à face, pour un suivi attentif et une progression ciblée. Idéal pour un accompagnement sur mesure.</p>
-            <div class="card__foot"><span class="price-hint">À partir de 50&nbsp;€/séance</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/images/programme-entrainement.jpg" width="275" height="183" loading="lazy" decoding="async" alt="Carnet de programme d'entraînement personnalisé avec planning hebdomadaire"></div>
-            <h3>Programme d'entraînement personnalisé</h3>
-            <p>Programme d'entraînement sur mesure à réaliser en autonomie, avec suivi régulier par visioconférence et ajustements selon vos progrès.</p>
-            <div class="card__foot"><span class="price-hint">À partir de 90&nbsp;€/mois</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">50&nbsp;€ la séance</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
           <article class="card">
             <div class="card__media"><img src="/images/coaching-sportif.webp" alt="Coaching sportif en forfait de séances" width="800" height="800" loading="lazy" decoding="async"></div>
-            <h3>Forfaits 10 ou 20 séances</h3>
+            <h3>Forfaits 5, 10 ou 20 séances</h3>
             <p>Économisez en optant pour un forfait de plusieurs séances, avec un suivi régulier et une progression suivie sur la durée.</p>
-            <div class="card__foot"><span class="price-hint">Tarifs dégressifs</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">240&nbsp;€, 450&nbsp;€ ou 850&nbsp;€</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
           <article class="card">
             <div class="card__media"><img src="/images/preparation-physique.webp" width="800" height="533" loading="lazy" decoding="async" alt="Préparation physique avec chronomètre"></div>
             <h3>Préparation physique</h3>
             <p>Programme d'entraînement pour préparer un événement sportif, comme une course ou un trail, ou progresser dans votre discipline. Je suis formé à la préparation physique (SSCS Training, 2023).</p>
-            <div class="card__foot"><span class="price-hint">Sur devis</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">50&nbsp;€ la séance</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
           <article class="card">
             <div class="card__media"><img src="/images/bilan-condition-physique.webp" width="1200" height="504" loading="lazy" decoding="async" alt="Bilan de condition physique avec un coach sportif"></div>
             <h3>Bilan de condition physique seul</h3>
-            <p>Évaluation complète de vos capacités physiques actuelles : endurance, force, souplesse, composition corporelle. Inclut un rapport détaillé et des recommandations personnalisées. Ce bilan est <strong>offert</strong> lorsqu'il ouvre un accompagnement (séances ou forfait) : il fait alors partie du premier rendez-vous.</p>
-            <div class="card__foot"><span class="price-hint">À partir de 50&nbsp;€</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <p>Évaluation complète de vos capacités physiques actuelles : endurance, force, souplesse, composition corporelle. Inclut un rapport détaillé et des recommandations personnalisées. Ce bilan fait partie du premier rendez-vous à domicile, qui est <strong>offert</strong> et sans engagement. Commandé seul, en dehors de ce rendez-vous, il coûte 50 €.</p>
+            <div class="card__foot"><span class="price-hint">50&nbsp;€</span><a class="btn--link" href="/pages/contact.html">Me contacter <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
         </div>
-        <p class="pricing-note"><span>Prix nets, TVA non applicable (art. 293 B du CGI). Devis personnalisé sur demande.</span></p>
+        <p class="pricing-note"><span>Déplacement compris dans la métropole de Montpellier et à Mauguio. Prix nets, TVA non applicable (art. 293 B du CGI).</span></p>
       </div>
     </section>
 
@@ -190,12 +185,12 @@
         </div>
         <div class="prose">
           <h3>Un accompagnement méthodique et efficace</h3>
-          <p>Chaque accompagnement suit cinq étapes, pour des objectifs clairs et des progrès que l'on mesure ensemble.</p>
+          <p>Voici comment se déroule un accompagnement, du premier rendez-vous au suivi.</p>
         </div>
         <ol class="steps list-reset section-foot">
           <li class="step"><span class="step__num" aria-hidden="true">1</span><div class="step__body"><h4>Premier rendez-vous</h4><p>Un bilan initial pour comprendre votre parcours, vos contraintes et vos préférences, puis un bilan de condition physique.</p></div></li>
           <li class="step"><span class="step__num" aria-hidden="true">2</span><div class="step__body"><h4>Objectifs et proposition</h4><p>Nous définissons ensemble des objectifs réalistes et mesurables, puis je vous propose un accompagnement : nombre de séances et contenu.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">3</span><div class="step__body"><h4>Élaboration du programme</h4><p>Création d'un programme d'entraînement personnalisé, adapté à vos objectifs, votre niveau et vos disponibilités.</p></div></li>
+          <li class="step"><span class="step__num" aria-hidden="true">3</span><div class="step__body"><h4>Préparation de vos séances</h4><p>Je prépare le contenu de vos séances selon vos objectifs, votre niveau et vos disponibilités.</p></div></li>
           <li class="step"><span class="step__num" aria-hidden="true">4</span><div class="step__body"><h4>Séances d'entraînement</h4><p>Accompagnement lors des séances pour vous guider, corriger votre technique et vous motiver à donner le meilleur de vous-même.</p></div></li>
           <li class="step"><span class="step__num" aria-hidden="true">5</span><div class="step__body"><h4>Suivi et ajustements</h4><p>Évaluations régulières de vos progrès et adaptation continue de votre programme à vos progrès.</p></div></li>
         </ol>
@@ -238,7 +233,7 @@
     <section class="section cta-band" aria-label="Prendre rendez-vous">
       <div class="container cta-band__inner">
         <p>Prenez rendez-vous et commencez votre parcours vers une meilleure forme.</p>
-        <a class="btn btn--primary" href="/pages/contact.html">Prendre mon premier rendez-vous</a>
+        <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
         <p class="cta-note">Offert, sans engagement</p>
       </div>
     </section>
@@ -251,7 +246,6 @@
         <div class="footer__brand">
           <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
           <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
         <nav aria-labelledby="pied-services">
           <p class="footer__title" id="pied-services">Services</p>
@@ -279,7 +273,8 @@
             <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
           </ul>
         </div>
       </div>

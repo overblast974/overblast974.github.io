@@ -169,6 +169,7 @@ main:focus { outline: none; } /* cible du lien d'évitement : tabindex=-1, jamai
   min-height: var(--tap-min); padding: 0;
   font-weight: var(--weight-bold); color: var(--color-link);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em;
+  text-wrap: balance;
 }
 .btn--link .icon { transition: transform var(--duration-fast) var(--ease-out); }
 .btn--link:hover .icon { transform: translateX(3px); }
@@ -251,10 +252,22 @@ main:focus { outline: none; } /* cible du lien d'évitement : tabindex=-1, jamai
   .brand__name { font-size: var(--text-lg); }
 }
 @media (min-width: 64rem) {
+  /* De 64rem à 75rem : même barre que sur tablette (marque, appel, Menu), plus le bouton de rendez-vous. */
+  .header-cta {
+    display: inline-flex;
+    min-height: 44px; padding-inline: var(--space-4);
+    font-size: var(--text-sm); white-space: nowrap;
+  }
+  /* Le bouton de rendez-vous est déjà dans la barre : le menu ouvert ne le répète pas, il garde le numéro en clair. */
+  .mobile-menu__actions > .btn--primary, .mobile-menu__actions > .cta-note { display: none; }
+}
+/* La navigation complète et le bouton au libellé unique « Prendre mon premier rendez-vous »
+   ne tiennent ensemble sur une ligne qu'à partir de 75rem (1200 px) : le menu reste en service jusque-là. */
+@media (min-width: 75rem) {
   .site-header__bar { gap: var(--space-4); }
   .menu-toggle, .call-btn { display: none; }
   .mobile-menu, .mobile-menu[hidden] { display: none; }
-  .brand__sub { display: none; } /* place gagnée pour la navigation complète (le sous-titre reste sous 64rem) */
+  .brand__sub { display: none; } /* place gagnée pour la navigation complète (le sous-titre reste sous 75rem) */
   .nav { display: block; }
   .nav ul { display: flex; gap: var(--space-1); }
   .nav a {
@@ -262,7 +275,7 @@ main:focus { outline: none; } /* cible du lien d'évitement : tabindex=-1, jamai
     display: inline-flex; align-items: center;
     min-height: var(--tap-min); padding-inline: var(--space-3);
     font-size: var(--text-sm); font-weight: var(--weight-bold);
-    color: var(--color-text); text-decoration: none;
+    color: var(--color-text); text-decoration: none; white-space: nowrap;
     border-radius: var(--radius-md);
   }
   .nav a:hover { background: var(--color-surface-tint); }
@@ -272,13 +285,6 @@ main:focus { outline: none; } /* cible du lien d'évitement : tabindex=-1, jamai
     height: 3px;
     background: var(--color-accent); border-radius: var(--radius-full);
   }
-  .header-cta { min-height: 44px; padding-inline: var(--space-4); font-size: var(--text-sm); white-space: nowrap; }
-  .nav a { white-space: nowrap; }
-}
-/* Le libellé unique « Prendre mon premier rendez-vous » est plus long que celui de la maquette :
-   le bouton de l'en-tête n'apparaît qu'à partir de 75rem (1200 px) pour que la navigation tienne sur une ligne. */
-@media (min-width: 75rem) {
-  .header-cta { display: inline-flex; }
 }
 
 /* ---------- 6. Premier écran (accueil) ---------- */
@@ -610,6 +616,7 @@ fieldset.field { margin: 0; padding: 0; border: 0; }
   font-size: var(--text-sm); color: var(--color-text-muted);
 }
 .pricing-note span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.booking > .pricing-note, .booking > .pricing-note span { display: block; }
 
 /* ---------- 14. FAQ (details natif, fonctionne sans JS) ---------- */
 .faq { display: grid; gap: var(--space-3); }
@@ -736,6 +743,7 @@ fieldset.field { margin: 0; padding: 0; border: 0; }
 .footer__list li a, .footer__list li > span {
   display: inline-flex; align-items: center; gap: var(--space-2);
   min-height: 44px;
+  padding-block: var(--space-2);
 }
 .footer__list li > span { color: var(--color-dark-text-muted); }
 .footer__list a { overflow-wrap: anywhere; }
@@ -748,8 +756,6 @@ fieldset.field { margin: 0; padding: 0; border: 0; }
 }
 .footer__bottom ul { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); }
 .footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; }
-.site-footer .btn--on-dark { color: var(--color-dark-bg); background: var(--color-dark-text); text-decoration: none; }
-.site-footer .btn--on-dark:hover { color: var(--color-dark-bg); background: var(--color-dark-link); }
 
 /* ---------- 19. Mouvement réduit (filet de sécurité, les durées sont dans tokens.css) ---------- */
 @media (prefers-reduced-motion: reduce) {

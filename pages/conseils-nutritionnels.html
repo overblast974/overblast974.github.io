@@ -30,6 +30,7 @@
   <link rel="preload" as="image" href="/images/nutrition-variee-720.webp" imagesrcset="/images/nutrition-variee-480.webp 480w, /images/nutrition-variee-720.webp 720w, /images/nutrition-variee.webp 900w" imagesizes="(min-width: 72rem) 528px, (min-width: 56rem) 45vw, 92vw" fetchpriority="high">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/app.css">
+  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
   <meta name="theme-color" content="#44631F">
 </head>
 <body>
@@ -122,29 +123,29 @@
       <div class="container">
         <div class="section-head">
           <h2 id="titre-prestations">Mes prestations</h2>
-          <p>Des services adaptés à vos besoins spécifiques</p>
+          <p>Le premier rendez-vous est offert : nous y précisons votre besoin. Les prestations ci-dessous sont payantes.</p>
         </div>
         <div class="cards cards--3">
           <article class="card">
             <div class="card__media"><img src="/images/Conseils-nutritionnels.webp" width="640" height="440" loading="lazy" decoding="async" alt="Carnet de suivi alimentaire rempli à côté d'une salade et de légumes frais"></div>
             <h3>Premier point alimentation</h3>
             <p>Analyse complète de vos habitudes alimentaires, de votre mode de vie et de vos objectifs pour établir un point de départ personnalisé.</p>
-            <div class="card__foot"><span class="price-hint">À partir de 60&nbsp;€</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">60&nbsp;€</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
           <article class="card">
             <div class="card__media"><img src="/images/plan-nutrition.webp" width="800" height="450" loading="lazy" decoding="async" alt="Menus types et aliments équilibrés"></div>
             <h3>Repères et menus types personnalisés</h3>
             <p>Des repères et des menus types adaptés à vos objectifs : perte de poids progressive, prise de masse ou alimentation du sportif. Recettes et conseils pratiques inclus.</p>
-            <div class="card__foot"><span class="price-hint">À partir de 100&nbsp;€</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">100&nbsp;€</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
           <article class="card">
             <div class="card__media"><img src="/images/suivi-nutritionnel.webp" width="800" height="800" loading="lazy" decoding="async" alt="Carnet de suivi alimentaire avec légumes frais"></div>
             <h3>Suivi alimentation</h3>
             <p>Rendez-vous réguliers pour ajuster vos repères, répondre à vos questions et vous accompagner dans l'atteinte de vos objectifs.</p>
-            <div class="card__foot"><span class="price-hint">À partir de 45&nbsp;€/séance</span><a class="btn--link" href="/pages/contact.html">Prendre rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">45&nbsp;€ la séance</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
         </div>
-        <p class="pricing-note"><span>Prix nets, TVA non applicable (art. 293 B du CGI). Devis personnalisé sur demande.</span></p>
+        <p class="pricing-note"><span>Déplacement compris dans la métropole de Montpellier et à Mauguio. Prix nets, TVA non applicable (art. 293 B du CGI).</span></p>
       </div>
     </section>
 
@@ -189,7 +190,7 @@
           </details>
           <details>
             <summary>Comment se déroule le suivi alimentation ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Après le premier point, nous établissons ensemble un calendrier de suivi adapté à vos besoins. Les séances peuvent se dérouler en présentiel ou à distance. Entre les rendez-vous, vous pouvez me contacter pour des questions ou ajustements. J'utilise également des outils de suivi pour suivre vos progrès et adapter vos repères si nécessaire.</p></div>
+            <div class="faq__answer"><p>Après le premier point, nous établissons ensemble un calendrier de suivi adapté à vos besoins. Les rendez-vous ont lieu en personne. Entre les rendez-vous, vous pouvez me contacter pour des questions ou des ajustements.</p></div>
           </details>
         </div>
       </div>
@@ -197,9 +198,9 @@
 
     <section class="section section--surface cta-band" aria-label="Prendre rendez-vous">
       <div class="container cta-band__inner">
-        <p>Prenez rendez-vous pour faire le point sur votre alimentation et votre activité.</p>
-        <a class="btn btn--primary" href="/pages/contact.html">Prendre mon premier rendez-vous</a>
-        <p class="cta-note">Offert, sans engagement</p>
+        <p>Commençons par un premier rendez-vous pour préciser votre besoin.</p>
+        <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
+        <p class="cta-note">Ce premier rendez-vous est offert. L'accompagnement alimentaire est ensuite payant : tarifs plus haut sur cette page.</p>
       </div>
     </section>
   </main>
@@ -211,7 +212,6 @@
         <div class="footer__brand">
           <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
           <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
         <nav aria-labelledby="pied-services">
           <p class="footer__title" id="pied-services">Services</p>
@@ -239,7 +239,8 @@
             <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
           </ul>
         </div>
       </div>

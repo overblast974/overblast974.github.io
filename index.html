@@ -20,7 +20,7 @@
   <meta property="og:image" content="https://coachapar.fr/images/partage.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Coach APA\'R, coach sportif et enseignant en activité physique adaptée à Montpellier">
+  <meta property="og:image:alt" content="Coach APA'R, coach sportif et enseignant en activité physique adaptée à Montpellier">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Coach APA'R">
 
@@ -47,13 +47,8 @@
       "@type": "PostalAddress",
       "addressLocality": "Montpellier",
       "addressRegion": "Hérault",
-      "postalCode": "34000",
+      "postalCode": "34090",
       "addressCountry": "FR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 43.6119,
-      "longitude": 3.8772
     },
     "areaServed": [
       { "@type": "City", "name": "Montpellier" },
@@ -68,23 +63,27 @@
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "17:30",
-        "closes": "21:30"
+        "closes": "21:30",
+        "validFrom": "2027-01-11"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
         "opens": "08:00",
-        "closes": "16:00"
+        "closes": "16:00",
+        "validFrom": "2027-01-11"
       }
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Services de coaching sportif",
+      "name": "Tarifs",
       "itemListElement": [
-        { "@type": "Offer", "name": "Activité physique adaptée (APA)", "description": "Activité physique adaptée pour les personnes vivant avec une maladie chronique, un handicap, et les seniors" },
-        { "@type": "Offer", "name": "Coaching sportif individuel", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 50, "priceCurrency": "EUR" } },
-        { "@type": "Offer", "name": "Repères alimentaires pour sportifs", "url": "https://coachapar.fr/pages/conseils-nutritionnels.html" },
-        { "@type": "Offer", "name": "Pilates en séance individuelle", "description": "Séances individuelles de Pilates, sur demande" }
+        { "@type": "Offer", "name": "Premier rendez-vous", "description": "Offert, sans engagement", "price": 0, "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Séance individuelle", "description": "Coaching sportif, activité physique adaptée, Pilates ou préparation physique", "price": 50, "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Forfait 5 séances", "description": "5 séances individuelles, à utiliser de préférence sous 2 mois", "price": 240, "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Forfait 10 séances", "description": "10 séances individuelles, à utiliser de préférence sous 4 mois", "price": 450, "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Forfait 20 séances", "description": "20 séances individuelles, à utiliser de préférence sous 8 mois", "price": 850, "priceCurrency": "EUR" },
+        { "@type": "Offer", "name": "Alimentation et activité physique", "url": "https://coachapar.fr/pages/conseils-nutritionnels.html" }
       ]
     }
   }
@@ -181,7 +180,7 @@
         "name": "Quel est le tarif d'une séance de coaching sportif à Montpellier ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Une séance de coaching individuel est à partir de 50 €. Les forfaits bénéficient d'une remise qui augmente avec le nombre de séances : 5 séances à 240 € (−4 %, valable 2 mois), 10 séances à 450 € (−10 %, 4 mois), 20 séances à 850 € (−15 %, 8 mois). Un devis personnalisé est établi sur demande. Les tarifs de l'accompagnement alimentaire sont détaillés sur la page Alimentation et activité physique. Le premier rendez-vous est offert, sans engagement."
+          "text": "Une séance individuelle coûte 50 €, pour le coaching sportif, l'activité physique adaptée, le Pilates et la préparation physique. Les forfaits bénéficient d'une remise qui augmente avec le nombre de séances : 5 séances à 240 € (−4 %, à utiliser de préférence sous 2 mois), 10 séances à 450 € (−10 %, à utiliser de préférence sous 4 mois), 20 séances à 850 € (−15 %, à utiliser de préférence sous 8 mois). Les tarifs de l'accompagnement alimentaire sont détaillés sur la page Alimentation et activité physique. Le premier rendez-vous est offert, sans engagement."
         }
       },
       {
@@ -189,7 +188,7 @@
         "name": "Quelles sont vos disponibilités à Montpellier ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Je suis disponible du lundi au vendredi de 17 h 30 à 21 h 30, et le samedi de 8 h à 16 h. Vous pouvez réserver en ligne un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Vous pouvez aussi m'appeler au 07 65 77 51 04 ou m'écrire à coachapar@gmail.com."
+          "text": "Je suis disponible du lundi au vendredi de 17 h 30 à 21 h 30 et le samedi de 8 h à 16 h. Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone. Vous pouvez réserver en ligne un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Téléphone : 07 65 77 51 04. E-mail : coachapar@gmail.com."
         }
       },
       {
@@ -212,6 +211,7 @@
   <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/app.css">
+  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
   <meta name="theme-color" content="#44631F">
 </head>
 <body>
@@ -343,7 +343,7 @@
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Échanges entre les séances</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Ajustements réguliers</li>
             </ul>
-            <div class="card__foot"><span class="price-hint">À partir de 50&nbsp;€ / séance</span><a class="btn--link" href="#tarifs">Voir les tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><span class="price-hint">50&nbsp;€ la séance</span><a class="btn--link" href="#tarifs">Voir les tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
           <article class="card">
             <div class="card__head"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-alimentation"/></svg></span></div>
@@ -363,11 +363,11 @@
             <p>Renforcement des muscles profonds et travail de la posture, pour un dos plus solide au quotidien. Le Pilates est possible en séances individuelles, sur demande. Des cours collectifs pourront ouvrir s'il y a assez de personnes intéressées : signalez-vous avec le formulaire.</p>
             <ul class="checklist list-reset">
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Formation Pilates niveau I (CAP'Formations Sport, 2023)</li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Séances individuelles sur demande</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Séances individuelles : 50&nbsp;€ la séance</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Cours collectifs selon les demandes</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Travail de la posture</li>
             </ul>
-            <div class="card__foot"><a class="btn--link" href="#reservation">Demander une séance <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+            <div class="card__foot"><a class="btn--link" href="#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
           </article>
         </div>
       </div>
@@ -512,7 +512,7 @@
           <p class="booking-hours"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Du lundi au vendredi, 17 h 30 – 21 h 30 · le samedi, 8 h – 16 h</p>
         </div>
         <div class="callout" role="note">
-          <p><strong>Premiers rendez-vous à partir du 11 janvier 2027.</strong> Je suis absent d'ici là : vous pouvez déjà réserver un créneau à partir de cette date.</p>
+          <p><strong>Premiers rendez-vous à partir du 11 janvier 2027.</strong> D'ici là, vous pouvez me joindre par téléphone. Vous pouvez déjà réserver en ligne un créneau à partir de cette date.</p>
         </div>
         <div class="booking">
           <div class="pricing">
@@ -527,13 +527,12 @@
               <div class="card__foot"><a class="btn btn--primary btn--block" href="https://cal.com/coachapar/90min" rel="noopener">Choisir un créneau à domicile <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
             </article>
           </div>
-          <p class="pricing-note"><span>La réservation se fait sur Cal.com, un service de prise de rendez-vous en ligne. Chaque demande est confirmée par mes soins, au moins 48 h avant le rendez-vous. Merci de ne pas indiquer d'informations sur votre santé.</span></p>
+          <p class="pricing-note"><span>La réservation se fait sur Cal.com, un service de prise de rendez-vous en ligne. Chaque demande est confirmée par mes soins, au moins 48 h avant le rendez-vous. Merci de ne pas indiquer d'informations sur votre santé. Ce que deviennent les informations saisies est expliqué dans la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</span></p>
           <div class="booking-alt">
             <p>Vous préférez me contacter directement ?</p>
             <div class="contact-ways">
               <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
               <a class="btn btn--secondary" href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a>
-              <a class="btn btn--secondary" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -546,7 +545,7 @@
         <div class="section-head">
           <p class="eyebrow">Tarifs</p>
           <h2 id="titre-tarifs">Tarifs et forfaits</h2>
-          <p>Des formules adaptées à tous les besoins et budgets</p>
+          <p>Séance à l'unité : 50&nbsp;€. Forfaits de 5, 10 ou 20 séances. Mêmes prix pour le coaching, l'activité physique adaptée, le Pilates et la préparation physique.</p>
         </div>
         <div class="pricing">
           <article class="card">
@@ -562,38 +561,38 @@
           </article>
           <article class="card">
             <h3>Forfait 5 séances</h3>
-            <div class="price"><span class="price__from">à partir de</span><span class="price__amount">240&nbsp;€</span><span class="price__from">Coaching sportif</span></div>
+            <div class="price"><span class="price__amount">240&nbsp;€</span><span class="price__from">Séances individuelles</span></div>
             <ul class="checklist list-reset">
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>5 séances de coaching</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>5 séances individuelles</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Soit 48&nbsp;€ la séance (−4&nbsp;%)</li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Valable 2 mois</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>À utiliser de préférence sous 2&nbsp;mois</li>
             </ul>
-            <div class="card__foot"><a class="btn btn--secondary btn--block" href="#reservation">Demander ce forfait</a></div>
+            <div class="card__foot"><a class="btn btn--secondary btn--block" href="#reservation">Prendre mon premier rendez-vous</a></div>
           </article>
           <article class="card">
             <h3>Forfait 10 séances</h3>
-            <div class="price"><span class="price__from">à partir de</span><span class="price__amount">450&nbsp;€</span><span class="price__from">Coaching sportif</span></div>
+            <div class="price"><span class="price__amount">450&nbsp;€</span><span class="price__from">Séances individuelles</span></div>
             <ul class="checklist list-reset">
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>10 séances de coaching</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>10 séances individuelles</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Soit 45&nbsp;€ la séance (−10&nbsp;%)</li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Valable 4 mois</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>À utiliser de préférence sous 4&nbsp;mois</li>
             </ul>
-            <div class="card__foot"><a class="btn btn--secondary btn--block" href="#reservation">Demander ce forfait</a></div>
+            <div class="card__foot"><a class="btn btn--secondary btn--block" href="#reservation">Prendre mon premier rendez-vous</a></div>
           </article>
           <article class="card card--featured">
             <div class="card__head"><span class="badge badge--solid">Meilleur choix</span></div>
             <h3>Forfait 20 séances</h3>
-            <div class="price"><span class="price__from">à partir de</span><span class="price__amount">850&nbsp;€</span><span class="price__from">Coaching sportif</span></div>
+            <div class="price"><span class="price__amount">850&nbsp;€</span><span class="price__from">Séances individuelles</span></div>
             <ul class="checklist list-reset">
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>20 séances de coaching</li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Soit 42,50&nbsp;€ la séance (−15&nbsp;%), valable 8 mois</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>20 séances individuelles</li>
+              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Soit 42,50&nbsp;€ la séance (−15&nbsp;%), à utiliser de préférence sous 8&nbsp;mois</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Échanges entre les séances</li>
               <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg>Objectifs suivis et mesurés</li>
             </ul>
-            <div class="card__foot"><a class="btn btn--primary btn--block" href="#reservation">Demander ce forfait</a></div>
+            <div class="card__foot"><a class="btn btn--primary btn--block" href="#reservation">Prendre mon premier rendez-vous</a></div>
           </article>
         </div>
-        <p class="pricing-note"><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier &amp; alentours (Hérault 34)</span><span>Devis personnalisé sur demande</span><span>Prix nets, TVA non applicable (art. 293 B du CGI)</span></p>
+        <p class="pricing-note"><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier &amp; alentours (Hérault 34)</span><span>Déplacement compris dans la métropole de Montpellier et à Mauguio</span><span>Le forfait se choisit après le premier rendez-vous, qui est offert.</span><span>Prix nets, TVA non applicable (art. 293 B du CGI)</span></p>
       </div>
     </section>
 
@@ -619,11 +618,11 @@
           </details>
           <details>
             <summary>Quel est le tarif d'une séance de coaching sportif à Montpellier ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Une séance de coaching individuel est <strong>à partir de 50&nbsp;€</strong>. Les forfaits bénéficient d'une <strong>remise qui augmente avec le nombre de séances</strong> : 5 séances à 240&nbsp;€ (−4&nbsp;%, valable 2 mois), 10 séances à 450&nbsp;€ (−10&nbsp;%, 4 mois), 20 séances à 850&nbsp;€ (−15&nbsp;%, 8 mois). Un devis personnalisé est établi sur demande. Les tarifs de l'accompagnement alimentaire sont détaillés sur la page <a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a>. Le <strong>premier rendez-vous est offert</strong>, sans engagement.</p></div>
+            <div class="faq__answer"><p>Une séance individuelle coûte <strong>50&nbsp;€</strong>, pour le coaching sportif, l'activité physique adaptée, le Pilates et la préparation physique. Les forfaits bénéficient d'une <strong>remise qui augmente avec le nombre de séances</strong> : 5 séances à 240&nbsp;€ (−4&nbsp;%, à utiliser de préférence sous 2&nbsp;mois), 10 séances à 450&nbsp;€ (−10&nbsp;%, à utiliser de préférence sous 4&nbsp;mois), 20 séances à 850&nbsp;€ (−15&nbsp;%, à utiliser de préférence sous 8&nbsp;mois). Les tarifs de l'accompagnement alimentaire sont détaillés sur la page <a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a>. Le <strong>premier rendez-vous est offert</strong>, sans engagement.</p></div>
           </details>
           <details>
             <summary>Quelles sont vos disponibilités à Montpellier ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Je suis disponible <strong>du lundi au vendredi de 17 h 30 à 21 h 30 et le samedi de 8 h à 16 h</strong>. Vous pouvez <a href="#reservation">réserver en ligne</a> un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Vous pouvez aussi m'appeler au <a href="tel:+33765775104">07 65 77 51 04</a> ou m'écrire à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>.</p></div>
+            <div class="faq__answer"><p>Je suis disponible <strong>du lundi au vendredi de 17 h 30 à 21 h 30 et le samedi de 8 h à 16 h</strong>. Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone. Vous pouvez <a href="#reservation">réserver en ligne</a> un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Téléphone : <a href="tel:+33765775104">07 65 77 51 04</a>. E-mail : <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>.</p></div>
           </details>
           <details>
             <summary>Où se déroulent les séances ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
@@ -641,7 +640,7 @@
         <p>Premier rendez-vous offert · Sans engagement · Accompagnement sur mesure</p>
         <div class="actions actions--center">
           <a class="btn btn--primary" href="#reservation">Prendre mon premier rendez-vous</a>
-          <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>Appeler maintenant</a>
+          <a class="btn btn--secondary" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
         </div>
       </div>
     </section>
@@ -654,7 +653,6 @@
         <div class="footer__brand">
           <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
           <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
         <nav aria-labelledby="pied-services">
           <p class="footer__title" id="pied-services">Services</p>
@@ -682,7 +680,8 @@
             <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
           </ul>
         </div>
       </div>

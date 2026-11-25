@@ -5,9 +5,8 @@ En-tête et pied de page sont copiés à l'identique dans les 12 pages et la pag
 entre des marqueurs :
     <!-- gabarit:en-tete -->  ...  <!-- /gabarit:en-tete -->
     <!-- gabarit:pied -->     ...  <!-- /gabarit:pied -->
-Seules différences admises : aria-current="page" sur le lien de la page,
-et, sur la page Contact, les deux boutons principaux qui pointent vers
-#contactForm au lieu de /#reservation.
+Seule différence admise : aria-current="page" sur le lien de la page.
+Le bouton « Prendre mon premier rendez-vous » mène partout à /#reservation.
 
 Usage :
     python3 gabarit.py verifier  [racine]   -> échoue (code 1) au moindre écart
@@ -45,7 +44,7 @@ def cur(page, cle):
     return ' aria-current="page"' if page == cle else ''
 
 def en_tete(page):
-    cible = '#contactForm' if page == 'contact' else '/#reservation'
+    cible = '/#reservation'
     nav = [
         ('apa', '/pages/activite-physique-adaptee.html', 'Activité physique adaptée'),
         (None, '/#services', 'Services'),
@@ -116,7 +115,6 @@ def pied(page):
         <div class="footer__brand">
           <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
           <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104">{i("whatsapp")}Écrire sur WhatsApp</a></p>
         </div>
         <nav aria-labelledby="pied-services">
           <p class="footer__title" id="pied-services">Services</p>
@@ -136,7 +134,8 @@ def pied(page):
             <li><a href="tel:+33765775104">{i("phone")}07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com">{i("mail")}coachapar@gmail.com</a></li>
             <li><span>{i("map-pin")}Montpellier, Hérault (34)</span></li>
-            <li><span>{i("clock")}Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
+            <li><span>{i("clock")}Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
+            <li><span>{i("calendar")}Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
           </ul>
         </div>
       </div>

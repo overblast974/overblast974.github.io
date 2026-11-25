@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://coachapar.fr/images/partage.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Coach APA\'R, coach sportif et enseignant en activité physique adaptée à Montpellier">
+    <meta property="og:image:alt" content="Coach APA'R, coach sportif et enseignant en activité physique adaptée à Montpellier">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -32,6 +32,7 @@
   <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/app.css">
+  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
   <meta name="theme-color" content="#44631F">
 </head>
 <body>
@@ -53,7 +54,7 @@
           <li><a href="/pages/contact.html" aria-current="page">Contact</a></li>
         </ul>
       </nav>
-      <a class="btn btn--primary header-cta" href="#contactForm">Prendre mon premier rendez-vous</a>
+      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
       <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
       <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
     </div>
@@ -67,7 +68,7 @@
           <li><a href="/pages/contact.html" aria-current="page">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
         </ul>
         <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="#contactForm">Prendre mon premier rendez-vous</a>
+          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
           <p class="cta-note">Offert, sans engagement</p>
           <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
         </div>
@@ -86,17 +87,21 @@
           </ol>
         </nav>
         <h1 id="titre-page">Contact et rendez-vous</h1>
-        <p class="page-head__lead">Prenez rendez-vous ou demandez plus d'informations sur mes services</p>
+        <p class="page-head__lead">Pour un premier rendez-vous, choisissez un créneau en ligne. Pour toute autre question, appelez-moi ou écrivez-moi ci-dessous.</p>
+        <div class="cta-group">
+          <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
+          <p class="cta-note">Offert, sans engagement</p>
+        </div>
       </div>
     </section>
 
     <section class="section section--surface" aria-label="Coordonnées et formulaire de contact">
       <div class="container split">
         <ul class="contact-list list-reset">
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg></span><div><h2>Adresse</h2><p>Montpellier, France</p></div></li>
+          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg></span><div><h2>Adresse de l'entreprise</h2><p>56 rue Albert Schweitzer, 34090 Montpellier. Je ne reçois pas à cette adresse : les séances ont lieu chez vous, en extérieur ou en salle.</p></div></li>
           <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg></span><div><h2>Téléphone</h2><p><a href="tel:+33765775104">07 65 77 51 04</a></p></div></li>
           <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg></span><div><h2>Email</h2><p><a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a></p></div></li>
-          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg></span><div><h2>Horaires</h2><p>Du lundi au vendredi, 17 h 30 – 21 h 30.<br>Le samedi, 8 h – 16 h.<br>Le premier contact se fait par téléphone.</p></div></li>
+          <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg></span><div><h2>Horaires</h2><p>Du lundi au vendredi, 17 h 30 – 21 h 30.<br>Le samedi, 8 h – 16 h.<br>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</p></div></li>
           <li><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-diplome"/></svg></span><div><h2>Avant de m'écrire</h2><p><a href="/pages/a-propos.html">Qui je suis et mes qualifications</a><br><a href="/pages/activite-physique-adaptee.html">L'activité physique adaptée et le sport sur ordonnance</a></p></div></li>
         </ul>
         <div class="form-card">
@@ -120,7 +125,6 @@
                 <option value="" selected>Choisissez un service</option>
                 <!-- Services de Coaching Sportif -->
                 <option value="coaching-individuel">Coaching individuel</option>
-                <option value="programme-entrainement">Programme d'entraînement personnalisé</option>
                 <option value="forfaits-seances">Forfaits 5, 10 ou 20 séances</option>
                 <option value="preparation-physique">Préparation physique</option>
                 <option value="bilan-condition-physique">Bilan de condition physique</option>
@@ -144,13 +148,13 @@
             <button type="submit" class="btn btn--primary btn--block">Envoyer</button>
             <div id="contactStatus" class="status" role="status" aria-live="polite" tabindex="-1"></div>
             <div class="privacy">
-              <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie. Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="/pages/politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
+              <p>Vos données (nom, coordonnées, message) servent uniquement à répondre à votre demande. Elles sont traitées par Loïc Boyer (Coach APA'R), transmises par le service de formulaires Formspree (États-Unis) et reçues dans sa messagerie Gmail (Google, États-Unis). Elles sont supprimées 12 mois après notre dernier échange si aucun accompagnement n'est engagé. <strong>Merci de ne pas indiquer d'informations sur votre santé dans ce formulaire.</strong> Vous pouvez accéder à vos données, les rectifier ou les faire effacer en écrivant à <a href="mailto:coachapar@gmail.com">coachapar@gmail.com</a>. <a href="/pages/politique-confidentialite.html">En savoir plus<span class="visually-hidden"> : politique de confidentialité</span></a></p>
               <details>
                 <summary>En savoir plus</summary>
                 <p><strong>Qui traite vos données ?</strong> Loïc Boyer, entrepreneur individuel, exerçant sous le nom Coach APA'R. Contact : coachapar@gmail.com.</p>
                 <p><strong>Pour quoi faire ?</strong> Répondre à votre demande d'information ou de rendez-vous, avant tout engagement de votre part. Vos données ne servent à aucune prospection et ne sont ni vendues ni cédées.</p>
-                <p><strong>Qui les reçoit ?</strong> Loïc Boyer uniquement. Pour l'acheminement, elles passent par Formspree, service de formulaires dont les serveurs sont aux États-Unis (transfert encadré par des clauses contractuelles types de la Commission européenne), puis par la messagerie Gmail de Google.</p>
-                <p><strong>Combien de temps ?</strong> 12 mois après notre dernier échange si aucun accompagnement n'est engagé. Si vous devenez client, elles sont conservées le temps de l'accompagnement.</p>
+                <p><strong>Qui les reçoit ?</strong> Je suis le seul à les utiliser. Pour me parvenir, elles passent par Formspree, service de formulaires établi aux États-Unis, puis arrivent dans ma messagerie Gmail (Google, États-Unis). Ces deux services encadrent ces transferts selon leurs propres conditions, détaillées dans la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</p>
+                <p><strong>Combien de temps ?</strong> 12 mois après notre dernier échange si aucun accompagnement n'est engagé. Si vous devenez client, les durées sont celles indiquées dans la <a href="/pages/politique-confidentialite.html">politique de confidentialité</a>.</p>
                 <p><strong>Vos droits.</strong> Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, la limitation de leur traitement ou vous opposer à leur traitement, en écrivant à coachapar@gmail.com. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>
                 <p><strong>Pourquoi ne pas parler de santé ici ?</strong> Les informations de santé sont des données sensibles. Elles ne doivent pas transiter par ce formulaire : nous en parlerons de vive voix lors du premier échange.</p>
               </details>
@@ -168,7 +172,6 @@
         <div class="footer__brand">
           <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
           <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-          <p><a class="btn btn--on-dark" href="https://wa.me/33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-whatsapp"/></svg>Écrire sur WhatsApp</a></p>
         </div>
         <nav aria-labelledby="pied-services">
           <p class="footer__title" id="pied-services">Services</p>
@@ -196,7 +199,8 @@
             <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
             <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17 h 30 – 21 h 30, sam 8 h – 16 h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
+            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
           </ul>
         </div>
       </div>
