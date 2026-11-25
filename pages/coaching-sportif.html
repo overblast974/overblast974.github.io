@@ -1,297 +1,118 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Coaching sportif personnalisé à Montpellier, à domicile, en extérieur ou en salle : programme sur mesure, séances encadrées et suivi de vos progrès.">
-    <meta name="author" content="Coach APA'R">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://coachapar.fr/pages/coaching-sportif.html">
-    <meta property="og:title" content="Coaching sportif à domicile à Montpellier | Coach APA'R">
-    <meta property="og:description"
-        content="Coaching sportif personnalisé à Montpellier, à domicile, en extérieur ou en salle : programme sur mesure, séances encadrées et suivi de vos progrès.">
-    <meta property="og:image" content="https://coachapar.fr/images/coaching-sportif.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://coachapar.fr/pages/coaching-sportif.html">
-    <meta property="twitter:title" content="Coaching sportif à domicile à Montpellier | Coach APA'R">
-    <meta property="twitter:description"
-        content="Coaching sportif personnalisé à Montpellier, à domicile, en extérieur ou en salle : programme sur mesure, séances encadrées et suivi de vos progrès.">
-    <meta property="twitter:image" content="https://coachapar.fr/images/coaching-sportif.jpg">
-
-    <title>Coaching sportif à domicile à Montpellier | Coach APA'R</title>
-    <link rel="canonical" href="https://coachapar.fr/pages/coaching-sportif.html">
-    <link rel="icon" href="/favicon.ico" sizes="48x48">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
-  <meta name="theme-color" content="#44631F">
-</head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <!-- gabarit:en-tete -->
-  <header class="site-header">
-    <div class="container site-header__bar">
-      <a class="brand" href="/">
-        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
-        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#tarifs">Tarifs</a></li>
-          <li><a href="/#faq">Questions</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
-      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
-    </div>
-    <div class="mobile-menu" id="menu-mobile" hidden>
-      <nav class="container" aria-label="Menu">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-        </ul>
-        <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
-          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+---
+layout: base.liquid
+menu: coaching
+titre: "Coach sportif à domicile à Montpellier | Coach APA'R"
+description: "Coaching sportif individuel à domicile à Montpellier : reprise, renforcement, course et trail, Pilates. Séance d'une heure : 50 €. Premier rendez-vous offert."
+partage_image: coaching-sportif
+partage_alt: "coaching sportif à domicile à Montpellier"
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Coaching sportif", url: "/pages/coaching-sportif.html" }
+schema: [service, faq]
+service: { nom: "Coaching sportif à domicile", prix_seance: true }
+faq: coaching
+---
+{%- comment -%} Textes : CONTENU.md section 2. Un seul montant sur la page : la séance (OBLIGATIONS 1.4). {%- endcomment -%}
+{%- assign e = entreprise -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">Coaching sportif à domicile, à {{ e.zone.communes[0] }}</h1>
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- /gabarit:en-tete -->
+        <div class="tete__texte">
+          <p class="tete__chapeau">Pour les adultes en bonne santé qui veulent reprendre le sport, gagner en force, préparer une course ou travailler leur posture. Des séances individuelles d'{{ e.offre.seance.duree_minutes | duree }}, chez vous ou en extérieur, à {{ e.zone | zone_phrase }}.</p>
+{% include "actions-rdv.liquid" %}
+          <p class="tete__renvoi">Vous vivez avec une maladie chronique, un handicap, ou votre médecin vous a parlé de sport sur ordonnance&nbsp;? La page <a href="/pages/activite-physique-adaptee.html">Activité physique adaptée (APA)</a> est faite pour vous. Qui vous accompagne&nbsp;: <a href="/pages/a-propos.html">mon parcours</a>.</p>
+        </div>
+      </div>
+    </section>
 
-  <main id="contenu" tabindex="-1">
-    <section class="page-head" aria-labelledby="titre-page">
-      <div class="container page-head__inner">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
-          <ol>
-            <li><a href="/">Accueil</a></li>
-            <li><span aria-current="page">Coaching sportif</span></li>
+    <section class="bloc" id="objectifs" aria-labelledby="q-objectifs">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-objectifs">Pour quoi faire&nbsp;?</h2>
+        <div class="reponse">
+          <ul class="filets list-reset">
+            <li><strong>Reprendre</strong> après une longue pause, à votre niveau du jour, sans brûler les étapes.</li>
+            <li><strong>Gagner en force</strong>&nbsp;: renforcement musculaire au poids du corps ou avec du petit matériel.</li>
+            <li><strong>Gagner en endurance</strong>&nbsp;: marche rapide, course à pied, préparation d'une course ou d'un trail.</li>
+            <li><strong>Prendre du muscle ou perdre de la masse grasse</strong>&nbsp;: je construis la progression&nbsp;; l'alimentation compte aussi (voir <a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a>).</li>
+            <li><strong>Reprendre après une blessure</strong>, une fois la rééducation terminée, en relais de votre kiné.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="deroulement" aria-labelledby="q-deroulement">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-deroulement">Comment ça se passe&nbsp;?</h2>
+        <div class="reponse">
+          <ol class="etapes list-reset">
+            <li><p><strong>Un premier rendez-vous, offert.</strong> {{ e.contact.reservation.domicile.duree }} chez vous&nbsp;: bilan initial, bilan de condition physique, objectifs. Vous préférez d'abord en parler&nbsp;? Un appel de {{ e.contact.reservation.appel.duree }} est possible.</p></li>
+            <li><p><strong>Des objectifs et une proposition.</strong> Nous fixons des objectifs que l'on peut mesurer. Je vous propose un nombre de séances et un contenu. Vous décidez ensuite, sans engagement.</p></li>
+            <li><p><strong>Des séances d'{{ e.offre.seance.duree_minutes | duree }}.</strong> Je prépare chaque séance selon vos objectifs et votre niveau, j'apporte le matériel et je corrige vos gestes.</p></li>
+            <li><p><strong>Des points d'étape.</strong> Nous refaisons les tests du départ, vous voyez ce qui a changé, et nous ajustons.</p></li>
           </ol>
-        </nav>
-        <h1 id="titre-page">Coaching sportif à Montpellier</h1>
-        <p class="page-head__lead">Des programmes d'entraînement personnalisés, à domicile, en extérieur ou en salle, pour atteindre vos objectifs</p>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="titre-intro">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="titre-intro">Entraînement personnalisé</h2>
-        </div>
-        <div class="prose">
-          <h3>Un accompagnement complet et sur mesure</h3>
-          <p>Titulaire d'un Master en activité physique adaptée et santé (APAS) et formé à la préparation physique, je vous propose un accompagnement personnalisé pour vous aider à atteindre vos objectifs, quels qu'ils soient. Chaque programme est conçu spécifiquement pour vous, en tenant compte de votre niveau, de vos contraintes et de vos préférences.</p>
-          <p>Vous vivez avec une maladie chronique, un handicap, ou votre médecin vous a parlé de sport sur ordonnance ? Lisez plutôt la page <a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a>. Pour savoir qui vous accompagne : <a href="/pages/a-propos.html">mon parcours</a>.</p>
-        </div>
-        <ul class="features list-reset section-foot">
-          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-poids"/></svg></span><div><h4>Prise de masse musculaire et perte de masse graisseuse</h4><p>Programmes adaptés pour sculpter votre silhouette en développant votre musculature tout en réduisant votre taux de graisse.</p></div></li>
-          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-coaching"/></svg></span><div><h4>Renforcement musculaire</h4><p>Techniques ciblées pour développer force et endurance musculaire.</p></div></li>
-          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-cardio"/></svg></span><div><h4>Amélioration de la condition physique</h4><p>Exercices variés pour optimiser vos capacités cardio-respiratoires.</p></div></li>
-          <li class="feature"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-tms"/></svg></span><div><h4>Reprise après une blessure</h4><p>Une fois la rééducation terminée, en relais de votre kiné, pour retrouver vos sensations et votre niveau.</p></div></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="services" aria-labelledby="titre-formules">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="titre-formules">Mes formules de coaching</h2>
-          <p>Des options adaptées à vos besoins et à votre emploi du temps</p>
-        </div>
-        <div class="cards cards--2">
-          <article class="card">
-            <div class="card__media"><img src="/images/coaching-sportif.webp" alt="Coaching sportif individuel" width="800" height="800" loading="lazy" decoding="async"></div>
-            <h3>Coaching individuel</h3>
-            <p>Séances personnalisées en face à face, pour un suivi attentif et une progression ciblée. Idéal pour un accompagnement sur mesure.</p>
-            <div class="card__foot"><span class="price-hint">50&nbsp;€ la séance</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/images/coaching-sportif.webp" alt="Coaching sportif en forfait de séances" width="800" height="800" loading="lazy" decoding="async"></div>
-            <h3>Forfaits 5, 10 ou 20 séances</h3>
-            <p>Économisez en optant pour un forfait de plusieurs séances, avec un suivi régulier et une progression suivie sur la durée.</p>
-            <div class="card__foot"><span class="price-hint">240&nbsp;€, 450&nbsp;€ ou 850&nbsp;€</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/images/preparation-physique.webp" width="800" height="533" loading="lazy" decoding="async" alt="Préparation physique avec chronomètre"></div>
-            <h3>Préparation physique</h3>
-            <p>Programme d'entraînement pour préparer un événement sportif, comme une course ou un trail, ou progresser dans votre discipline. Je suis formé à la préparation physique (SSCS Training, 2023).</p>
-            <div class="card__foot"><span class="price-hint">50&nbsp;€ la séance</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/images/bilan-condition-physique.webp" width="1200" height="504" loading="lazy" decoding="async" alt="Bilan de condition physique avec un coach sportif"></div>
-            <h3>Bilan de condition physique seul</h3>
-            <p>Évaluation complète de vos capacités physiques actuelles : endurance, force, souplesse, composition corporelle. Inclut un rapport détaillé et des recommandations personnalisées. Ce bilan fait partie du premier rendez-vous à domicile, qui est <strong>offert</strong> et sans engagement. Commandé seul, en dehors de ce rendez-vous, il coûte 50 €.</p>
-            <div class="card__foot"><span class="price-hint">50&nbsp;€</span><a class="btn--link" href="/pages/contact.html">Me contacter <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-        </div>
-        <p class="pricing-note"><span>Déplacement compris dans la métropole de Montpellier et à Mauguio. Prix nets, TVA non applicable (art. 293 B du CGI).</span></p>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="titre-methodes">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="titre-methodes">Mes méthodes d'entraînement</h2>
-          <p>Des approches variées et complémentaires pour progresser</p>
-        </div>
-        <div class="prose">
-          <h3>Une approche variée et personnalisée</h3>
-          <p>J'utilise une combinaison de méthodes d'entraînement pour créer un programme sur mesure adapté à vos objectifs, votre condition physique et vos préférences. Cette diversité rend les séances stimulantes et vous aide à tenir dans la durée.</p>
-        </div>
-        <div class="cards cards--2 section-foot">
-          <article class="card card--compact">
-            <h4>Renforcement musculaire</h4>
-            <p>Exercices ciblés avec poids de corps, haltères, kettlebells ou bandes de résistance pour tonifier et renforcer l'ensemble de votre corps.</p>
-          </article>
-          <article class="card card--compact">
-            <h4>HIIT</h4>
-            <p>Séances courtes et intenses alternant efforts maximaux et périodes de récupération, idéales pour améliorer votre condition physique.</p>
-          </article>
-          <article class="card card--compact">
-            <h4>Cardio-training</h4>
-            <p>Exercices d'endurance variés pour améliorer votre capacité cardiovasculaire et votre VMA, avec entraînement à la course à pied et préparation au trail.</p>
-          </article>
-          <article class="card card--compact">
-            <h4>Mobilité et souplesse</h4>
-            <p>Travail spécifique pour améliorer votre amplitude de mouvement, limiter le risque de blessure et bouger plus librement.</p>
-          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="titre-deroulement">
-      <div class="container--narrow">
-        <div class="section-head">
-          <h2 id="titre-deroulement">Déroulement du coaching</h2>
-          <p>Un accompagnement structuré, des progrès mesurés</p>
-        </div>
-        <div class="prose">
-          <h3>Un accompagnement méthodique et efficace</h3>
-          <p>Voici comment se déroule un accompagnement, du premier rendez-vous au suivi.</p>
-        </div>
-        <ol class="steps list-reset section-foot">
-          <li class="step"><span class="step__num" aria-hidden="true">1</span><div class="step__body"><h4>Premier rendez-vous</h4><p>Un bilan initial pour comprendre votre parcours, vos contraintes et vos préférences, puis un bilan de condition physique.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">2</span><div class="step__body"><h4>Objectifs et proposition</h4><p>Nous définissons ensemble des objectifs réalistes et mesurables, puis je vous propose un accompagnement : nombre de séances et contenu.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">3</span><div class="step__body"><h4>Préparation de vos séances</h4><p>Je prépare le contenu de vos séances selon vos objectifs, votre niveau et vos disponibilités.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">4</span><div class="step__body"><h4>Séances d'entraînement</h4><p>Accompagnement lors des séances pour vous guider, corriger votre technique et vous motiver à donner le meilleur de vous-même.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">5</span><div class="step__body"><h4>Suivi et ajustements</h4><p>Évaluations régulières de vos progrès et adaptation continue de votre programme à vos progrès.</p></div></li>
-        </ol>
-        <p class="section-foot"><a class="btn btn--secondary" href="#services">Commencer votre parcours</a></p>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="titre-faq">
-      <div class="container--narrow">
-        <div class="section-head">
-          <h2 id="titre-faq">Questions fréquentes</h2>
-          <p>Réponses aux interrogations les plus courantes</p>
-        </div>
-        <h3 class="faq-intro">Tout ce que vous devez savoir sur le coaching</h3>
-        <div class="faq">
-          <details open>
-            <summary>À quelle fréquence dois-je m'entraîner pour voir des résultats ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>La fréquence idéale dépend de vos objectifs, de votre niveau et de votre disponibilité. En général, 2 à 3 séances par semaine permettent en général de progresser de façon régulière. Je vous proposerai un planning adapté à votre situation personnelle pour maximiser vos progrès tout en respectant vos contraintes.</p></div>
-          </details>
-          <details>
-            <summary>Où se déroulent les séances de coaching ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Les séances peuvent se dérouler à votre domicile, en extérieur (parcs, plages) ou dans une salle de sport partenaire à Montpellier, selon vos préférences. Je m'adapte à votre environnement et apporte le matériel nécessaire pour des séances efficaces, quel que soit le lieu choisi.</p></div>
-          </details>
-          <details>
-            <summary>Combien de temps faut-il pour voir des résultats ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Les premiers changements (niveau d'énergie, qualité du sommeil, sensation de bien-être) peuvent être ressentis dès les premières semaines. Les changements visibles (silhouette, force) demandent en général plusieurs semaines de pratique régulière. Ils dépendent de votre point de départ, de votre régularité, de votre sommeil et de votre alimentation.</p></div>
-          </details>
-          <details>
-            <summary>Je n'ai jamais fait de sport, est-ce que le coaching est adapté pour moi ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Absolument ! Le coaching est particulièrement bénéfique pour les débutants. Je vous accompagnerai pas à pas, en commençant par des exercices adaptés à votre niveau et en progressant graduellement. L'objectif est de vous faire progresser à votre rythme, en restant attentif à votre sécurité, tout en vous donnant les bases nécessaires pour une pratique autonome à long terme.</p></div>
-          </details>
-          <details>
-            <summary>Le coaching inclut-il des repères alimentaires ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Oui, je donne des repères alimentaires de base dans le cadre du coaching sportif, pour accompagner vos entraînements. Pour aller plus loin, je propose aussi un accompagnement alimentaire pour les sportifs en bonne santé, qui peut compléter votre programme d'entraînement.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section cta-band" aria-label="Prendre rendez-vous">
-      <div class="container cta-band__inner">
-        <p>Prenez rendez-vous et commencez votre parcours vers une meilleure forme.</p>
-        <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
-        <p class="cta-note">Offert, sans engagement</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- gabarit:pied -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
-          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-        </div>
-        <nav aria-labelledby="pied-services">
-          <p class="footer__title" id="pied-services">Services</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
-            <li><a href="/pages/coaching-sportif.html" aria-current="page">Coaching sportif</a></li>
-            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-            <li><a href="/#services">Pilates</a></li>
-          </ul>
-        </nav>
-        <nav aria-labelledby="pied-infos">
-          <p class="footer__title" id="pied-infos">Informations</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/#tarifs">Tarifs</a></li>
-            <li><a href="/#faq">Questions fréquentes</a></li>
-            <li><a href="/pages/blog.html">Blog</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p class="footer__title">Contact</p>
-          <ul class="footer__list list-reset">
-            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
-            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
+    <section class="bloc" id="exercices" aria-labelledby="q-exercices">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-exercices">Avec quels exercices&nbsp;?</h2>
+        <div class="reponse">
+          <ul class="filets list-reset">
+            <li><strong>Renforcement musculaire</strong>&nbsp;: poids du corps, haltères, kettlebells, bandes élastiques.</li>
+            <li><strong>Entraînement par intervalles</strong> (HIIT)&nbsp;: des efforts courts et intenses, entrecoupés de récupération, quand votre niveau le permet.</li>
+            <li><strong>Endurance et course à pied</strong>&nbsp;: allure, VMA, préparation au trail.</li>
+            <li><strong>Mobilité et souplesse</strong>&nbsp;: bouger plus librement, gagner en amplitude.</li>
           </ul>
         </div>
       </div>
-      <div class="footer__bottom">
-        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
-        <nav aria-label="Informations légales">
-          <ul class="list-reset">
-            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/pages/cgv.html">CGV</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <!-- /gabarit:pied -->
+    </section>
 
-  <script src="/js/app.js" defer></script>
-</body>
-</html>
+    <section class="bloc" id="pilates" aria-labelledby="q-pilates">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-pilates">Le Pilates, en séance individuelle</h2>
+        <div class="reponse prose">
+          <p>Renforcement des muscles profonds et travail de la posture, sur un tapis, avec peu de matériel. Je suis formé au Pilates niveau I (CAP'Formations Sport, 2023, 21 heures). Je propose le Pilates en séances individuelles, chez vous&nbsp;: <strong>{{ e.offre.seance.prix | euros }} la séance d'{{ e.offre.seance.duree_minutes | duree }}</strong>, comme toute séance. Je ne donne pas de cours collectifs actuellement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="preparation-physique" aria-labelledby="q-preparation">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-preparation">La préparation physique</h2>
+        <div class="reponse prose">
+          <p>Pour préparer une course, un trail ou une saison dans votre sport, ou progresser dans votre discipline. Je suis formé à la préparation physique (SSCS Training, 2023)&nbsp;: c'est une formation d'une école privée en ligne, pas un diplôme d'État. Même prix que toute séance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="prix" aria-labelledby="q-prix">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-prix">Combien&nbsp;?</h2>
+        <div class="reponse">
+          <div class="combien">
+            <p class="chiffre">{{ e.offre.seance.prix | euros }}</p>
+            <p class="prix__legende">La séance d'{{ e.offre.seance.duree_minutes | duree }}, déplacement compris {{ e.zone.deplacement_compris }}.</p>
+          </div>
+          <p>Des forfaits de {% for f in e.offre.forfaits %}{% if forloop.last %} ou {% elsif forloop.index > 1 %}, {% endif %}{{ f.seances }}{% endfor %} séances existent. Le bilan de condition physique fait partie du premier rendez-vous à domicile, qui est offert. Tous les prix&nbsp;: <a href="/pages/tarifs.html">Tarifs</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="questions" aria-labelledby="q-questions">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-questions">Vos questions sur le coaching</h2>
+{%- assign cle = "coaching" %}
+{% include "faq.liquid" %}
+      </div>
+    </section>
+
+    <section class="fin-page" aria-label="Premier rendez-vous">
+      <div class="container fin-page__grille">
+        <p class="fin-page__phrase">Un premier rendez-vous pour faire le point, chez vous ou par téléphone.</p>
+{% include "actions-rdv.liquid" %}
+      </div>
+    </section>

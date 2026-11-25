@@ -22,6 +22,7 @@ export function typographie(html) {
       if (m) dans = m[1] ? null : m[2].toLowerCase();
       return morceau;
     }
-    return dans ? morceau : corriger(morceau);
+    // « e-mail » ne se coupe pas au trait d'union (la police n'a pas de trait d'union insécable U+2011).
+    return dans ? morceau : corriger(morceau).replace(/\b(e-mails?)\b/g, '<span class="sans-coupure">$1</span>');
   }).join("");
 }

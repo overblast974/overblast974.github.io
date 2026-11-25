@@ -650,8 +650,8 @@ main:focus { outline: none; }
 .note { font-size: var(--text-sm); color: var(--color-text-muted); }
 
 /* Liste à filets : une ligne par fait, le début en gras (« Pour quoi faire ? », « Avec quels exercices ? »). */
-.filets { display: grid; border-top: var(--border-width) solid var(--color-border); }
-.filets li { padding-block: var(--space-3); border-bottom: var(--border-width) solid var(--color-border); color: var(--color-text-muted); max-width: calc(var(--measure) + var(--space-7)); }
+.filets { display: grid; max-width: calc(var(--measure) + var(--space-7)); border-top: var(--border-width) solid var(--color-border); }
+.filets li { padding-block: var(--space-3); border-bottom: var(--border-width) solid var(--color-border); color: var(--color-text-muted); }
 .filets strong { color: var(--color-text); }
 
 /* Étapes numérotées : le numéro est un repère, pas un grand chiffre (ceux-ci sont réservés aux montants et aux durées). */
@@ -771,4 +771,17 @@ main:focus { outline: none; }
   .texte-long__corps a::after { content: " (" attr(href) ")"; font-size: var(--text-sm); }
   h2, h3 { break-after: avoid; }
   .grille tr, .forfait, .parcours > li { break-inside: avoid; }
+}
+/* Tarifs : déplacement, paiement, engagement, en lignes à filets (liste de définitions). */
+.conditions { margin: 0; }
+.conditions > div { display: grid; gap: var(--space-1); padding-block: var(--space-4); border-bottom: var(--border-width) solid var(--color-border); }
+.conditions dt { font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug); color: var(--color-text); }
+.conditions dd { margin: 0; max-width: var(--measure); color: var(--color-text-muted); }
+@media (min-width: 48rem) {
+  .conditions > div { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); column-gap: var(--space-5); }
+}
+/* Liste de liens en lignes, à plus petite échelle que les situations de l'accueil (Contact, 404, renvoi du blog). */
+.situations--petites a { font-size: var(--text-lg); font-weight: var(--weight-bold); }
+@media (max-width: 39.99rem) {
+  .rdv__options .combien .chiffre { font-size: var(--text-figure-pair); } /* deux durées dans un écran de téléphone (Tarifs) */
 }

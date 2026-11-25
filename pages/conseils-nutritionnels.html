@@ -1,263 +1,81 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Repères alimentaires personnalisés pour sportifs et personnes en bonne santé à Montpellier, en complément de votre activité physique.">
-    <meta name="author" content="Coach APA'R">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://coachapar.fr/pages/conseils-nutritionnels.html">
-    <meta property="og:title" content="Alimentation du sportif à Montpellier | Coach APA'R">
-    <meta property="og:description" content="Repères alimentaires personnalisés pour sportifs et personnes en bonne santé à Montpellier, en complément de votre activité physique.">
-    <meta property="og:image" content="https://coachapar.fr/images/plan-nutrition.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://coachapar.fr/pages/conseils-nutritionnels.html">
-    <meta property="twitter:title" content="Alimentation du sportif à Montpellier | Coach APA'R">
-    <meta property="twitter:description" content="Repères alimentaires personnalisés pour sportifs et personnes en bonne santé à Montpellier, en complément de votre activité physique.">
-    <meta property="twitter:image" content="https://coachapar.fr/images/plan-nutrition.jpg">
-
-    <title>Alimentation du sportif à Montpellier | Coach APA'R</title>
-    <link rel="canonical" href="https://coachapar.fr/pages/conseils-nutritionnels.html">
-    <link rel="icon" href="/favicon.ico" sizes="48x48">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="/images/nutrition-variee-720.webp" imagesrcset="/images/nutrition-variee-480.webp 480w, /images/nutrition-variee-720.webp 720w, /images/nutrition-variee.webp 900w" imagesizes="(min-width: 72rem) 528px, (min-width: 56rem) 45vw, 92vw" fetchpriority="high">
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
-  <meta name="theme-color" content="#44631F">
-</head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <!-- gabarit:en-tete -->
-  <header class="site-header">
-    <div class="container site-header__bar">
-      <a class="brand" href="/">
-        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
-        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#tarifs">Tarifs</a></li>
-          <li><a href="/#faq">Questions</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
-      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
-    </div>
-    <div class="mobile-menu" id="menu-mobile" hidden>
-      <nav class="container" aria-label="Menu">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-        </ul>
-        <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
-          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+---
+layout: base.liquid
+titre: "Alimentation et activité physique à Montpellier | Coach APA'R"
+description: "Repères alimentaires pour sportifs et personnes en bonne santé, en complément de l'activité physique, à Montpellier. Premier rendez-vous offert."
+partage_image: alimentation
+partage_alt: "alimentation et activité physique à Montpellier"
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Coaching sportif", url: "/pages/coaching-sportif.html" }
+  - { nom: "Alimentation et activité physique", url: "/pages/conseils-nutritionnels.html" }
+schema: [service, faq]
+service: { nom: "Accompagnement alimentaire lié à l'activité physique" }
+faq: alimentation
+---
+{%- comment -%} Textes : CONTENU.md section 3. Aucun montant sur cette page (tous sur Tarifs). Paragraphe « Je ne suis pas diététicien » mot pour mot (recette 4.5). {%- endcomment -%}
+{%- assign e = entreprise -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">Alimentation et activité physique</h1>
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- /gabarit:en-tete -->
+        <div class="tete__texte">
+          <p class="tete__chapeau">Des repères alimentaires pour accompagner votre activité physique, si vous êtes en bonne santé ou sportif. Chez vous, à {{ e.zone | zone_phrase }}.</p>
+{% include "actions-rdv.liquid" %}
+          <div class="feuille-pale">
+              <p>Je ne suis pas diététicien. J'ai suivi la formation Aliments et nutrition – bases scientifiques de la diététique (L'École Française, 2023)&nbsp;: c'est une formation, pas un diplôme de diététique. Mes conseils s'adressent aux personnes en bonne santé et aux sportifs. Si vous avez une maladie (diabète, obésité, trouble digestif, allergie ou intolérance diagnostiquée…), votre alimentation relève de votre médecin ou d'un diététicien&nbsp;: je travaille en complément, en suivant leurs consignes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <main id="contenu" tabindex="-1">
-    <section class="page-head" aria-labelledby="titre-page">
-      <div class="container page-head__inner">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
-          <ol>
-            <li><a href="/">Accueil</a></li>
-            <li><span aria-current="page">Alimentation et activité physique</span></li>
+    <section class="bloc" id="objectifs" aria-labelledby="q-objectifs">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-objectifs">Pour quoi faire&nbsp;?</h2>
+        <div class="reponse">
+          <ul class="filets list-reset">
+            <li>Accompagner une perte de poids progressive, sans régime restrictif.</li>
+            <li>Prendre du muscle, si vous vous entraînez.</li>
+            <li>Manger autour de l'entraînement&nbsp;: avant, pendant et après l'effort.</li>
+            <li>Installer des habitudes simples pour le quotidien.</li>
+          </ul>
+          <p>Pas de régime restrictif&nbsp;: des changements progressifs, choisis avec vous, qui tiennent compte de votre mode de vie et de vos goûts.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc" id="deroulement" aria-labelledby="q-deroulement">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-deroulement">Comment ça se passe&nbsp;?</h2>
+        <div class="reponse">
+          <ol class="etapes list-reset">
+            <li><p><strong>Un premier rendez-vous, offert.</strong> Sous la même forme que pour le sport&nbsp;: un appel de {{ e.contact.reservation.appel.duree }}, ou {{ e.contact.reservation.domicile.duree }} chez vous. Nous y précisons votre besoin.</p></li>
+            <li><p><strong>Le premier point alimentation.</strong> Vos habitudes, votre mode de vie, vos objectifs&nbsp;: c'est le point de départ.</p></li>
+            <li><p><strong>Des repères et des menus types.</strong> Adaptés à vos objectifs et à vos goûts, avec des recettes et des conseils pratiques.</p></li>
+            <li><p><strong>Un suivi, si vous le voulez.</strong> Des rendez-vous d'{{ e.offre.seance.duree_minutes | duree }}, en personne, pour ajuster les repères. Le but&nbsp;: que vous sachiez faire seul.</p></li>
           </ol>
-        </nav>
-        <h1 id="titre-page">Alimentation et activité physique</h1>
-        <p class="page-head__lead">Une alimentation adaptée à vos objectifs et votre mode de vie</p>
+          <p>Ces trois prestations sont payantes, à prix fixes&nbsp;: tous les montants sont sur la page <a href="/pages/tarifs.html#alimentation">Tarifs</a>.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section section--surface" aria-labelledby="titre-intro">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="titre-intro">Une alimentation à votre mesure</h2>
-          <p>Bien manger, c'est aussi mieux bouger : l'alimentation soutient votre forme et votre pratique sportive</p>
-        </div>
-        <div class="split">
-          <div class="figure-img">
-            <img src="/images/nutrition-variee-720.webp" srcset="/images/nutrition-variee-480.webp 480w, /images/nutrition-variee-720.webp 720w, /images/nutrition-variee.webp 900w" sizes="(min-width: 72rem) 528px, (min-width: 56rem) 45vw, 92vw" alt="Variété de fruits et légumes frais pour une alimentation équilibrée" width="900" height="1350" fetchpriority="high" decoding="async">
-          </div>
-          <div class="prose">
-            <h3>Mon approche</h3>
-            <p>En complément de l'entraînement, je vous aide à ajuster votre alimentation à vos objectifs :</p>
-            <ul class="checklist list-reset">
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Mieux manger pour accompagner une perte de poids progressive</strong>, sans régime restrictif</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Gain de masse musculaire</strong> : pour les sportifs et les personnes actives</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Alimentation du sportif</strong> : adaptée à votre discipline et à vos entraînements</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-check"/></svg><span><strong>Rééquilibrage alimentaire</strong> : des habitudes simples pour le quotidien</span></li>
-            </ul>
-            <p><strong>Je ne suis pas diététicien.</strong> J'ai suivi la formation Aliments et nutrition – bases scientifiques de la diététique (L'École Française, 2023) : c'est une formation, pas un diplôme de diététique. Mes conseils s'adressent aux personnes en bonne santé et aux sportifs. Si vous avez une maladie (diabète, obésité, trouble digestif, allergie ou intolérance diagnostiquée…), votre alimentation relève de votre médecin ou d'un diététicien : je travaille en complément, en suivant leurs consignes.</p>
-            <p>Mon approche ne se base pas sur des régimes restrictifs, mais sur l'adoption progressive d'habitudes alimentaires saines et durables, adaptées à votre mode de vie et vos préférences.</p>
-            <div class="actions">
-              <a class="btn btn--secondary" href="/pages/contact.html">Me contacter</a>
-              <a class="btn btn--secondary" href="#prestations-nutritionnelles">Voir mes prestations</a>
-            </div>
+    <section class="bloc" id="questions" aria-labelledby="q-questions">
+      <div class="container bloc__grille">
+        <h2 class="question" id="q-questions">Vos questions sur l'alimentation</h2>
+{%- assign cle = "alimentation" %}
+{% include "faq.liquid" %}
+      </div>
+    </section>
+
+    <section class="fin-page" aria-label="Premier rendez-vous">
+      <div class="container fin-page__grille">
+        <p class="fin-page__phrase">Commençons par un premier rendez-vous pour préciser votre besoin.</p>
+        <div class="ouverture__actions">
+          <div class="cta-group">
+            <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
+            <p class="cta-note">Ce premier rendez-vous est offert. L'accompagnement alimentaire est ensuite payant&nbsp;: tous les prix sont sur la page <a href="/pages/tarifs.html#alimentation">Tarifs</a>.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section" id="prestations-nutritionnelles" aria-labelledby="titre-prestations">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="titre-prestations">Mes prestations</h2>
-          <p>Le premier rendez-vous est offert : nous y précisons votre besoin. Les prestations ci-dessous sont payantes.</p>
-        </div>
-        <div class="cards cards--3">
-          <article class="card">
-            <div class="card__media"><img src="/images/Conseils-nutritionnels.webp" width="640" height="440" loading="lazy" decoding="async" alt="Carnet de suivi alimentaire rempli à côté d'une salade et de légumes frais"></div>
-            <h3>Premier point alimentation</h3>
-            <p>Analyse complète de vos habitudes alimentaires, de votre mode de vie et de vos objectifs pour établir un point de départ personnalisé.</p>
-            <div class="card__foot"><span class="price-hint">60&nbsp;€</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/images/plan-nutrition.webp" width="800" height="450" loading="lazy" decoding="async" alt="Menus types et aliments équilibrés"></div>
-            <h3>Repères et menus types personnalisés</h3>
-            <p>Des repères et des menus types adaptés à vos objectifs : perte de poids progressive, prise de masse ou alimentation du sportif. Recettes et conseils pratiques inclus.</p>
-            <div class="card__foot"><span class="price-hint">100&nbsp;€</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/images/suivi-nutritionnel.webp" width="800" height="800" loading="lazy" decoding="async" alt="Carnet de suivi alimentaire avec légumes frais"></div>
-            <h3>Suivi alimentation</h3>
-            <p>Rendez-vous réguliers pour ajuster vos repères, répondre à vos questions et vous accompagner dans l'atteinte de vos objectifs.</p>
-            <div class="card__foot"><span class="price-hint">45&nbsp;€ la séance</span><a class="btn--link" href="/#reservation">Prendre mon premier rendez-vous <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
-          </article>
-        </div>
-        <p class="pricing-note"><span>Déplacement compris dans la métropole de Montpellier et à Mauguio. Prix nets, TVA non applicable (art. 293 B du CGI).</span></p>
-      </div>
-    </section>
-
-    <section class="section section--surface" aria-labelledby="titre-methode">
-      <div class="container--narrow">
-        <div class="section-head">
-          <h2 id="titre-methode">Ma méthode</h2>
-          <p>Une approche progressive et personnalisée</p>
-        </div>
-        <ol class="steps list-reset">
-          <li class="step"><span class="step__num" aria-hidden="true">1</span><div class="step__body"><h3>Premier point</h3><p>Analyse complète de votre profil, vos habitudes alimentaires actuelles, votre mode de vie et vos objectifs.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">2</span><div class="step__body"><h3>Des repères sur mesure</h3><p>Des repères personnalisés selon vos besoins, vos goûts et votre emploi du temps.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">3</span><div class="step__body"><h3>Comprendre son alimentation</h3><p>Transmission des connaissances essentielles pour comprendre les principes d'une alimentation équilibrée et adaptée à vos besoins.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">4</span><div class="step__body"><h3>Suivi régulier</h3><p>Accompagnement continu avec des ajustements réguliers de vos repères en fonction de vos progrès et de vos retours.</p></div></li>
-          <li class="step"><span class="step__num" aria-hidden="true">5</span><div class="step__body"><h3>Autonomisation</h3><p>Développement de votre autonomie pour maintenir de bonnes habitudes alimentaires sur le long terme.</p></div></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="titre-faq">
-      <div class="container--narrow">
-        <div class="section-head">
-          <h2 id="titre-faq">Questions fréquentes</h2>
-          <p>Réponses aux interrogations les plus courantes</p>
-        </div>
-        <div class="faq">
-          <details open>
-            <summary>Faut-il suivre un régime strict pour perdre du poids ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Non, les régimes restrictifs sont généralement contre-productifs à long terme. Je privilégie une approche d'alimentation équilibrée et durable, avec des changements progressifs adaptés à votre mode de vie. L'objectif est de créer des habitudes alimentaires saines que vous pourrez maintenir sur la durée.</p></div>
-          </details>
-          <details>
-            <summary>Comment l'alimentation peut-elle soutenir ma pratique sportive ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Une alimentation adaptée à votre activité sportive couvre vos besoins en énergie et aide à la récupération. Je vous aide à ajuster votre alimentation avant, pendant et après l'effort.</p></div>
-          </details>
-          <details>
-            <summary>Combien de temps faut-il pour voir des résultats ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Les premiers changements peuvent être ressentis dès les premières semaines (niveau d'énergie, qualité du sommeil, digestion). Les changements visibles (silhouette, force) demandent en général plusieurs semaines de pratique régulière. Ils dépendent de votre point de départ, de votre régularité, de votre sommeil et de votre alimentation. Je m'adapte à votre évolution.</p></div>
-          </details>
-          <details>
-            <summary>Vous adaptez-vous aux choix alimentaires particuliers (végétarien, sans gluten, etc.) ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Oui. Je m'adapte à vos choix alimentaires (végétarien, végétalien…). En cas d'intolérance, d'allergie ou de maladie digestive diagnostiquée, je suis les consignes de votre médecin ou de votre diététicien.</p></div>
-          </details>
-          <details>
-            <summary>Comment se déroule le suivi alimentation ?<svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-plus"/></svg></summary>
-            <div class="faq__answer"><p>Après le premier point, nous établissons ensemble un calendrier de suivi adapté à vos besoins. Les rendez-vous ont lieu en personne. Entre les rendez-vous, vous pouvez me contacter pour des questions ou des ajustements.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--surface cta-band" aria-label="Prendre rendez-vous">
-      <div class="container cta-band__inner">
-        <p>Commençons par un premier rendez-vous pour préciser votre besoin.</p>
-        <a class="btn btn--primary" href="/#reservation">Prendre mon premier rendez-vous</a>
-        <p class="cta-note">Ce premier rendez-vous est offert. L'accompagnement alimentaire est ensuite payant : tarifs plus haut sur cette page.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- gabarit:pied -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
-          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-        </div>
-        <nav aria-labelledby="pied-services">
-          <p class="footer__title" id="pied-services">Services</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
-            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
-            <li><a href="/pages/conseils-nutritionnels.html" aria-current="page">Alimentation et activité physique</a></li>
-            <li><a href="/#services">Pilates</a></li>
-          </ul>
-        </nav>
-        <nav aria-labelledby="pied-infos">
-          <p class="footer__title" id="pied-infos">Informations</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/#tarifs">Tarifs</a></li>
-            <li><a href="/#faq">Questions fréquentes</a></li>
-            <li><a href="/pages/blog.html">Blog</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p class="footer__title">Contact</p>
-          <ul class="footer__list list-reset">
-            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
-            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
-        <nav aria-label="Informations légales">
-          <ul class="list-reset">
-            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/pages/politique-confidentialite.html">Confidentialité</a></li>
-            <li><a href="/pages/cgv.html">CGV</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <!-- /gabarit:pied -->
-
-  <script src="/js/app.js" defer></script>
-</body>
-</html>

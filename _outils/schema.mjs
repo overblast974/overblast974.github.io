@@ -106,7 +106,7 @@ function personne(d, page) {
       hasCredential: (page.diplomes ?? []).map((q) => {
         const c = { "@type": "EducationalOccupationalCredential", name: q.titre, credentialCategory: q.categorie };
         if (q.annee) c.dateCreated = String(q.annee);
-        if (q.identifiant) c.identifier = q.identifiant;
+        if (q.identifiant) c.identifier = d.mentions.carte_professionnelle;
         if (q.organisme) c.recognizedBy = { "@type": q.universite ? "CollegeOrUniversity" : "Organization", name: q.organisme };
         return c;
       }),
