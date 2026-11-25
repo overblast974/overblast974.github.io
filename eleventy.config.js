@@ -7,7 +7,7 @@ import yaml from "js-yaml";
 import { validerEntreprise } from "./_outils/donnees.mjs";
 import {
   NBSP, euros, prixParSeance, remise, heure, horairesPied, horairesPhrase, horairesCourts, dateLongue,
-  absenceActive, texteBrut, listeDe, zonePhrase, dureeTexte, capitale, remplir,
+  absenceActive, texteBrut, listeDe, zonePhrase, dureeTexte, capitale, remplir, forfaitsSeances,
 } from "./_outils/format.mjs";
 import { blocsSchema, lignesTarifs } from "./_outils/schema.mjs";
 import { typographie } from "./_outils/typo.mjs";
@@ -65,6 +65,7 @@ export default function (config) {
   config.addFilter("capitale", (s) => capitale(s));
   config.addFilter("insecable", (s) => String(s).replace(/ /g, NBSP));
   config.addFilter("remplir", (texte) => remplir(texte, d(), AUJOURDHUI));
+  config.addFilter("forfaits_seances", (l) => forfaitsSeances(l));
   config.addFilter("pourcentage_barre", (f, max) => Math.round((f.de_preference_sous_mois / max) * 100));
   config.addFilter("lignes_tarifs", () => lignesTarifs(d()));
   // Données structurées de la page : {{ page.url | schema: schema, fil, faq, service, diplomes, article }}

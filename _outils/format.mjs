@@ -101,10 +101,17 @@ export const capitale = (s) => String(s).replace(/^(<[^>]+>)*(\S)/, (m, b = "", 
 
 /**
  * Remplace les renvois {zone}, {communes}, {zone_suite}, {horaires}, {horaires_courts}, {telephone}, {email}, {seance},
- * {duree_seance} et {absence} d'un texte des données (réponses de FAQ) par leur valeur.
+ * {duree_seance}, {duree_appel}, {forfaits_seances} et {absence} d'un texte des données (réponses de FAQ,
+ * descriptions des pages en front matter) par leur valeur.
  * {absence} devient une chaîne vide après la date de reprise : la phrase disparaît du texte visible
  * comme de sa copie FAQPage, sans retoucher la réponse.
  */
+/** Tailles des forfaits : « 5, 10 ou 20 ». */
+export function forfaitsSeances(forfaits) {
+  const n = forfaits.map((f) => String(f.seances));
+  return n.length === 1 ? n[0] : n.slice(0, -1).join(", ") + " ou " + n.at(-1);
+}
+
 export function remplir(texte, d, aujourdhui = new Date()) {
   const tel = d.contact.telephone;
   const valeurs = {
@@ -117,6 +124,8 @@ export function remplir(texte, d, aujourdhui = new Date()) {
     email: `<a href="mailto:${d.contact.email}">${d.contact.email}</a>`,
     seance: euros(d.offre.seance.prix),
     duree_seance: dureeTexte(d.offre.seance.duree_minutes),
+    duree_appel: d.contact.reservation.appel.duree,
+    forfaits_seances: forfaitsSeances(d.offre.forfaits),
     absence: absenceActive(d.absence, aujourdhui) ? d.absence.phrase : "",
   };
   return String(texte)

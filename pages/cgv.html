@@ -47,7 +47,7 @@ fil:
                     <h3>1.2 Services proposés</h3>
                     <p>Les prestations concernées par les présentes CGV sont les suivantes :</p>
                     <ul>
-                        <li>Séances individuelles d'une heure de coaching sportif, d'activité physique adaptée (APA), de Pilates et de préparation physique, à l'unité ou en forfait de 5, 10 ou 20 séances ; le forfait de 20 séances comprend des échanges entre les séances (article 4.4)</li>
+                        <li>Séances individuelles d'une heure de coaching sportif, d'activité physique adaptée (APA), de Pilates et de préparation physique, à l'unité ou en forfait de {{ e.offre.forfaits | forfaits_seances }} séances ; le forfait de 20 séances comprend des échanges entre les séances (article 4.4)</li>
                         <li>Accompagnement alimentaire lié à l'activité physique, pour des personnes en bonne santé : premier point alimentation, repères et menus types personnalisés, suivi</li>
                         <li>Bilan de condition physique : compris dans le premier rendez-vous à domicile, qui est offert ; facturé lorsqu'il est commandé seul</li>
                     </ul>
@@ -71,7 +71,7 @@ fil:
                     </ul>
 
                     <h3>2.2 Processus de réservation</h3>
-                    <p>Le premier rendez-vous, offert et sans engagement, se réserve en ligne par le service de prise de rendez-vous Cal.com, accessible depuis le site. Il prend la forme d'un appel de 20 minutes ou d'un rendez-vous d'une heure trente au domicile du Client.</p>
+                    <p>Le premier rendez-vous, offert et sans engagement, se réserve en ligne par le service de prise de rendez-vous Cal.com, accessible depuis le site. Il prend la forme d'un appel de {{ e.contact.reservation.appel.duree }} ou d'un rendez-vous d'{{ e.contact.reservation.domicile.duree_lettres }} au domicile du Client.</p>
                     <p>Une demande d'information ou de prestation peut aussi être faite :</p>
                     <ul>
                         <li>par téléphone ;</li>
@@ -158,9 +158,9 @@ fil:
                     <h3>5.1 Durée conseillée</h3>
                     <p>Les forfaits sont prévus pour être utilisés en :</p>
                     <ul>
-                        <li>forfait 5 séances : 2 mois ;</li>
-                        <li>forfait 10 séances : 4 mois ;</li>
-                        <li>forfait 20 séances : 8 mois.</li>
+{%- for f in e.offre.forfaits %}
+                        <li>forfait {{ f.seances }} séances : {{ f.de_preference_sous_mois }} mois{% if forloop.last %}.{% else %} ;{% endif %}</li>
+{%- endfor %}
                     </ul>
                     <p>Cette durée commence à la première séance.</p>
 

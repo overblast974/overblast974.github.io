@@ -4,6 +4,8 @@
 {%- assign reservation = "/#reservation" -%}
 {%- if accueil %}{% assign reservation = "#reservation" %}{% endif -%}
 {%- assign tel = e.contact.telephone -%}
+{%- comment -%} Les descriptions des pages ne recopient aucune valeur : renvois {seance}, {telephone}… (recette MA-3). {%- endcomment -%}
+{%- assign description = description | remplir | texte_brut -%}
 <!DOCTYPE html>
 <html lang="fr">
 <head>

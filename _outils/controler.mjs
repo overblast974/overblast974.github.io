@@ -102,6 +102,39 @@ for (const [cle, p] of Object.entries(FAQ)) {
   }
 }
 
+// 6. Aucune valeur des données recopiée à la main dans une page source (recette MA-3) : téléphone, e-mail,
+//    prix, horaires. Front matter compris ; commentaires Liquid exclus. Une valeur écrite en dur ne suivrait
+//    pas un changement de _data/entreprise.yaml (la description de Contact gardait l'ancien numéro).
+{
+  const sources = (function lister(dossier) {
+    return readdirSync(dossier).flatMap((n) => {
+      const p = join(dossier, n);
+      if (/^(node_modules|_site|docs|\.git|_outils|_data|_js|_images-source|images|fonts|css)$/.test(n)) return [];
+      return statSync(p).isDirectory() ? lister(p) : /\.(html|liquid)$/.test(n) ? [relative(".", p).split("\\").join("/")] : [];
+    });
+  })(".");
+  const sep = "(?:\\s|&nbsp;|\u00a0|\\.|-)?";
+  const chiffres = (s) => [...s.replace(/\D/g, "")].join(sep);
+  const motifs = [
+    [new RegExp(chiffres(contact.telephone.affiche)), "téléphone"],
+    [new RegExp(contact.telephone.international.replace("+", "\\+")), "téléphone international"],
+    [new RegExp(contact.email.replace(/[.@]/g, (c) => "\\" + c), "i"), "e-mail"],
+    [/\d(?:\s|&nbsp;|\u00a0)?(?:€|euros?\b)/, "prix"],
+  ];
+  for (const p of d.horaires.plages) for (const hm of [p.de, p.a]) {
+    const [h, m] = hm.split(":"); const hh = String(Number(h));
+    const forme = m === "00" ? `\\b0?${hh}(?::00|${sep}h(?!${sep}\\d))` : `\\b0?${hh}(?::${m}|${sep}h${sep}${m}\\b)`;
+    motifs.push([new RegExp(forme), `horaire ${hm}`]);
+  }
+  for (const f of sources) {
+    const src = readFileSync(f, "utf8").replace(/\{%-?\s*comment\s*-?%\}[\s\S]*?\{%-?\s*endcomment\s*-?%\}/g, "");
+    for (const [re, quoi] of motifs) {
+      const m = src.match(re);
+      ok(!m, `${f} : ${quoi} écrit en dur (« ${m && m[0]} ») : le tirer de _data/entreprise.yaml`);
+    }
+  }
+}
+
 console.log(`Contrôle des données : ${pages.length} pages, ${verifs} vérifications, date de référence ${AUJOURDHUI.toISOString().slice(0, 10)} (phrase d'absence ${absenceAffichee ? "attendue" : "non attendue"}).`);
 if (ecarts.length) { console.log(`${ecarts.length} écart(s) :\n  ${ecarts.join("\n  ")}`); process.exit(1); }
 console.log("Aucun écart : les pages disent ce que disent les données.");
