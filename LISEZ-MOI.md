@@ -27,23 +27,19 @@ Même geste, dans `horaires`, `plages`. Exemple : finir à 21 h au lieu de 21 h 
 
 ## La bascule (lot E) : l'ordre exact
 
-Rien ne se fait avant le feu vert de la régie, et pas avant que le lot « Reprise » soit en ligne. Chaque étape attend que la précédente soit vérifiée.
+Rien ne se fait avant le feu vert de la régie. Chaque étape attend que la précédente soit vérifiée. **L'ordre compte : on change la source d'abord, on fusionne ensuite.** Dans l'ordre inverse, Jekyll publierait les gabarits bruts et le site serait cassé en ligne.
 
 | # | Qui | Quoi | Ce qui se passe |
 |---|---|---|---|
-| 0 | Agence (backend) | Remet la branche `refonte/outil` à jour sur `main`, relance la vérification. | Coche verte : le site fabriqué est identique, octet pour octet, au site en ligne. |
-| 1 | Vous | Settings, Pages : faites une capture de l'écran. Il doit montrer « Deploy from a branch », `main`, `/ (root)`, le domaine `coachapar.fr` et « Enforce HTTPS » coché. | Rien. C'est la photo « avant », pour revenir en arrière. |
-| 2 | Vous | Fusionnez la demande de fusion « Outil Eleventy, étape 1 », que la régie vous envoie. | Jekyll republie **le même site**. Dans « Actions », « Publier le site » affiche « Publication sautée » : c'est normal, la source n'a pas encore changé. |
-| 3 | Agence (mise en ligne) | Vérifie que le site en ligne n'a pas bougé. | Feu vert pour l'étape 4. |
-| 4 | Vous | Settings, Pages, « Build and deployment », « Source » : choisissez **GitHub Actions**. **N'acceptez aucun des modèles que GitHub propose** (Jekyll, Static HTML…) : le flux est déjà dans le dépôt. | Plus rien n'est publié par Jekyll. Le site reste en ligne tel quel. |
-| 5 | Vous | Onglet « Actions », « Publier le site », « Run workflow », branche `main`, « Run workflow ». Attendez la coche verte (1 à 3 minutes). | Le site fabriqué par Eleventy est publié. Il est identique au précédent. |
+| 1 | Vous | Settings, Pages : faites une capture de l'écran. Il doit montrer « Deploy from a branch », `main`, `/ (root)`, le domaine `coachapar.fr` et « Enforce HTTPS » coché. | Rien. C'est la photo « avant ». |
+| 2 | Vous | Créez la branche de secours `secours/ancien-site` à partir de `main` (page d'accueil du dépôt, menu des branches, tapez le nom, « Create branch »). | Rien. C'est l'ancien site, gardé pour revenir en arrière. |
+| 3 | Vous | Settings, Pages, « Build and deployment », « Source » : choisissez **GitHub Actions**. **N'acceptez aucun des modèles que GitHub propose** (Jekyll, Static HTML…) : le flux est déjà dans le dépôt. | Plus rien n'est publié par Jekyll. L'ancien site reste en ligne tel quel. |
+| 4 | Agence | Vérifie que l'ancien site est toujours servi et que le domaine `coachapar.fr` est toujours réglé. | Feu vert pour la fusion. |
+| 5 | Vous | Fusionnez la demande de fusion de la refonte, que la régie vous envoie. | « Publier le site » se lance seul dans l'onglet « Actions ». Coche verte en 1 à 3 minutes : la refonte est en ligne. |
 | 6 | Vous | Settings, Pages : vérifiez que le domaine `coachapar.fr` est toujours là, avec la vérification DNS réussie et « Enforce HTTPS » coché. S'il a disparu, retapez `coachapar.fr` et « Save ». | Avec GitHub Actions, le fichier `CNAME` du dépôt n'est plus lu : seul ce réglage compte. |
-| 7 | Agence (mise en ligne, recette) | Contrôle en production : les 13 pages, le plan du site, la page 404, HTTPS. | Bascule terminée. |
-| 8 | Agence, puis vous | Branchement des pages sur les données (étape 3), une demande de fusion par thème. Vous fusionnez chacune après la coche verte. | À partir de là, ce fichier pilote le site. |
+| 7 | Agence | Contrôle en production : les 14 pages, le plan du site, la page 404, HTTPS. | Bascule terminée. À partir de là, `_data/entreprise.yaml` pilote le site. |
 
-**Revenir en arrière** (possible jusqu'à l'étape 8 exclue) : Settings, Pages, « Source » : « Deploy from a branch », `main`, `/ (root)`, « Save ». Jekyll republie le site comme avant. Après l'étape 8, il faut d'abord annuler les fusions de l'étape 3 : demandez-le à l'agence.
-
-**Ce qu'il ne faut pas faire** : fusionner une page qui contient des balises `{% … %}` ou `{{ … }}` tant que la source est « Deploy from a branch ». Jekyll publierait ces balises telles quelles et la page serait cassée en ligne. La vérification automatique refuse ce cas.
+**Revenir en arrière** (moins de cinq minutes) : Settings, Pages, « Source » : « Deploy from a branch », branche **`secours/ancien-site`**, `/ (root)`, « Save ». L'ancien site revient. **Ne choisissez jamais `main` en mode branche après la fusion** : `main` contient alors des gabarits que Jekyll ne sait pas lire.
 
 ## Voir le site avant de publier (facultatif)
 

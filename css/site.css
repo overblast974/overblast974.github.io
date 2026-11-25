@@ -314,8 +314,25 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
 @media (max-width: 22.49rem) {
   .qui__entete { grid-template-columns: minmax(0, 1fr) var(--portrait-qui-xs); }
 }
-@media (min-width: 40rem) {
-  .qui__entete { grid-template-columns: minmax(0, 1fr) var(--portrait-bloc); }
+/* Tablette et téléphone pliant déplié (recette NR-1) : le portrait est grand, donc toute la réponse passe à sa gauche,
+   sans vide entre la question et l'identité. */
+@media (min-width: 40rem) and (max-width: 63.99rem) {
+  .bloc--qui .bloc__grille {
+    display: grid; grid-template-columns: minmax(0, 1fr) var(--portrait-bloc);
+    column-gap: var(--space-5); row-gap: var(--space-4); align-items: start;
+  }
+  .qui__entete { display: contents; }
+  .bloc--qui .question { grid-column: 1; grid-row: 1; }
+  .bloc--qui .qui__identite { grid-column: 1; grid-row: 2; align-self: start; }
+  .bloc--qui .reponse.qui { grid-column: 1; grid-row: 3; }
+  .bloc--qui .qui__portrait { grid-column: 2; grid-row: 1 / span 3; }
+}
+/* Texte très agrandi sur téléphone (recette NR-2) : la largeur se mesure en em, donc en taille de texte du lecteur.
+   Sous 19 em, plus de colonnes : la question, l'identité, puis le portrait. */
+@media (max-width: 19em) {
+  .qui__entete { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
+  .qui__entete .question, .qui__identite, .qui__portrait { grid-column: 1; grid-row: auto; }
+  .qui__portrait { width: min(60%, var(--portrait-qui-sm)); }
 }
 @media (min-width: 64rem) {
   .qui__entete { display: contents; }
@@ -652,6 +669,7 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
     opacity: 1; transform: none;
     transition: opacity var(--duration-apparition) var(--ease-out-strong), transform var(--duration-apparition) var(--ease-out-strong);
   }
+  .apparait--vu.feuille-cadre { transform: none; } /* recette NR-5 : sinon la règle d'attente, plus précise, laissait le cadre à 96 % */
   .apparait--vu.feuille-cadre img { transform: none; transition: transform var(--duration-apparition) var(--ease-out-strong); }
   .porte--coaching.apparait--vu { transition-delay: var(--delay-apparition-2); }
 
