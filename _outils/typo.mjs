@@ -8,7 +8,8 @@ function corriger(texte) {
     .replace(/([^\s>( ]) ([?!:;»])/g, `$1${NB}$2`)        // avant ? ! : ; »
     .replace(/« /g, `«${NB}`)                                  // après «
     .replace(/(\d) (€|%|h\b|min\b|mois\b|ans\b|heures\b|minutes\b|séances?\b)/g, `$1${NB}$2`)
-    .replace(/(\d) (\d{2}) (\d{2}) (\d{2}) (\d{2})/g, `$1${NB}$2${NB}$3${NB}$4${NB}$5`) // téléphone
+    // téléphone : groupes insécables ; <wbr> permet, texte très agrandi seulement, de passer à la ligne entre deux paires
+    .replace(/(\d) (\d{2}) (\d{2}) (\d{2}) (\d{2})/g, `$1${NB}<wbr>$2${NB}<wbr>$3${NB}<wbr>$4${NB}<wbr>$5`)
     .replace(/\bn° (\d)/g, `n°${NB}$1`)
     .replace(/(h) (\d{2})\b/g, `$1${NB}$2`)                    // « 17 h 30 »
     .replace(/(art\.) (\d)/g, `$1${NB}$2`);

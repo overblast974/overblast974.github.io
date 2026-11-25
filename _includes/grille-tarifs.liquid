@@ -11,17 +11,17 @@
 {%- endfor %}
                   </ul>
 {%- else %}
-            <table class="grille">
+            <table class="grille" role="table">
               <caption class="visually-hidden">Tous les prix, en euros</caption>
-              <thead>
-                <tr><th scope="col">Prestation</th><th scope="col">Prix</th><th scope="col">Par rapport au prix à l'unité</th></tr>
+              <thead role="rowgroup">
+                <tr role="row"><th scope="col" role="columnheader">Prestation</th><th scope="col" role="columnheader">Prix</th><th scope="col" role="columnheader">Par rapport au prix à l'unité</th></tr>
               </thead>
-              <tbody>
+              <tbody role="rowgroup">
 {%- for l in lignes %}
-                <tr>
-                  <th scope="row">{{ l.nom }}</th>
-                  <td class="grille__prix">{% if l.prix == 0 %}offert{% else %}{{ l.prix | euros }}{% if l.unite %} {{ l.unite }}{% endif %}{% if l.parSeance %}<span>, soit {{ l.parSeance | euros }} la séance</span>{% endif %}{% endif %}</td>
-                  <td class="grille__remise">{% if l.remise %}−{{ l.remise }}&nbsp;%{% endif %}</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader">{{ l.nom }}</th>
+                  <td class="grille__prix" role="cell">{% if l.prix == 0 %}offert{% else %}{{ l.prix | euros }}{% if l.unite %} {{ l.unite }}{% endif %}{% if l.parSeance %}<span>, soit {{ l.parSeance | euros }} la&nbsp;séance</span>{% endif %}{% endif %}</td>
+                  <td class="grille__remise" role="cell">{% if l.remise %}<span class="grille__libelle" aria-hidden="true">Par rapport au prix à l'unité&nbsp;: </span>−{{ l.remise }}&nbsp;%{% endif %}</td>
                 </tr>
 {%- endfor %}
               </tbody>

@@ -11,7 +11,7 @@
               <p class="forfait__prix">{{ f.prix | euros }}</p>
               <div class="forfait__piste" aria-hidden="true"><span class="forfait__remplissage"></span></div>
               <p class="forfait__duree">À utiliser de préférence sous {{ f.de_preference_sous_mois }}&nbsp;mois</p>
-              <p class="forfait__unite">soit {{ f | prix_par_seance | euros }} la séance{% if long %}, −{{ f | remise: o.seance.prix }}&nbsp;%{% endif %}</p>
+              <p class="forfait__unite">soit {{ f | prix_par_seance | euros }} la&nbsp;séance{% if long %}, −{{ f | remise: o.seance.prix }}&nbsp;%{% endif %}</p>
 {%- if long and f.avantage %}
               <p class="forfait__avantage">{{ f.avantage }}</p>
 {%- endif %}

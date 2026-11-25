@@ -36,11 +36,20 @@ body {
   margin: 0;
   font-family: var(--font-sans); font-size: var(--text-base); line-height: var(--leading-body);
   color: var(--color-text); background: var(--color-bg);
+  overflow-wrap: break-word; /* un mot plus large que sa colonne passe à la ligne (texte agrandi, recette MA-2) */
 }
 h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; }
 img, svg { max-width: 100%; }
 img { height: auto; display: block; }
 h1, h2, h3 { font-weight: var(--weight-bold); letter-spacing: var(--tracking-title); text-wrap: balance; }
+/* Texte agrandi (recette MA-2) : un mot long (« cardiovasculaire », « Confidentialité ») se coupe plutôt que
+   de pousser la page hors de l'écran ; césure française, texte très agrandi seulement (fin du fichier). */
+h1, h2, h3, dt, summary { overflow-wrap: anywhere; }
+/* Adresses e-mail et liens longs dans le texte courant (recette MI-4) : ils passent à la ligne. */
+p a, li a, dd a, td a { overflow-wrap: anywhere; }
+/* Libellés en boîte souple (boutons, liens de suite, situations) : même chose, sinon le mot le plus long fixe
+   la largeur de la boîte ; les coupures normales (espaces, <wbr> du téléphone) passent toujours en premier. */
+.btn, .lien-suite, .situations a, .moyen__lien { overflow-wrap: anywhere; }
 p { max-width: var(--measure); text-wrap: pretty; }
 a { color: var(--color-link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
 strong { font-weight: var(--weight-bold); }
@@ -76,6 +85,15 @@ main:focus { outline: none; }
     display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap);
   }
 }
+
+/* Piles à une colonne : la colonne prend la largeur disponible et ne s'élargit jamais au contenu le plus long
+   (sinon, texte agrandi, un numéro ou un mot long pousse toute la pile hors de l'écran : recette MA-2).
+   Les règles plus bas qui posent plusieurs colonnes l'emportent. */
+.reponse, .prose, .tete__texte, .ouverture__tete, .ouverture__texte, .ouverture__cote, .ouverture__actions,
+.texte-long__corps, .texte-long__corps section, .feuille-pale, .moyen, .portes, .porte, .rdv__options, .combien,
+.prix__seance, .fiche, .filets, .liens, .qui__limites, .forfaits, .footer__grid, .footer__brand, .rdv__pratique,
+.conditions > div, .etapes, .limites, .parcours { grid-template-columns: minmax(0, 1fr); }
+ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : même règle, les classes l'emportent */
 
 /* ---------- 3. Boutons et liens ---------- */
 .btn {
@@ -120,7 +138,7 @@ main:focus { outline: none; }
   position: sticky; top: 0; z-index: var(--z-header);
   background: var(--color-surface); border-bottom: var(--border-width) solid var(--color-border);
 }
-.site-header__bar { display: flex; align-items: center; gap: var(--space-2); min-height: var(--header-h); }
+.site-header__bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-height: var(--header-h); }
 .brand {
   display: inline-flex; align-items: center; gap: var(--space-2);
   min-height: var(--tap-min); margin-right: auto; color: var(--color-text); text-decoration: none;
@@ -167,6 +185,18 @@ main:focus { outline: none; }
   .icon-btn[aria-expanded="true"]:hover { background: var(--color-text); color: var(--color-surface); }
 }
 @media (min-width: 22rem) { .call-btn { display: inline-flex; } }
+/* Texte très agrandi (moins de 20 em de large : 320 px à 100 %, 375 px dès 125 %) : la barre se replie sur
+   deux lignes, le nom seul sur la première, les boutons à droite sur la seconde (le nom n'est jamais recouvert,
+   le bouton Menu reste dans l'écran), elle ne colle plus en haut
+   pour laisser la hauteur de l'écran au texte, et le bouton d'appel revient (il est aussi dans le menu). */
+@media (max-width: 19.99rem) {
+  .site-header { position: static; }
+  .site-header__bar { justify-content: flex-end; padding-block: var(--space-2); column-gap: var(--space-1); }
+  .brand { margin-right: 0; flex: 1 1 100%; min-width: 0; }
+  .brand__name { white-space: normal; overflow-wrap: anywhere; }
+  .call-btn { display: inline-flex; }
+  .mobile-menu { max-height: none; }
+}
 @media (min-width: 30rem) {
   .brand__sub { display: block; }
   .brand__name { font-size: var(--text-lg); }
@@ -271,7 +301,7 @@ main:focus { outline: none; }
 .qui__nom { padding-left: var(--space-4); border-left: var(--border-width-accent) solid var(--color-accent); }
 .qui__limites { display: grid; gap: var(--space-3); }
 .limites { display: grid; gap: var(--space-2); }
-.limites li { display: grid; grid-template-columns: var(--space-4) 1fr; gap: var(--space-3); }
+.limites li { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); gap: var(--space-3); }
 .limites li::before { /* petite feuille du logo, décor seul : le texte dit tout */
   content: ""; width: var(--space-3); height: var(--space-3); margin-top: 0.55em;
   background: var(--color-accent); border-radius: var(--radius-leaf-sm);
@@ -370,6 +400,10 @@ main:focus { outline: none; }
   white-space: nowrap;
 }
 .chiffre--clair { color: var(--color-band-text); }
+/* Texte très agrandi : les grands chiffres descendent à la taille du titre principal pour tenir dans l'écran. */
+@media (max-width: 19.99rem) {
+  .chiffre, .rdv__option .chiffre { font-size: var(--text-3xl); }
+}
 
 /* ---------- 9. Combien ? et barres des forfaits ---------- */
 .prix { gap: var(--space-5); }
@@ -410,6 +444,11 @@ main:focus { outline: none; }
 @media (min-width: 40rem) {
   .prix__seance { grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-6); }
   .prix__legende { padding-bottom: var(--space-2); }
+}
+/* Texte très agrandi : le nom, le prix et le prix par séance s'empilent au-dessus de la barre. */
+@media (max-width: 19.99rem) {
+  .forfait { grid-template-columns: minmax(0, 1fr); grid-template-areas: "nom" "prix" "unite" "piste" "duree"; }
+  .forfait__prix, .forfait__unite { justify-self: start; text-align: left; }
 }
 @media (min-width: 64rem) {
   .forfait {
@@ -510,7 +549,7 @@ main:focus { outline: none; }
 
 /* ---------- 12. Ouverture (bloc 1) et signature S1 ---------- */
 .ouverture { padding-block: var(--space-5) var(--space-6); }
-.ouverture__grille { display: grid; gap: var(--space-5); }
+.ouverture__grille { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
 .ouverture__tete { display: grid; gap: var(--space-3); }
 .ouverture__titre {
   font-size: var(--text-3xl); font-weight: var(--weight-heavy); line-height: var(--leading-tight);
@@ -532,7 +571,7 @@ main:focus { outline: none; }
   transform-origin: 100% 100%; /* l'angle vif, la « tige » de la feuille */
 }
 .signature__feuille img { width: 100%; height: 100%; object-fit: cover; }
-.signature__texte { display: grid; color: var(--color-text-muted); line-height: var(--leading-snug); }
+.signature__texte { display: grid; min-width: 0; color: var(--color-text-muted); line-height: var(--leading-snug); }
 .signature__texte strong { color: var(--color-text); }
 @media (min-width: 40rem) {
   .ouverture__actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-3) var(--space-4); }
@@ -610,7 +649,7 @@ main:focus { outline: none; }
    DESIGN.md 8 : fil d'Ariane, h1 en 800 à --text-3xl, un chapeau, le bouton de rendez-vous et le téléphone
    visibles sans défiler. Pas de surtitre. Même grille que l'ouverture de l'accueil. */
 .tete { padding-block: var(--space-4) var(--bloc-y); }
-.tete__grille { display: grid; gap: var(--space-5); }
+.tete__grille { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
 .fil ol { display: flex; flex-wrap: wrap; gap: 0 var(--space-2); margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); color: var(--color-text-muted); }
 .fil li { display: inline-flex; align-items: center; gap: var(--space-2); }
 .fil li + li::before { content: "›"; color: var(--color-border-strong); }
@@ -695,7 +734,7 @@ main:focus { outline: none; }
 
 /* ---------- 17. Fin de page ---------- */
 .fin-page { padding-block: var(--bloc-y); border-top: var(--border-width) solid var(--color-border); }
-.fin-page__grille { display: grid; gap: var(--space-5); }
+.fin-page__grille { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
 .fin-page__phrase { font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug); }
 @media (min-width: 64rem) {
   .fin-page__grille { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--grid-gap); }
@@ -713,7 +752,20 @@ main:focus { outline: none; }
 .grille tbody th { font-weight: var(--weight-regular); }
 .grille .grille__prix { font-weight: var(--weight-bold); }
 .grille .grille__prix span { font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--color-text-muted); }
-.grille .grille__remise { white-space: nowrap; color: var(--color-text-muted); }
+.grille .grille__remise { color: var(--color-text-muted); }
+.grille__libelle { display: none; }
+/* Texte très agrandi (moins de 20 em de large) : chaque ligne du tableau s'empile (prestation, puis prix, puis
+   écart au prix à l'unité, avec son libellé visible). Les rôles ARIA posés dans le HTML gardent au tableau sa
+   lecture de tableau malgré le changement d'affichage (recette MA-2). */
+@media (max-width: 19.99rem) {
+  .grille, .grille tbody, .grille tr, .grille th, .grille td { display: block; }
+  .grille thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .grille tr { padding-block: var(--space-3); border-bottom: var(--border-width) solid var(--color-border); }
+  .grille th, .grille td { padding: 0; border-bottom: 0; }
+  .grille tbody th { font-weight: var(--weight-bold); }
+  .grille td:empty { display: none; }
+  .grille__libelle { display: inline; }
+}
 .grille__note { font-size: var(--text-sm); color: var(--color-text-muted); }
 .grille__note strong { color: var(--color-text); }
 .forfait__avantage { grid-column: 1 / -1; font-size: var(--text-sm); color: var(--color-text); }
@@ -736,6 +788,12 @@ main:focus { outline: none; }
   color: var(--color-figure); font-variant-numeric: tabular-nums;
 }
 .parcours > li > :not(.parcours__annee) { grid-column: 2; }
+/* Texte très agrandi : l'année passe au-dessus de son entrée. */
+@media (max-width: 19.99rem) {
+  .parcours > li { grid-template-columns: minmax(0, 1fr); }
+  .parcours__annee { grid-row: auto; }
+  .parcours > li > :not(.parcours__annee) { grid-column: 1; }
+}
 .parcours h3 { font-size: var(--text-lg); line-height: var(--leading-snug); }
 .parcours__source { font-weight: var(--weight-bold); }
 .parcours__nature { font-size: var(--text-sm); color: var(--color-text-muted); }
@@ -786,3 +844,10 @@ main:focus { outline: none; }
   .rdv__options .combien .chiffre { font-size: var(--text-figure-pair); } /* deux durées dans un écran de téléphone (Tarifs) */
 }
 .rdv__options .combien { grid-template-columns: minmax(0, 1fr); } /* Tarifs : les deux durées côte à côte, chacune au-dessus de sa légende */
+/* Texte très agrandi (moins de 20 em de large) : dernières règles, pour passer après les tailles propres à Tarifs.
+   Les grands chiffres prennent la taille du titre principal ; « .sans-coupure » rend la main au navigateur. */
+@media (max-width: 19.99rem) {
+  .rdv__options .combien .chiffre { font-size: var(--text-3xl); }
+  .sans-coupure { white-space: normal; }
+  h1, h2, h3 { hyphens: auto; }
+}
