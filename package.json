@@ -1,0 +1,19 @@
+{
+  "name": "coachapar-site",
+  "private": true,
+  "type": "module",
+  "description": "Fabrication du site coachapar.fr (Eleventy). Rien de ce paquet n'est envoyé au visiteur.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\" && eleventy",
+    "serve": "eleventy --serve",
+    "verifier": "node _outils/controler.mjs && node _outils/comparer-sortie.mjs",
+    "test": "npm run build && npm run verifier"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.8",
+    "js-yaml": "4.3.2"
+  }
+}

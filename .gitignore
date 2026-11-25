@@ -18,3 +18,7 @@ Thumbs.db
 
 # Documents de travail de l agence (privés, ne pas publier)
 docs/agence/
+
+# Fabrication du site (Eleventy) : dépendances et site fabriqué, jamais versionnés
+node_modules/
+_site/

@@ -1,0 +1,175 @@
+# =====================================================================
+#  Coach APA'R : la source unique des informations du site
+# =====================================================================
+#  C'est le seul fichier à modifier pour changer un prix, un horaire,
+#  le téléphone ou la phrase d'absence. Mode d'emploi : LISEZ-MOI.md.
+#
+#  Règles de saisie :
+#   - un prix est un nombre entier d'euros, sans « € » (exemple : 450) ;
+#   - une date s'écrit "AAAA-MM-JJ" entre guillemets (exemple : "2027-01-11") ;
+#   - une heure s'écrit "HH:MM" entre guillemets (exemple : "17:30") ;
+#   - l'indentation (les espaces en début de ligne) compte : ne pas la changer.
+#  Une erreur de saisie arrête la fabrication : rien n'est publié, le site
+#  en ligne reste tel qu'il était.
+#
+#  État au 25/11/2026 (lot D, étape 1) : ce fichier décrit fidèlement le site
+#  actuel, mais les pages ne le lisent PAS encore. Elles seront branchées
+#  dessus à l'étape 3 (lot E). D'ici là, un contrôle automatique vérifie
+#  que chaque valeur ci-dessous est bien celle que les pages affichent.
+# =====================================================================
+
+identite:
+  nom: "Coach APA'R"
+  responsable: "Loïc Boyer"
+  metier: "Coach sportif et enseignant en activité physique adaptée"
+  sous_titre_en_tete: "Coach sportif et APA, Montpellier"
+
+contact:
+  telephone:
+    affiche: "07 65 77 51 04"       # tel qu'il s'affiche
+    international: "+33765775104"   # pour les liens « appeler » et les données structurées
+  email: "coachapar@gmail.com"
+  reservation:                      # Cal.com, chaque demande est validée à la main
+    appel:
+      duree: "20 minutes"
+      lien: "https://cal.com/coachapar/20min"
+    domicile:
+      duree: "1 h 30"
+      lien: "https://cal.com/coachapar/90min"
+    confirmation_au_plus_tard: "48 h avant le rendez-vous"
+  formulaire: "https://formspree.io/f/xwplpobd"   # supprimé à la refonte (décision du 25/11/2026)
+
+zone:
+  libelle_court: "Montpellier, Hérault (34)"
+  communes: ["Montpellier", "Lattes", "Castelnau-le-Lez", "Mauguio"]
+  deplacement_compris: "dans la métropole de Montpellier et à Mauguio"
+  deplacement_compris_cgv: "dans les communes de Montpellier Méditerranée Métropole et à Mauguio"
+
+horaires:
+  plages:
+    - jours: ["lundi", "mardi", "mercredi", "jeudi", "vendredi"]
+      de: "17:30"
+      a: "21:30"
+    - jours: ["samedi"]
+      de: "08:00"
+      a: "16:00"
+
+# Phrase d'absence : affichée tant que la date du jour est avant « reprise_le ».
+# Pour une nouvelle absence plus tard : remettre une date et une phrase.
+absence:
+  reprise_le: "2027-01-11"
+  phrase: "Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone."
+
+# Offre et prix. Les remises (−4 %, −10 %, −15 %) et les prix par séance
+# (48 €, 45 €, 42,50 €) sont CALCULÉS à partir de ces montants : ne jamais
+# les écrire. Ces prix sont aussi ceux de l'article 3.1 des CGV.
+offre:
+  premier_rendez_vous:
+    prix: 0
+    libelle: "Offert, sans engagement"
+  seance:
+    prix: 50
+    duree_minutes: 60      # dit par le client le 25/11/2026 ; n'est affichée nulle part aujourd'hui
+    pour: ["coaching sportif", "activité physique adaptée", "Pilates", "préparation physique"]
+  forfaits:
+    - seances: 5
+      prix: 240
+      de_preference_sous_mois: 2
+    - seances: 10
+      prix: 450
+      de_preference_sous_mois: 4
+    - seances: 20
+      prix: 850
+      de_preference_sous_mois: 8
+      avantages: ["Échanges entre les séances", "Objectifs suivis et mesurés"]
+  bilan_seul:
+    nom: "Bilan de condition physique commandé seul"
+    prix: 50
+  alimentation:
+    - nom: "Premier point alimentation"
+      prix: 60
+    - nom: "Repères et menus types personnalisés"
+      prix: 100
+    - nom: "Suivi alimentation"
+      prix: 45
+      unite: "la séance"
+  mention_prix: "Prix nets, TVA non applicable (art. 293 B du CGI)"
+  arrondi_remise: "unite"   # validé au cahier des charges : −4 %, −10 %, −15 %
+
+# Mentions publiées dans les pages légales (déjà en ligne aujourd'hui).
+mentions:
+  forme: "entreprise individuelle (micro-entrepreneur)"
+  siret: "95349047100018"
+  carte_professionnelle: "03422ED0421"
+  carte_delivree_par: "préfet de l'Hérault"
+  tva: "non applicable, franchise en base (article 293 B du Code général des impôts)"
+  adresse_registre:         # pages légales seulement ; jamais dans les données structurées
+    rue: "56 rue Albert Schweitzer"
+    code_postal: "34090"
+    ville: "Montpellier"
+  directeur_publication: "Loïc Boyer"
+  mise_a_jour_pages_legales: "2026-11-25"
+  mediateur: null           # adhésion en janvier 2027 ; vide = texte d'attente actuel
+  assurance: null           # nouvelle police en janvier 2027
+
+# ---------------------------------------------------------------------
+# Questions fréquentes, page par page, telles qu'affichées aujourd'hui.
+# Les réponses sont du HTML court. À l'étape 3, les prix, le téléphone,
+# les horaires et la phrase d'absence qu'elles citent seront remplacés
+# par des renvois aux valeurs ci-dessus ; d'ici là, le contrôle
+# automatique refuse tout montant qui n'existe pas dans « offre ».
+# ---------------------------------------------------------------------
+faq:
+  accueil:            # index.html
+    - question: "Qu'est-ce que l'activité physique adaptée (APA) ?"
+      ouverte: true
+      reponse: "<p>L'activité physique adaptée (APA) consiste à adapter l'activité physique aux capacités de chaque personne : maladie chronique, handicap, avancée en âge, reprise après une blessure. Elle peut être prescrite par votre médecin. Je suis enseignant en APA, titulaire d'un Master STAPS Activité physique adaptée et santé (APAS) : j'évalue vos capacités, je construis des séances à votre mesure et je suis vos progrès, en complément de votre suivi médical.</p>"
+      complement: "<p><a href=\"/pages/activite-physique-adaptee.html\">Tout savoir sur l'APA et le sport sur ordonnance</a></p>"   # affiché, absent de la copie FAQPage
+    - question: "Qu'est-ce qu'un enseignant en APA apporte de plus ?"
+      reponse: "<p>Ma formation universitaire (Master APAS, Université de La Réunion) porte sur l'adaptation de l'activité physique aux maladies chroniques, au handicap et à l'avancée en âge. Concrètement : j'évalue vos capacités, je tiens compte des consignes de votre médecin, j'ajuste chaque séance et je mesure vos progrès. Je peux aussi échanger avec votre médecin ou votre kiné, avec votre accord.</p>"
+    - question: "Puis-je bénéficier de vos services avec une maladie chronique ou un handicap ?"
+      reponse: "<p>Oui, c'est le cœur de mon métier. J'accompagne des personnes qui vivent avec un diabète, une maladie cardiovasculaire, une obésité, de l'arthrose ou un handicap moteur. Je ne remplace pas votre médecin : je construis l'activité physique avec ses consignes, et je reste en lien avec lui si vous le souhaitez.</p>"
+    - question: "Quel est le tarif d'une séance de coaching sportif à Montpellier ?"
+      reponse: "<p>Une séance individuelle coûte <strong>50&nbsp;€</strong>, pour le coaching sportif, l'activité physique adaptée, le Pilates et la préparation physique. Les forfaits bénéficient d'une <strong>remise qui augmente avec le nombre de séances</strong> : 5 séances à 240&nbsp;€ (−4&nbsp;%, à utiliser de préférence sous 2&nbsp;mois), 10 séances à 450&nbsp;€ (−10&nbsp;%, à utiliser de préférence sous 4&nbsp;mois), 20 séances à 850&nbsp;€ (−15&nbsp;%, à utiliser de préférence sous 8&nbsp;mois). Les tarifs de l'accompagnement alimentaire sont détaillés sur la page <a href=\"/pages/conseils-nutritionnels.html\">Alimentation et activité physique</a>. Le <strong>premier rendez-vous est offert</strong>, sans engagement.</p>"
+    - question: "Quelles sont vos disponibilités à Montpellier ?"
+      reponse: "<p>Je suis disponible <strong>du lundi au vendredi de 17 h 30 à 21 h 30 et le samedi de 8 h à 16 h</strong>. Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone. Vous pouvez <a href=\"#reservation\">réserver en ligne</a> un premier échange par téléphone (20 minutes) ou un premier rendez-vous à domicile (1 h 30) : je confirme chaque demande. Téléphone : <a href=\"tel:+33765775104\">07 65 77 51 04</a>. E-mail : <a href=\"mailto:coachapar@gmail.com\">coachapar@gmail.com</a>.</p>"
+    - question: "Où se déroulent les séances ?"
+      reponse: "<p>Les séances se déroulent à Montpellier et dans les communes voisines : Lattes, Castelnau-le-Lez, Mauguio et le reste de l'agglomération. Je peux me déplacer à votre domicile, en salle de sport, ou en extérieur selon vos préférences et vos besoins. Le lieu est discuté lors du premier contact pour trouver la solution la plus adaptée.</p>"
+  apa:            # pages/activite-physique-adaptee.html
+    - question: "Faut-il une ordonnance pour commencer ?"
+      ouverte: true
+      reponse: "<p>Non. Vous pouvez me contacter directement, avec ou sans ordonnance. Si vous vivez avec une maladie chronique ou si vous reprenez après un long arrêt, je vous conseille d'en parler d'abord à votre médecin. S'il vous remet une prescription d'activité physique adaptée, je m'appuie sur ses indications pour construire vos séances.</p>"
+    - question: "Quel médecin peut prescrire de l'activité physique adaptée ?"
+      reponse: "<p>Tout médecin qui vous suit, généraliste ou spécialiste. Il rédige la prescription sur un formulaire prévu pour cela, avec votre accord, pour une durée de trois à six mois, renouvelable.</p>"
+    - question: "Le sport sur ordonnance est-il remboursé ?"
+      reponse: "<p>L'Assurance maladie ne rembourse pas le sport sur ordonnance à la personne qui pratique. Certaines mutuelles remboursent l'activité physique adaptée sur présentation de l'ordonnance, et certaines collectivités proposent des aides : posez la question à votre complémentaire santé et au centre communal d'action sociale (CCAS) de votre commune.</p>"
+    - question: "Quelle différence avec des séances de kinésithérapie ?"
+      reponse: "<p>Le kinésithérapeute est un professionnel de santé : la rééducation, c'est lui. Je suis enseignant en activité physique adaptée : je vous aide à bouger régulièrement, avec des exercices adaptés à vos capacités. J'interviens en complément, ou une fois la rééducation terminée, jamais à sa place.</p>"
+    - question: "Mon médecin est-il tenu au courant ?"
+      reponse: "<p>Seulement si vous le souhaitez. Lorsqu'il y a une prescription, le code de la santé publique prévoit un bilan au début, des comptes rendus périodiques et un bilan à la fin du programme. Ils vous sont destinés, et ne sont transmis au médecin qui a rédigé la prescription et à votre médecin traitant qu'avec votre accord.</p>"
+    - question: "Où et quand ont lieu les séances ?"
+      reponse: "<p>À Montpellier et alentours (Hérault) : chez vous, en extérieur ou en salle. Les séances ont lieu du lundi au vendredi de 17 h 30 à 21 h 30 et le samedi de 8 h à 16 h. Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</p>"
+  coaching:            # pages/coaching-sportif.html (pas de copie FAQPage sur cette page)
+    - question: "À quelle fréquence dois-je m'entraîner pour voir des résultats ?"
+      ouverte: true
+      reponse: "<p>La fréquence idéale dépend de vos objectifs, de votre niveau et de votre disponibilité. En général, 2 à 3 séances par semaine permettent en général de progresser de façon régulière. Je vous proposerai un planning adapté à votre situation personnelle pour maximiser vos progrès tout en respectant vos contraintes.</p>"
+    - question: "Où se déroulent les séances de coaching ?"
+      reponse: "<p>Les séances peuvent se dérouler à votre domicile, en extérieur (parcs, plages) ou dans une salle de sport partenaire à Montpellier, selon vos préférences. Je m'adapte à votre environnement et apporte le matériel nécessaire pour des séances efficaces, quel que soit le lieu choisi.</p>"
+    - question: "Combien de temps faut-il pour voir des résultats ?"
+      reponse: "<p>Les premiers changements (niveau d'énergie, qualité du sommeil, sensation de bien-être) peuvent être ressentis dès les premières semaines. Les changements visibles (silhouette, force) demandent en général plusieurs semaines de pratique régulière. Ils dépendent de votre point de départ, de votre régularité, de votre sommeil et de votre alimentation.</p>"
+    - question: "Je n'ai jamais fait de sport, est-ce que le coaching est adapté pour moi ?"
+      reponse: "<p>Absolument ! Le coaching est particulièrement bénéfique pour les débutants. Je vous accompagnerai pas à pas, en commençant par des exercices adaptés à votre niveau et en progressant graduellement. L'objectif est de vous faire progresser à votre rythme, en restant attentif à votre sécurité, tout en vous donnant les bases nécessaires pour une pratique autonome à long terme.</p>"
+    - question: "Le coaching inclut-il des repères alimentaires ?"
+      reponse: "<p>Oui, je donne des repères alimentaires de base dans le cadre du coaching sportif, pour accompagner vos entraînements. Pour aller plus loin, je propose aussi un accompagnement alimentaire pour les sportifs en bonne santé, qui peut compléter votre programme d'entraînement.</p>"
+  alimentation:            # pages/conseils-nutritionnels.html (pas de copie FAQPage sur cette page)
+    - question: "Faut-il suivre un régime strict pour perdre du poids ?"
+      ouverte: true
+      reponse: "<p>Non, les régimes restrictifs sont généralement contre-productifs à long terme. Je privilégie une approche d'alimentation équilibrée et durable, avec des changements progressifs adaptés à votre mode de vie. L'objectif est de créer des habitudes alimentaires saines que vous pourrez maintenir sur la durée.</p>"
+    - question: "Comment l'alimentation peut-elle soutenir ma pratique sportive ?"
+      reponse: "<p>Une alimentation adaptée à votre activité sportive couvre vos besoins en énergie et aide à la récupération. Je vous aide à ajuster votre alimentation avant, pendant et après l'effort.</p>"
+    - question: "Combien de temps faut-il pour voir des résultats ?"
+      reponse: "<p>Les premiers changements peuvent être ressentis dès les premières semaines (niveau d'énergie, qualité du sommeil, digestion). Les changements visibles (silhouette, force) demandent en général plusieurs semaines de pratique régulière. Ils dépendent de votre point de départ, de votre régularité, de votre sommeil et de votre alimentation. Je m'adapte à votre évolution.</p>"
+    - question: "Vous adaptez-vous aux choix alimentaires particuliers (végétarien, sans gluten, etc.) ?"
+      reponse: "<p>Oui. Je m'adapte à vos choix alimentaires (végétarien, végétalien…). En cas d'intolérance, d'allergie ou de maladie digestive diagnostiquée, je suis les consignes de votre médecin ou de votre diététicien.</p>"
+    - question: "Comment se déroule le suivi alimentation ?"
+      reponse: "<p>Après le premier point, nous établissons ensemble un calendrier de suivi adapté à vos besoins. Les rendez-vous ont lieu en personne. Entre les rendez-vous, vous pouvez me contacter pour des questions ou des ajustements.</p>"
