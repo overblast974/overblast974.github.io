@@ -284,10 +284,16 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
    en lignes séparées par des filets, la phrase du nom marquée d'un filet vert, la liste des limites. */
 .qui__entete {
   display: grid; grid-template-columns: minmax(0, 1fr) var(--portrait-qui-sm);
-  column-gap: var(--space-4); align-items: end; margin-bottom: var(--space-5);
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: var(--space-4); row-gap: var(--space-3); align-items: start; margin-bottom: var(--space-5);
 }
-.qui__entete .question { margin-bottom: 0; }
-.qui__portrait { margin: 0; }
+/* La question en haut, l'identité en bas de la colonne : plus de vide au-dessus de la question (retour du client). */
+.qui__entete .question { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+.qui__identite {
+  grid-column: 1; grid-row: 2; align-self: end; max-width: none;
+  font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug); color: var(--color-text);
+}
+.qui__portrait { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
 .feuille-cadre {
   display: block; overflow: hidden; aspect-ratio: 4 / 5;
   background: var(--color-surface-tint); border-radius: var(--radius-leaf);
@@ -297,7 +303,6 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
 .qui { gap: var(--space-5); }
 .fiche { display: grid; border-top: var(--border-width) solid var(--color-border); }
 .fiche li { padding-block: var(--space-2); border-bottom: var(--border-width) solid var(--color-border); color: var(--color-text-muted); }
-.fiche .fiche__nom { font-size: var(--text-lg); font-weight: var(--weight-bold); line-height: var(--leading-snug); color: var(--color-text); }
 .qui__nom { padding-left: var(--space-4); border-left: var(--border-width-accent) solid var(--color-accent); }
 .qui__limites { display: grid; gap: var(--space-3); }
 .limites { display: grid; gap: var(--space-2); }
@@ -316,7 +321,8 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
   .qui__entete { display: contents; }
   .bloc--qui .question { grid-column: 1 / span 4; grid-row: 1; align-self: start; }
   .bloc--qui .qui__portrait { grid-column: 10 / -1; grid-row: 1 / span 2; }
-  .bloc--qui .reponse.qui { grid-column: 5 / span 5; grid-row: 1 / span 2; }
+  .bloc--qui .qui__identite { grid-column: 5 / span 5; grid-row: 1; align-self: start; padding-bottom: var(--space-2); }
+  .bloc--qui .reponse.qui { grid-column: 5 / span 5; grid-row: 2; }
 }
 
 /* Est-ce pour moi ? [v2] : les situations en grand, 24 px en 800 ; c'est la phrase du visiteur. */

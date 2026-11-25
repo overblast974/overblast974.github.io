@@ -63,13 +63,13 @@ faq: accueil
       <div class="container bloc__grille">
         <div class="qui__entete">
           <h2 class="question" id="q-qui">Qui <span class="sans-coupure">êtes-vous&nbsp;?</span></h2>
+          <p class="qui__identite">{{ e.identite.responsable }}, enseignant en activité physique adaptée depuis 8&nbsp;ans.</p>
           <figure class="qui__portrait">
             <span class="feuille-cadre" data-apparait="feuille"><img src="/images/portrait-buste-480.webp" srcset="/images/portrait-buste-320.webp 320w, /images/portrait-buste-480.webp 480w, /images/portrait-buste-720.webp 720w" sizes="(min-width: 75rem) 17rem, (min-width: 40rem) 15.25rem, 8.5rem" width="480" height="600" alt="Portrait de Loïc Boyer, enseignant en activité physique adaptée" loading="lazy" decoding="async"></span>
           </figure>
         </div>
         <div class="reponse qui">
           <ul class="fiche list-reset">
-            <li class="fiche__nom">{{ e.identite.responsable }}, enseignant en activité physique adaptée depuis 8&nbsp;ans.</li>
             <li>Master STAPS Activité physique adaptée et santé, Université de La Réunion, 2019.</li>
             <li>Carte professionnelle d'éducateur sportif n°&nbsp;{{ e.mentions.carte_professionnelle }}.</li>
           </ul>
