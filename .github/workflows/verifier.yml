@@ -1,0 +1,47 @@
+# Vérifie chaque demande de fusion, et chaque envoi sur une branche refonte/….
+# Ne publie rien : droits en lecture seule.
+name: Vérifier
+
+on:
+  pull_request:
+  push:
+    branches: ["refonte/**"]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  verifier:
+    name: Fabriquer et contrôler
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Dépendances sans vulnérabilité connue
+        run: npm audit --audit-level=moderate
+      - name: Fabriquer (contrôle des données compris)
+        run: npm run build
+      - name: Contrôle témoin des données et comparaison octet pour octet (étape 1)
+        run: npm run verifier
+      - name: Garde de la bascule
+        # Tant que GitHub Pages publie depuis la branche avec Jekyll, une page contenant des
+        # balises Liquid serait publiée brute ({% include … %} visible) : la fusion est refusée.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type // ""' 2>/dev/null || true)"
+          liquide="$(git ls-files -z -- '*.html' | xargs -0 grep -l -E '\{\{|\{%' || true)"
+          if [ "${type}" != "workflow" ] && [ -n "${liquide}" ]; then
+            echo "::error title=Bascule non faite::Source de GitHub Pages = '${type:-illisible}'. Ces pages contiennent du Liquid et seraient publiées cassées par Jekyll : ${liquide}. Faire d'abord la bascule (LISEZ-MOI.md)."
+            exit 1
+          fi
+          echo "Source de publication : '${type:-illisible}'. Pages avec Liquid : ${liquide:-aucune}. Rien ne bloque."

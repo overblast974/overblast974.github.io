@@ -1,0 +1,87 @@
+# Fabrique le site avec Eleventy et le publie sur GitHub Pages.
+#
+# INERTE tant que la source de GitHub Pages n'est pas « GitHub Actions » :
+#  - sur une autre branche que main, rien ne se déclenche (push limité à main ;
+#    « schedule » et le bouton manuel ne marchent que depuis la branche par défaut) ;
+#  - sur main, le premier travail lit la source de publication (API GitHub Pages,
+#    champ build_type). Tant qu'elle vaut « legacy » (Deploy from a branch, Jekyll),
+#    la fabrication et la publication sont sautées : seul Jekyll publie le site.
+# Après la bascule (Settings > Pages > Source : GitHub Actions), build_type vaut
+# « workflow » et ce flux devient le seul à publier. Voir LISEZ-MOI.md.
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Tous les jours à 4 h 17 UTC : la phrase d'absence disparaît d'elle-même à sa date.
+    # GitHub désactive cette tâche après 60 jours sans activité sur le dépôt : le bouton
+    # « Run workflow » reste alors disponible.
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+# Aucun droit par défaut ; chaque travail demande le strict nécessaire.
+permissions: {}
+
+# Une seule publication à la fois ; une publication en cours n'est jamais interrompue.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  source:
+    name: Lire la source de publication
+    runs-on: ubuntu-latest
+    permissions:
+      pages: read
+    outputs:
+      build_type: ${{ steps.lire.outputs.build_type }}
+    steps:
+      - id: lire
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type // ""' 2>/dev/null || true)"
+          echo "build_type=${type}" >> "$GITHUB_OUTPUT"
+          if [ "${type}" = "workflow" ]; then
+            echo "Source de publication : GitHub Actions. Ce flux publie le site."
+          else
+            echo "::notice title=Publication sautée::Source de GitHub Pages = '${type:-illisible}'. Tant qu'elle n'est pas « GitHub Actions », Jekyll publie depuis la branche et ce flux ne publie rien."
+          fi
+
+  fabriquer:
+    name: Fabriquer
+    needs: source
+    if: needs.source.outputs.build_type == 'workflow'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # La fabrication contrôle _data/entreprise.yaml : une erreur de saisie arrête tout ici,
+      # rien n'est publié et le site en ligne reste tel qu'il était.
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+
+  publier:
+    name: Publier
+    needs: fabriquer
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publication.outputs.page_url }}
+    steps:
+      - id: publication
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
