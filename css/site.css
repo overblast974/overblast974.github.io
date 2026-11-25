@@ -571,10 +571,10 @@ main:focus { outline: none; }
    fill-mode « backwards » : l'état de départ tient pendant le délai, puis l'élément rend la main
    (les transformations d'appui et de survol restent libres). */
 @media (prefers-reduced-motion: no-preference) {
-  /* E1 — Entrée du premier écran : titre (principal), puis phrase, puis boutons, en vague courte. */
-  .ouverture__titre   { animation: entre var(--duration-entree) var(--ease-out-strong) backwards; }
-  .ouverture__chapeau { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-2) backwards; }
-  .ouverture__actions { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-3) backwards; }
+  /* E1 — Entrée du premier écran : titre (principal), puis phrase, puis boutons, en vague courte. Accueil seulement. */
+  .page-accueil .ouverture__titre   { animation: entre var(--duration-entree) var(--ease-out-strong) backwards; }
+  .page-accueil .ouverture__chapeau { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-2) backwards; }
+  .page-accueil .ouverture__actions { animation: entre-suite var(--duration-entree-suite) var(--ease-out-strong) var(--delay-entree-3) backwards; }
 
   /* E2 — Le logo pousse : les feuilles seules sortent de la tige, une fois, sur l'accueil seulement. */
   .page-accueil .site-header .logo__feuilles {
@@ -785,3 +785,4 @@ main:focus { outline: none; }
 @media (max-width: 39.99rem) {
   .rdv__options .combien .chiffre { font-size: var(--text-figure-pair); } /* deux durées dans un écran de téléphone (Tarifs) */
 }
+.rdv__options .combien { grid-template-columns: minmax(0, 1fr); } /* Tarifs : les deux durées côte à côte, chacune au-dessus de sa légende */

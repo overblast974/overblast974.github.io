@@ -2,7 +2,7 @@
 
 Le site est fabriqué à partir des pages HTML et d'un seul fichier de données, `_data/entreprise.yaml` : téléphone, e-mail, horaires, zone, prix, phrase d'absence, mentions, questions fréquentes. L'outil qui fabrique le site s'appelle Eleventy. Il ne sert qu'à la fabrication : le visiteur ne reçoit rien de plus qu'aujourd'hui.
 
-> **Attention, état au 25/11/2026.** Le fichier de données existe et décrit exactement le site en ligne, mais **les pages ne le lisent pas encore**. Elles seront branchées dessus au lot E, après la bascule décrite plus bas. D'ici là, modifier `_data/entreprise.yaml` ne change pas le site : une modification se fait dans les pages, comme aujourd'hui, ou en le demandant à votre agent. Le contrôle automatique vous signale tout écart entre les pages et le fichier.
+> **État au 25/11/2026, branche `refonte/site` (lot F).** Sur cette branche, les pages de la refonte lisent `_data/entreprise.yaml` : changer un prix, un horaire, le téléphone ou la phrase d'absence dans ce fichier change toutes les pages et les données pour Google. Sur `main`, tant que la bascule (lot E) n'est pas faite, rien de cela ne s'applique encore. Contrôles : `npm test` (fabrication, `_outils/controler.mjs` pour les données, `_outils/verifier-site.mjs` pour les adresses, liens, sécurité et règles de contenu). Simuler le 11 janvier 2027 : `DATE_FABRICATION=2027-01-11 npm run build` puis `node _outils/controler.mjs --date 2027-01-11`.
 
 ## Changer un prix (après le lot E)
 

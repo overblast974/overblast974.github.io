@@ -9,7 +9,7 @@
   "scripts": {
     "build": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\" && eleventy",
     "serve": "eleventy --serve",
-    "verifier": "node _outils/controler.mjs && node _outils/comparer-sortie.mjs",
+    "verifier": "node _outils/controler.mjs && node _outils/verifier-site.mjs",
     "test": "npm run build && npm run verifier"
   },
   "dependencies": {

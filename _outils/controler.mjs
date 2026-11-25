@@ -1,22 +1,16 @@
-// Contrôle « témoin » de l'étape 1 (lot D).
-// Les pages ne lisent pas encore _data/entreprise.yaml. Ce contrôle vérifie, sur le site
-// fabriqué (_site/), que chaque valeur du fichier est bien celle que les pages affichent.
-// Il sert à deux choses :
-//   1. prouver que le fichier de données décrit fidèlement le site en ligne ;
-//   2. signaler toute modification faite sur main (lots C, Reprise…) qui n'aurait pas été
-//      reportée dans le fichier de données avant le branchement des pages (étape 3).
-// À l'étape 3, chaque page branchée sur les données rend ce contrôle évident pour elle :
-// il restera utile pour les montants, les CGV et les FAQ.
-//
+// Contrôle « données → pages » du site fabriqué (lot F).
+// Les pages lisent _data/entreprise.yaml ; ce contrôle vérifie sur _site/ que le résultat dit bien
+// ce que disent les données, aux endroits où une erreur coûterait cher : prix (Tarifs, CGV 3.1,
+// catalogue), FAQ et leur copie pour Google, coordonnées, phrase d'absence, adresse du registre.
 // Usage : node _outils/controler.mjs [--sortie _site] [--date AAAA-MM-JJ]
+//   --date : date de référence pour la phrase d'absence (par défaut aujourd'hui ;
+//            à rejouer avec la même date que DATE_FABRICATION si on simule une fabrication).
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import yaml from "js-yaml";
 import { erreursEntreprise } from "./donnees.mjs";
-import {
-  NBSP, euros, prixParSeance, remise, horairesPied, horairesPhrase, dateLongue,
-  absenceActive, texteBrut, listeDe,
-} from "./format.mjs";
+import { euros, prixParSeance, absenceActive, texteBrut, remplir, zonePhrase } from "./format.mjs";
+import { lignesTarifs } from "./schema.mjs";
 
 const arg = (nom, defaut) => { const i = process.argv.indexOf(nom); return i > 0 ? process.argv[i + 1] : defaut; };
 const SORTIE = arg("--sortie", "_site");
@@ -26,6 +20,10 @@ const d = yaml.load(readFileSync("_data/entreprise.yaml", "utf8"), { schema: yam
 const ecarts = erreursEntreprise(d).map((e) => `DONNÉES : ${e}`);
 if (ecarts.length) { console.log(ecarts.join("\n")); process.exit(1); }
 
+// Le HTML fabriqué utilise l'espace insécable ; on compare sur un texte normalisé.
+const norm = (s) => s.replace(/&nbsp;|\u00a0/g, " ").replace(/<span class="sans-coupure">(.*?)<\/span>/g, "$1").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/\s+/g, " ");
+const texte = (html) => norm(html.replace(/<script[\s\S]*?<\/script>/g, " ")
+  .replace(/<\/?(p|li|td|th|tr|div|h\d|dt|dd|ul|ol|summary|details|section|br)\b[^>]*>/g, " ").replace(/<[^>]+>/g, ""));
 const lire = (f) => readFileSync(join(SORTIE, f), "utf8");
 const pages = (function lister(dossier) {
   return readdirSync(dossier).flatMap((n) => {
@@ -33,136 +31,77 @@ const pages = (function lister(dossier) {
     return statSync(p).isDirectory() ? lister(p) : p.endsWith(".html") ? [relative(SORTIE, p).split("\\").join("/")] : [];
   });
 })(SORTIE).sort();
+const jsonld = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 
 let verifs = 0;
-const attendu = (page, html, morceau, quoi) => {
-  verifs++;
-  if (!html.includes(morceau)) ecarts.push(`${page} : ${quoi} introuvable — attendu « ${morceau.slice(0, 140)} »`);
-};
-const absent = (page, html, morceau, quoi) => {
-  verifs++;
-  if (html.includes(morceau)) ecarts.push(`${page} : ${quoi} encore présent(e) alors que les données disent le contraire`);
-};
-
-const { contact, zone, horaires, absence, offre, mentions, identite } = d;
-const tel = contact.telephone;
-const pied = horairesPied(horaires.plages);
+const ok = (cond, msg) => { verifs++; if (!cond) ecarts.push(msg); };
+const { contact, absence, offre, mentions } = d;
 const absenceAffichee = absenceActive(absence, AUJOURDHUI);
+const lignes = lignesTarifs(d);
+const ligneCgv = (l) => `${l.nom} : ${l.prix === 0 ? "offert" : euros(l.prix, { insecable: false }) + (l.parSeance ? `, soit ${euros(l.parSeance, { insecable: false })} la séance` : "") + (l.unite ? " " + l.unite : "")}`;
 
-// 1. En-tête et pied de page : les 13 pages (gabarit commun).
+// 1. Pied de page et en-tête : toutes les pages.
 for (const p of pages) {
-  const h = lire(p);
-  attendu(p, h, `<span class="brand__sub">${identite.sous_titre_en_tete}</span>`, "sous-titre de l'en-tête");
-  attendu(p, h, `<span class="visually-hidden">Appeler le ${tel.affiche}</span>`, "téléphone de l'en-tête");
-  attendu(p, h, `<li><a href="tel:${tel.international}">`, "lien d'appel du pied");
-  attendu(p, h, `${tel.affiche}</a></li>`, "téléphone du pied");
-  attendu(p, h, `<a href="mailto:${contact.email}">`, "e-mail du pied");
-  attendu(p, h, `${zone.libelle_court}</span></li>`, "zone du pied");
-  attendu(p, h, `${pied}</span></li>`, "horaires du pied (format calculé)");
-  (absenceAffichee ? attendu : absent)(p, h, `${absence.phrase}</span></li>`, "phrase d'absence du pied");
+  const h = lire(p), t = texte(h);
+  ok(h.includes(`href="tel:${contact.telephone.international}"`), `${p} : lien d'appel absent`);
+  ok(t.includes(contact.telephone.affiche), `${p} : téléphone affiché absent`);
+  ok(h.includes(`href="mailto:${contact.email}"`), `${p} : e-mail du pied absent`);
+  ok(t.includes(norm(zonePhrase(d.zone))), `${p} : zone du pied absente`);
+  ok(t.includes(absence.phrase) === absenceAffichee, `${p} : phrase d'absence ${absenceAffichee ? "absente" : "encore présente"}`);
+  for (const pg of ["mentions-legales", "cgv", "politique-confidentialite"]) ok(h.includes(`href="/pages/${pg}.html"`), `${p} : lien vers ${pg} absent`);
 }
 
-// 2. Grille de tarifs de l'accueil (sert de page Tarifs tant qu'elle n'existe pas).
+// 2. Prix : page Tarifs (tableau), CGV 3.1 (liste), catalogue de données structurées : une seule liste.
 {
-  const p = "index.html", h = lire(p);
-  attendu(p, h, `Séance à l'unité : ${euros(offre.seance.prix)}.`, "prix de la séance");
-  for (const f of offre.forfaits) {
-    const pps = prixParSeance(f), r = remise(f, offre.seance.prix);
-    attendu(p, h, `Forfait ${f.seances} séances</h3>`, `titre du forfait ${f.seances}`);
-    attendu(p, h, `<span class="price__amount">${euros(f.prix)}</span>`, `prix du forfait ${f.seances}`);
-    attendu(p, h, `Soit ${euros(pps)} la séance (−${r}${NBSP}%)`, `prix par séance et remise du forfait ${f.seances}`);
-    attendu(p, h, `sous ${f.de_preference_sous_mois}${NBSP}mois`, `durée conseillée du forfait ${f.seances}`);
-    for (const a of f.avantages ?? []) attendu(p, h, `</svg>${a}</li>`, `avantage « ${a} » du forfait ${f.seances}`);
-  }
-  attendu(p, h, `Déplacement compris ${zone.deplacement_compris}`, "déplacement compris");
-  attendu(p, h, offre.mention_prix, "mention TVA");
-  attendu(p, h, `href="${contact.reservation.appel.lien}"`, "lien de réservation de l'appel");
-  attendu(p, h, `href="${contact.reservation.domicile.lien}"`, "lien de réservation à domicile");
-  attendu(p, h, `${contact.reservation.domicile.duree} chez vous`, "durée du rendez-vous à domicile");
-  attendu(p, h, `${contact.reservation.appel.duree} pour faire connaissance`, "durée de l'appel");
+  const t = texte(lire("pages/tarifs.html"));
+  for (const l of lignes) ok(t.includes(norm(ligneCgv(l).replace(" : ", " "))), `pages/tarifs.html : ligne de grille « ${ligneCgv(l)} » introuvable`);
+  const cgv = lire("pages/cgv.html");
+  const liste = cgv.match(/<h3>3\.1 Tarifs<\/h3>[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
+  const publiees = liste ? [...liste[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => norm(m[1]).trim()) : [];
+  ok(JSON.stringify(publiees) === JSON.stringify(lignes.map((l) => norm(ligneCgv(l)))), `pages/cgv.html : l'article 3.1 ne correspond pas aux données\n    publié : ${JSON.stringify(publiees)}`);
+  const cat = jsonld(lire("pages/tarifs.html")).find((o) => o.hasOfferCatalog)?.hasOfferCatalog;
+  ok(cat && JSON.stringify(cat.itemListElement.map((o) => [o.name, o.price])) === JSON.stringify(lignes.map((l) => [l.nom, l.prix.toFixed(2)])), "pages/tarifs.html : le catalogue de données structurées ne correspond pas à la grille");
 }
 
-// 3. Article 3.1 des CGV : mêmes prix, mot pour mot, depuis la même source (OBLIGATIONS.md 1.10).
-{
-  const p = "pages/cgv.html", h = lire(p);
-  const e = (n) => euros(n, { insecable: false });
-  const lignes = [
-    `Premier rendez-vous (appel de ${contact.reservation.appel.duree} ou rendez-vous à domicile) : ${offre.premier_rendez_vous.prix === 0 ? "offert" : e(offre.premier_rendez_vous.prix)}`,
-    `Séance individuelle ${listeDe(offre.seance.pour)} : ${e(offre.seance.prix)}`,
-    ...offre.forfaits.map((f) => `Forfait ${f.seances} séances : ${e(f.prix)}, soit ${e(prixParSeance(f))} la séance`),
-    ...offre.alimentation.map((a) => `${a.nom} : ${e(a.prix)}${a.unite ? " " + a.unite : ""}`),
-    `${offre.bilan_seul.nom} : ${e(offre.bilan_seul.prix)}`,
-  ];
-  const liste = h.match(/<h3>3\.1 Tarifs<\/h3>[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
-  const publiees = liste ? [...liste[1].matchAll(/<li>(.*?)<\/li>/g)].map((m) => m[1]) : [];
-  verifs++;
-  if (JSON.stringify(publiees) !== JSON.stringify(lignes)) {
-    ecarts.push(`${p} : la liste de l'article 3.1 ne correspond pas aux données.\n    publiée : ${JSON.stringify(publiees)}\n    calculée : ${JSON.stringify(lignes)}`);
-  }
-  attendu(p, h, `déplacement du Prestataire ${zone.deplacement_compris_cgv}`, "déplacement compris (CGV)");
-}
-
-// 4. Mentions légales.
-{
-  const p = "pages/mentions-legales.html", h = lire(p);
-  attendu(p, h, `SIRET ${mentions.siret}`, "SIRET");
-  attendu(p, h, `n° ${mentions.carte_professionnelle}`, "carte professionnelle");
-  attendu(p, h, `${mentions.adresse_registre.rue}, ${mentions.adresse_registre.code_postal} ${mentions.adresse_registre.ville}`, "adresse du registre");
-  for (const q of ["pages/mentions-legales.html", "pages/cgv.html", "pages/politique-confidentialite.html"]) {
-    attendu(q, lire(q), `Date de dernière mise à jour : ${dateLongue(mentions.mise_a_jour_pages_legales)}`, "date de mise à jour");
-  }
-  // L'adresse du registre ne doit jamais apparaître dans les données structurées.
-  for (const q of pages) {
-    for (const b of lire(q).matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
-      verifs++;
-      if (b[1].includes(mentions.adresse_registre.rue)) ecarts.push(`${q} : adresse du registre publiée dans les données structurées`);
-    }
-  }
-}
-
-// 5. Horaires en phrase : FAQ de l'accueil (format « phrase » calculé).
-attendu("index.html", lire("index.html"), `<strong>${horairesPhrase(horaires.plages)}</strong>`, "horaires en phrase (FAQ)");
-
-// 6. FAQ : texte visible identique aux données ; copie FAQPage identique au texte brut.
-const FAQ_PAGES = { accueil: "index.html", apa: "pages/activite-physique-adaptee.html", coaching: "pages/coaching-sportif.html", alimentation: "pages/conseils-nutritionnels.html" };
-for (const [cle, p] of Object.entries(FAQ_PAGES)) {
-  const h = lire(p), liste = d.faq?.[cle] ?? [];
-  const bloc = h.match(/<div class="faq">\n([\s\S]*?)\n {8}<\/div>/);
-  const publiees = bloc ? [...bloc[1].matchAll(/<details( open)?>\s*<summary>([\s\S]*?)<svg[\s\S]*?<\/summary>\s*<div class="faq__answer">([\s\S]*?)<\/div>\s*<\/details>/g)] : [];
-  verifs++;
-  if (publiees.length !== liste.length) ecarts.push(`${p} : ${publiees.length} questions affichées, ${liste.length} dans les données`);
+// 3. FAQ : texte visible = données ; copie FAQPage = même texte, sans balise.
+const FAQ = { accueil: "index.html", apa: "pages/activite-physique-adaptee.html", coaching: "pages/coaching-sportif.html", alimentation: "pages/conseils-nutritionnels.html" };
+for (const [cle, p] of Object.entries(FAQ)) {
+  const h = lire(p), liste = d.faq[cle];
+  const vues = [...h.matchAll(/<summary>([\s\S]*?)<svg[\s\S]*?<div class="faq__reponse">([\s\S]*?)<\/div>/g)];
+  ok(vues.length === liste.length, `${p} : ${vues.length} questions affichées, ${liste.length} dans les données`);
+  const faqLd = jsonld(h).find((o) => o["@type"] === "FAQPage");
+  ok(Boolean(faqLd), `${p} : copie FAQPage absente`);
   liste.forEach((q, i) => {
-    const m = publiees[i]; verifs++;
-    if (!m) return;
-    if (m[2] !== q.question) ecarts.push(`${p} : question ${i + 1} différente`);
-    if (m[3] !== q.reponse + (q.complement ?? "")) ecarts.push(`${p} : réponse ${i + 1} différente (« ${q.question} »)`);
-    if (Boolean(m[1]) !== Boolean(q.ouverte)) ecarts.push(`${p} : question ${i + 1}, état ouvert différent`);
+    const attendu = texteBrut(remplir(q.reponse, d, AUJOURDHUI));
+    ok(vues[i] && norm(vues[i][1]).trim() === norm(q.question), `${p} : question ${i + 1} différente`);
+    ok(vues[i] && texte(vues[i][2]).trim().startsWith(norm(attendu)), `${p} : réponse ${i + 1} différente des données`);
+    ok(faqLd && faqLd.mainEntity[i]?.name === q.question && faqLd.mainEntity[i]?.acceptedAnswer.text === attendu, `${p} : copie FAQPage ${i + 1} différente du texte visible`);
   });
-  for (const b of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
-    const o = JSON.parse(b[1]);
-    if (o["@type"] !== "FAQPage") continue;
-    verifs++;
-    const attendue = liste.map((q) => [q.question, texteBrut(q.reponse)]);
-    const lue = o.mainEntity.map((x) => [x.name, x.acceptedAnswer.text]);
-    if (JSON.stringify(attendue) !== JSON.stringify(lue)) ecarts.push(`${p} : la copie FAQPage ne correspond pas au texte visible des données`);
-  }
 }
 
-// 7. Aucun montant en euros qui n'existe pas dans « offre » (toutes les pages, JSON-LD compris).
+// 4. Mentions légales et adresse du registre (pages légales seulement, jamais dans les données structurées).
 {
-  const connus = new Set([
-    offre.seance.prix, offre.bilan_seul.prix, ...offre.alimentation.map((a) => a.prix),
-    ...offre.forfaits.flatMap((f) => [f.prix, prixParSeance(f)]),
-  ].map((n) => euros(n, { insecable: false })));
+  const ml = texte(lire("pages/mentions-legales.html"));
+  ok(ml.includes(mentions.siret), "mentions légales : SIRET absent");
+  ok(ml.includes(mentions.carte_professionnelle), "mentions légales : carte professionnelle absente");
+  const rue = mentions.adresse_registre.rue;
+  ok(ml.includes(rue), "mentions légales : adresse du registre absente");
   for (const p of pages) {
-    for (const m of lire(p).matchAll(/(\d+(?:,\d{2})?)(?:&nbsp;|\u00a0| )€/g)) {
-      verifs++;
-      const lu = `${m[1]} €`;
-      if (!connus.has(lu)) ecarts.push(`${p} : montant « ${lu} » absent de « offre » dans les données`);
-    }
+    const h = lire(p);
+    if (!/^pages\/(mentions-legales|cgv|politique-confidentialite)\.html$/.test(p)) ok(!texte(h).includes(rue), `${p} : adresse du registre publiée hors des pages légales`);
+    for (const o of jsonld(h)) ok(!JSON.stringify(o).includes(rue) && !JSON.stringify(o).includes(mentions.adresse_registre.code_postal), `${p} : adresse dans les données structurées`);
   }
 }
 
-console.log(`Contrôle témoin : ${pages.length} pages, ${verifs} vérifications, date de référence ${AUJOURDHUI.toISOString().slice(0, 10)} (phrase d'absence ${absenceAffichee ? "attendue" : "non attendue"}).`);
+// 5. Aucun montant en euros qui n'existe pas dans « offre » (toutes les pages, données structurées comprises).
+{
+  const connus = new Set([offre.seance.prix, offre.bilan_seul.prix, ...offre.alimentation.map((a) => a.prix),
+    ...offre.forfaits.flatMap((f) => [f.prix, prixParSeance(f)])].map((n) => euros(n, { insecable: false })));
+  for (const p of pages) for (const m of norm(lire(p)).matchAll(/(\d+(?:,\d{2})?) €/g)) {
+    ok(connus.has(`${m[1]} €`), `${p} : montant « ${m[1]} € » absent de « offre »`);
+  }
+}
+
+console.log(`Contrôle des données : ${pages.length} pages, ${verifs} vérifications, date de référence ${AUJOURDHUI.toISOString().slice(0, 10)} (phrase d'absence ${absenceAffichee ? "attendue" : "non attendue"}).`);
 if (ecarts.length) { console.log(`${ecarts.length} écart(s) :\n  ${ecarts.join("\n  ")}`); process.exit(1); }
-console.log("Aucun écart : _data/entreprise.yaml décrit exactement ce que les pages affichent.");
+console.log("Aucun écart : les pages disent ce que disent les données.");
