@@ -19,7 +19,8 @@
     bouton.setAttribute('aria-expanded', String(ouvert));
     panneau.hidden = !ouvert;
     if (libelle) libelle.textContent = ouvert ? 'Fermer' : 'Menu';
-    if (use) use.setAttribute('href', '/images/icons.svg#i-' + (ouvert ? 'close' : 'menu'));
+    // Le chemin du fichier d'icônes est repris de la page (il peut être relatif) ; seul le symbole change.
+    if (use) use.setAttribute('href', use.getAttribute('href').split('#')[0] + '#i-' + (ouvert ? 'close' : 'menu'));
     if (ouvert) { var a = panneau.querySelector('a'); if (a) a.focus(); }
     else if (rendreFocus) bouton.focus();
   }
@@ -28,6 +29,15 @@
     if (e.key === 'Escape' && bouton.getAttribute('aria-expanded') === 'true') regler(false, true);
   });
   panneau.addEventListener('click', function (e) { if (e.target.closest('a')) regler(false); });
+  function ouvert() { return bouton.getAttribute('aria-expanded') === 'true'; }
+  function dedans(n) { return n && (panneau.contains(n) || bouton.contains(n)); }
+  // Le focus quitte le menu (Tab après la dernière entrée) : le menu se ferme, le focus reste où il va
+  // (recette MA-1 : sinon le panneau recouvre l'élément qui a le focus).
+  [panneau, bouton].forEach(function (el) {
+    el.addEventListener('focusout', function (e) { if (ouvert() && e.relatedTarget && !dedans(e.relatedTarget)) regler(false); });
+  });
+  // Toucher ou cliquer la page à côté du panneau le ferme (recette MI-1).
+  document.addEventListener('pointerdown', function (e) { if (ouvert() && !dedans(e.target)) regler(false); });
   window.matchMedia('(min-width: 75rem)').addEventListener('change', function (e) { if (e.matches) regler(false); });
 })();
 
