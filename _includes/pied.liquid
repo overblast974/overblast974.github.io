@@ -27,7 +27,8 @@
           <p class="footer__title">Contact</p>
           <ul class="footer__list list-reset">
             <li><a href="tel:{{ tel.international }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>{{ tel.affiche }}</a></li>
-            <li><a href="mailto:{{ e.contact.email }}"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>{{ e.contact.email }}</a></li>
+            <li><a href="mailto:{{ e.contact.email }}" aria-describedby="pied-sante"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>{{ e.contact.email }}</a>
+              <p class="footer__sante" id="pied-sante">Merci de ne rien écrire sur votre santé dans un premier message.</p></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>{{ e.zone | zone_phrase }}</span></li>
             <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>{{ e.horaires.plages | horaires_courts }}</span></li>
 {%- if absence_affichee %}

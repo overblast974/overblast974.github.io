@@ -531,10 +531,18 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
   .footer__bottom { margin-top: var(--space-6); }
   /* Arbitrage de la régie (25/11/2026) : sur téléphone, la phrase de marque redit le titre et la signature. Retirée sous 768 px. */
   .footer__brand p { display: none; }
+  .footer__sante { padding-left: calc(1.25 * var(--text-sm) + var(--space-2)); }
 }
 .footer__list .icon { margin-top: var(--space-1); }
 .footer__list li > span { color: var(--color-dark-text-muted); }
 .footer__list a { overflow-wrap: anywhere; }
+/* Mise en garde santé sous l'e-mail (CONFORMITE E-05, décision de la régie sur MA-4) : à portée de regard,
+   alignée sur le texte de l'adresse (après l'icône), au ton de la note santé de la réservation. */
+.footer__sante {
+  margin-top: calc(-1 * var(--space-1)); padding-bottom: var(--space-2);
+  padding-left: calc(1.25 * var(--text-base) + var(--space-2)); /* icône de 1,25 em du texte de la liste, puis l'écart */
+  font-size: var(--text-sm); line-height: var(--leading-snug); color: var(--color-dark-text-muted);
+}
 .footer__bottom {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: var(--space-3) var(--space-5); margin-top: var(--space-7); padding-top: var(--space-5);
