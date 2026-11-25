@@ -1,295 +1,189 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politique de Confidentialité | Coach APA'R</title>
-    <link rel="canonical" href="https://coachapar.fr/pages/politique-confidentialite.html">
-    <meta name="description" content="Politique de confidentialité du site web Coach APA'R. Découvrez comment nous protégeons vos données personnelles.">
-    <meta name="robots" content="noindex, follow">
-
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" sizes="48x48">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <noscript><style>/* Sans JavaScript, le bouton Menu ne peut rien ouvrir : la navigation reste dépliée sous la barre. */ @media (max-width: 74.99rem) { .site-header { position: relative; } .menu-toggle { display: none; } .mobile-menu[hidden] { display: block; max-height: none; } }</style></noscript>
-  <meta name="theme-color" content="#44631F">
-</head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <!-- gabarit:en-tete -->
-  <header class="site-header">
-    <div class="container site-header__bar">
-      <a class="brand" href="/">
-        <img src="/images/logo-mark.webp" width="44" height="44" alt="">
-        <span><span class="brand__name">Coach APA'R</span><span class="brand__sub">Coach sportif et APA, Montpellier</span></span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-          <li><a href="/#services">Services</a></li>
-          <li><a href="/#tarifs">Tarifs</a></li>
-          <li><a href="/#faq">Questions</a></li>
-          <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn--primary header-cta" href="/#reservation">Prendre mon premier rendez-vous</a>
-      <a class="icon-btn call-btn" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg><span class="visually-hidden">Appeler le 07 65 77 51 04</span></a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-menu"/></svg><span class="menu-toggle__label">Menu</span></button>
-    </div>
-    <div class="mobile-menu" id="menu-mobile" hidden>
-      <nav class="container" aria-label="Menu">
-        <ul class="list-reset">
-          <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#services">Services <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#tarifs">Tarifs <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/#faq">Questions <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-          <li><a href="/pages/contact.html">Contact <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></li>
-        </ul>
-        <div class="mobile-menu__actions">
-          <a class="btn btn--primary btn--block" href="/#reservation">Prendre mon premier rendez-vous</a>
-          <p class="cta-note">Offert, sans engagement</p>
-          <a class="btn btn--secondary btn--block" href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a>
+---
+layout: base.liquid
+robots: "noindex, follow"
+titre: "Politique de Confidentialité | Coach APA'R"
+description: "Politique de confidentialité de Coach APA'R : quelles données sont collectées, pourquoi, qui les reçoit et combien de temps."
+partage_image: accueil
+fil:
+  - { nom: "Accueil", url: "/" }
+  - { nom: "Confidentialité", url: "/pages/politique-confidentialite.html" }
+---
+{%- comment -%} Texte du dépôt repris tel quel (lot 1), dans le gabarit de la refonte. Seules les valeurs
+  (téléphone, e-mail, SIRET, carte, adresse du registre, date) viennent de _data/entreprise.yaml. {%- endcomment -%}
+{%- assign e = entreprise -%}
+    <section class="tete" aria-labelledby="titre-page">
+      <div class="container tete__grille">
+        <div class="tete__haut">
+{% include "fil.liquid" %}
+          <h1 id="titre-page" class="tete__titre">Politique de Confidentialité</h1>
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- /gabarit:en-tete -->
-
-  <main id="contenu" tabindex="-1">
-    <section class="page-head" aria-labelledby="titre-page">
-      <div class="container--narrow page-head__inner">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
-          <ol>
-            <li><a href="/">Accueil</a></li>
-            <li><span aria-current="page">Politique de confidentialité</span></li>
-          </ol>
-        </nav>
-        <h1 id="titre-page">Politique de Confidentialité</h1>
-        <p class="page-head__lead">Informations sur la protection de vos données personnelles</p>
+        <div class="tete__texte">
+          <p class="tete__chapeau">Informations sur la protection de vos données personnelles</p>
+        </div>
       </div>
     </section>
 
-    <div class="section section--surface">
-      <div class="container--narrow prose">
-              <p class="legal-date">Date de dernière mise à jour : 25 novembre 2026</p>
+    <div class="texte-long">
+      <div class="container">
+        <div class="texte-long__corps">
+                <p class="date-maj">Date de dernière mise à jour : {{ e.mentions.mise_a_jour_pages_legales | date_longue }}</p>
 
-              <section>
-                  <h2>1. Introduction</h2>
-                  <p>Cette page vous explique quelles données personnelles je collecte, pourquoi, qui les reçoit et combien de temps elles sont gardées, lorsque vous visitez coachapar.fr, lorsque vous me contactez et lorsque vous devenez client.</p>
-              </section>
+                <section>
+                    <h2>1. Introduction</h2>
+                    <p>Cette page vous explique quelles données personnelles je collecte, pourquoi, qui les reçoit et combien de temps elles sont gardées, lorsque vous visitez coachapar.fr, lorsque vous me contactez et lorsque vous devenez client.</p>
+                </section>
 
-              <section>
-                  <h2>2. Identité du responsable de traitement</h2>
-                  <p>Le responsable du traitement des données personnelles collectées sur ce site est :</p>
-                  <p><strong>Loïc Boyer, exerçant sous le nom commercial Coach APA'R</strong></p>
-                  <ul>
-                      <li>Statut : Entreprise individuelle</li>
-                      <li>SIRET : 95349047100018</li>
-                      <li>Adresse : 56 rue Albert Schweitzer, 34090 Montpellier</li>
-                      <li>Email : coachapar@gmail.com</li>
-                      <li>Téléphone : 07 65 77 51 04</li>
-                  </ul>
-              </section>
+                <section>
+                    <h2>2. Identité du responsable de traitement</h2>
+                    <p>Le responsable du traitement des données personnelles collectées sur ce site est :</p>
+                    <p><strong>Loïc Boyer, exerçant sous le nom commercial Coach APA'R</strong></p>
+                    <ul>
+                        <li>Statut : Entreprise individuelle</li>
+                        <li>SIRET : {{ e.mentions.siret }}</li>
+                        <li>Adresse : {{ e.mentions.adresse_registre.rue }}, {{ e.mentions.adresse_registre.code_postal }} {{ e.mentions.adresse_registre.ville }}</li>
+                        <li>Email : {{ e.contact.email }}</li>
+                        <li>Téléphone : {{ e.contact.telephone.affiche }}</li>
+                    </ul>
+                </section>
 
-              <section>
-                  <h2>3. Données collectées</h2>
-                  <p>Je collecte les données suivantes lorsque vous utilisez le site ou me contactez :</p>
+                <section>
+                    <h2>3. Données collectées</h2>
+                    <p>Je collecte les données suivantes lorsque vous utilisez le site ou me contactez :</p>
 
-                  <h3>3.1 Données que vous me fournissez directement</h3>
-                  <ul>
-                      <li><strong>Données d'identification</strong> : nom, adresse email, numéro de téléphone</li>
-                      <li><strong>Contenu des messages</strong> : informations que vous me communiquez par le formulaire de contact du site ou par email. Merci de ne pas y indiquer d'informations sur votre santé. Seule exception, si vous le choisissez : la prescription de votre médecin, envoyée par email (voir ci-dessous).</li>
-                      <li><strong>Si vous devenez client</strong> : les informations utiles à votre accompagnement, dont, le cas échéant et avec votre accord exprès, des informations sur votre santé recueillies lors de l'entretien préalable (par exemple l'avis de votre médecin) ou figurant sur la prescription de votre médecin, si vous m'en remettez une. Je vous invite à me la montrer ou à me la remettre en main propre. Si vous préférez me l'envoyer par email, elle arrive dans ma messagerie Gmail (Google, États-Unis) : je l'enregistre sur mon ordinateur, puis je supprime le message de ma messagerie et je vide la corbeille. Je n'en garde aucune copie dans mes messages envoyés. Ces informations ne sont jamais demandées par le site.</li>
-                  </ul>
+                    <h3>3.1 Données que vous me fournissez directement</h3>
+                    <ul>
+                        <li><strong>Données d'identification</strong> : nom, adresse email, numéro de téléphone</li>
+                        <li><strong>Contenu des messages</strong> : informations que vous me communiquez par le formulaire de contact du site ou par email. Merci de ne pas y indiquer d'informations sur votre santé. Seule exception, si vous le choisissez : la prescription de votre médecin, envoyée par email (voir ci-dessous).</li>
+                        <li><strong>Si vous devenez client</strong> : les informations utiles à votre accompagnement, dont, le cas échéant et avec votre accord exprès, des informations sur votre santé recueillies lors de l'entretien préalable (par exemple l'avis de votre médecin) ou figurant sur la prescription de votre médecin, si vous m'en remettez une. Je vous invite à me la montrer ou à me la remettre en main propre. Si vous préférez me l'envoyer par email, elle arrive dans ma messagerie Gmail (Google, États-Unis) : je l'enregistre sur mon ordinateur, puis je supprime le message de ma messagerie et je vide la corbeille. Je n'en garde aucune copie dans mes messages envoyés. Ces informations ne sont jamais demandées par le site.</li>
+                    </ul>
 
-                  <h3>3.2 Données collectées automatiquement</h3>
-                  <ul>
-                      <li><strong>Données techniques de connexion</strong> : comme pour tout site, votre adresse IP et des informations sur votre navigateur sont transmises aux services qui livrent les pages. L'hébergeur GitHub enregistre l'adresse IP des visiteurs pour des raisons de sécurité. Les polices de caractères et les icônes sont hébergées sur le site lui-même : aucun service tiers ne les fournit. Coach APA'R n'utilise aucun outil de mesure d'audience et ne consulte pas ces données.</li>
-                      <li><strong>Cookies</strong> : le site ne dépose aucun cookie (voir la section 11)</li>
-                  </ul>
-              </section>
+                    <h3>3.2 Données collectées automatiquement</h3>
+                    <ul>
+                        <li><strong>Données techniques de connexion</strong> : comme pour tout site, votre adresse IP et des informations sur votre navigateur sont transmises aux services qui livrent les pages. L'hébergeur GitHub enregistre l'adresse IP des visiteurs pour des raisons de sécurité. Les polices de caractères et les icônes sont hébergées sur le site lui-même : aucun service tiers ne les fournit. Coach APA'R n'utilise aucun outil de mesure d'audience et ne consulte pas ces données.</li>
+                        <li><strong>Cookies</strong> : le site ne dépose aucun cookie (voir la section 11)</li>
+                    </ul>
+                </section>
 
-              <section>
-                  <h2>4. Finalités du traitement</h2>
-                  <p>Je traite vos données personnelles pour les raisons suivantes :</p>
-                  <ul>
-                      <li>Vous fournir les prestations de coaching sportif, d'activité physique adaptée et de repères alimentaires que vous avez demandées</li>
-                      <li>Répondre à vos demandes d'information et de contact</li>
-                                                                                  <li>Assurer la sécurité du site</li>
-                      <li>Respecter mes obligations légales et réglementaires</li>
-                  </ul>
-              </section>
+                <section>
+                    <h2>4. Finalités du traitement</h2>
+                    <p>Je traite vos données personnelles pour les raisons suivantes :</p>
+                    <ul>
+                        <li>Vous fournir les prestations de coaching sportif, d'activité physique adaptée et de repères alimentaires que vous avez demandées</li>
+                        <li>Répondre à vos demandes d'information et de contact</li>
+                                                                                    <li>Assurer la sécurité du site</li>
+                        <li>Respecter mes obligations légales et réglementaires</li>
+                    </ul>
+                </section>
 
-              <section>
-                  <h2>5. Bases juridiques du traitement</h2>
-                  <p>Le traitement de vos données personnelles repose sur les bases juridiques suivantes :</p>
-                  <ul>
-                      <li><strong>L'exécution d'un contrat</strong> : lorsque je vous fournis mes prestations</li>
-                      <li><strong>Les mesures précontractuelles prises à votre demande</strong> (article 6.1.b du RGPD) : lorsque vous me contactez par le formulaire de contact ou par email pour une demande d'information ou de rendez-vous</li>
-                      <li><strong>Votre consentement explicite</strong> (article 9.2.a du RGPD) : pour les informations sur votre santé utiles à votre accompagnement, si vous devenez client. Vous pouvez le retirer à tout moment.</li>
-                      <li><strong>Mon intérêt légitime</strong> : assurer la sécurité et le fonctionnement du site</li>
-                      <li><strong>Le respect de mes obligations légales</strong> : notamment en matière fiscale et comptable</li>
-                  </ul>
-              </section>
+                <section>
+                    <h2>5. Bases juridiques du traitement</h2>
+                    <p>Le traitement de vos données personnelles repose sur les bases juridiques suivantes :</p>
+                    <ul>
+                        <li><strong>L'exécution d'un contrat</strong> : lorsque je vous fournis mes prestations</li>
+                        <li><strong>Les mesures précontractuelles prises à votre demande</strong> (article 6.1.b du RGPD) : lorsque vous me contactez par le formulaire de contact ou par email pour une demande d'information ou de rendez-vous</li>
+                        <li><strong>Votre consentement explicite</strong> (article 9.2.a du RGPD) : pour les informations sur votre santé utiles à votre accompagnement, si vous devenez client. Vous pouvez le retirer à tout moment.</li>
+                        <li><strong>Mon intérêt légitime</strong> : assurer la sécurité et le fonctionnement du site</li>
+                        <li><strong>Le respect de mes obligations légales</strong> : notamment en matière fiscale et comptable</li>
+                    </ul>
+                </section>
 
-              <section>
-                  <h2>6. Qui reçoit vos données</h2>
-                  <p>Vos données me sont destinées : Loïc Boyer (Coach APA'R). Personne d'autre ne les utilise.</p>
-                  <p>Pour fonctionner, le site et ma messagerie passent par des services en ligne, qui reçoivent donc techniquement ces données :</p>
-                  <ul>
-                      <li>GitHub, Inc. (États-Unis) : hébergeur du site ;</li>
-                      <li>Formspree (États-Unis) : service qui transmet les messages du formulaire de contact ;</li>
-                      <li>Cal.com, Inc. (États-Unis) : service de prise de rendez-vous en ligne, qui reçoit les informations saisies lors d'une réservation (nom, adresse e-mail, téléphone, adresse du rendez-vous) ;</li>
-                      <li>Google (États-Unis) : ma messagerie Gmail, où arrivent les messages du formulaire, vos emails et les confirmations de rendez-vous, et mon agenda Google Agenda, où Cal.com inscrit chaque rendez-vous avec les informations saisies lors de la réservation. Si vous m'envoyez la prescription de votre médecin par email, elle passe aussi par cette messagerie, le temps que je l'enregistre et que je supprime le message.</li>
-                  </ul>
-                  <p>J'utilise les formules gratuites de Formspree et de Gmail, aux conditions générales de ces services.</p>
-                  <p>Je ne vends ni ne loue vos données personnelles à personne.</p>
-              </section>
+                <section>
+                    <h2>6. Qui reçoit vos données</h2>
+                    <p>Vos données me sont destinées : Loïc Boyer (Coach APA'R). Personne d'autre ne les utilise.</p>
+                    <p>Pour fonctionner, le site et ma messagerie passent par des services en ligne, qui reçoivent donc techniquement ces données :</p>
+                    <ul>
+                        <li>GitHub, Inc. (États-Unis) : hébergeur du site ;</li>
+                        <li>Formspree (États-Unis) : service qui transmet les messages du formulaire de contact ;</li>
+                        <li>Cal.com, Inc. (États-Unis) : service de prise de rendez-vous en ligne, qui reçoit les informations saisies lors d'une réservation (nom, adresse e-mail, téléphone, adresse du rendez-vous) ;</li>
+                        <li>Google (États-Unis) : ma messagerie Gmail, où arrivent les messages du formulaire, vos emails et les confirmations de rendez-vous, et mon agenda Google Agenda, où Cal.com inscrit chaque rendez-vous avec les informations saisies lors de la réservation. Si vous m'envoyez la prescription de votre médecin par email, elle passe aussi par cette messagerie, le temps que je l'enregistre et que je supprime le message.</li>
+                    </ul>
+                    <p>J'utilise les formules gratuites de Formspree et de Gmail, aux conditions générales de ces services.</p>
+                    <p>Je ne vends ni ne loue vos données personnelles à personne.</p>
+                </section>
 
-              <section>
-                  <h2>7. Transferts de données hors UE</h2>
-                  <p>Les services cités à la section 6 sont établis aux États-Unis : vos données y sont donc transférées.</p>
-                  <p>Chacun de ces services indique, dans ses propres conditions, comment il encadre ces transferts. Cal.com déclare être certifié au cadre de protection des données UE–États-Unis et appliquer en complément les clauses contractuelles types de la Commission européenne. Pour GitHub, Google et Formspree, les garanties sont celles que ces sociétés publient dans leurs politiques de confidentialité.</p>
-                  <p>Si vous préférez que vos coordonnées ne passent pas par ces services, vous pouvez me joindre par téléphone au 07 65 77 51 04.</p>
-              </section>
+                <section>
+                    <h2>7. Transferts de données hors UE</h2>
+                    <p>Les services cités à la section 6 sont établis aux États-Unis : vos données y sont donc transférées.</p>
+                    <p>Chacun de ces services indique, dans ses propres conditions, comment il encadre ces transferts. Cal.com déclare être certifié au cadre de protection des données UE–États-Unis et appliquer en complément les clauses contractuelles types de la Commission européenne. Pour GitHub, Google et Formspree, les garanties sont celles que ces sociétés publient dans leurs politiques de confidentialité.</p>
+                    <p>Si vous préférez que vos coordonnées ne passent pas par ces services, vous pouvez me joindre par téléphone au {{ e.contact.telephone.affiche }}.</p>
+                </section>
 
-              <section>
-                  <h2>8. Durée de conservation</h2>
-                  <p>Je conserve vos données personnelles uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
-                  <ul>
-                      <li>Demandes reçues par le formulaire de contact ou par email : 12 mois après notre dernier échange si aucun accompagnement n'est engagé</li>
-                      <li>Réservations en ligne (Cal.com et agenda) : 12 mois après la date du rendez-vous</li>
-                      <li>Données relatives aux clients : durée de la relation contractuelle + 5 ans à des fins de preuve</li>
-                                          <li>Données relatives à la gestion des commandes et factures : 10 ans (obligation légale)</li>
-                  </ul>
-                  <p>Après ces périodes, vos données sont soit supprimées, soit anonymisées.</p>
-              </section>
+                <section>
+                    <h2>8. Durée de conservation</h2>
+                    <p>Je conserve vos données personnelles uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
+                    <ul>
+                        <li>Demandes reçues par le formulaire de contact ou par email : 12 mois après notre dernier échange si aucun accompagnement n'est engagé</li>
+                        <li>Réservations en ligne (Cal.com et agenda) : 12 mois après la date du rendez-vous</li>
+                        <li>Données relatives aux clients : durée de la relation contractuelle + 5 ans à des fins de preuve</li>
+                                            <li>Données relatives à la gestion des commandes et factures : 10 ans (obligation légale)</li>
+                    </ul>
+                    <p>Après ces périodes, vos données sont soit supprimées, soit anonymisées.</p>
+                </section>
 
-              <section>
-                  <h2>9. Sécurité des données</h2>
-                  <p>Je mets en œuvre des mesures techniques et organisationnelles appropriées pour assurer la sécurité de vos données personnelles, notamment contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle.</p>
-                  <p>Ces mesures comprennent :</p>
-                  <ul>
-                      <li>L'utilisation de connexions chiffrées (HTTPS)</li>
-                  </ul>
-              </section>
+                <section>
+                    <h2>9. Sécurité des données</h2>
+                    <p>Je mets en œuvre des mesures techniques et organisationnelles appropriées pour assurer la sécurité de vos données personnelles, notamment contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle.</p>
+                    <p>Ces mesures comprennent :</p>
+                    <ul>
+                        <li>L'utilisation de connexions chiffrées (HTTPS)</li>
+                    </ul>
+                </section>
 
-              <section>
-                  <h2>10. Vos droits</h2>
-                  <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :</p>
-                  <ul>
-                      <li><strong>Droit d'accès</strong> : vous pouvez obtenir des informations sur le traitement de vos données et une copie de celles-ci</li>
-                      <li><strong>Droit de rectification</strong> : vous pouvez demander la correction des données inexactes ou incomplètes</li>
-                      <li><strong>Droit à l'effacement</strong> ("droit à l'oubli") : vous pouvez demander la suppression de vos données dans certaines circonstances</li>
-                      <li><strong>Droit à la limitation du traitement</strong> : vous pouvez demander que je limite le traitement de vos données</li>
-                      <li><strong>Droit à la portabilité</strong> : vous pouvez recevoir vos données dans un format structuré et les transmettre à un autre responsable de traitement</li>
-                      <li><strong>Droit d'opposition</strong> : vous pouvez vous opposer à un traitement de vos données fondé sur mon intérêt légitime. Vos données ne servent à aucune prospection.</li>
-                      <li><strong>Droit de retirer votre consentement</strong> à tout moment, lorsque le traitement est fondé sur celui-ci</li>
-                      <li><strong>Droit de définir des directives</strong> relatives au sort de vos données après votre décès</li>
-                  </ul>
-                  <p>Pour exercer ces droits, vous pouvez me contacter par email à coachapar@gmail.com ou par téléphone au 07 65 77 51 04.</p>
-                  <p>Vous disposez également du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL).</p>
-              </section>
+                <section>
+                    <h2>10. Vos droits</h2>
+                    <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :</p>
+                    <ul>
+                        <li><strong>Droit d'accès</strong> : vous pouvez obtenir des informations sur le traitement de vos données et une copie de celles-ci</li>
+                        <li><strong>Droit de rectification</strong> : vous pouvez demander la correction des données inexactes ou incomplètes</li>
+                        <li><strong>Droit à l'effacement</strong> ("droit à l'oubli") : vous pouvez demander la suppression de vos données dans certaines circonstances</li>
+                        <li><strong>Droit à la limitation du traitement</strong> : vous pouvez demander que je limite le traitement de vos données</li>
+                        <li><strong>Droit à la portabilité</strong> : vous pouvez recevoir vos données dans un format structuré et les transmettre à un autre responsable de traitement</li>
+                        <li><strong>Droit d'opposition</strong> : vous pouvez vous opposer à un traitement de vos données fondé sur mon intérêt légitime. Vos données ne servent à aucune prospection.</li>
+                        <li><strong>Droit de retirer votre consentement</strong> à tout moment, lorsque le traitement est fondé sur celui-ci</li>
+                        <li><strong>Droit de définir des directives</strong> relatives au sort de vos données après votre décès</li>
+                    </ul>
+                    <p>Pour exercer ces droits, vous pouvez me contacter par email à {{ e.contact.email }} ou par téléphone au {{ e.contact.telephone.affiche }}.</p>
+                    <p>Vous disposez également du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL).</p>
+                </section>
 
-              <section>
-                  <h2>11. Cookies</h2>
+                <section>
+                    <h2>11. Cookies</h2>
 
-                  <h3>11.1 Qu'est-ce qu'un cookie ?</h3>
-                  <p>Un cookie est un petit fichier déposé sur votre appareil (ordinateur, tablette, smartphone) lors de la visite d'un site, par exemple pour mesurer l'audience ou afficher de la publicité.</p>
+                    <h3>11.1 Qu'est-ce qu'un cookie ?</h3>
+                    <p>Un cookie est un petit fichier déposé sur votre appareil (ordinateur, tablette, smartphone) lors de la visite d'un site, par exemple pour mesurer l'audience ou afficher de la publicité.</p>
 
-                  <h3>11.2 Ce que fait ce site</h3>
-                  <p>Le site coachapar.fr ne dépose aucun cookie, n'enregistre rien dans votre navigateur et n'utilise aucun traceur de mesure d'audience, de publicité ou de réseau social. Aucun accord ne vous est donc demandé.</p>
+                    <h3>11.2 Ce que fait ce site</h3>
+                    <p>Le site coachapar.fr ne dépose aucun cookie, n'enregistre rien dans votre navigateur et n'utilise aucun traceur de mesure d'audience, de publicité ou de réseau social. Aucun accord ne vous est donc demandé.</p>
 
-                  <h3>11.3 Réglages de votre navigateur</h3>
-                  <p>Vous pouvez configurer votre navigateur pour qu'il accepte ou refuse les cookies, vous avertisse lorsqu'un cookie est émis, ou supprime périodiquement les cookies stockés.</p>
-                  <p>Pour gérer les cookies, consultez la rubrique d'aide de votre navigateur :</p>
-                  <ul>
-                      <li><a href="https://support.google.com/chrome/answer/95647">Chrome</a></li>
-                      <li><a href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur">Firefox</a></li>
-                      <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">Safari</a></li>
-                      <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09">Edge</a></li>
-                  </ul>
-                  <p>Si un outil déposant des cookies est ajouté un jour au site, cette page sera mise à jour et votre accord sera demandé avant tout dépôt, lorsque la loi l'exige.</p>
-              </section>
+                    <h3>11.3 Réglages de votre navigateur</h3>
+                    <p>Vous pouvez configurer votre navigateur pour qu'il accepte ou refuse les cookies, vous avertisse lorsqu'un cookie est émis, ou supprime périodiquement les cookies stockés.</p>
+                    <p>Pour gérer les cookies, consultez la rubrique d'aide de votre navigateur :</p>
+                    <ul>
+                        <li><a href="https://support.google.com/chrome/answer/95647">Chrome</a></li>
+                        <li><a href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur">Firefox</a></li>
+                        <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">Safari</a></li>
+                        <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09">Edge</a></li>
+                    </ul>
+                    <p>Si un outil déposant des cookies est ajouté un jour au site, cette page sera mise à jour et votre accord sera demandé avant tout dépôt, lorsque la loi l'exige.</p>
+                </section>
 
-              <section>
-                  <h2>12. Modification de la politique de confidentialité</h2>
-                  <p>Cette politique peut être mise à jour, par exemple si un outil du site change. La date de dernière mise à jour figure en haut de la page.</p>
-                  <p>Si une modification change de façon importante l'usage de données déjà collectées, je préviens les personnes concernées dont j'ai les coordonnées avant de l'appliquer.</p>
-              </section>
+                <section>
+                    <h2>12. Modification de la politique de confidentialité</h2>
+                    <p>Cette politique peut être mise à jour, par exemple si un outil du site change. La date de dernière mise à jour figure en haut de la page.</p>
+                    <p>Si une modification change de façon importante l'usage de données déjà collectées, je préviens les personnes concernées dont j'ai les coordonnées avant de l'appliquer.</p>
+                </section>
 
-              <section>
-                  <h2>13. Contact</h2>
-                  <p>Pour toute question concernant cette politique de confidentialité ou vos données personnelles, vous pouvez me contacter :</p>
-                  <ul>
-                      <li>Par email : coachapar@gmail.com</li>
-                      <li>Par téléphone : 07 65 77 51 04</li>
-                  </ul>
-                  <p>Je réponds dans les meilleurs délais et au plus tard dans un délai d'un mois, qui peut être prolongé de deux mois si la demande est complexe ou si les demandes sont nombreuses.</p>
-              </section>
+                <section>
+                    <h2>13. Contact</h2>
+                    <p>Pour toute question concernant cette politique de confidentialité ou vos données personnelles, vous pouvez me contacter :</p>
+                    <ul>
+                        <li>Par email : {{ e.contact.email }}</li>
+                        <li>Par téléphone : {{ e.contact.telephone.affiche }}</li>
+                    </ul>
+                    <p>Je réponds dans les meilleurs délais et au plus tard dans un délai d'un mois, qui peut être prolongé de deux mois si la demande est complexe ou si les demandes sont nombreuses.</p>
+                </section>
 
-      </div>
-    </div>
-  </main>
 
-  <!-- gabarit:pied -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="footer__logo" href="/"><img src="/images/logo-mark.webp" width="56" height="56" alt="" loading="lazy" decoding="async">Coach APA'R</a>
-          <p>Coach sportif et enseignant en activité physique adaptée à Montpellier. L'activité physique adaptée, en complément de votre suivi médical.</p>
-        </div>
-        <nav aria-labelledby="pied-services">
-          <p class="footer__title" id="pied-services">Services</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/activite-physique-adaptee.html">Activité physique adaptée</a></li>
-            <li><a href="/publics-accompagnes.html">Publics accompagnés</a></li>
-            <li><a href="/pages/coaching-sportif.html">Coaching sportif</a></li>
-            <li><a href="/pages/conseils-nutritionnels.html">Alimentation et activité physique</a></li>
-            <li><a href="/#services">Pilates</a></li>
-          </ul>
-        </nav>
-        <nav aria-labelledby="pied-infos">
-          <p class="footer__title" id="pied-infos">Informations</p>
-          <ul class="footer__list list-reset">
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/#tarifs">Tarifs</a></li>
-            <li><a href="/#faq">Questions fréquentes</a></li>
-            <li><a href="/pages/blog.html">Blog</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p class="footer__title">Contact</p>
-          <ul class="footer__list list-reset">
-            <li><a href="tel:+33765775104"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-phone"/></svg>07 65 77 51 04</a></li>
-            <li><a href="mailto:coachapar@gmail.com"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-mail"/></svg>coachapar@gmail.com</a></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-map-pin"/></svg>Montpellier, Hérault (34)</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg>Lun-ven 17&nbsp;h&nbsp;30 – 21&nbsp;h&nbsp;30, sam 8&nbsp;h – 16&nbsp;h</span></li>
-            <li><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-calendar"/></svg>Premiers rendez-vous à partir du 11 janvier 2027. D'ici là, vous pouvez me joindre par téléphone.</span></li>
-          </ul>
         </div>
       </div>
-      <div class="footer__bottom">
-        <p>© 2026 Coach APA'R — Loïc. Tous droits réservés. Site réalisé par Loïc Boyer.</p>
-        <nav aria-label="Informations légales">
-          <ul class="list-reset">
-            <li><a href="/pages/mentions-legales.html">Mentions légales</a></li>
-            <li><a href="/pages/politique-confidentialite.html" aria-current="page">Confidentialité</a></li>
-            <li><a href="/pages/cgv.html">CGV</a></li>
-          </ul>
-        </nav>
-      </div>
     </div>
-  </footer>
-  <!-- /gabarit:pied -->
-
-  <script src="/js/app.js" defer></script>
-</body>
-</html>
