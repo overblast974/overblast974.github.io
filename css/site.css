@@ -324,8 +324,14 @@ ul, ol, dl { grid-template-columns: minmax(0, 1fr); } /* listes en grille : mêm
   .qui__entete { display: contents; }
   .bloc--qui .question { grid-column: 1; grid-row: 1; }
   .bloc--qui .qui__identite { grid-column: 1; grid-row: 2; align-self: start; }
-  .bloc--qui .reponse.qui { grid-column: 1; grid-row: 3; }
+  /* Seuls la question, l'identité et la fiche tiennent à côté du portrait ; la suite reprend toute la largeur
+     (retour du client : sinon la colonne de droite restait vide sous la photo). */
+  .bloc--qui .reponse.qui { display: contents; }
+  .bloc--qui .fiche { grid-column: 1; grid-row: 3; }
   .bloc--qui .qui__portrait { grid-column: 2; grid-row: 1 / span 3; }
+  .bloc--qui .qui__nom, .bloc--qui .qui__limites, .bloc--qui .reponse.qui > .lien-suite { grid-column: 1 / -1; }
+  .bloc--qui .reponse.qui > .lien-suite { justify-self: start; }
+  .bloc--qui .qui__nom { margin-top: var(--space-3); }
 }
 /* Texte très agrandi sur téléphone (recette NR-2) : la largeur se mesure en em, donc en taille de texte du lecteur.
    Sous 19 em, plus de colonnes : la question, l'identité, puis le portrait. */
